@@ -18,7 +18,6 @@ class RulesController extends AbstractController
 
     public function index(): Response
     {
-
         return $this->render('gamerules/index.html.twig');
     }
 }
