@@ -10,14 +10,13 @@
     width: $width-cards-orders;
 }
 
-.section-navbar a{
+.section-navbar a {
     font-size: $font-size-a;
-} 
-
+}
 
 @media screen and (max-width: 1600px) {
 
-    .section-navbar a{
+    .section-navbar a {
         font-size: calc(#{$font-size-a}*0.8);
     }
 
@@ -29,7 +28,7 @@
 
 @media screen and (max-width: 1400px) {
 
-    .section-navbar a{
+    .section-navbar a {
         font-size: calc(#{$font-size-a}*0.65);
     }
 
@@ -43,7 +42,7 @@
 }
 
 @media screen and (max-width: 1250px) {
-    .section-navbar a{
+    .section-navbar a {
         font-size: calc(#{$font-size-a}*0.55);
     }
 
@@ -57,7 +56,7 @@
 }
 
 @media screen and (max-width: 1000px) {
-    .section-navbar a{
+    .section-navbar a {
         font-size: calc(#{$font-size-a}*0.45);
     }
 
@@ -75,7 +74,7 @@
         display: none;
     }
 
-    .section-navbar a{
+    .section-navbar a {
         font-size: calc(#{$font-size-a}*0.35);
     }
 
