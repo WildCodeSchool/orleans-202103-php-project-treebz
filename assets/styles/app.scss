@@ -1,6 +1,14 @@
 @import 'variables.scss';
+@import "~bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
 
 body {
-    background-color: $wild-color;
-    color: $light;
+    background-color: $light;
+    color: $dark;
+    font-family: $font-text;
 }
+
+h1, h2, h3 {
+    font-family: $font-title;
+    
+} 
