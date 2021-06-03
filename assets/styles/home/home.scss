@@ -1,0 +1,81 @@
+@import './assets/styles/variables.scss';
+
+.start-title {
+    color: $light;  
+    font-family: $font-text;
+    font-size: 80pt;
+    font-weight: bold;
+}
+
+.end-title {
+    color: $dark;
+    font-family: $font-text;
+    font-size: 80pt;
+    font-weight: bold;
+}
+
+.sub-title {
+     color:$light;
+     font-family: $font-text;
+     font-size: 28pt;
+     margin-top: 1em;
+}
+
+.home-header {
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    display: inline-block;
+    position: relative;
+}
+
+.waves {
+    width: 103%;
+    margin-left: -10px;
+}
+
+.second-title {
+    font-family: $font-title;
+}
+
+.home-header .header-text {
+    z-index: 1;
+    position: absolute;
+    text-align: center;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 20%;
+}
+
+@media screen and (max-width: 1000px) {
+    .start-title {
+        font-size: 40pt;
+        margin-bottom: 0;
+    }
+
+    .end-title {
+        font-size: 40pt;
+    }
+
+    .sub-title {
+        font-size: 16pt;
+        margin-top: 0;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .start-title {
+        font-size: 20pt;
+        margin-bottom: 0;
+    }
+
+    .end-title {
+        font-size: 20pt;
+    }
+
+    .sub-title {
+        font-size: 8pt;
+        margin-top: 0;
+    }
+}

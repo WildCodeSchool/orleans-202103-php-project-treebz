@@ -1,7 +1,20 @@
 {% extends 'layout.html.twig' %}
 
 {% block title %}Home{% endblock %}
-
+	{% block stylesheets %}
+		{{ parent() }}
+        {{ encore_entry_link_tags('home') }}
+	{% endblock %}
 {% block body %}
-    <h1>Treeb'Z</h1>
+    {% block header %}
+        <div class="home-header">
+            <img class="waves" src="{{ asset('build/images/waves.svg') }}" alt="yellow-waves"/>
+            <div class="header-text">
+                <div class="title">
+                    <h1 class="start-title">Treeb<span class="end-title">'Z</span></h1>
+                </div>
+                <p class="sub-title">Le jeu de ma famille</br>100% personnalisable !</p>
+            </div>
+        </div>
+    {% endblock %}
 {% endblock %}
