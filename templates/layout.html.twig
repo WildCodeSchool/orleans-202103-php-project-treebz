@@ -1,7 +1,15 @@
 {% extends "base.html.twig" %}
 
-{% block stylesheets %} {{ parent() }} {% endblock %}
+{% block stylesheets %}
+{{ parent() }}
+{{ encore_entry_link_tags('footer') }}
+{% endblock %}
 
 {% block title %}{% endblock %}
+
 {% block navbar %} {% include 'component/_navbar.html.twig' %} {% endblock %}
-{% block footer %}{% endblock %}
+
+{% block footer %}
+{% include "includes/_footer.html.twig" %}
+{% endblock %}
+
