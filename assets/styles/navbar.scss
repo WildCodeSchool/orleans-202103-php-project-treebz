@@ -9,15 +9,18 @@
 .img-cards-orders {
     width: $width-cards-orders;
 }
+
 .section-navbar a{
     font-size: $font-size-a;
 } 
 
 
 @media screen and (max-width: 1600px) {
+
     .section-navbar a{
         font-size: calc(#{$font-size-a}*0.8);
     }
+
     .img-cards-orders {
         width: calc(#{$width-cards-orders}*0.8);
     }
@@ -25,12 +28,15 @@
 
 
 @media screen and (max-width: 1400px) {
+
     .section-navbar a{
         font-size: calc(#{$font-size-a}*0.65);
     }
+
     .img-logo {
         width: calc(#{$width-logo}*0.8);
     }
+
      .img-cards-orders {
         width: calc(#{$width-cards-orders}*0.7);
     }
@@ -40,9 +46,11 @@
     .section-navbar a{
         font-size: calc(#{$font-size-a}*0.55);
     }
+
     .img-logo {
         width: calc(#{$width-logo}*0.6);
     }
+
     .img-cards-orders {
         width: calc(#{$width-cards-orders}*0.6);
     }
@@ -52,9 +60,11 @@
     .section-navbar a{
         font-size: calc(#{$font-size-a}*0.45);
     }
+
     .img-logo {
         width: calc(#{$width-logo}*0.5);
     }
+
     .img-cards-orders {
         width: calc(#{$width-cards-orders}*0.5);
     }
@@ -64,12 +74,15 @@
     .orders-progress {
         display: none;
     }
+
     .section-navbar a{
         font-size: calc(#{$font-size-a}*0.35);
     }
+
     .img-logo {
         width: calc(#{$width-logo}*0.45);
     }
+
     .img-cards-orders {
         width: calc(#{$width-cards-orders}*0.5);
     }
