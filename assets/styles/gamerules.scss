@@ -11,8 +11,8 @@ h1 {
     &:after {
         content: '';
         width: 40rem;
-        padding: 0 10px;
-        height: 30px;
+        padding: 0 $space;
+        height: $space-4;
         background: $primary;
         display: block;
         margin: auto;
@@ -43,10 +43,9 @@ btn-blue {
 }
 
 .btn-blue {
-
     background-color: $blue;
     border: none;
-    padding: 15px 32px;
+    padding: $space-2 $space-4;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -59,6 +58,5 @@ btn-blue {
     &:hover {
         background-color: lighten($blue, 15%);
         color: $light;
-
     }
 }
