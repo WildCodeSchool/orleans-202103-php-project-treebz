@@ -1,14 +1,15 @@
-@import 'variables.scss';
-@import "~bootstrap/scss/bootstrap";
-@import url('https://fonts.googleapis.com/css2?family=Lemonada&display=swap');
 
+@import 'variables.scss';
+@import 'navbar.scss';
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+@import "~bootstrap/scss/bootstrap";
 body {
     background-color: $light;
     color: $dark;
     font-family: $font-text;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4, h5, h6 {
     font-family: $font-title;
     
 } 
