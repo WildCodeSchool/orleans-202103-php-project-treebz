@@ -1,0 +1,67 @@
+@import 'variables.scss';
+@import "~bootstrap/scss/bootstrap";
+
+h1 {
+    font-family: $font-title;
+    position: relative;
+    z-index: 2;
+    color: $dark;
+    text-transform: uppercase;
+
+
+    &:after {
+        content: '';
+        width: 40rem;
+        padding: 0 10px;
+        height: 30px;
+        background: $primary;
+        display: block;
+        margin: auto;
+        position: relative;
+        top: -25px;
+        z-index: -1;
+    }
+}
+
+
+
+p {
+    font-size: 1.3em;
+    text-align: justify;
+    line-height: 35px;
+}
+
+btn-blue {
+    background-color: $blue;
+}
+
+.mainTitle {
+    height: 15rem;
+    background-color: $secondary;
+    z-index: 1;
+}
+
+.dialogue {
+    color: $primary;
+}
+
+.btn-blue {
+
+    background-color: $blue;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.3em;
+    color: $light;
+    border-radius: 50px;
+    transition-duration: 0.3s;
+    width: 18rem;
+
+    &:hover {
+        background-color: lighten($blue, 15%);
+        color: $light;
+
+    }
+}

@@ -2,13 +2,40 @@
 @import "~bootstrap/scss/bootstrap";
 @import url('https://fonts.googleapis.com/css2?family=Lemonada&display=swap');
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: $light;
     color: $dark;
     font-family: $font-text;
 }
 
-h1, h2, h3 {
+p {
+    font-size: 1.3em;
+}
+
+h1 {
     font-family: $font-title;
-    
-} 
+
+}
+
+h2 {
+    font-family: $font-title;
+    position: relative;
+    z-index: 2;
+
+    &:after {
+        content: '';
+        width: 30rem;
+        padding: 0 10px;
+        height: 30px;
+        background: $primary;
+        display: block;
+        margin: auto;
+        position: relative;
+        top: -20px;
+        z-index: -1;
+    }
+}
