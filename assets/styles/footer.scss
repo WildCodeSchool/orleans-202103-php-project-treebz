@@ -29,6 +29,7 @@ a{
     transition: 0.3s;
     text-decoration: none;
 }
+
 a:hover {
     color: lighten($color: $light, $amount: 10%);
 }
