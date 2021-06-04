@@ -1,25 +1,25 @@
-@import './assets/styles/variables.scss';
+@import './assets/styles/app.scss';
 
 $font-size: 20pt;
 
 .start-title {
     color: $light;  
     font-family: $font-text;
-    font-size: $font-size * 4;
+    font-size: $font-size * 3.6;
     font-weight: bold;
 }
 
 .end-title {
     color: $dark;
     font-family: $font-text;
-    font-size: $font-size * 4;
+    font-size: $font-size * 3.6;
     font-weight: bold;
 }
 
 .sub-title {
      color:$light;
      font-family: $font-text;
-     font-size: $font-size * 1.4;
+     font-size: $font-size * 1.2;
      margin-top: 1em;
 }
 
@@ -50,7 +50,7 @@ $font-size: 20pt;
     top: 20%;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1200px) {
     .start-title {
         font-size: $font-size * 2;
     }
