@@ -1,0 +1,49 @@
+<div class="section-navbar">
+    <nav class="navbar navbar-expand-md navbar-light bg-primary h3">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><img class="img-logo" src="{{ asset('build/images/logoTreebz.webp') }}" alt="logo Treebz"/></a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item m-3 bg-primary">
+                    <a class="nav-link active" aria-current="page" href="#">ACCUEIL</a>
+                    </li>
+                    <li class="nav-item m-3">
+                    <a class="nav-link active" href="#">CR&#201EZ VOTRE JEU</a>
+                    </li>
+                    <li class="nav-item m-3">
+                    <a class="nav-link active" href="#">CONTACT</a>
+                    </li>
+                </ul>
+
+                <form class="d-flex align-items-center">
+                    <div class="nav-item dropdown m-1">
+
+                        <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Connexion
+                        </a>
+
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Compte</a></li>
+                            <li><a class="dropdown-item" href="#">Création en cours</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Historique des commandes</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="d-flex flex-column align-items-center justify-content-center m-5">
+                        <a class="navbar-brand" href="#"><img class="img-cards-orders orders-progress" src="{{ asset('build/images/iconeJeuxCartes.png') }}" alt="logo Treebz"/></a>
+                        <p class="orders-progress">0</p>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </nav>
+</div>
+
