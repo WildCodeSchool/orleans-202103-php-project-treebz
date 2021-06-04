@@ -1,0 +1,36 @@
+@import 'app.scss';
+@import 'variables.scss';
+
+footer {
+    background-color: $primary;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding-top: 50px;
+}
+
+.bi {
+    color: $light;
+    width: 60%;
+    height: 60%;
+    transition: 0.3s;
+}
+
+.bi:hover {
+    color: lighten($color: $dark, $amount: 10%);
+}
+
+.bottomRow {
+    background-color: $gray;
+}
+
+a {
+    color: $dark;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+a:hover {
+    color: lighten($color: $light, $amount: 10%);
+}
+
