@@ -1,88 +1,37 @@
-@import 'app.scss';
+$width-logo: 200px;
 
-$font-size-a: 35px;
-$width-logo: 300px;
-$width-cards-orders: 60px;
+$min_width: 800px;
+$max_width: 2000px;
+$min_font: 19px;
+$max_font: 35px;
 
-.img-logo {
-    width: $width-logo;
+@function strip-unit($value) {
+    @return $value / ($value * 0 + 1);
 }
+  
+@mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+  $u1: unit($min-vw);
+  $u2: unit($max-vw);
+  $u3: unit($min-font-size);
+  $u4: unit($max-font-size);
 
-.img-cards-orders {
-    width: $width-cards-orders;
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+    & {
+      font-size: $min-font-size;
+      @media screen and (min-width: $min-vw) {
+        font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+      }
+      @media screen and (min-width: $max-vw) {
+        font-size: $max-font-size;
+      }
+    }
+  }
 }
 
 .section-navbar a {
-    font-size: $font-size-a;
+  @include fluid-type($min_width, $max_width, $min_font, $max_font);
 }
 
-@media screen and (max-width: 1600px) {
-    .section-navbar a {
-        font-size: $font-size-a*0.8;
-    }
-
-    .img-cards-orders {
-        width: $width-cards-orders*0.8;
-    }
-}
-
-
-@media screen and (max-width: 1400px) {
-    .section-navbar a {
-        font-size: $font-size-a*0.65;
-    }
-
-    .img-logo {
-        width: $width-logo*0.8;
-    }
-
-    .img-cards-orders {
-        width: $width-cards-orders*0.7;
-    }
-}
-
-@media screen and (max-width: 1250px) {
-    .section-navbar a {
-        font-size: $font-size-a*0.55;
-    }
-
-    .img-logo {
-        width: $width-logo*0.6;
-    }
-
-    .img-cards-orders {
-        width: $width-cards-orders*0.6;
-    }
-}
-
-@media screen and (max-width: 1000px) {
-    .section-navbar a {
-        font-size: $font-size-a*0.45;
-    }
-
-    .img-logo {
-        width: $width-logo*0.5;
-    }
-
-    .img-cards-orders {
-        width: $width-cards-orders*0.5;
-    }
-}
-
-@media screen and (max-width: 850px) {
-    .orders-progress {
-        display: none;
-    }
-
-    .section-navbar a {
-        font-size: $font-size-a*0.35;
-    }
-
-    .img-logo {
-        width: $width-logo*0.45;
-    }
-
-    .img-cards-orders {
-        width: $width-cards-orders*0.5;
-    }
+.img-logo {
+    width: $width-logo;
 }
