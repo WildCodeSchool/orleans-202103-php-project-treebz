@@ -1,3 +1,5 @@
+@import 'app.scss';
+
 $font-size-a: 35px;
 $width-logo: 300px;
 $width-cards-orders: 60px;
@@ -16,54 +18,54 @@ $width-cards-orders: 60px;
 
 @media screen and (max-width: 1600px) {
     .section-navbar a {
-        font-size: calc(#{$font-size-a}*0.8);
+        font-size: $font-size-a*0.8;
     }
 
     .img-cards-orders {
-        width: calc(#{$width-cards-orders}*0.8);
+        width: $width-cards-orders*0.8;
     }
 }
 
 
 @media screen and (max-width: 1400px) {
     .section-navbar a {
-        font-size: calc(#{$font-size-a}*0.65);
+        font-size: $font-size-a*0.65;
     }
 
     .img-logo {
-        width: calc(#{$width-logo}*0.8);
+        width: $width-logo*0.8;
     }
 
     .img-cards-orders {
-        width: calc(#{$width-cards-orders}*0.7);
+        width: $width-cards-orders*0.7;
     }
 }
 
 @media screen and (max-width: 1250px) {
     .section-navbar a {
-        font-size: calc(#{$font-size-a}*0.55);
+        font-size: $font-size-a*0.55;
     }
 
     .img-logo {
-        width: calc(#{$width-logo}*0.6);
+        width: $width-logo*0.6;
     }
 
     .img-cards-orders {
-        width: calc(#{$width-cards-orders}*0.6);
+        width: $width-cards-orders*0.6;
     }
 }
 
 @media screen and (max-width: 1000px) {
     .section-navbar a {
-        font-size: calc(#{$font-size-a}*0.45);
+        font-size: $font-size-a*0.45;
     }
 
     .img-logo {
-        width: calc(#{$width-logo}*0.5);
+        width: $width-logo*0.5;
     }
 
     .img-cards-orders {
-        width: calc(#{$width-cards-orders}*0.5);
+        width: $width-cards-orders*0.5;
     }
 }
 
@@ -73,14 +75,14 @@ $width-cards-orders: 60px;
     }
 
     .section-navbar a {
-        font-size: calc(#{$font-size-a}*0.35);
+        font-size: $font-size-a*0.35;
     }
 
     .img-logo {
-        width: calc(#{$width-logo}*0.45);
+        width: $width-logo*0.45;
     }
 
     .img-cards-orders {
-        width: calc(#{$width-cards-orders}*0.5);
+        width: $width-cards-orders*0.5;
     }
 }
