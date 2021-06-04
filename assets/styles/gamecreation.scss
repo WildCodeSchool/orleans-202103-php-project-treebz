@@ -30,9 +30,12 @@ h1 {
 }
 
 .stepContainer {
-    height: 400px;
-    width: 300px;
+    height: 300px;
+
+    width: 100%;
+    max-width: 300px;
+
 
     background: url("../images/step_gamecreation.svg") no-repeat;
-    background-size: 300px;
+    background-size: 100%;
 }
