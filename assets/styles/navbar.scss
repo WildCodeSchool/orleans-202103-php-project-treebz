@@ -15,7 +15,6 @@ $width-cards-orders: 60px;
 }
 
 @media screen and (max-width: 1600px) {
-
     .section-navbar a {
         font-size: calc(#{$font-size-a}*0.8);
     }
@@ -27,7 +26,6 @@ $width-cards-orders: 60px;
 
 
 @media screen and (max-width: 1400px) {
-
     .section-navbar a {
         font-size: calc(#{$font-size-a}*0.65);
     }
