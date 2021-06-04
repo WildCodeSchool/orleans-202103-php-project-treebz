@@ -1,6 +1,6 @@
- $font-size-a: 35px;
- $width-logo: 300px;
- $width-cards-orders : 60px;
+$font-size-a: 35px;
+$width-logo: 300px;
+$width-cards-orders: 60px;
 
 .img-logo {
     width: $width-logo;
@@ -36,7 +36,7 @@
         width: calc(#{$width-logo}*0.8);
     }
 
-     .img-cards-orders {
+    .img-cards-orders {
         width: calc(#{$width-cards-orders}*0.7);
     }
 }
