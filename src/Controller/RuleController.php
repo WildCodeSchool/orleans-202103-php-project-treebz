@@ -10,7 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 * @Route("/lesreglesdujeu", name="gamerules_")
 */
 
-class RulesController extends AbstractController
+class RuleController extends AbstractController
 {
     /**
     * @Route("/", name="index")

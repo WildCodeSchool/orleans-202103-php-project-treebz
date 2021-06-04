@@ -1,35 +1,10 @@
 @import 'variables.scss';
 @import "~bootstrap/scss/bootstrap";
 
-h1 {
-    font-family: $font-title;
-    position: relative;
-    z-index: 2;
-    color: $dark;
-    text-transform: uppercase;
-
-    &:after {
-        content: '';
-        width: 40rem;
-        padding: 0 $space;
-        height: $space-4;
-        background: $primary;
-        display: block;
-        margin: auto;
-        position: relative;
-        top: -25px;
-        z-index: -1;
-    }
-}
-
 p {
     font-size: 1.3em;
     text-align: justify;
     line-height: 35px;
-}
-
-btn-blue {
-    background-color: $blue;
 }
 
 .mainTitle {
@@ -40,23 +15,4 @@ btn-blue {
 
 .dialogue {
     color: $primary;
-}
-
-.btn-blue {
-    background-color: $blue;
-    border: none;
-    padding: $space-2 $space-4;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 1.3em;
-    color: $light;
-    border-radius: 50px;
-    transition-duration: 0.3s;
-    width: 18rem;
-
-    &:hover {
-        background-color: lighten($blue, 15%);
-        color: $light;
-    }
 }
