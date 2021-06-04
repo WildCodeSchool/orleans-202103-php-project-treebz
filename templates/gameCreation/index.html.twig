@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  {{ encore_entry_link_tags('gamecreation') }}
+{% endblock %}
+
+{% block title %}
+  Treeb'Z | Créer votre jeu
+{% endblock %}
+{% block navbar %}
+{% endblock %}
+{% block body %}
+  <header>
+    <div class="jumbotron jumbotron-fluid mainTitle">
+      <div class="container-fluid">
+        <h1 class="display-4 text-center py-5">
+          Créez votre jeu de famille
+        </h1>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="stepContainer col-lg-3">
+            <p>
+              Choisissez un nombre de membre de votre famille
+            </p>
+          <div>
+            1
+          </div>
+        </div>
+
+        <div>
+          <div class="stepContainer col-lg-3">
+            <p>
+              Personnalisez votre jeu
+            </p>
+          </div>
+          <div>
+            2
+          </div>
+        </div>
+        <div class="stepContainer col-lg-3">
+          <div>
+            <p>
+              Validez votre commande
+            </p>
+          </div>
+          <div>
+            3
+          </div>
+        </div>
+        <div class="stepContainer col-lg-3">
+          <div>
+            <p>
+              Le jeu sera livré chez vous
+            </p>
+          </div>
+          <div>
+            4
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+{% block footer %}
+{% endblock %}

@@ -1,0 +1,38 @@
+@import 'variables.scss';
+@import "~bootstrap/scss/bootstrap";
+
+h1 {
+    font-family: $font-title;
+    position: relative;
+    z-index: 2;
+    color: $dark;
+    text-transform: uppercase;
+
+
+    &:after {
+        content: '';
+        width: 60%;
+        padding: 0 10px;
+        height: 30px;
+        background: $primary;
+        display: block;
+        margin: auto;
+        position: relative;
+        top: -25px;
+        z-index: -1;
+    }
+}
+
+.mainTitle {
+    height: 15rem;
+    background-color: $secondary;
+    z-index: 1;
+}
+
+.stepContainer {
+    height: 400px;
+    width: 300px;
+
+    background: url("../images/step_gamecreation.svg") no-repeat;
+    background-size: 300px;
+}
