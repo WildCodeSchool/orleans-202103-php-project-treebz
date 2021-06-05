@@ -75,3 +75,25 @@ $min_font: 12px;
     right: 0;
     top: 20%;
 }
+
+.rule-button {
+  position: relative;
+  z-index: 2;
+  background-color: $secondary;
+  color: $dark;
+  font-size: 1.2em;
+
+  &:after {
+      content: '';
+      width: 30rem;
+      max-width: 100%;
+      padding: 0 10px;
+      height: 30px;
+      background: $primary;
+      display: block;
+      margin: auto;
+      position: relative;
+      top: -15px;
+      z-index: -1;
+  }
+}
