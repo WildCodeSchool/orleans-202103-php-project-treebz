@@ -27,6 +27,8 @@ $max_width: 1200px;
 $medium_font: 25px;
 $max_font: 72px;
 $min_font: 12px;
+$min_font2: 18px;
+$medium_font2: 35px;
 
 .start-title {
     color: $light;  
@@ -74,4 +76,44 @@ $min_font: 12px;
     left: 0;
     right: 0;
     top: 20%;
+}
+
+.title-commitment h2 {
+  position: relative;
+  z-index: 2;
+  @include fluid-type($min_width, $max_width, $min_font2, $medium_font2);
+
+  &:after {
+      content: '';
+      width: 25rem;
+      max-width: 100%;
+      padding: 0 10px;
+      height: 20px;
+      background: $primary;
+      display: block;
+      margin: auto;
+      position: relative;
+      top: -10px;
+      z-index: -1;
+  }
+}
+
+.third-title {
+  height: 15rem;
+  z-index: 1;
+}
+
+.commitment {
+  font-family: $font-text;
+  @include fluid-type($min_width, $max_width, $min_font, $medium_font);
+  margin-bottom: $space * 10;
+}
+
+.icon {
+  width: 35%;
+  margin-bottom: $doubleSpace * 3;
+}
+
+.commitment-text {
+  margin-bottom: $space * 5;
 }
