@@ -1,6 +1,8 @@
 @import 'variables.scss';
 @import '~bootstrap/scss/bootstrap';
 
+/* Style of the header and steps block */
+
 h1 {
   font-family: $font-title;
   position: relative;
@@ -13,6 +15,7 @@ h1 {
     width: 60%;
     padding: 0 10px;
     height: 30px;
+    max-width: 100%;
     background: $primary;
     display: block;
     margin: auto;
@@ -29,9 +32,16 @@ h1 {
 }
 
 .stepContainer {
-  height: 230px;
-  width: 300px;
+  height: 200px;
+  width: 100%;
   max-width: 300px;
+  min-width: 140px;
   background: url('../images/step_gamecreation.svg') no-repeat;
   background-size: 100%;
+
+  span {
+    font-size: 1.1rem;
+  }
 }
+
+/* Style of the rest of the page */

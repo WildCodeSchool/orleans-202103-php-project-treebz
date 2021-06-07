@@ -19,56 +19,58 @@
 		</div>
 	</header>
 	<section>
+	{# Only the stepContainer that need to appear in the mobile version shall not contain the class d-none #}
 		<div class="container-fluid">
-			<div class="d-flex justify-content-around flex-row text-center mt-5">
+			<div class="d-flex  justify-content-center justify-content-sm-around flex-row text-center mt-5">
 
-				<div class="mx-2">
-					<div class="stepContainer m-2 pt-lg-5 pt-md-2">
-						<span>
-							Choisissez le nom de votre jeu
+				<div class="mx-sm-2">
+					<div class="stepContainer pt-4 pt-sm-1 pt-lg-5 pt-md-4">
+						<span class="text-uppercase fw-bold px-2">
+							Choisissez le nom du jeu
 						</span>
 					</div>
-					<div>
-						<span>
-							2
+					<div class="justify-content-center d-flex mx-sm-5">
+					{# You must apply the class fw-bold in accordance to the current page #}
+						<span class="display-5 d-none d-sm-flex px-2 fw-bold">
+							1
 						</span>
 					</div>
 				</div>
 				{# Inicio do outro step #}
-				<div class="mx-2">
-					<div class="stepContainer m-2 pt-lg-5 pt-md-2">
-						<span>
+				<div class="mx-sm-2">
+					<div class="stepContainer pt-4 pt-sm-1 pt-lg-5 pt-md-4 d-none d-sm-flex">
+						<span class="text-uppercase mx-auto pt-5 p-sm-1 fw-bold">
 							Personnalisez votre jeu
 						</span>
 					</div>
-					<div>
-						<span>
+					<div class="justify-content-center d-flex">
+						<span class="display-5 d-none d-sm-flex p-0 m-auto">
 							2
 						</span>
 					</div>
 				</div>
 				{# Inicio do outro step #}
-				<div class="mx-2">
-					<div class="stepContainer m-2 pt-lg-5 pt-md-2">
-						<p>
+				<div class="mx-sm-2">
+					<div class="stepContainer pt-4 pt-sm-1 pt-lg-5 pt-md-4 d-none d-sm-flex">
+						<span class="text-uppercase mx-auto pt-5 p-sm-1 fw-bold">
 							Validez votre commande
-						</p>
+						</span>
 					</div>
-					<div>
-						<span>
+					<div class="justify-content-center d-flex">
+						<span class="display-5 d-none d-sm-flex">
 							3
 						</span>
 					</div>
 				</div>
 				{# Inicio do outro step #}
-				<div class="mx-2">
-					<div class="stepContainer m-2 pt-lg-5 pt-md-2">
-						<p>
-							Le jeu sera livré chez vous
-						</p>
+				<div class="mx-sm-2">
+					<div class="stepContainer pt-4 pt-sm-1 pt-lg-5 pt-md-4 d-none d-sm-flex">
+						<span class="text-uppercase mx-auto pt-5 p-sm-1 fw-bold">
+							Le jeu sera livré bientôt
+						</span>
 					</div>
-					<div>
-						<span>
+					<div class="justify-content-center d-flex">
+						<span class="display-5 d-none d-sm-flex">
 							4
 						</span>
 					</div>
@@ -77,4 +79,3 @@
 		</div>
 	</section>
 {% endblock %}
-{% block footer %}{% endblock %}
