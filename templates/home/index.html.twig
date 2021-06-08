@@ -1,7 +1,62 @@
 {% extends 'layout.html.twig' %}
 
 {% block title %}Home{% endblock %}
-
+{% block stylesheets %}
+	{{ parent() }}
+    {{ encore_entry_link_tags('home') }}
+{% endblock %}
 {% block body %}
-    <h1>Treeb'Z</h1>
+    {% block header %}
+        <div class="home-header">
+            <img class="waves" src="{{ asset('build/images/waves.svg') }}" alt="yellow-waves"/>
+            <div class="header-text">
+                <div class="title">
+                    <h1 class="start-title mb-0 mb-xl-5">Treeb<span class="end-title">'Z</span></h1>
+                </div>
+                <p class="sub-title mt-0">Le jeu de ma famille</br>100% personnalisable !</p>
+            </div>
+        </div>
+    {% endblock %}
+        <div class="jumbotron jumbotron-fluid first-title d-flex align-items-center">
+            <div class="container-fluid title-game-creation">
+                <h2 class="display-4 text-center py-5">
+                COMMENT CRÉER</br>LE JEU DE MA FAMILLE ?
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5 col-12 d-flex align-items-start justify-content-center">
+                <div class="">
+                    <img class="card-image" src="{{ asset('build/images/cards.svg') }}" alt="Jeu des sept familles"/>
+                </div>
+            </div>
+            <div class="col-md-7 col-12 d-flex align-items-md-center align-items-start justify-content-center">
+                <div class="">
+                    <div class="row mb-4 d-flex justify-content-center">
+                        <div class="number col-3"><span class="text">1</span></div>
+                        <div class="card-rule col-9 d-flex align-items-center"><p class="m-0">Choisissez le nom du jeu de votre famille qui sera inscrit au dos.</p></div>
+                    </div>
+                    <div class="row mb-4 d-flex justify-content-center">
+                        <div class="number col-3"><span class="text">2</span></div>
+                        <div class="card-rule col-9 d-flex align-items-center"><p class="m-0">Choisissez les photos de membres de votre famille.</p></div>
+                    </div>
+                    <div class="row mb-4 d-flex justify-content-center">
+                        <div class="number col-3"><span class="text">3</span></div>
+                        <div class="card-rule col-9 d-flex align-items-center"><p class="m-0">Choisissez les thèmes dans lesquels vous souhaitez les faire jouer.</p></div>
+                    </div>
+                    <div class="row mb-4 d-flex justify-content-center">
+                        <div class="number col-3"><span class="text">4</span></div>
+                        <div class="card-rule col-9 d-flex align-items-center"><p class="m-0">Prévisualisez vos cartes avec les thèmes et validez votre commande.</p></div>
+                    </div>
+                    <div class="row mb-4 d-flex justify-content-center">
+                        <div class="number col-3"><span class="text">5</span></div>
+                        <div class="card-rule col-9 d-flex align-items-center"><p class="m-0">Après le paiement via Paypal, nous fabriquons vos jeux de famille et
+                        nous livrons vos articles dans un délai de 6 à 20 jours ouvrés (moyenne nationale).</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-grid gap-2 col-6 justify-content-center mx-auto">
+            <button class="btn create-button mb-6" type="button">CRÉER LE JEU DE</br>MA FAMILLE</button>
+        </div>
 {% endblock %}

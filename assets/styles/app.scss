@@ -1,6 +1,12 @@
 @import 'variables.scss';
+<<<<<<< HEAD
 @import '~bootstrap/scss/bootstrap';
 @import url('https://fonts.googleapis.com/css2?family=Lemonada&display=swap');
+=======
+@import "~bootstrap/scss/bootstrap";
+@import "footer.scss";
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+>>>>>>> 262f6f171519629e62833b5ecf26f5edd6ce1497
 
 html {
     scroll-behavior: smooth;
@@ -19,6 +25,7 @@ p {
 h1,
 h2 {
     font-family: $font-title;
+<<<<<<< HEAD
 }
 
 .titleDeco h2 {
@@ -78,3 +85,6 @@ h2 {
         color: $light;
     }
 }
+=======
+} 
+>>>>>>> 262f6f171519629e62833b5ecf26f5edd6ce1497

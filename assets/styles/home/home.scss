@@ -1,0 +1,134 @@
+@import './assets/styles/app.scss';
+@function strip-unit($value) {
+    @return $value / ($value * 0 + 1);
+  }
+  
+@mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+    $u1: unit($min-vw);
+    $u2: unit($max-vw);
+    $u3: unit($min-font-size);
+    $u4: unit($max-font-size);
+  
+    @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+      & {
+        font-size: $min-font-size;
+        @media screen and (min-width: $min-vw) {
+          font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+        }
+        @media screen and (min-width: $max-vw) {
+          font-size: $max-font-size;
+        }
+      }
+    }
+}
+
+$min_width: 320px;
+$max_width: 1200px;
+$medium_font: 25px;
+$max_font: 72px;
+$min_font: 12px;
+$min_font2: 18px;
+$medium_font2: 35px;
+
+.start-title {
+    color: $light;  
+    font-family: $font-text;
+    @include fluid-type($min_width, $max_width, $medium_font, $max_font);
+    font-weight: bold;
+}
+
+.end-title {
+    color: $dark;
+    font-family: $font-text;
+    @include fluid-type($min_width, $max_width, $medium_font, $max_font);
+    font-weight: bold;
+}
+
+.sub-title {
+     color:$light;
+     font-family: $font-text;
+     @include fluid-type($min_width, $max_width, $min_font, $medium_font);
+     margin-top: 1em;
+}
+
+.home-header {
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    display: inline-block;
+    position: relative;
+}
+
+.waves {
+    width: 103%;
+    margin-left: -10px;
+}
+
+.second-title {
+    font-family: $font-title;
+}
+
+.home-header .header-text {
+    z-index: 1;
+    position: absolute;
+    text-align: center;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 20%;
+}
+
+.title-game-creation h2 {
+  position: relative;
+  z-index: 2;
+  @include fluid-type($min_width, $max_width, $min_font2, $medium_font2);
+
+  &:after {
+      content: '';
+      width: 25rem;
+      max-width: 100%;
+      padding: 0 10px;
+      height: 20px;
+      background: $primary;
+      display: block;
+      margin: auto;
+      position: relative;
+      top: -10px;
+      z-index: -1;
+  }
+}
+
+.first-title {
+  height: 15rem;
+  z-index: 1;
+}
+
+.create-button {
+  background-color: $blue;
+  color: $light;
+  font-weight: bold;
+  border-radius: $doubleSpace * 2;
+  margin-bottom: $medium_font * 2;
+  margin-top: $medium_font * 2;
+  width: $doubleSpace * 25;
+}
+
+.number {
+  height: $medium_font * 2;
+  width: $medium_font * 2;
+  border: 5px solid $primary;
+  border-radius: 100%;
+  text-align: center;
+}
+
+.text {
+  display: inline-block;
+  padding-top: $space;
+  font-weight: bold;
+  font-family: $font-text;
+}
+
+.card-image {
+  width: $doubleSpace * 25;
+  height: $doubleSpace * 25;
+}
