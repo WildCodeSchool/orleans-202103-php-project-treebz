@@ -1,90 +1,81 @@
 @import 'variables.scss';
-<<<<<<< HEAD
 @import '~bootstrap/scss/bootstrap';
-@import url('https://fonts.googleapis.com/css2?family=Lemonada&display=swap');
-=======
-@import "~bootstrap/scss/bootstrap";
-@import "footer.scss";
+@import 'footer.scss';
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
->>>>>>> 262f6f171519629e62833b5ecf26f5edd6ce1497
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-    background-color: $light;
-    color: $dark;
-    font-family: $font-text;
+  background-color: $light;
+  color: $dark;
+  font-family: $font-text;
 }
 
 p {
-    font-size: 1.3em;
+  font-size: 1.3em;
 }
 
 h1,
 h2 {
-    font-family: $font-title;
-<<<<<<< HEAD
+  font-family: $font-title;
 }
 
 .titleDeco h2 {
-    position: relative;
-    z-index: 2;
+  position: relative;
+  z-index: 2;
 
-    &:after {
-        content: '';
-        width: 30rem;
-        max-width: 100%;
-        padding: 0 10px;
-        height: 30px;
-        background: $primary;
-        display: block;
-        margin: auto;
-        position: relative;
-        top: -15px;
-        z-index: -1;
-    }
+  &:after {
+    content: '';
+    width: 30rem;
+    max-width: 100%;
+    padding: 0 10px;
+    height: 30px;
+    background: $primary;
+    display: block;
+    margin: auto;
+    position: relative;
+    top: -15px;
+    z-index: -1;
+  }
 }
 
 .titleDeco h1 {
-    position: relative;
-    z-index: 2;
-    text-transform: uppercase;
+  position: relative;
+  z-index: 2;
+  text-transform: uppercase;
 
-    &:after {
-        content: '';
-        width: 40rem;
-        max-width: 100%;
-        padding: 0 $space;
-        height: $space-4;
-        background: $primary;
-        display: block;
-        margin: auto;
-        position: relative;
-        top: -25px;
-        z-index: -1;
-    }
+  &:after {
+    content: '';
+    width: 40rem;
+    max-width: 100%;
+    padding: 0 $space;
+    height: $space-4;
+    background: $primary;
+    display: block;
+    margin: auto;
+    position: relative;
+    top: -25px;
+    z-index: -1;
+  }
 }
 
 .btn-blue {
-    background-color: $blue;
-    border: none;
-    padding: $space-2 $space-4;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 1.3em;
-    color: $light;
-    border-radius: 50px;
-    transition-duration: 0.1s;
-    width: 18rem;
+  background-color: $blue;
+  border: none;
+  padding: $space-2 $space-4;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.3em;
+  color: $light;
+  border-radius: 50px;
+  transition-duration: 0.1s;
+  width: 18rem;
 
-    &:hover {
-        background-color: lighten($blue, 20%);
-        color: $light;
-    }
+  &:hover {
+    background-color: lighten($blue, 20%);
+    color: $light;
+  }
 }
-=======
-} 
->>>>>>> 262f6f171519629e62833b5ecf26f5edd6ce1497
