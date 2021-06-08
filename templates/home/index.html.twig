@@ -17,15 +17,23 @@
             </div>
         </div>
     {% endblock %}
-    <div class="accordion accordion-flush" id="accordionFlushExample">
+    <div class="accordion accordion-flush second-title" id="accordionFlushExample">
         <div class="accordion-item">
-            <h2 class="accordion-header rule-title text" id="flush-headingOne">
+            <h2 class="accordion-header" id="flush-headingOne">
                 <button class="accordion-button collapsed rule-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                LES RÈGLES DU JEU
+                    <p class="title-rule col-md-4 offset-md-4 col-8 offset-2 text-align-middle row justify-content-center">LES RÈGLES DU JEU</p>
                 </button>
             </h2>
-        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-            <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+            <div id="flush-collapseOne" class="accordion-collapse collapse row" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body m-md-0 col-md-4 col-10 offset-1 text-center rule"><p class="familly-rule">Règles de ma famille</br></p>Jouez au jeu des 7 familles avec de nouvelles règles innovantes ! Partagez un souvenir de la famille réunie et laissez planer le doute sur la véracité de cette anecdote.</div>
+                <div class="accordion-body m-md-0 col-md-4 col-10 offset-1 text-center rule"><p class="familly-rule">Règles classique</br></p>Jouez avec les règles classiques du jeu de 7 familles ! Le gagnant est le joueur ayant réuni le plus de famille.</div>
+                <div class="accordion-body m-md-0 col-md-4 col-10 offset-1 text-center rule"><p class="familly-rule">Mémory'Z</br></p>Faites travailler votre mémoire avec Mémory'Z, retournez les cartes face cachées, retournez deux cartes et remportez des points si elles sont de la même famille ou s'ils s'agit du même membre !</div>
+                <div>
+                    <div class="d-grid gap-2 col-md-6 col-10 offset-1 justify-content-center mx-auto">
+                        <button class="btn create-button mb-6" type="button">VOIR LES RÈGLES</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

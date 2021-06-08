@@ -27,6 +27,8 @@ $max_width: 1200px;
 $medium_font: 25px;
 $max_font: 72px;
 $min_font: 12px;
+$min_font2: 18px;
+$medium_font2: 35px;
 
 .start-title {
     color: $light;  
@@ -76,12 +78,15 @@ $min_font: 12px;
     top: 20%;
 }
 
-.rule-button {
+.accordion-button, .accordion-collapse {
+  background-color: $secondary;
+}
+
+.title-rule{
   position: relative;
   z-index: 2;
-  background-color: $secondary;
   color: $dark;
-  font-size: 1.2em;
+  @include fluid-type($min_width, $max_width, $min_font2, $medium_font2);
 
   &:after {
       content: '';
@@ -96,4 +101,28 @@ $min_font: 12px;
       top: -15px;
       z-index: -1;
   }
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: $secondary;
+}
+
+
+.rule {
+  font-family: $font-text;
+  @include fluid-type($min_width, $max_width, $min_font / 1.2, $medium_font / 1.2);
+}
+
+.create-button {
+  background-color: $blue;
+  color: $light;
+  font-weight: bold;
+  border-radius: $doubleSpace * 2;
+  margin-bottom: $medium_font * 2;
+  margin-top: $medium_font * 2;
+  width: $doubleSpace * 25;
+}
+
+.familly-rule {
+  font-weight: bold;
 }
