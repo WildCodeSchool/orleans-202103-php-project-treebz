@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ThemeRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ThemeRepository::class)
@@ -19,21 +20,29 @@ class Theme
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez remplir se champ")
+     * @Assert\Length(max="255", maxMessage="Le champ saisie ne peut dépasser {{ limit }} caractères")
      */
     private string $name;
 
     /**
      * @ORM\Column(type="string", length=500)
+     * @Assert\NotBlank(message="Veuillez remplir se champ")
+     * @Assert\Length(max="500", maxMessage="Le champ saisie ne peut dépasser {{ limit }} caractères")
      */
     private string $image;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez remplir se champ")
+     * @Assert\Length(max="255", maxMessage="Le champ saisie ne peut dépasser {{ limit }} caractères")
      */
     private string $colorText;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez remplir se champ")
+     * @Assert\Length(max="255", maxMessage="Le champ saisie ne peut dépasser {{ limit }} caractères")
      */
     private string $styleText;
 
