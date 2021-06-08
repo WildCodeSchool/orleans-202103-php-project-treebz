@@ -98,7 +98,27 @@ $medium_font2: 35px;
   }
 }
 
-.third-title {
+.title-game-creation h2 {
+  position: relative;
+  z-index: 2;
+  @include fluid-type($min_width, $max_width, $min_font2, $medium_font2);
+
+  &:after {
+      content: '';
+      width: 25rem;
+      max-width: 100%;
+      padding: 0 10px;
+      height: 20px;
+      background: $primary;
+      display: block;
+      margin: auto;
+      position: relative;
+      top: -10px;
+      z-index: -1;
+  }
+}
+
+.first-title, .third-title {
   height: 15rem;
   z-index: 1;
 }
@@ -116,4 +136,34 @@ $medium_font2: 35px;
 
 .commitment-text {
   margin-bottom: $space * 5;
+}
+
+.create-button {
+  background-color: $blue;
+  color: $light;
+  font-weight: bold;
+  border-radius: $doubleSpace * 2;
+  margin-bottom: $medium_font * 2;
+  margin-top: $medium_font * 2;
+  width: $doubleSpace * 25;
+}
+
+.number {
+  height: $medium_font * 2;
+  width: $medium_font * 2;
+  border: 5px solid $primary;
+  border-radius: 100%;
+  text-align: center;
+}
+
+.text {
+  display: inline-block;
+  padding-top: $space;
+  font-weight: bold;
+  font-family: $font-text;
+}
+
+.card-image {
+  width: $doubleSpace * 25;
+  height: $doubleSpace * 25;
 }
