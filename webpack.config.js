@@ -34,6 +34,8 @@ Encore
     .addEntry('app', './assets/app.js')
     .addStyleEntry('gamecreation', './assets/styles/gamecreation.scss')
 
+    .addStyleEntry('gamerule', './assets/styles/gamerule.scss')
+
     .addStyleEntry('home', './assets/styles/home/home.scss')
 
     .addStyleEntry('homeAdmin', './assets/styles/admin/homeAdmin.scss')
