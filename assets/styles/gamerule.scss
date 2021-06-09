@@ -1,0 +1,18 @@
+@import 'variables.scss';
+@import "~bootstrap/scss/bootstrap";
+
+p {
+    font-size: 1.3em;
+    text-align: justify;
+    line-height: 35px;
+}
+
+.mainTitle {
+    height: 15rem;
+    background-color: $secondary;
+    z-index: 1;
+}
+
+.dialogue {
+    color: $primary;
+}
