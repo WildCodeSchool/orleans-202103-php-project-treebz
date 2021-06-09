@@ -20,7 +20,11 @@ p {
 }
 
 h1,
-h2 {
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: $font-title;
 }
 
@@ -80,13 +84,4 @@ h2 {
         background-color: lighten($blue, 20%);
         color: $light;
     }
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: $font-title;
 }
