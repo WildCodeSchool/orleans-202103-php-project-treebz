@@ -1,0 +1,164 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  {{ encore_entry_link_tags('gamerule') }}
+{% endblock %}
+{% block title %}
+  Treeb'Z | Les Régles du Jeu
+{% endblock %}
+
+{% block body %}
+  <header>
+    <div class="jumbotron jumbotron-fluid mainTitle">
+      <div class="container-fluid titleDeco">
+        <h1 class="display-4 text-center py-5">
+          Les Règles du Jeu
+        </h1>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="d-flex justify-content-center flex-column align-items-center flex-lg-row m-auto">
+      <a class="btn-blue m-4 px-4" href="#reglesFamille">
+        Règles de ma famille
+      </a>
+      <a class="btn-blue m-4 px-4" href="#reglesClassiques">
+        Règles Classiques
+      </a>
+      <a class="btn-blue m-4 px-4" href="#reglesMemoryz">Memory'z</a>
+    </div>
+    <section class="titleDeco">
+      <h2 class="display-6 text-center py-5" id="reglesFamille">
+        Règles de ma famille
+      </h2>
+
+      <h3 class="fw-bold py-3">
+        Quel est le but?
+      </h3>
+      <p>
+        Le but du jeu est de regrouper le plus grand nombre de familles possible et de prendre le plus de famille aux autres joueurs.
+      </p>
+      <h3 class="fw-bold py-3">
+        Comment jouer:
+      </h3>
+      <p>
+        <span class="fw-bold">1 -
+        </span>Un joueur, désigné par le sort, bat les cartes, les fait couper et en distribue autant que le jeu compte de membres à chaque joueur, une à une. Le reste constitue la pioche.
+      </p>
+      <p>
+        <span class="fw-bold">2 -
+        </span>Le voisin, placé à la gauche du donneur, parle le premier. Il demande une carte d’une famille de son choix, il cherche à l'avoir en demandant à n’importe quel joueur et de façon précise la carte qu'il veut et qu’il souhaite obtenir. Pour cela il dit
+        <em class="dialogue">
+          "Dans la famille... je demande..." ou "Dans l'équipe de... je demande...".
+        </em>
+        Si cet autre joueur possède la carte il doit lui donner. Si le demandeur obtient la carte qu'il voulait il peut rejouer.
+      </p>
+      <p>
+        <span class="fw-bold">3 -
+        </span>S'il n'obtient pas la carte demandée, il prend une carte dans la pioche. Si la carte piochée est la carte demandée, le joueur peut rejouer sinon c'est au tour du joueur à gauche du demandeur de jouer.
+      </p>
+      <p>
+        <span class="fw-bold">4 -
+        </span>Dès qu’un joueur réunit une famille complète, il doit partager un souvenir, une anecdote, vrai ou faux en lien avec la famille concernée. Le but est de ne pas se faire piquer la famille par un autre joueur qui pourrait intervenir en criant Treeb'Z si l'information est fausse ou incomplète. Soit joueur, malin et use de tes talents de comédiens ou narrateurs pour gagner les familles des autres, car le jeu de ma famille de Treeb'Z c'est aussi ça.
+      </p>
+
+      <p>
+        <span class="fw-bold">Example:</span>
+        <em class="dialogue">
+          "J'ai dans mon jeu tous les membres de la famille va au ski et je raconte que lors de nos vacances, mon fils novice en Snow à, lors de sa 1ère descente, fait un tout-schuss, percuté un poteau en plastique et a fini la tête dans la neige beaucoup plus bas sur une piste verte..."
+        </em>
+      </p>
+      <p>
+        Si un des joueurs dit Treeb'Z :
+        <em class="dialogue">"tu mens !"</em>
+        et qu'il expose sa situation et que d'autres joueurs valident, c'est lui qui remporte la famille complète!
+      </p>
+
+      <p>
+        Mon fils répondit :
+        <em class="dialogue">"N'importe quoi ....</em>
+        J'ai dévalé tout-schuss une piste noire avec des bosses, fait un saut de fou et atterri dans la poudreuse comme un pro au XGames, même pas peur..."
+      </p>
+
+      <p>
+        Ma fille apporta sa vision :
+        <em class="dialogue">
+          "Rappelle toi maman, c'est sur cette piste que tu es tombée toi aussi !"
+        </em>
+      </p>
+
+      <p>
+        La famille gagnée est posée devant lui et c'est au tour d'un autre joueur. Lorsqu’un joueur pose une famille et se retrouve sans cartes, il en pioche une et pose une question aux autres joueurs, la partie continue.
+      </p>
+      <h3 class="fw-bold py-3">
+        Le gagnant du jeu:
+      </h3>
+      <p>
+        Le gagnant est le joueur qui pose devant lui le plus de familles complètes.
+      </p>
+      <h2 class="display-6 text-center py-5 titleDeco" id="reglesClassiques">
+        Règles Classiques
+      </h2>
+      <p>
+        Bien sûr vous pouvez jouer à la règle classique du "jeu des 7 familles", mais avec le nombre de familles inclus dans votre jeu soit 10 maximum. Dans ce cas, la famille est gagnée dès lors qu'elle est constituée. Le joueur ayant réussi à gagner les plus de famille est le vainqueur de la partie.
+      </p>
+      <h2 class="display-6 text-center py-5 titleDeco" id="reglesMemoryz">
+        Memory'Z
+      </h2>
+
+      <h3 class="fw-bold py-3">
+        Choisissez le niveau de difficulté:
+      </h3>
+      <p>
+        <span class="text-success fw-bold">Facille :</span>
+        Choisir 4 familles.
+      </p>
+
+      <p>
+        <span class="dialogue fw-bold">Moyen :</span>
+        Choisir 7 familles.
+      </p>
+
+      <p>
+        <span class="text-danger fw-bold">Difficile :</span>
+        Mettre toutes les familles.
+      </p>
+
+      <h3 class="fw-bold py-3">
+        Comment jouer:
+      </h3>
+      <p>
+        <span class="fw-bold">1 -
+        </span>Mélangez les cartes et posez les toutes côte à côte face cachée en faisant un rectangle : ex : si 4 familles de 10 membres faire 4 lignes de 10 cartes retournées.
+      </p>
+
+      <p>
+        <span class="fw-bold">2 -
+        </span>Chaque joueur, à son tour, peut retourner 2 cartes. Si elles correspondent à des combinaisons possibles, il les garde et marque des points, sinon il les remet à leur place face cachée après les avoir montrées aux autres joueurs.
+      </p>
+      <h3 class="fw-bold py-3">
+        Les combinaisons possibles
+      </h3>
+
+      <p>
+        2 cartes d'une même famille |
+        <strong>Valeur</strong>
+        : 1 point.
+      </p>
+      <p>
+        2 membres identiques mais pas de la même famille |
+        <strong>Valeur</strong>
+        : 2 points.
+      </p>
+
+      <h3 class="fw-bold py-3">
+        Le gagnant du jeu:
+      </h3>
+      <p>
+        À la fin de la partie, on compte les points, celui qui en a le plus, a gagné. Pour corser le jeu, vous pouvez ajouter un chronomètre pour ainsi essayer de battre vos records. Rapidité oui mais être stratégique est la clé pour gagner !
+      </p>
+    </main>
+  {% endblock %}
+  {% block footer %}{% endblock %}
