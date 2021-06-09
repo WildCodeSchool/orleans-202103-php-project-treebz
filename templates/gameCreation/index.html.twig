@@ -1,106 +1,126 @@
 {% extends 'layout.html.twig' %}
 
-{% block stylesheets %}
-	{{ parent() }}
-	{{ encore_entry_link_tags('gamecreation') }}
-{% endblock %}
+				{% block stylesheets %}
+					{{ parent() }}
+					{{ encore_entry_link_tags('gamecreation') }}
+				{% endblock %}
 
-{% block title %}
-	Treeb'Z | Créer votre jeu
-{% endblock %}
-{% block body %}
-	<header>
-		<div class="jumbotron jumbotron-fluid mainTitle ">
-			<div>
-				<h1 class="display-4 text-center py-5">
-					Créez votre jeu de famille
-				</h1>
-			</div>
-		</div>
-	</header>
-	<section>
-		{# Only the stepContainer that need to appear in the mobile version shall not contain the class d-none #}
-		<div class="container-fluid mb-5">
-			<div class="d-flex  justify-content-center justify-content-sm-around flex-row text-center mt-5">
+				{% block title %}
+					Treeb'Z | Créer votre jeu
+				{% endblock %}
+				{% block body %}
+					<header>
+						<div class="jumbotron jumbotron-fluid mainTitle ">
+							<div>
+								<h1 class="display-4 text-center py-5">
+									Créez votre jeu de famille
+								</h1>
+							</div>
+						</div>
+					</header>
+					<section class="mb-5">
+						<div>
+							<div class="containerStep">
+								<ul class="progressbar">
+									<li class="active">Choisissez le nom du jeu</li>
+									<li>Personnalisez votre jeu</li>
+									<li>Validez votre commande</li>
+									<li>Le jeu sera livré bientôt</li>
+								</ul>
+							</div>
+						</div>
+					</section>
 
-				<div class="mx-sm-2">
-					<div class="stepContainer pt-4 pt-sm-1 pt-lg-5 pt-md-4">
-						<span class="text-uppercase fw-bold px-2">
-							Choisissez le nom du jeu
-						</span>
-					</div>
-					<div
-						class="justify-content-center d-flex mx-sm-5">
-						{# You must apply the class fw-bold in accordance to the current page #}
-						<span class="display-5 d-none d-sm-flex px-2 fw-bold">
-							1
-						</span>
-					</div>
-				</div>
-				{# Inicio do outro step #}
-				<div class="mx-sm-2">
-					<div class="stepContainer pt-4 pt-sm-1 pt-lg-5 pt-md-4 d-none d-sm-flex">
-						<span class="text-uppercase mx-auto pt-5 p-sm-1 fw-bold">
-							Personnalisez votre jeu
-						</span>
-					</div>
-					<div class="justify-content-center d-flex">
-						<span class="display-5 d-none d-sm-flex p-0 m-auto">
-							2
-						</span>
-					</div>
-				</div>
-				{# Inicio do outro step #}
-				<div class="mx-sm-2">
-					<div class="stepContainer pt-4 pt-sm-1 pt-lg-5 pt-md-4 d-none d-sm-flex">
-						<span class="text-uppercase mx-auto pt-5 p-sm-1 fw-bold">
-							Validez votre commande
-						</span>
-					</div>
-					<div class="justify-content-center d-flex">
-						<span class="display-5 d-none d-sm-flex">
-							3
-						</span>
-					</div>
-				</div>
-				{# Inicio do outro step #}
-				<div class="mx-sm-2">
-					<div class="stepContainer pt-4 pt-sm-1 pt-lg-5 pt-md-4 d-none d-sm-flex">
-						<span class="text-uppercase mx-auto pt-5 p-sm-1 fw-bold">
-							Le jeu sera livré bientôt
-						</span>
-					</div>
-					<div class="justify-content-center d-flex">
-						<span class="display-5 d-none d-sm-flex">
-							4
-						</span>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
 
-	<section class="container">
-		<div class="row mt-5">
+					<section>
+						{# Only the stepContainer that need to appear in the mobile version shall not contain the class d-none #}
+						<div class="container-fluid mb-5">
+							<div class="d-flex  justify-content-center justify-content-sm-around flex-row text-center mt-5">
 
-			<div class="col">
-				 <img class="w-75 mb-5" src="{{ asset('build/images/cards.svg') }}" alt="Jeu des sept familles"/>
-			</div>
+								<div class="mx-sm-2">
+									<div class="stepContainer pt-4 pt-sm-1 pt-lg-5 pt-md-4">
+										<span class="text-uppercase fw-bold px-2">
+											Choisissez le nom du jeu
+										</span>
+									</div>
+									<div
+										class="justify-content-center d-flex mx-sm-5">
+										{# You must apply the class fw-bold in accordance to the current page #}
+										<span class="display-5 d-none d-sm-flex px-2 fw-bold">
+											1
+										</span>
+									</div>
+								</div>
+								{# Inicio do outro step #}
+								<div class="mx-sm-2">
+									<div class="stepContainer pt-4 pt-sm-1 pt-lg-5 pt-md-4 d-none d-sm-flex">
+										<span class="text-uppercase mx-auto pt-5 p-sm-1 fw-bold">
+											Personnalisez votre jeu
+										</span>
+									</div>
+									<div class="justify-content-center d-flex">
+										<span class="display-5 d-none d-sm-flex p-0 m-auto">
+											2
+										</span>
+									</div>
+								</div>
+								{# Inicio do outro step #}
+								<div class="mx-sm-2">
+									<div class="stepContainer pt-4 pt-sm-1 pt-lg-5 pt-md-4 d-none d-sm-flex">
+										<span class="text-uppercase mx-auto pt-5 p-sm-1 fw-bold">
+											Validez votre commande
+										</span>
+									</div>
+									<div class="justify-content-center d-flex">
+										<span class="display-5 d-none d-sm-flex">
+											3
+										</span>
+									</div>
+								</div>
+								{# Inicio do outro step #}
+								<div class="mx-sm-2">
+									<div class="stepContainer pt-4 pt-sm-1 pt-lg-5 pt-md-4 d-none d-sm-flex">
+										<span class="text-uppercase mx-auto pt-5 p-sm-1 fw-bold">
+											Le jeu sera livré bientôt
+										</span>
+									</div>
+									<div class="justify-content-center d-flex">
+										<span class="display-5 d-none d-sm-flex">
+											4
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
 
-			<div class="col">
-				<h2 class="text-uppercase text-center">Choisissez un nombre de membre de votre famille :</h2>
 
-				<div class="text-center mb-3">
-					<span class="fw-bold ps-3">Jusqu’à 10 membres</span>
-					<span>19.99 €</span>
-				</div>
-
-				<div class="text-center mb-3">
-					<span class="fw-bold ps-3">De 11 à 20 membres</span>
-					<span>24.99 €</span>
-				</div>
-
-			</div>
-		</div>
-	</section>
-{% endblock %}
+					{# <section class="container">
+																	<div class="row mt-5">
+										
+																		<div class="col">
+																			<img class="w-75 mb-5" src="{{ asset('build/images/cards.svg') }}" alt="Jeu des sept familles"/>
+																		</div>
+										
+																		<div class="col mt-5">
+																			<h2 class="text-uppercase text-center">Choisissez un nombre de membre de votre famille :</h2>
+										
+																			<div class="text-center mb-3 mt-5 ">
+																				<span class="fw-bold ps-3 mt-5 grayTitle">Jusqu’à 10 membres</span>
+																				<span class="fw-bold ms-3 price">19.99 €</span>
+																			</div>
+										
+																			<div class="text-center mb-3 mt-5">
+																				<span class="fw-bold ps-3 grayTitle">De 11 à 20 membres</span>
+																				<span class="fw-bold ms-3 price">24.99 €</span>
+																			</div>
+										
+																			<div class="mt-5">
+																				<h2 class="text-uppercase text-center">Choisissez un nom pour votre jeu de famille :</h2>
+																			</div>
+																		</div>
+										
+										
+																	</div>
+																</section> #}
+				{% endblock %}
