@@ -137,6 +137,7 @@ $medium_font2: 35px;
   z-index: 2;
   @include fluid-type($min_width, $max_width, $min_font2, $medium_font2);
 
+
   &:after {
       content: '';
       width: 25rem;
@@ -159,6 +160,7 @@ $medium_font2: 35px;
 .rule {
   font-family: $font-text;
   @include fluid-type($min_width, $max_width, $min_font / 1.2, $medium_font / 1.2);
+}
 
 .first-title, .third-title {
   height: 15rem;
@@ -173,7 +175,7 @@ $medium_font2: 35px;
 
 .icon {
     width: 35%;
-    margin-bottom: $doubleSpace * 3;
+    margin-bottom: $space-2 * 3;
 }
 
 .commitment-text {
@@ -184,14 +186,15 @@ $medium_font2: 35px;
     background-color: $blue;
     color: $light;
     font-weight: bold;
-    border-radius: $doubleSpace * 2;
+    border-radius: $space-2 * 2;
     margin-bottom: $medium_font * 2;
     margin-top: $medium_font * 2;
-    width: $doubleSpace * 25;
+    width: $space-2 * 25;
 }
 
 .familly-rule {
   font-weight: bold;
+}
 
 .number {
     height: $medium_font * 2;
@@ -209,6 +212,6 @@ $medium_font2: 35px;
 }
 
 .card-image {
-    width: $doubleSpace * 25;
-    height: $doubleSpace * 25;
+    width: $space-2 * 25;
+    height: $space-2 * 25;
 }
