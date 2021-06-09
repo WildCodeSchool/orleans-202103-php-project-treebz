@@ -27,6 +27,8 @@ $max_width: 1200px;
 $medium_font: 25px;
 $max_font: 72px;
 $min_font: 12px;
+$min_font2: 18px;
+$medium_font2: 35px;
 
 .start-title {
     color: $light;  
@@ -74,4 +76,130 @@ $min_font: 12px;
     left: 0;
     right: 0;
     top: 20%;
+}
+
+.accordion-button, .accordion-collapse {
+  background-color: $secondary;
+}
+
+.title-rule h2 {
+  position: relative;
+  z-index: 2;
+  color: $dark;
+  @include fluid-type($min_width, $max_width, $min_font2, $medium_font2);
+
+  &:after {
+      content: '';
+      width: 25rem;
+      max-width: 100%;
+      padding: 0 10px;
+      height: 20px;
+      background: $primary;
+      display: block;
+      margin: auto;
+      position: relative;
+      top: -10px;
+      z-index: -1;
+  }
+}
+  
+.title-commitment h2 {
+  position: relative;
+  z-index: 2;
+  @include fluid-type($min_width, $max_width, $min_font2, $medium_font2);
+
+  &:after {
+      content: '';
+      width: 25rem;
+      max-width: 100%;
+      padding: 0 10px;
+      height: 20px;
+      background: $primary;
+      display: block;
+      margin: auto;
+      position: relative;
+      top: -10px;
+      z-index: -1;
+  }
+}
+
+.title-game-creation h2 {
+  position: relative;
+  z-index: 2;
+  @include fluid-type($min_width, $max_width, $min_font2, $medium_font2);
+
+  &:after {
+      content: '';
+      width: 25rem;
+      max-width: 100%;
+      padding: 0 10px;
+      height: 20px;
+      background: $primary;
+      display: block;
+      margin: auto;
+      position: relative;
+      top: -10px;
+      z-index: -1;
+  }
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: $secondary;
+}
+
+.rule {
+  font-family: $font-text;
+  @include fluid-type($min_width, $max_width, $min_font / 1.2, $medium_font / 1.2);
+
+.first-title, .third-title {
+  height: 15rem;
+  z-index: 1;
+}
+
+.commitment {
+  font-family: $font-text;
+  @include fluid-type($min_width, $max_width, $min_font, $medium_font);
+  margin-bottom: $space * 10;
+}
+
+.icon {
+  width: 35%;
+  margin-bottom: $doubleSpace * 3;
+}
+
+.commitment-text {
+  margin-bottom: $space * 5;
+}
+
+.create-button {
+  background-color: $blue;
+  color: $light;
+  font-weight: bold;
+  border-radius: $doubleSpace * 2;
+  margin-bottom: $medium_font * 2;
+  margin-top: $medium_font * 2;
+  width: $doubleSpace * 25;
+}
+
+.familly-rule {
+  font-weight: bold;
+
+.number {
+  height: $medium_font * 2;
+  width: $medium_font * 2;
+  border: 5px solid $primary;
+  border-radius: 100%;
+  text-align: center;
+}
+
+.text {
+  display: inline-block;
+  padding-top: $space;
+  font-weight: bold;
+  font-family: $font-text;
+}
+
+.card-image {
+  width: $doubleSpace * 25;
+  height: $doubleSpace * 25;
 }
