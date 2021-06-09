@@ -1,6 +1,9 @@
+@import 'function.scss';
 @import 'variables.scss';
+@import 'navbar.scss';
 @import "~bootstrap/scss/bootstrap";
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+@import "~bootstrap/scss/bootstrap";
 
 body {
     background-color: $light;
@@ -8,6 +11,6 @@ body {
     font-family: $font-text;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4, h5, h6 {
     font-family: $font-title;
 }
