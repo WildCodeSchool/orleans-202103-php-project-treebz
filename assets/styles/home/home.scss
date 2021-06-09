@@ -73,10 +73,6 @@ $medium_font2: 35px;
     margin-left: -10px;
 }
 
-.second-title {
-    font-family: $font-title;
-}
-
 .home-header .header-text {
     z-index: 1;
     position: absolute;
@@ -91,10 +87,9 @@ $medium_font2: 35px;
   background-color: $secondary;
 }
 
-.title-rule h2 {
+.title-rule {
   position: relative;
   z-index: 2;
-  color: $dark;
   @include fluid-type($min_width, $max_width, $min_font2, $medium_font2);
 
   &:after {
@@ -162,7 +157,7 @@ $medium_font2: 35px;
   @include fluid-type($min_width, $max_width, $min_font / 1.2, $medium_font / 1.2);
 }
 
-.first-title, .third-title {
+.first-title, .third-title, .second-title {
   height: 15rem;
   z-index: 1;
 }
