@@ -1,7 +1,10 @@
+@import 'function.scss';
 @import 'variables.scss';
-@import '~bootstrap/scss/bootstrap';
+@import 'navbar.scss';
 @import 'footer.scss';
+
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+@import '~bootstrap/scss/bootstrap';
 
 html {
   scroll-behavior: smooth;
@@ -78,4 +81,13 @@ h2 {
     background-color: lighten($blue, 20%);
     color: $light;
   }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-title;
 }
