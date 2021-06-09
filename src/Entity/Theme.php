@@ -20,31 +20,25 @@ class Theme
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Veuillez remplir se champ")
-     * @Assert\Length(max="255", maxMessage="Le champ saisie ne peut dépasser {{ limit }} caractères")
+     * @Assert\NotBlank()
+     * @Assert\Length(max="255")
      */
     private string $name;
 
     /**
      * @ORM\Column(type="string", length=500)
-     * @Assert\NotBlank(message="Veuillez remplir se champ")
-     * @Assert\Length(max="500", maxMessage="Le champ saisie ne peut dépasser {{ limit }} caractères")
+     * @Assert\NotBlank()
+     * @Assert\Length(max="500")
      */
     private string $image;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Veuillez remplir se champ")
-     * @Assert\Length(max="255", maxMessage="Le champ saisie ne peut dépasser {{ limit }} caractères")
+     * @ORM\Column(type="string", length=7)
+     * @Assert\NotBlank()
+     * @Assert\Regex("/(?:#|0x)(?:[a-f0-9]{3}|[a-f0-9]{6})\b|(?:rgb|hsl)a?\([^\)]*\)/")
+     * @Assert\Length(max="7")
      */
     private string $colorText;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Veuillez remplir se champ")
-     * @Assert\Length(max="255", maxMessage="Le champ saisie ne peut dépasser {{ limit }} caractères")
-     */
-    private string $styleText;
 
     public function getId(): ?int
     {
@@ -83,18 +77,6 @@ class Theme
     public function setColorText(string $colorText): self
     {
         $this->colorText = $colorText;
-
-        return $this;
-    }
-
-    public function getStyleText(): ?string
-    {
-        return $this->styleText;
-    }
-
-    public function setStyleText(string $styleText): self
-    {
-        $this->styleText = $styleText;
 
         return $this;
     }

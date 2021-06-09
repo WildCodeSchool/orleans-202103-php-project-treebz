@@ -16,8 +16,7 @@ class ThemeType extends AbstractType
         $builder
             ->add('name', TextType::class, ['label' => 'Nom du theme'])
             ->add('image', TextType::class, ['label' => 'Image'])
-            ->add('colorText', ColorType::class, ['label' => 'Couleur du texte'])
-            ->add('styleText', TextType::class, ['label' => 'Style du texte']);
+            ->add('colorText', ColorType::class, ['label' => 'Couleur du texte']);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
