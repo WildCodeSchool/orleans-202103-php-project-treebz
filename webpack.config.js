@@ -35,6 +35,8 @@ Encore
 
     .addStyleEntry('home', './assets/styles/home/home.scss')
 
+    .addStyleEntry('homeAdmin', './assets/styles/admin/homeAdmin.scss')
+
     .addStyleEntry('footer', './assets/styles/footer.scss')
 
     .addStyleEntry('newTheme', './assets/styles/admin/newTheme.scss')
