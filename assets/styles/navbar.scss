@@ -6,7 +6,7 @@ $min_font: 19;
 $max_font: 35;
 
 .section-navbar a {
-    font-size: fluid-type($min_width, $max_width, $min_font, $max_font);
+    font-size: fluid-type-($min_width, $max_width, $min_font, $max_font);
 }
 
 .img-logo {
