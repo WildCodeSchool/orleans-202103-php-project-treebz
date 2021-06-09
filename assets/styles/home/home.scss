@@ -1,24 +1,33 @@
-@import './assets/styles/app.scss';
+@import "./assets/styles/app.scss";
 @function strip-unit($value) {
     @return $value / ($value * 0 + 1);
-  }
-  
+}
+
 @mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
     $u1: unit($min-vw);
     $u2: unit($max-vw);
     $u3: unit($min-font-size);
     $u4: unit($max-font-size);
-  
+
     @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
-      & {
-        font-size: $min-font-size;
-        @media screen and (min-width: $min-vw) {
-          font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+        & {
+            font-size: $min-font-size;
+            @media screen and (min-width: $min-vw) {
+                font-size: calc(
+                    #{$min-font-size} + #{strip-unit(
+                            $max-font-size - $min-font-size
+                        )} *
+                        (
+                            (100vw - #{$min-vw}) / #{strip-unit(
+                                    $max-vw - $min-vw
+                                )}
+                        )
+                );
+            }
+            @media screen and (min-width: $max-vw) {
+                font-size: $max-font-size;
+            }
         }
-        @media screen and (min-width: $max-vw) {
-          font-size: $max-font-size;
-        }
-      }
     }
 }
 
@@ -31,7 +40,7 @@ $min_font2: 18px;
 $medium_font2: 35px;
 
 .start-title {
-    color: $light;  
+    color: $light;
     font-family: $font-text;
     @include fluid-type($min_width, $max_width, $medium_font, $max_font);
     font-weight: bold;
@@ -45,10 +54,10 @@ $medium_font2: 35px;
 }
 
 .sub-title {
-     color:$light;
-     font-family: $font-text;
-     @include fluid-type($min_width, $max_width, $min_font, $medium_font);
-     margin-top: 1em;
+    color: $light;
+    font-family: $font-text;
+    @include fluid-type($min_width, $max_width, $min_font, $medium_font);
+    margin-top: 1em;
 }
 
 .home-header {
@@ -99,23 +108,23 @@ $medium_font2: 35px;
 }
   
 .title-commitment h2 {
-  position: relative;
-  z-index: 2;
-  @include fluid-type($min_width, $max_width, $min_font2, $medium_font2);
+    position: relative;
+    z-index: 2;
+    @include fluid-type($min_width, $max_width, $min_font2, $medium_font2);
 
-  &:after {
-      content: '';
-      width: 25rem;
-      max-width: 100%;
-      padding: 0 10px;
-      height: 20px;
-      background: $primary;
-      display: block;
-      margin: auto;
-      position: relative;
-      top: -10px;
-      z-index: -1;
-  }
+    &:after {
+        content: "";
+        width: 25rem;
+        max-width: 100%;
+        padding: 0 10px;
+        height: 20px;
+        background: $primary;
+        display: block;
+        margin: auto;
+        position: relative;
+        top: -10px;
+        z-index: -1;
+    }
 }
 
 .title-game-creation h2 {
@@ -153,28 +162,28 @@ $medium_font2: 35px;
 }
 
 .commitment {
-  font-family: $font-text;
-  @include fluid-type($min_width, $max_width, $min_font, $medium_font);
-  margin-bottom: $space * 10;
+    font-family: $font-text;
+    @include fluid-type($min_width, $max_width, $min_font, $medium_font);
+    margin-bottom: $space * 10;
 }
 
 .icon {
-  width: 35%;
-  margin-bottom: $doubleSpace * 3;
+    width: 35%;
+    margin-bottom: $doubleSpace * 3;
 }
 
 .commitment-text {
-  margin-bottom: $space * 5;
+    margin-bottom: $space * 5;
 }
 
 .create-button {
-  background-color: $blue;
-  color: $light;
-  font-weight: bold;
-  border-radius: $doubleSpace * 2;
-  margin-bottom: $medium_font * 2;
-  margin-top: $medium_font * 2;
-  width: $doubleSpace * 25;
+    background-color: $blue;
+    color: $light;
+    font-weight: bold;
+    border-radius: $doubleSpace * 2;
+    margin-bottom: $medium_font * 2;
+    margin-top: $medium_font * 2;
+    width: $doubleSpace * 25;
 }
 
 .familly-rule {
@@ -182,21 +191,21 @@ $medium_font2: 35px;
 }
 
 .number {
-  height: $medium_font * 2;
-  width: $medium_font * 2;
-  border: 5px solid $primary;
-  border-radius: 100%;
-  text-align: center;
+    height: $medium_font * 2;
+    width: $medium_font * 2;
+    border: 5px solid $primary;
+    border-radius: 100%;
+    text-align: center;
 }
 
 .text {
-  display: inline-block;
-  padding-top: $space;
-  font-weight: bold;
-  font-family: $font-text;
+    display: inline-block;
+    padding-top: $space;
+    font-weight: bold;
+    font-family: $font-text;
 }
 
 .card-image {
-  width: $doubleSpace * 25;
-  height: $doubleSpace * 25;
+    width: $doubleSpace * 25;
+    height: $doubleSpace * 25;
 }
