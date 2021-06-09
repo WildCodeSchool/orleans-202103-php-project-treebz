@@ -1,0 +1,14 @@
+$width-logo: 200px;
+
+$min_width: 800;
+$max_width: 2000;
+$min_font: 19;
+$max_font: 35;
+
+.section-navbar a {
+    font-size: fluid-type($min_width, $max_width, $min_font, $max_font);
+}
+
+.img-logo {
+    width: $width-logo;
+}
