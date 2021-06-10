@@ -1,6 +1,6 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Treeb'Z | Accueil{% endblock %}
 {% block stylesheets %}
 	{{ parent() }}
     {{ encore_entry_link_tags('home') }}
@@ -34,49 +34,31 @@
                 <div class="mt-5 mt-md-0">
                     <div class="row mb-4 d-flex justify-content-center">
                         <div class="number col-3"><span class="text">1</span></div>
-                        <div class="card-rule col-9 d-flex align-items-center"><p class="m-0">Choisissez le nom du jeu de votre famille qui sera inscrit au dos.</p></div>
+                        <div class="col-9 d-flex align-items-center"><p class="creation-text m-0">Choisissez le nom du jeu de votre famille qui sera inscrit au dos.</p></div>
                     </div>
                     <div class="row mb-4 d-flex justify-content-center">
                         <div class="number col-3"><span class="text">2</span></div>
-                        <div class="card-rule col-9 d-flex align-items-center"><p class="m-0">Choisissez les photos de membres de votre famille.</p></div>
+                        <div class="col-9 d-flex align-items-center"><p class="creation-text m-0">Choisissez les photos de membres de votre famille.</p></div>
                     </div>
                     <div class="row mb-4 d-flex justify-content-center">
                         <div class="number col-3"><span class="text">3</span></div>
-                        <div class="card-rule col-9 d-flex align-items-center"><p class="m-0">Choisissez les thèmes dans lesquels vous souhaitez les faire jouer.</p></div>
+                        <div class="col-9 d-flex align-items-center"><p class="creation-text m-0">Choisissez les thèmes dans lesquels vous souhaitez les faire jouer.</p></div>
                     </div>
                     <div class="row mb-4 d-flex justify-content-center">
                         <div class="number col-3"><span class="text">4</span></div>
-                        <div class="card-rule col-9 d-flex align-items-center"><p class="m-0">Prévisualisez vos cartes avec les thèmes et validez votre commande.</p></div>
+                        <div class="col-9 d-flex align-items-center"><p class="creation-text m-0">Prévisualisez vos cartes avec les thèmes et validez votre commande.</p></div>
                     </div>
                     <div class="row mb-4 d-flex justify-content-center">
                         <div class="number col-3"><span class="text">5</span></div>
-                        <div class="card-rule col-9 d-flex align-items-center"><p class="m-0">Après le paiement via Paypal, nous fabriquons vos jeux de famille et
+                        <div class="col-9 d-flex align-items-center"><p class="creation-text m-0">Après le paiement via Paypal, nous fabriquons vos jeux de famille et
                         nous livrons vos articles dans un délai de 6 à 20 jours ouvrés (moyenne nationale).</p></div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="d-grid gap-2 col-6 justify-content-center mx-auto">
-            <button class="btn create-button mb-6" type="button">CRÉER LE JEU DE</br>MA FAMILLE</button>
+            <a href="" class="btn create-button mb-6" type="button">CRÉER LE JEU DE</br>MA FAMILLE</a>
         </div>
-    <!--<div class="accordion accordion-flush second-title" id="accordionFlushExample">
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-headingOne">
-                    <button class="accordion-button collapsed rule-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                        <p class="title-rule col-md-4 offset-md-4 col-8 offset-2 text-align-middle row justify-content-center">LES RÈGLES DU JEU</p>
-                    </button>
-                </h2>
-                <div id="flush-collapseOne" class="accordion-collapse collapse row" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                    <div class="accordion-body m-md-0 col-md-4 col-10 offset-1 text-center rule"><p class="familly-rule">Règles de ma famille</br></p>Jouez au jeu des 7 familles avec de nouvelles règles innovantes ! Partagez un souvenir de la famille réunie et laissez planer le doute sur la véracité de cette anecdote.</div>
-                    <div class="accordion-body m-md-0 col-md-4 col-10 offset-1 text-center rule"><p class="familly-rule">Règles classique</br></p>Jouez avec les règles classiques du jeu de 7 familles ! Le gagnant est le joueur ayant réuni le plus de famille.</div>
-                    <div class="accordion-body m-md-0 col-md-4 col-10 offset-1 text-center rule"><p class="familly-rule">Mémory'Z</br></p>Faites travailler votre mémoire avec Mémory'Z, retournez les cartes face cachées, retournez deux cartes et remportez des points si elles sont de la même famille ou s'ils s'agit du même membre !</div>
-                        <div class="d-grid gap-2 col-md-6 col-10 offset-1 justify-content-center mx-auto">
-                            <button class="btn create-button mb-6" type="button">VOIR</br>LES RÈGLES</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>-->
         <div class="jumbotron jumbotron-fluid second-title d-flex align-items-center">
           <div class="container-fluid title-commitment col-8 offset-2">
             <h2 class="display-4 text-center py-5">
@@ -85,27 +67,24 @@
           </div>
         </div>
         <div class="row justify-content-around">
-            <div class="card text-white bg-light mb-3 text-center shadow" style="max-width: 25rem;">
-                <div class="card-header bg-secondary familly-rule">Règles de ma famille</div>
-                <div class="card-body">
-                    <p class="card-text rule">Jouez au jeu des 7 familles avec de nouvelles règles innovantes ! Partagez un souvenir de la famille réunie et laissez planer le doute sur la véracité de cette anecdote.</p>
-                </div>
+            <div class="box col-md-3 offset-md-1 col-8 offset-2">
+                <img class="orange-card" src="{{ asset('build/images/orangecards.svg') }}" alt="Icône cartes à jouer"/>
+                <h2 class="game-rule">Règles de ma famille</h2>
+                <p class="rule-text">Jouez au jeu des 7 familles avec de nouvelles règles innovantes ! Partagez un souvenir de la famille réunie et laissez planer le doute sur la véracité de cette anecdote.</p>
             </div>
-            <div class="card text-white bg-light mb-3 text-center" style="max-width: 25rem;">
-                <div class="card-header bg-secondary familly-rule">Règles classique</div>
-                <div class="card-body">
-                    <p class="card-text rule">Jouez avec les règles classiques du jeu de 7 familles ! Le gagnant est le joueur ayant réuni le plus de famille.</p>
-                </div>
+            <div class="box col-md-3 offset-md-1 col-8 offset-2">
+                <img class="orange-card" src="{{ asset('build/images/orangecards.svg') }}" alt="Icône cartes à jouer"/>
+                <h2 class="game-rule">Règles classiques</h2>
+                <p class="rule-text">Jouez avec les règles classiques du jeu de 7 familles ! Le gagnant est le joueur ayant réuni le plus de famille.</p>
             </div>
-            <div class="card text-white bg-light mb-3 text-center" style="max-width: 25rem;">
-                <div class="card-header bg-secondary familly-rule">Mémory'Z</div>
-                <div class="card-body">
-                    <p class="card-text rule">Faites travailler votre mémoire avec Mémory'Z, retournez les cartes face cachées, retournez deux cartes et remportez des points si elles sont de la même famille ou s'ils s'agit du même membre !</p>
-                </div>
+            <div class="box col-md-3 offset-md-1 col-8 offset-2">
+                <img class="orange-card" src="{{ asset('build/images/orangecards.svg') }}" alt="Icône cartes à jouer"/>
+                <h2 class="game-rule">Mémory'Z</h2>
+                <p class="rule-text">Faites travailler votre mémoire avec Mémory'Z, retournez les cartes face cachées, retournez deux cartes et remportez des points si elles sont de la même famille ou s'ils s'agit du même membre !</p>
             </div>
         </div>
         <div class="d-grid gap-2 col-md-6 col-10 offset-1 justify-content-center mx-auto">
-            <button class="btn create-button mb-6" type="button">VOIR</br>LES RÈGLES</button>
+            <a href="/lesreglesdujeu"class="btn create-button mb-6" type="button">VOIR</br>LES RÈGLES</a>
         </div>
         <div class="jumbotron jumbotron-fluid third-title d-flex align-items-center">
           <div class="container-fluid title-commitment col-8 offset-2">
@@ -117,15 +96,15 @@
         <div class="commitment container-fluid">
             <div class="container-fluid row">
                 <div class="col-md-4 col-12 text-center">
-                    <img class="icon" src="{{ asset('build/images/french-flag.svg') }}" alt="Drapeau Français"/>
+                    <img class="icon" src="{{ asset('build/images/french-flag.webp') }}" alt="Drapeau Français"/>
                     <p class="commitment-text">Un jeu pensé et</br>fabriqué en</br>France</p>
                 </div>
                 <div class="col-md-4 col-12 text-center">
-                    <img class="icon" src="{{ asset('build/images/recycling-symbol.svg') }}" alt="Symbole de recyclage"/>
+                    <img class="icon" src="{{ asset('build/images/recycling-symbol.webp') }}" alt="Symbole de recyclage"/>
                     <p class="commitment-text">Des matériaux</br>de qualité</br>supérieure et</br>100% recyclés</p>
                 </div>
                 <div class="col-md-4 col-12 text-center">
-                    <img class="icon" src="{{ asset('build/images/tree.svg') }}" alt="Arbre"/>
+                    <img class="icon" src="{{ asset('build/images/tree.webp') }}" alt="Arbre"/>
                     <p class="commitment-text">Une démarche</br>respectueuse</br>de l'environnement.</br>Nos emballages sont 100%</br>éco-responsable.</p>
                 </div>
             </div>

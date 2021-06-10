@@ -132,6 +132,7 @@ $medium_font2: 35px;
   z-index: 2;
   @include fluid-type($min_width, $max_width, $min_font2, $medium_font2);
 
+
   &:after {
       content: '';
       width: 25rem;
@@ -163,9 +164,8 @@ $medium_font2: 35px;
 }
 
 .commitment {
-    font-family: $font-text;
-    @include fluid-type($min_width, $max_width, $min_font, $medium_font);
-    margin-bottom: $space * 10;
+  font-family: $font-text;
+  margin-bottom: $space * 10;
 }
 
 .icon {
@@ -175,20 +175,16 @@ $medium_font2: 35px;
 
 .commitment-text {
     margin-bottom: $space * 5;
+    @include fluid-type($min_width, $max_width, $min_font, $medium_font);
 }
 
 .create-button {
-    background-color: $blue;
+    background-color: $secondary;
     color: $light;
     font-weight: bold;
-    border-radius: $space-2 * 2;
     margin-bottom: $medium_font * 2;
     margin-top: $medium_font * 2;
     width: $space-2 * 25;
-}
-
-.familly-rule {
-  font-weight: bold;
 }
 
 .number {
@@ -206,11 +202,34 @@ $medium_font2: 35px;
     font-family: $font-text;
 }
 
-.card-image {
-    width: $space-2 * 25;
-    height: $space-2 * 25;
+.game-rule {
+    color: $dark;
+    font-weight: bold;
+    @include fluid-type($min_width, $max_width, $min_font2, $medium_font2);
 }
 
-.shadow {
-  filter: drop-shadow(0.2rem 0.2rem 0.60rem $dark)
+.box {
+    border-radius: 5px;
+    box-shadow: 0px 30px 40px -20px $dark;
+    padding: 30px;
+    margin: 20px;
+    border-top: 3px solid $secondary;
+}
+
+.rule-text {
+    @include fluid-type($min_width, $max_width, $min_font, $medium_font);
+}
+
+.orange-card {
+    float: right;
+    max-width: 25%;
+    height: auto;
+}
+
+.card-image {
+    border-radius: 10px;
+}
+
+.creation-text {
+    @include fluid-type($min_width, $max_width, $min_font, $medium_font);
 }
