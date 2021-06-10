@@ -163,9 +163,8 @@ $medium_font2: 35px;
 }
 
 .commitment {
-    font-family: $font-text;
-    @include fluid-type($min_width, $max_width, $min_font, $medium_font);
-    margin-bottom: $space * 10;
+  font-family: $font-text;
+  margin-bottom: $space * 10;
 }
 
 .icon {
@@ -175,13 +174,13 @@ $medium_font2: 35px;
 
 .commitment-text {
     margin-bottom: $space * 5;
+    @include fluid-type($min_width, $max_width, $min_font / 1.2, $medium_font / 1.2);
 }
 
 .create-button {
     background-color: $blue;
     color: $light;
     font-weight: bold;
-    border-radius: $space-2 * 2;
     margin-bottom: $medium_font * 2;
     margin-top: $medium_font * 2;
     width: $space-2 * 25;
@@ -207,6 +206,7 @@ $medium_font2: 35px;
 }
 
 .card-image {
-    width: $space-2 * 25;
-    height: $space-2 * 25;
+    width: $space-3 * 20;
+    height: $space-3 * 20;
+    border-radius: $space;
 }
