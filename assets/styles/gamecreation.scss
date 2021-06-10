@@ -31,21 +31,6 @@ h1 {
     z-index: 1;
 }
 
-.stepContainer {
-    height: 200px;
-    width: 100%;
-    max-width: 300px;
-    min-width: 140px;
-    background: url("../images/step_gamecreation.svg") no-repeat;
-    background-size: 100%;
-
-    span {
-        font-size: 1.1rem;
-    }
-}
-
-/* Style of the rest of the page */
-
 .cardImage {
     width: 400px;
 }
@@ -61,10 +46,8 @@ h1 {
     font-size: 1.4em;
 }
 
-.containerStep {
-    width: 100%;
-    margin: 100px auto;
-}
+/* Start Stepbar - Using: You need to apply the class "active" in the <li> you wish to display green in the stepbar */
+
 .progressbar {
     counter-reset: step;
 }
@@ -72,7 +55,7 @@ h1 {
     list-style-type: none;
     width: 25%;
     float: left;
-    font-size: 16px;
+    font-size: 12px;
     position: relative;
     text-align: center;
     text-transform: uppercase;
@@ -84,7 +67,7 @@ h1 {
     content: counter(step);
     counter-increment: step;
     line-height: 30px;
-    border: 2px solid #7d7d7d;
+    border: 3px solid #7d7d7d;
     display: block;
     text-align: center;
     margin: 0 auto 10px auto;
@@ -113,3 +96,9 @@ h1 {
 .progressbar li.active + li:after {
     background-color: #55b776;
 }
+
+.create-button {
+    background-color: $secondary;
+    color: $dark;
+}
+/* End Stepbar */
