@@ -35,7 +35,7 @@ class Theme
     /**
      * @ORM\Column(type="string", length=7)
      * @Assert\NotBlank()
-     * @Assert\Regex("/(?:#|0x)(?:[a-f0-9]{3}|[a-f0-9]{6})\b|(?:rgb|hsl)a?\([^\)]*\)/")
+     * @Assert\Regex("/^#[A-Fa-f]{6}$/")
      * @Assert\Length(max="7")
      */
     private string $colorText;
