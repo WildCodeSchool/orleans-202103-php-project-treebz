@@ -1,9 +1,7 @@
-@import 'app.scss';
 @import 'variables.scss';
 
 footer {
     background-color: $primary;
-    position: absolute;
     bottom: 0;
     width: 100%;
     padding-top: 50px;
@@ -33,4 +31,3 @@ a {
 a:hover {
     color: lighten($color: $light, $amount: 10%);
 }
-

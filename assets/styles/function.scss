@@ -1,0 +1,4 @@
+@function fluid-type($min_width, $max_width, $min_font, $max_font) {
+    $result: calc((#{$min_font}*1px) + (#{$max_font}-#{$min_font}) * ((100vw - (#{$min_width}*1px)) / (#{$max_width}-#{$min_width})));
+    @return $result;
+}

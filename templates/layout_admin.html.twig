@@ -2,6 +2,7 @@
 
 {% block stylesheets %} {{ parent() }} {% endblock %}
 
-{% block title %} - {{ parent() }} - Admin{% endblock %}
-{% block navbar %}{% endblock %}
+{% block title %}{{ parent() }} - Admin{% endblock %}
+{% block navbar %}{% include "component/_navbar_admin.html.twig" %} {% endblock %}
+
 {% block footer %}{% endblock %}

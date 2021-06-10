@@ -1,6 +1,13 @@
-@import 'variables.scss';
+@import "function.scss";
+@import "navbar.scss";
+@import "footer.scss";
+@import "variables.scss";
 @import "~bootstrap/scss/bootstrap";
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+
+html {
+    scroll-behavior: smooth;
+}
 
 body {
     background-color: $light;
@@ -8,6 +15,73 @@ body {
     font-family: $font-text;
 }
 
-h1, h2, h3 {
+p {
+    font-size: 1.3em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: $font-title;
-} 
+}
+
+.titleDeco h2 {
+    position: relative;
+    z-index: 2;
+
+    &:after {
+        content: "";
+        width: 30rem;
+        max-width: 100%;
+        padding: 0 10px;
+        height: 30px;
+        background: $primary;
+        display: block;
+        margin: auto;
+        position: relative;
+        top: -15px;
+        z-index: -1;
+    }
+}
+
+.titleDeco h1 {
+    position: relative;
+    z-index: 2;
+    text-transform: uppercase;
+
+    &:after {
+        content: "";
+        width: 40rem;
+        max-width: 100%;
+        padding: 0 $space;
+        height: $space-4;
+        background: $primary;
+        display: block;
+        margin: auto;
+        position: relative;
+        top: -25px;
+        z-index: -1;
+    }
+}
+
+.btn-blue {
+    background-color: $blue;
+    border: none;
+    padding: $space-2 $space-4;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.3em;
+    color: $light;
+    border-radius: 50px;
+    transition-duration: 0.1s;
+    width: 18rem;
+
+    &:hover {
+        background-color: lighten($blue, 20%);
+        color: $light;
+    }
+}
