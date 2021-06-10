@@ -1,9 +1,8 @@
-@import "function.scss";
-@import "navbar.scss";
-@import "footer.scss";
-@import "variables.scss";
-@import "~bootstrap/scss/bootstrap";
+@import 'function.scss';
+@import 'variables.scss';
+@import 'navbar.scss';
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+@import "~bootstrap/scss/bootstrap";
 
 html {
     scroll-behavior: smooth;
