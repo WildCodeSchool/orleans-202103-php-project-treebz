@@ -132,6 +132,7 @@ $medium_font2: 35px;
   z-index: 2;
   @include fluid-type($min_width, $max_width, $min_font2, $medium_font2);
 
+
   &:after {
       content: '';
       width: 25rem;
