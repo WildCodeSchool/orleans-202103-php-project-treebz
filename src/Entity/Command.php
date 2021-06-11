@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\CommandRepository;
+use App\Form\CommandType;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -21,7 +22,9 @@ class Command
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank()
-     * @Assert\Length(max="255")
+     * @Assert\Length(max="255", maxMessage="Le nom saisie est trop longue,
+     * elle ne devrait pas dépasser {{ limit }} caractères.")
+     * @Assert\NotNull
      */
     private string $projectName;
 
