@@ -32,9 +32,8 @@ class Member
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank()
      */
-    private string $picture;
+    private string $picture = '';
 
     /**
     * @Vich\UploadableField(mapping="picture_file", fileNameProperty="picture")
@@ -67,7 +66,6 @@ class Member
     public function setPicture(string $picture): self
     {
         $this->picture = $picture;
-
         return $this;
     }
 

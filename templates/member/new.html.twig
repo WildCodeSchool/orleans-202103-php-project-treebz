@@ -1,11 +1,15 @@
 {% extends 'base.html.twig' %}
-
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
 {% block title %}New Member{% endblock %}
 
 {% block body %}
-    <h1>Create new Member</h1>
-
-    {{ include('member/_form.html.twig') }}
-
-    <a href="{{ path('member_index') }}">back to list</a>
+    <section class="titleDeco">
+        <div class= "text-left offset-lg-3 col-lg-6 offset-md-2 col-md-8 offset-1 col-10">
+            <h2 class="display-6 text-center py-5" id="reglesFamille">
+                Création d'un membre <br> du jeu de 7 familles
+            </h2>
+            {{ include('member/_form.html.twig') }}
+            <a href="{{ path('member_index') }}">Revenir à l'étape 2</a>
+        </div>
+    </section>
 {% endblock %}
