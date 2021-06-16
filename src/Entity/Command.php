@@ -22,8 +22,7 @@ class Command
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank()
-     * @Assert\Length(max="255", maxMessage="Le nom saisie est trop longue,
-     * elle ne devrait pas dépasser {{ limit }} caractères.")
+     * @Assert\Length(max="255")
      * @Assert\NotNull
      */
     private string $projectName;
