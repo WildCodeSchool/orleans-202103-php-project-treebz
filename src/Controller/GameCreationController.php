@@ -28,7 +28,7 @@ class GameCreationController extends AbstractController
     }
 
      /**
-    * @Route("/choisissezvotretheme", name="index")
+    * @Route("/choisissez-votre-theme", name="index")
     */
     public function chooseTheme(): Response
     {
