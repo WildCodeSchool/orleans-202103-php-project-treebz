@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
-* @Route("/creezvotrejeu", name="gamecreation_")
+* @Route("/creez-votre-jeu", name="gamecreation_")
 */
 
 class GameCreationController extends AbstractController
