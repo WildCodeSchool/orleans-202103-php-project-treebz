@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\ColorType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class ThemeType extends AbstractType
@@ -21,6 +22,16 @@ class ThemeType extends AbstractType
                 'required'      => false,
                 'allow_delete'  => true,
                 'download_uri' => true,
+                'constraints' => [
+                    new File([
+                        'maxSize' => '5M',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/gif',
+                            'image/png',
+                        ]
+                    ])
+                ]
             ]);
     }
 

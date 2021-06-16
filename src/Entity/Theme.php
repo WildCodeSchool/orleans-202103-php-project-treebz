@@ -38,7 +38,17 @@ class Theme
     private string $image = "";
 
     /**
-     * @Vich\UploadableField(mapping="picture_file", fileNameProperty="image")
+     * @Vich\UploadableField(mapping="picture_file", fileNameProperty="picture")
+     * @Assert\File(
+     * maxSize="5242880",
+     * mimeTypes = {
+     *     "image/png",
+     *     "image/jpeg",
+     *     "image/jpg",
+     *     "image/gif",
+     *     "application/pdf",
+     *     "application/x-pdf"
+     * })
      * @var File
      */
     private $pictureFile;
