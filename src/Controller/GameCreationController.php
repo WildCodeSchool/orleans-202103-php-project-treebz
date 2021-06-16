@@ -26,4 +26,12 @@ class GameCreationController extends AbstractController
         $form = $this->createForm(CommandType::class, $commandForm);
         return $this->render('gameCreation/index.html.twig', ["form" => $form->createView(),]);
     }
+
+     /**
+    * @Route("/choisissezvotretheme", name="index")
+    */
+    public function chooseTheme(): Response
+    {
+        return $this->render('gameCreation/theme.html.twig');
+    }
 }
