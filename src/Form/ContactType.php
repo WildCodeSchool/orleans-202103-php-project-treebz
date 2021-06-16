@@ -15,35 +15,35 @@ class ContactType extends AbstractType
     {
         $builder
             ->add('lastname', TextType::class, [
-                'label' => 'NOM:',
+                'label' => 'NOM',
                 'attr' => [
                     'required' => false,
                     'placeholder' => 'Simpson',
                 ]
             ])
             ->add('firstname', TextType::class, [
-                'label' => 'PRÉNOM:',
+                'label' => 'PRÉNOM',
                 'attr' => [
                     'required' => false,
                     'placeholder' => 'Marjorie',
                 ]
             ])
             ->add('email', TextType::class, [
-                'label' => 'ADRESSE EMAIL:',
+                'label' => 'EMAIL',
                 'attr' => [
                     'required' => false,
                     'placeholder' => 'marge.simpson@monmail.com',
                 ]
             ])
             ->add('object', TextType::class, [
-                'label' => 'OBJET:',
+                'label' => 'OBJET',
                 'attr' => [
                     'required' => false,
                     'placeholder' => 'Question',
                 ]
             ])
             ->add('message', TextareaType::class, [
-                'label' => 'MESSAGE:',
+                'label' => 'MESSAGE',
                 'attr' => [
                     'required' => false,
                     'placeholder' => 'Mon message.',

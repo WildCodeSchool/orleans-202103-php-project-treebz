@@ -3,43 +3,47 @@
 namespace App\Entity;
 
 use App\Repository\ContactRepository;
-use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Entity(repositoryClass=ContactRepository::class)
- */
 class Contact
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
     private int $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Ce champ est requis")
+     * @Assert\Length(max="255")
      */
+
     private string $lastname;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Ce champ est requis")
+     * @Assert\Length(max="255")
      */
+
     private string $firstname;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Ce champ est requis")
+     * @Assert\Length(max="255")
+     * @Assert\Email(
+     *     message = "Le format de l'adresse email saisie n'est pas valide"
+     * )
      */
+
     private string $email;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Ce champ est requis")
+     * @Assert\Length(max="255")
      */
+
     private string $object;
 
     /**
-     * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="Ce champ est requis")
      */
+
     private string $message;
 
     public function getId(): ?int
