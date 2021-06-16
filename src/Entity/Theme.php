@@ -5,9 +5,14 @@ namespace App\Entity;
 use App\Repository\ThemeRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\File;
+use DateTime;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=ThemeRepository::class)
+ * @ORM\Entity(repositoryClass="App\Repository\ProgramRepository")
+ * @Vich\Uploadable
  */
 class Theme
 {
@@ -27,18 +32,30 @@ class Theme
 
     /**
      * @ORM\Column(type="string", length=500)
-     * @Assert\NotBlank()
      * @Assert\Length(max="500")
+     * @var string
      */
-    private string $image;
+    private string $image = "";
+
+    /**
+     * @Vich\UploadableField(mapping="picture_file", fileNameProperty="image")
+     * @var File
+     */
+    private $pictureFile;
 
     /**
      * @ORM\Column(type="string", length=7)
      * @Assert\NotBlank()
-     * @Assert\Regex("/^#[A-Fa-f]{6}$/")
+     * @Assert\Regex("/^#[A-Fa-f0-9]{6}$/")
      * @Assert\Length(max="7")
      */
     private string $colorText;
+
+    /**
+     * @ORM\Column(type="datetime")
+     * @var datetime
+     */
+    private $updatedAt;
 
     public function getId(): ?int
     {
@@ -67,6 +84,18 @@ class Theme
         $this->image = $image;
 
         return $this;
+    }
+
+    public function setPictureFile(File $image): self
+    {
+        $this->pictureFile = $image;
+        $this->updatedAt = new DateTime('now');
+        return $this;
+    }
+
+    public function getPictureFile(): ?File
+    {
+        return $this->pictureFile;
     }
 
     public function getColorText(): ?string
