@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
+use DateTime;
 
 /**
  * @ORM\Entity(repositoryClass=MemberRepository::class)
@@ -32,14 +33,31 @@ class Member
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(max="255")
      */
     private string $picture = '';
 
     /**
-    * @Vich\UploadableField(mapping="picture_file", fileNameProperty="picture")
+     * @Vich\UploadableField(mapping="picture_file", fileNameProperty="picture")
+     * @Assert\File(
+     * maxSize="5242880",
+     * mimeTypes = {
+     *     "image/png",
+     *     "image/jpeg",
+     *     "image/jpg",
+     *     "image/gif",
+     *     "application/pdf",
+     *     "application/x-pdf"
+     * })
     * @var File
     */
-    private File $pictureFile;
+    private $pictureFile;
+
+    /**
+     * @ORM\Column(type="datetime")
+     * @var Datetime
+     */
+    private $updatedAt;
 
     public function getId(): ?int
     {
@@ -77,6 +95,31 @@ class Member
     public function setPictureFile(File $image): self
     {
         $this->pictureFile = $image;
+        $this->updatedAt = new DateTime('now');
+        return $this;
+    }
+
+    /**
+     * Get the value of updatedAt
+     *
+     * @return  Datetime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set the value of updatedAt
+     *
+     * @param  Datetime  $updatedAt
+     *
+     * @return  self
+     */
+    public function setUpdatedAt(Datetime $updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
         return $this;
     }
 }
