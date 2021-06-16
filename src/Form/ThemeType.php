@@ -26,9 +26,9 @@ class ThemeType extends AbstractType
                     new File([
                         'maxSize' => '5M',
                         'mimeTypes' => [
-                            'image/jpeg',
-                            'image/gif',
+                            'image/svg',
                             'image/png',
+                            'image/webp'
                         ]
                     ])
                 ]
