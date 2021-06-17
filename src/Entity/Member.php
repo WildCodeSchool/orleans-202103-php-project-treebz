@@ -33,6 +33,7 @@ class Member
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Il faut selectionner une photo, veuillez cliquer sur Parcourir")
      * @Assert\Length(max="255")
      */
     private string $picture = '';
