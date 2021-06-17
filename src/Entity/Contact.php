@@ -10,38 +10,36 @@ class Contact
     private int $id;
 
     /**
-     * @Assert\NotBlank(message="Ce champ est requis")
+     * @Assert\NotBlank
      * @Assert\Length(max="255")
      */
 
     private string $lastname;
 
     /**
-     * @Assert\NotBlank(message="Ce champ est requis")
+     * @Assert\NotBlank
      * @Assert\Length(max="255")
      */
 
     private string $firstname;
 
     /**
-     * @Assert\NotBlank(message="Ce champ est requis")
+     * @Assert\NotBlank
      * @Assert\Length(max="255")
-     * @Assert\Email(
-     *     message = "Le format de l'adresse email saisie n'est pas valide"
-     * )
+     * @Assert\Email
      */
 
     private string $email;
 
     /**
-     * @Assert\NotBlank(message="Ce champ est requis")
+     * @Assert\NotBlank
      * @Assert\Length(max="255")
      */
 
     private string $object;
 
     /**
-     * @Assert\NotBlank(message="Ce champ est requis")
+     * @Assert\NotBlank
      */
 
     private string $message;
