@@ -83,7 +83,6 @@ h6 {
     display: inline-block;
     font-size: 1.3em;
     color: $light;
-    border-radius: 50px;
     transition-duration: 0.1s;
     width: 18rem;
 
@@ -92,6 +91,25 @@ h6 {
         color: $light;
     }
 }
+
+.btn-secondary {
+    background-color: $secondary;
+    border: none;
+    padding: $space-2 $space-4;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.3em;
+    color: $dark;
+    transition-duration: 0.1s;
+    width: 18rem;
+
+    &:hover {
+        background-color: lighten($blue, 20%);
+        color: $light;
+    }
+}
+
 
 .create-button {
     background-color: $secondary;

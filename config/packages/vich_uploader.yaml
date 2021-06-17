@@ -1,0 +1,17 @@
+vich_uploader:
+    db_driver: orm
+
+    #mappings:
+    #    products:
+    #        uri_prefix: /images/products
+    #        upload_destination: '%kernel.project_dir%/public/images/products'
+    mappings:
+        picture_file:
+              # alias qui nous permet d'accéder à nos images depuis le navigateur
+              uri_prefix: /images/pictures
+              # Chemin vers le dossier de stockage
+              upload_destination: '%upload_member_directory%'
+
+        image_file:
+                uri_prefix: /images/theme
+                upload_destination: '%upload_directory%'

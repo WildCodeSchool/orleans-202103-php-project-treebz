@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Command;
+use App\Entity\Theme;
 use App\Form\CommandType;
+use App\Repository\ThemeRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,5 +34,13 @@ class GameCreationController extends AbstractController
             return $this->redirectToRoute('home');
         }
         return $this->render('gameCreation/index.html.twig', ["form" => $form->createView(),]);
+    }
+
+    /**
+    * @Route("/choisissez-votre-theme", name="choose_theme")
+    */
+    public function chooseTheme(ThemeRepository $themeRepository): Response
+    {
+        return $this->render('gameCreation/theme.html.twig', ['themes' => $themeRepository->findAll()]);
     }
 }

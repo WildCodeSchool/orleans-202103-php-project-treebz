@@ -1,0 +1,18 @@
+{% extends 'layoutEmail.html.twig' %}
+
+{% block title %}
+    Nouveau message !
+{% endblock %}
+{% block body %}
+
+    <h1>Nouveau message depuis Treeb'Z !</h1>
+
+    <p>Vous avez reçu un nouveau message de la part de {{ contact.firstname }} {{ contact.lastname }}.</p>
+
+    <p>Email du client : {{ contact.email }}
+
+    <p>Objet : {{ contact.object }}
+
+    <p>Message : {{ contact.message }}
+
+{% endblock %}
