@@ -11,7 +11,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=ThemeRepository::class)
- * @ORM\Entity(repositoryClass="App\Repository\ProgramRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\ThemeRepository")
  * @Vich\Uploadable
  */
 class Theme
@@ -35,7 +35,7 @@ class Theme
      * @Assert\Length(max="500")
      * @var string
      */
-    private string $image = "";
+    private ?string $image = "";
 
     /**
      * @Vich\UploadableField(mapping="image_file", fileNameProperty="image")
@@ -86,7 +86,7 @@ class Theme
         return $this->image;
     }
 
-    public function setImage(string $image): self
+    public function setImage(?string $image): self
     {
         $this->image = $image;
 
