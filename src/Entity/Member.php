@@ -33,13 +33,13 @@ class Member
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Il faut selectionner une photo, veuillez cliquer sur Parcourir")
      * @Assert\Length(max="255")
      */
     private string $picture = '';
 
     /**
      * @Vich\UploadableField(mapping="picture_file", fileNameProperty="picture")
+     * @Assert\NotBlank(message="Il faut selectionner une photo, veuillez cliquer sur Parcourir")
      * @Assert\File(
      * maxSize="2048000",
      * mimeTypes = {
@@ -63,7 +63,7 @@ class Member
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getName(): string
     {
         return $this->name;
     }
