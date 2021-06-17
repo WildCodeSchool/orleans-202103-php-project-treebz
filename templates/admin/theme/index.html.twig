@@ -12,7 +12,6 @@
                 <th>Name</th>
                 <th>Image</th>
                 <th>ColorText</th>
-                <th>StyleText</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -23,7 +22,6 @@
                 <td>{{ theme.name }}</td>
                 <td>{{ theme.image }}</td>
                 <td>{{ theme.colorText }}</td>
-                <td>{{ theme.styleText }}</td>
                 <td>
                     <a href="{{ path('theme_show', {'id': theme.id}) }}">show</a>
                     <a href="{{ path('theme_edit', {'id': theme.id}) }}">edit</a>
