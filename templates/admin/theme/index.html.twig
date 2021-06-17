@@ -1,39 +1,21 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Thème index{% endblock %}
+{% extends 'layout_admin.html.twig' %}
 
 {% block body %}
-    <h1>Thème index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Image</th>
-                <th>ColorText</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class="container">
         {% for theme in themes %}
-            <tr>
-                <td>{{ theme.id }}</td>
-                <td>{{ theme.name }}</td>
-                <td>{{ theme.image }}</td>
-                <td>{{ theme.colorText }}</td>
-                <td>
-                    <a href="{{ path('theme_show', {'id': theme.id}) }}">show</a>
-                    <a href="{{ path('theme_edit', {'id': theme.id}) }}">edit</a>
-                </td>
-            </tr>
+            <div class="card" style="width: 18rem;">
+                <img src="../uploads/{{ theme.image }}" class="card-img-top" alt="{{ theme.image }}">
+                <div class="card-body">
+                    <h1 class="card-title">{{ theme.name }}</h1>
+                    <p class="card-text">{{ theme.colorText }}</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <a href="{{ path('theme_show', {'id': theme.id}) }}" class="btn btn-primary">show</a>
+                    <a href="{{ path('theme_edit', {'id': theme.id}) }}" class="btn btn-primary">edit</a>
+                </div>
+            </div>
         {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
+            <h2>Aucun theme</h2>
         {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('theme_new') }}">Create new</a>
+        <a href="{{ path('theme_new') }}">Create new</a>{% endblock %}
+    </div>
 {% endblock %}
