@@ -18,7 +18,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class GameCreationController extends AbstractController
 {
-
     /**
     * @Route("/", name="index")
     */
