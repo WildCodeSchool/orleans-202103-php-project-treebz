@@ -40,14 +40,12 @@ class Member
     /**
      * @Vich\UploadableField(mapping="picture_file", fileNameProperty="picture")
      * @Assert\File(
-     * maxSize="5242880",
+     * maxSize="2048000",
      * mimeTypes = {
      *     "image/png",
      *     "image/jpeg",
      *     "image/jpg",
-     *     "image/gif",
-     *     "application/pdf",
-     *     "application/x-pdf"
+     *     "image/webp"
      * })
     * @var File
     */

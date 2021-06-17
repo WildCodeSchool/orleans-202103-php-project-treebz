@@ -27,16 +27,6 @@ class MemberType extends AbstractType
                 'required'     => false,
                 'allow_delete' => true, // not mandatory, default is true
                 'download_uri' => true, // not mandatory, default is true
-                'constraints' => [
-                    new File([
-                        'maxSize' => '5M',
-                        'mimeTypes' => [
-                            'image/jpeg',
-                            'image/gif',
-                            'image/png',
-                        ]
-                    ])
-                ]
             ]);
     }
 
