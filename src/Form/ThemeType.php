@@ -22,16 +22,6 @@ class ThemeType extends AbstractType
                 'required'      => false,
                 'allow_delete'  => true,
                 'download_uri' => true,
-                'constraints' => [
-                    new File([
-                        'maxSize' => '5M',
-                        'mimeTypes' => [
-                            'image/svg',
-                            'image/png',
-                            'image/webp'
-                        ]
-                    ])
-                ]
             ]);
     }
 
