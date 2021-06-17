@@ -4,6 +4,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
 @import "~bootstrap/scss/bootstrap";
 
+$min_width: 320px;
+$max_width: 1200px;
+$medium_font: 25px;
+$max_font: 72px;
+$min_font: 12px;
+$min_font2: 18px;
+$medium_font2: 35px;
+
 html {
     scroll-behavior: smooth;
 }
@@ -36,12 +44,12 @@ h6 {
         width: 30rem;
         max-width: 100%;
         padding: 0 10px;
-        height: 30px;
+        height: 20px;
         background: $primary;
         display: block;
         margin: auto;
         position: relative;
-        top: -15px;
+        top: -10px;
         z-index: -1;
     }
 }
@@ -103,3 +111,11 @@ h6 {
 }
 
 
+.create-button {
+    background-color: $secondary;
+    color: $dark;
+    font-weight: bold;
+    margin-bottom: $medium_font * 2;
+    margin-top: $medium_font * 2;
+    width: $space-2 * 25;
+}
