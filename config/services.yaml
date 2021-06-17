@@ -6,7 +6,8 @@
 parameters:
     upload_member_directory: '%kernel.project_dir%/public/uploads_member/'
 
-
+    mailer_from: '%env(resolve:MAILER_FROM_ADDRESS)%'
+    
 services:
     # default configuration for services in *this* file
     _defaults:
