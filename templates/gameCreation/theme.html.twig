@@ -1,64 +1,64 @@
 {% extends 'layout.html.twig' %}
 
 {% block stylesheets %}
-  {{ parent() }}
-  {{ encore_entry_link_tags('gamecreation') }}
+    {{ parent() }}
+    {{ encore_entry_link_tags('gamecreation') }}
 {% endblock %}
 
 {% block title %}
-  Treeb'Z | Créer votre jeu
+    Treeb'Z | Créer votre jeu
 {% endblock %}
 
 {% block body %}
-  <header>
-    <div class="jumbotron jumbotron-fluid mainTitle">
-      <div>
-        <h1 class="display-4 text-center py-5">
-          Créez votre jeu de famille
-        </h1>
-      </div>
-    </div>
-  </header>
-  <section class="mb-5 row">
-    <div>
-      <div class="containerStep">
-        <ul class="progressbar">
-          <li class="p-1">Choisissez le nom du jeu</li>
-          <li class="p-1">Teléchargez vos photos</li>
-          <li class="p-1 active">Prévisualisez votre jeu</li>
-          <li class="p-1">Le jeu sera livré bientôt</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-  <section>
-    <div class="container-fluid">
-      <div class="row mt-5">
-        <div class="col col-md-3 mt-5 p-4 chosenThemes">
-          <h2 class="text-uppercase text-center">
-            Thèmes sélectionnés
-          </h2>
+    <header>
+        <div class="jumbotron jumbotron-fluid mainTitle">
+            <div>
+                <h1 class="display-4 text-center py-5">
+                    Créez votre jeu de famille
+                </h1>
+            </div>
         </div>
-
-        <div class="col col-sm col-md-9 mt-5 p-4 viewThemes">
-          <h2 class="text-uppercase text-center">
-            Thèmes proposés
-          </h2>
-
-          <div class="my-5 d-flex justify-content-around">
-            {% for theme in themes %}
-              <div class="card bgElement cardTheme m-3 border-0 rounded">
-                <img src="{{ theme.image }}" alt="Treebz Theme" />
-                <div class="p-2 text-center bgElement">
-                  <a href="#" class="btn btn-primary rounded-end">
-                    Valider ce thème
-                  </a>
+    </header>
+    <section class="mb-5 row">
+        <div>
+            <div class="containerStep">
+                <ul class="progressbar">
+                    <li class="p-1">Choisissez le nom du jeu</li>
+                    <li class="p-1">Teléchargez vos photos</li>
+                    <li class="p-1 active">Prévisualisez votre jeu</li>
+                    <li class="p-1">Le jeu sera livré bientôt</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container-fluid">
+            <div class="row mt-5">
+                <div class="col col-md-3 mt-5 p-4 chosenThemes">
+                    <h2 class="text-uppercase text-center">
+                        Thèmes sélectionnés
+                    </h2>
                 </div>
-              </div>
-            {% endfor %}
-          </div>
+
+                <div class="col col-sm col-md-9 mt-5 p-4 viewThemes">
+                    <h2 class="text-uppercase text-center">
+                        Thèmes proposés
+                    </h2>
+
+                    <div class="my-5 d-flex justify-content-around">
+                        {% for theme in themes %}
+                            <div class="card bgElement cardTheme m-3 border-0 rounded">
+                                <img src="{{ theme.image }}" alt="Treebz Theme"/>
+                                <div class="p-2 text-center bgElement">
+                                    <a href="#" class="btn btn-primary rounded-end">
+                                        Valider ce thème
+                                    </a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 {% endblock %}
