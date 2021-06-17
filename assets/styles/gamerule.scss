@@ -1,5 +1,6 @@
 @import 'variables.scss';
 @import "~bootstrap/scss/bootstrap";
+@import "./assets/styles/app.scss";
 
 p {
     font-size: 1.3em;
@@ -15,4 +16,8 @@ p {
 
 .dialogue {
     color: $primary;
+}
+
+.sub-title:hover {
+    color: $dark;
 }
