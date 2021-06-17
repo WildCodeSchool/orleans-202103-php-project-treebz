@@ -1,21 +1,36 @@
 {% extends 'layout_admin.html.twig' %}
 
+{% block stylesheets %}
+{{ parent() }}
+{{ encore_entry_link_tags('indexTheme') }}
+{% endblock %}
+
 {% block body %}
+    <div class="d-flex justify-content-end m-5">
+        <a href="{{ path('theme_new') }}" class="btn btn-secondary">Ajouter</a>
+    </div>
     <div class="container">
         {% for theme in themes %}
-            <div class="card" style="width: 18rem;">
-                <img src="../uploads/{{ theme.image }}" class="card-img-top" alt="{{ theme.image }}">
-                <div class="card-body">
-                    <h1 class="card-title">{{ theme.name }}</h1>
-                    <p class="card-text">{{ theme.colorText }}</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    <a href="{{ path('theme_show', {'id': theme.id}) }}" class="btn btn-primary">show</a>
-                    <a href="{{ path('theme_edit', {'id': theme.id}) }}" class="btn btn-primary">edit</a>
+            <div class="card flex-row col-12 bg-secondary mb-5 mt-4 p-3">
+                <div class="col-3 d-flex align-items-center">
+                    <img src="../uploads/{{ theme.image }}" class="card-img-top imageTheme" alt="{{ theme.image }}">
+                </div>
+                <div class="col-5 col-sm-10 card-body">
+                        <h1 class="card-title d-flex justify-content-center">{{ theme.name }}</h1>
+                        <p class="card-text d-flex justify-content-center">{{ theme.colorText }}</p>
+                </div>
+                <div class="col-4 col-sm-2 d-flex justify-content-center flex-column">
+                    <div class="d-flex justify-content-end justify-content-sm-center align-items-center">
+                        <a href="{{ path('theme_edit', {'id': theme.id}) }}" class="btn btn-light col-6">Modifier</a>
+                    </div>
+                    <div class="d-flex justify-content-end justify-content-sm-center mt-2 mt-sm-3">
+                        {{ include('admin/theme/_delete_form.html.twig') }}
+                    </div>
                 </div>
             </div>
         {% else %}
             <h2>Aucun theme</h2>
         {% endfor %}
-        <a href="{{ path('theme_new') }}">Create new</a>{% endblock %}
     </div>
 {% endblock %}
+
