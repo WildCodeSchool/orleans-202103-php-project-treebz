@@ -14,19 +14,31 @@
                         <a class="nav-link active" href="#">CRÉEZ UN JEU</a>
                     </li>
                     <li class="nav-item m-1">
-                        <a class="nav-link active" href="#">CONTACT</a>
+                        <a class="nav-link active" href="/contact">CONTACT</a>
                     </li>
                 </ul>
                 <form class="d-flex align-items-center">
+                    {% if app.user %}
+                        {{ app.user.email }}
+                    {% else %}
+                    {% endif %}
                     <div class="nav-item dropdown">
                         <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Mon compte
                         </a>
                         <ul class="dropdown-menu dropdown-menu-md-end" aria-labelledby="navbarDropdown">
+                            {% if app.user %}
+                                <a class="dropdown-item" href="{{ path('app_logout') }}">Déconnexion</a>
+                            {% else %}
+                                <a class="dropdown-item" href="{{ path('app_login') }}">Connexion</a>
+                            {% endif %}
+                            {% if app.user %}
                             <li><a class="dropdown-item" href="#">Compte</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="#">Création en cours</a></li>
                             <li><a class="dropdown-item" href="#">Historique des commandes</a></li>
+                            {% else %}
+                            {% endif %}
                         </ul>
                     </div>
                 </form>
