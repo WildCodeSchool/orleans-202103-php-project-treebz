@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\CommandRepository;
+use App\Form\CommandType;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 

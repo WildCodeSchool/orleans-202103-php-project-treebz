@@ -44,6 +44,8 @@ Encore
 
     .addStyleEntry('newTheme', './assets/styles/admin/newTheme.scss')
 
+    .addStyleEntry('contact', './assets/styles/contact/contact.scss')
+
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')
 
