@@ -11,3 +11,7 @@ vich_uploader:
               uri_prefix: /images/pictures
               # Chemin vers le dossier de stockage
               upload_destination: '%upload_member_directory%'
+
+        image_file:
+                uri_prefix: /images/theme
+                upload_destination: '%upload_directory%'
