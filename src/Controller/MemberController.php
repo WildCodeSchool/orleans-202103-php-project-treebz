@@ -35,6 +35,7 @@ class MemberController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $member->setName(strtoupper($member->getname()));
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($member);
             $entityManager->flush();
