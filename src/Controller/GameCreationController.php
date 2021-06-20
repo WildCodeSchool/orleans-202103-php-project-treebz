@@ -55,16 +55,12 @@ class GameCreationController extends AbstractController
         $form = $this->createForm(SelectThemesType::class, $command);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() /* && $form->isValid() */) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($command);
             $entityManager->flush();
             // Redirection to the same page
             return $this->redirect($request->getUri());
-        } /* elseif ($form->isSubmitted() && !$form->isValid()) {
-            dd($form->getErrors());
-        } */
-
-        return $this->render('gameCreation/theme.html.twig', [
+        } return $this->render('gameCreation/theme.html.twig', [
             'themes' => $themeRepository->findAll(),
             'command' => $command,
             'form' => $form->createView(),
