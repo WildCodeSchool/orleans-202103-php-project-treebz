@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -35,13 +35,15 @@ Treeb'Z | Créer votre jeu
     <section>
         <div class="container-fluid">
             <div class="row mt-5">
-                <div class="col col-sm col-md-3 mt-5 p-4 chosenThemes">
-                    <h2 class="text-uppercase text-center">Membres Créés</h2>
-                    <ul>
-                        {% for member in members %}
-                            <li>{{ loop.index }}. {{ member.name }}</li>
-                        {% endfor %}
-                    </ul>
+                <div class="col col-sm col-md-3 mt-5 p-4 chosenThemes d-flex flex-column justify-content-between">
+                    <div>
+                        <h2 class="text-uppercase text-center">Membres Créés</h2>
+                        <ul>
+                            {% for member in members %}
+                                <li>{{ loop.index }}. {{ member.name }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
                     <div class="my-5 text-end">
                         <button type='submit' class="text-uppercase create-button p-3 fw-bold fs-5 w-100">Choisissez votre thème
                         <img src="{{ asset('build/images/arrow-right.svg') }}" class="ms-5 d-none d-lg-inline-block"></button>
