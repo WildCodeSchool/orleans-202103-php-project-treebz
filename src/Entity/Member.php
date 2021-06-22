@@ -35,9 +35,10 @@ class Member
      * @ORM\Column(type="string", length=255)
      * @Assert\Length(max="255")
      */
-    private string $picture = '';
+    private ?string $picture = null;
 
     /**
+     * @Assert\NotNull()
      * @Vich\UploadableField(mapping="picture_file", fileNameProperty="picture")
      * @Assert\File(
      * maxSize="2048000",
@@ -79,7 +80,7 @@ class Member
         return $this->picture;
     }
 
-    public function setPicture(string $picture): self
+    public function setPicture(?string $picture): self
     {
         $this->picture = $picture;
         return $this;
