@@ -1,0 +1,27 @@
+@import '../variables.scss';
+
+.imageTheme {
+    width: 80%;
+    height: auto;
+}
+
+.btn-light {
+    width: 120px;
+}
+
+.btn-secondary {
+    background-color: $secondary;
+    border: none;
+    padding: $space-2 $space-4;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.3em;
+    color: $dark;
+    transition-duration: 0.1s;
+    width: 18rem;
+
+    &:hover {
+        background-color: lighten($secondary, 5%);
+    }
+}
