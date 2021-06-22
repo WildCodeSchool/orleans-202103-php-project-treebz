@@ -105,6 +105,13 @@ class Theme
         return $this;
     }
 
+    public function setUpdatedAt(DateTime $date): self
+    {
+        $this->updatedAt = $date;
+
+        return $this;
+    }
+
     public function setPictureFile(File $image): self
     {
         $this->pictureFile = $image;
