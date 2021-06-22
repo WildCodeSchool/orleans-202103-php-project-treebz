@@ -11,7 +11,8 @@ vich_uploader:
               uri_prefix: /images/pictures
               # Chemin vers le dossier de stockage
               upload_destination: '%upload_member_directory%'
-
+              namer: Vich\UploaderBundle\Naming\SmartUniqueNamer # or any other namer listed above
+              
         image_file:
                 uri_prefix: /images/theme
                 upload_destination: '%upload_directory%'
@@ -19,3 +20,4 @@ vich_uploader:
                 inject_on_load: false
                 delete_on_update: true
                 delete_on_remove: true
+   
