@@ -15,3 +15,7 @@ vich_uploader:
         image_file:
                 uri_prefix: /images/theme
                 upload_destination: '%upload_directory%'
+
+                inject_on_load: false
+                delete_on_update: true
+                delete_on_remove: true
