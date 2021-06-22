@@ -84,6 +84,7 @@ class Member
     public function setPicture(?string $picture): self
     {
         $this->picture = $picture;
+        $this->updatedAt = new DateTime('now');
         return $this;
     }
 
