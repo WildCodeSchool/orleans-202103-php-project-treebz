@@ -40,6 +40,7 @@ class Member
     /**
      * @Assert\NotNull()
      * @Vich\UploadableField(mapping="picture_file", fileNameProperty="picture")
+     * @Assert\NotBlank(message="Il faut selectionner une photo, veuillez cliquer sur Parcourir")
      * @Assert\File(
      * maxSize="2048000",
      * mimeTypes = {
@@ -63,7 +64,7 @@ class Member
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getName(): string
     {
         return $this->name;
     }

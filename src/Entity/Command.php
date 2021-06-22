@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\CommandRepository;
 use App\Form\CommandType;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -26,6 +28,16 @@ class Command
      */
     private string $projectName;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Theme::class, inversedBy="commands")
+    */
+    private Collection $selectedThemes;
+
+    public function __construct()
+    {
+        $this->selectedThemes = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -39,6 +51,30 @@ class Command
     public function setProjectName(string $projectName): self
     {
         $this->projectName = $projectName;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Theme[]
+     */
+    public function getSelectedThemes(): Collection
+    {
+        return $this->selectedThemes;
+    }
+
+    public function addSelectedTheme(Theme $selectedTheme): self
+    {
+        if (!$this->selectedThemes->contains($selectedTheme)) {
+            $this->selectedThemes[] = $selectedTheme;
+        }
+
+        return $this;
+    }
+
+    public function removeSelectedTheme(Theme $selectedTheme): self
+    {
+        $this->selectedThemes->removeElement($selectedTheme);
 
         return $this;
     }
