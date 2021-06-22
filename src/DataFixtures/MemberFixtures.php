@@ -7,11 +7,9 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 
-const NB_FIXTURES = 6;
-
 class MemberFixtures extends Fixture
 {
-
+    private const NB_FIXTURES = 6;
 
     public function load(ObjectManager $manager)
     {
