@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ThemeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\File;
@@ -64,6 +66,16 @@ class Theme
      */
     private $updatedAt;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Command::class, mappedBy="selectedThemes")
+     */
+    private Collection $commands;
+
+    public function __construct()
+    {
+        $this->commands = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -113,6 +125,33 @@ class Theme
     public function setColorText(string $colorText): self
     {
         $this->colorText = $colorText;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Command[]
+     */
+    public function getCommands(): Collection
+    {
+        return $this->commands;
+    }
+
+    public function addCommand(Command $command): self
+    {
+        if (!$this->commands->contains($command)) {
+            $this->commands[] = $command;
+            $command->addSelectedTheme($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommand(Command $command): self
+    {
+        if ($this->commands->removeElement($command)) {
+            $command->removeSelectedTheme($this);
+        }
 
         return $this;
     }
