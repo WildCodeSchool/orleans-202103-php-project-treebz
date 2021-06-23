@@ -57,7 +57,7 @@
                             {% set index = selecttheme.vars.value %}
                             {% set entity = form.selectedThemes.vars.choices[index].data %}
                             <div class="card bgElement cardTheme m-3 border-0 rounded text-center">
-                                <img src="{{ entity.image }}" alt="Treebz Card">
+                                <img src="/uploads/{{ entity.image }}" alt="Treebz Card">
 
                                 <div class="containerCheck h4 m-3">
                                     {{ form_label(selecttheme) }}
