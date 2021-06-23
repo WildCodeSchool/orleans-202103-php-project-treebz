@@ -18,7 +18,13 @@
 	</head>
 	<body>
 		{% block navbar %}{% endblock %}
-
+		{% for category, messages in app.flashes %}
+			{% for message in messages %}
+				<div class="alert alert-{{ category }} text-center">
+					{{ message }}
+				</div>
+			{% endfor %}
+		{% endfor %}
 		{% block body %}{% endblock %}
 		<footer>
 		{% block footer %}{% endblock %}

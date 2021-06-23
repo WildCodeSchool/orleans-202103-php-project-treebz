@@ -20,8 +20,8 @@ class ThemeType extends AbstractType
             ->add('colorText', ColorType::class, ['label' => 'Couleur du texte'])
             ->add('pictureFile', VichFileType::class, [
                 'required'      => false,
-                'allow_delete'  => true,
-                'download_uri' => true,
+                'allow_delete'  => false,
+                'download_uri' => false,
             ]);
     }
 

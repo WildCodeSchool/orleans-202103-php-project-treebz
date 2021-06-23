@@ -18,10 +18,19 @@
 
 .col-form-label {
     text-align: right;
+    
+}
+
+.contact-form {
+    width: 500px;
 }
 
 @media screen and (max-width: 576px) {
     .col-form-label {
         text-align: left;
+    }
+
+    .contact-form {
+        width: 300px;
     }
 }
