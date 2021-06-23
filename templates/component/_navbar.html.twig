@@ -16,6 +16,11 @@
                     <li class="nav-item m-1">
                         <a class="nav-link active" href="/contact">CONTACT</a>
                     </li>
+                    {% if is_granted("ROLE_ADMIN") %}
+                        <li class="nav-item m-1">
+                            <a class="nav-link active text-light" href="{{ path('admin_home') }}">ADMINISTRATIF</a>
+                        </li>
+                    {% endif %}
                 </ul>
                 <form class="d-flex align-items-center">
                     {% if app.user %}
