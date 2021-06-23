@@ -67,32 +67,46 @@ class MemberController extends AbstractController
      */
     public function edit(Request $request, Member $member): Response
     {
+        $commandId = 0;
         $form = $this->createForm(MemberType::class, $member);
         $form->handleRequest($request);
+
+        /**
+         * @var Command
+         */
+        $command = $member->getCommand();
+        $commandId = $command->getId();
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('member_index');
+            return $this->redirectToRoute('member_index', ['command' => $commandId]);
         }
-
         return $this->render('member/edit.html.twig', [
             'member' => $member,
+            'command' => $commandId,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/delete/{command<^[0-9]+$>}/{delete<^[0-9]+$>}}", name="member_delete", methods={"GET","POST"})
+     * @Route("/{id}", name="member_delete", methods={"POST"})
      */
-    public function delete(Command $command, Request $request, Member $member): Response
+    public function delete(Request $request, Member $member): Response
     {
+        $commandId = 0;
         if ($this->isCsrfTokenValid('delete' . $member->getId(), $request->request->get('_token'))) {
+
+            /**
+             * @var Command
+             */
+            $command = $member->getCommand();
+            $commandId = $command->getId();
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($member);
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('member_index', ['command' => $command->getId()]);
+        return $this->redirectToRoute('member_index', ['command' => $commandId]);
     }
 }
