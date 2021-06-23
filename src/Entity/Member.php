@@ -35,10 +35,12 @@ class Member
      * @ORM\Column(type="string", length=255)
      * @Assert\Length(max="255")
      */
-    private string $picture = '';
+    private ?string $picture = null;
 
     /**
+     * @Assert\NotNull()
      * @Vich\UploadableField(mapping="picture_file", fileNameProperty="picture")
+     * @Assert\NotBlank(message="Il faut selectionner une photo, veuillez cliquer sur Parcourir")
      * @Assert\File(
      * maxSize="2048000",
      * mimeTypes = {
@@ -62,7 +64,7 @@ class Member
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getName(): string
     {
         return $this->name;
     }
@@ -79,9 +81,10 @@ class Member
         return $this->picture;
     }
 
-    public function setPicture(string $picture): self
+    public function setPicture(?string $picture): self
     {
         $this->picture = $picture;
+        $this->updatedAt = new DateTime('now');
         return $this;
     }
 

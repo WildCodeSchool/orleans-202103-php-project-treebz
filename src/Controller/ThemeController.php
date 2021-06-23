@@ -49,16 +49,6 @@ class ThemeController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="theme_show", methods={"GET"})
-     */
-    public function show(Theme $theme): Response
-    {
-        return $this->render('admin/theme/show.html.twig', [
-            'theme' => $theme,
-        ]);
-    }
-
-    /**
      * @Route("/{id}/edit", name="theme_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Theme $theme): Response

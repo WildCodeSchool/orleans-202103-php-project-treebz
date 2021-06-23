@@ -34,31 +34,60 @@
     <section>
         <div class="container-fluid">
             <div class="row mt-5">
-                <div class="col col-md-3 mt-5 p-4 chosenThemes">
-                    <h2 class="text-uppercase text-center">
-                        Thèmes sélectionnés
-                    </h2>
-                </div>
 
                 <div class="col col-sm col-md-9 mt-5 p-4 viewThemes">
                     <h2 class="text-uppercase text-center">
                         Thèmes proposés
                     </h2>
 
+                    {{ form_start(form) }}
+                    <div class="text-center m-5">
+                        <input type="submit" class="btn btn-primary rounded-end fw-bold" value="Valider les thèmes sélectionnés">
+                    </div>
+
+                    {% if form_errors(form.selectedThemes) is not empty %}
+                        <div class="alert alert-danger">
+                            <span class="fw-bold">Attention:</span>
+                            {{ form_errors(form.selectedThemes, {'attr': {'role': 'alert'}}) }}
+                        </div>
+                    {% endif %}
+
                     <div class="my-5 d-flex justify-content-around">
-                        {% for theme in themes %}
-                            <div class="card bgElement cardTheme m-3 border-0 rounded">
-                                <img src="{{ theme.image }}" alt="Treebz Theme"/>
-                                <div class="p-2 text-center bgElement">
-                                    <a href="#" class="btn btn-primary rounded-end">
-                                        Valider ce thème
-                                    </a>
+                        {% for selecttheme in form.selectedThemes %}
+                            {% set index = selecttheme.vars.value %}
+                            {% set entity = form.selectedThemes.vars.choices[index].data %}
+                            <div class="card bgElement cardTheme m-3 border-0 rounded text-center">
+                                <img src="{{ entity.image }}" alt="Treebz Card">
+
+                                <div class="containerCheck h4 m-3">
+                                    {{ form_label(selecttheme) }}
+                                    {{ form_widget(selecttheme, {'attr': {'class': 'checkbox'}}) }}
                                 </div>
                             </div>
                         {% endfor %}
                     </div>
                 </div>
+                {{ form_end(form) }}
+                <div class="col col-md-3 mt-md-5 p-4 chosenThemes d-flex flex-column">
+
+                    <h2 class="text-uppercase text-center mb-4">
+                        Thèmes sélectionnés
+                    </h2>
+                    <div class="mb-5">
+
+                        <ul class="list-group text-center">
+                            {% for theme in command.selectedThemes %}
+                                <li class="list-group-item m-2 fw-bold">{{ theme.name }}</li>
+                            {% endfor %}
+                            <div class="justify-content-end">
+                                <a href="" class="btn btn-primary rounded-end fw-bold mt-5">Passer la commande
+                                    <img src="{{ asset('build/images/arrow-right.svg') }}" class="ms-5 d-none d-lg-inline-block">
+                                </a>
+                            </div>
+                        </div>
+                    </ul>
+                </div>
             </div>
         </div>
-    </section>
-{% endblock %}
+    </div>
+</div></section>{% endblock %}

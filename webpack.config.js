@@ -44,6 +44,8 @@ Encore
 
     .addStyleEntry('newTheme', './assets/styles/admin/newTheme.scss')
 
+    .addStyleEntry('indexTheme', './assets/styles/admin/indexTheme.scss')
+
     .addStyleEntry('connexion', './assets/styles/connexion/connexion.scss')
 
     .addStyleEntry('contact', './assets/styles/contact/contact.scss')

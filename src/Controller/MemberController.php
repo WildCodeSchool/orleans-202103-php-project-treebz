@@ -11,8 +11,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/member")
- */
+* @Route("/creez-votre-jeu/member")
+*/
 class MemberController extends AbstractController
 {
     /**
@@ -35,6 +35,7 @@ class MemberController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $member->setName(strtoupper($member->getname()));
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($member);
             $entityManager->flush();
