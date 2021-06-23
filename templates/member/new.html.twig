@@ -34,23 +34,23 @@ Treeb'Z | Créer votre jeu
         </div>
     </section>
     <section class="titleDeco">
-        <div class= "text-left offset-lg-3 col-lg-6 offset-md-2 col-md-8 offset-1 col-10">
-            <h2 class="display-6 text-center py-5" id="reglesFamille">
-                Création d'un membre <br> du jeu de 7 familles
-            </h2>
-            <div class="justify-content-center mb-3 mt-3 p-2">
-                {{ form_start(form) }}
-                    <div class="fw-bold mt-5">
-                        <div class="mb-4">{{ form_row(form.name) }}</div>
-                        <div class="mb-4">{{ form_row(form.pictureFile) }}</div>
-                    </div>
-                    <div class="d-flex justify-content-end">
-                        <button class="btn btn-primary m-4">Envoyer</button>
-                    </div>
-                {{ form_end(form) }}
-            </div>
-            <div class="m-5">
-                <a href="{{ path('member_index') }}">Revenir à l'étape 2</a>
+        <div class= "text-left offset-md-2 col-md-8 col-12 bg-secondary">
+            <div class="m-md-5">
+                <h2 class="display-6 text-center py-5" id="reglesFamille">
+                NOUVEAU MEMBRE
+                </h2>
+                <div class="justify-content-center mb-3 mt-3 p-2">
+                    {{ form_start(form) }}
+                        <div class="fw-bold mt-5">
+                            <div class="mb-4">{{ form_row(form.name) }}</div>
+                            <div class="mb-4">{{ form_row(form.pictureFile) }}</div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="{{ path('member_index', {'command': command.id}) }}">Revenir à l'étape 2</a>
+                            <button class="btn btn-primary m-4">Envoyer</button>
+                        </div>
+                    {{ form_end(form) }}
+                </div>
             </div>
         </div>
     </section>

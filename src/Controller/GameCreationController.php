@@ -35,7 +35,7 @@ class GameCreationController extends AbstractController
             $entityManager->flush();
             // Redirection to the second step page
 
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('member_index', ['command' => $commandForm->getId()]);
         }
 
         return $this->render('gameCreation/index.html.twig', ["form" => $form->createView(),]);
