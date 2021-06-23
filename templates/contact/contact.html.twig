@@ -1,5 +1,5 @@
 {% extends 'layout.html.twig' %}
-{% form_theme form 'bootstrap_4_horizontal_layout.html.twig' %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
 
 {% block title %}Treeb'Z | Contact{% endblock %}
 {% block stylesheets %}
@@ -18,7 +18,7 @@
                 <div class="contact-form justify-content-center p-2">
                     {{ form_start(form) }}
                         <div class="fw-bold mt-5">
-                            <div class="mb-4">{{ form_row(form.firstname) }}</div>
+                            <div class="mb-4 ">{{ form_row(form.firstname) }}</div>
                             <div class="mb-4">{{ form_row(form.lastname) }}</div>
                             <div class="mb-4">{{ form_row(form.email) }}</div>
                             <div class="mb-4">{{ form_row(form.object) }}</div>
