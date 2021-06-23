@@ -116,4 +116,12 @@ h6 {
     margin-bottom: $medium_font * 2;
     margin-top: $medium_font * 2;
     width: $space-2 * 25;
+    text-transform: uppercase;
+    font-weight: bold;
+
+    &:hover {
+        background-color: lighten($secondary, 10%);
+        color: $dark;
+    }
 }
+
