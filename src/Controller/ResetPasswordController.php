@@ -19,7 +19,7 @@ use SymfonyCasts\Bundle\ResetPassword\Exception\ResetPasswordExceptionInterface;
 use SymfonyCasts\Bundle\ResetPassword\ResetPasswordHelperInterface;
 
 /**
- * @Route("/reset-password")
+ * @Route("/reinitializer_votre_mot_de_passe")
  */
 class ResetPasswordController extends AbstractController
 {
@@ -49,7 +49,7 @@ class ResetPasswordController extends AbstractController
             );
         }
 
-        return $this->render('reset_password/request.html.twig', [
+        return $this->render('security/reset_password/request.html.twig', [
             'requestForm' => $form->createView(),
         ]);
     }
@@ -57,7 +57,7 @@ class ResetPasswordController extends AbstractController
     /**
      * Confirmation page after a user has requested a password reset.
      *
-     * @Route("/check-email", name="app_check_email")
+     * @Route("/email", name="app_check_email")
      */
     public function checkEmail(): Response
     {
@@ -68,7 +68,7 @@ class ResetPasswordController extends AbstractController
             $resetToken = $this->resetPasswordHelper->generateFakeResetToken();
         }
 
-        return $this->render('reset_password/check_email.html.twig', [
+        return $this->render('security/reset_password/check_email.html.twig', [
             'resetToken' => $resetToken,
         ]);
     }
@@ -76,7 +76,7 @@ class ResetPasswordController extends AbstractController
     /**
      * Validates and process the reset URL that the user clicked in their email.
      *
-     * @Route("/reset/{token}", name="app_reset_password")
+     * @Route("/reinitialiser/{token}", name="app_reset_password")
      */
     public function reset(
         Request $request,
@@ -131,7 +131,7 @@ class ResetPasswordController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
-        return $this->render('reset_password/reset.html.twig', [
+        return $this->render('security/reset_password/reset.html.twig', [
             'resetForm' => $form->createView(),
         ]);
     }
@@ -166,7 +166,7 @@ class ResetPasswordController extends AbstractController
             ->from(new Address('wilder@wildcodeschool.fr', 'Treeb\'z'))
             ->to($user->getEmail())
             ->subject('Your password reset request')
-            ->htmlTemplate('reset_password/email.html.twig')
+            ->htmlTemplate('security/reset_password/email.html.twig')
             ->context([
                 'resetToken' => $resetToken,
             ]);
