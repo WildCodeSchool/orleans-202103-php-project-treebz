@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ThemeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\File;
@@ -11,7 +13,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=ThemeRepository::class)
- * @ORM\Entity(repositoryClass="App\Repository\ProgramRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\ThemeRepository")
  * @Vich\Uploadable
  */
 class Theme
@@ -35,7 +37,7 @@ class Theme
      * @Assert\Length(max="500")
      * @var string
      */
-    private string $image = "";
+    private ?string $image = "";
 
     /**
      * @Vich\UploadableField(mapping="image_file", fileNameProperty="image")
@@ -64,6 +66,16 @@ class Theme
      */
     private $updatedAt;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Command::class, mappedBy="selectedThemes")
+     */
+    private Collection $commands;
+
+    public function __construct()
+    {
+        $this->commands = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,9 +98,16 @@ class Theme
         return $this->image;
     }
 
-    public function setImage(string $image): self
+    public function setImage(?string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function setUpdatedAt(DateTime $date): self
+    {
+        $this->updatedAt = $date;
 
         return $this;
     }
@@ -113,6 +132,33 @@ class Theme
     public function setColorText(string $colorText): self
     {
         $this->colorText = $colorText;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Command[]
+     */
+    public function getCommands(): Collection
+    {
+        return $this->commands;
+    }
+
+    public function addCommand(Command $command): self
+    {
+        if (!$this->commands->contains($command)) {
+            $this->commands[] = $command;
+            $command->addSelectedTheme($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommand(Command $command): self
+    {
+        if ($this->commands->removeElement($command)) {
+            $command->removeSelectedTheme($this);
+        }
 
         return $this;
     }
