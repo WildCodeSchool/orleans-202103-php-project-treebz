@@ -49,10 +49,7 @@ Encore
     .addStyleEntry('connexion', './assets/styles/connexion/connexion.scss')
 
     .addStyleEntry('contact', './assets/styles/contact/contact.scss')
-
-    .addStyleEntry('userAccount', './assets/styles/userAccount/userAccount.scss')
-
-    // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
+// enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
