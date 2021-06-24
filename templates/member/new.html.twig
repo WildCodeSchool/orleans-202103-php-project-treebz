@@ -25,10 +25,10 @@
         <div>
             <div class="containerStep">
                 <ul class="progressbar">
-                    <li class="p-1">Choisissez le nom du jeu</li>
-                    <li class="p-1 active">Teléchargez vos membres</li>
-                    <li class="p-1">Prévisualisez votre jeu</li>
-                    <li class="p-1">Le jeu sera livré bientôt</li>
+                    <li class="p-1 active">Choisissez le nom du jeu</li>
+                    <li class="p-1">Téléchargez vos photos</li>
+                    <li class="p-1">Choisissez vos thèmes</li>
+                    <li class="p-1">Confirmez votre commande</li>
                 </ul>
             </div>
         </div>
@@ -44,13 +44,11 @@
                     <div class="mb-4">{{ form_row(form.name) }}</div>
                     <div class="mb-4">{{ form_row(form.pictureFile) }}</div>
                 </div>
-                <div class="d-flex justify-content-end">
+                <div class="d-flex justify-content-between align-items-center">
+                    <a href="{{ path('member_index', {'command': command.id}) }}">Revenir à l'étape 2</a>
                     <button class="btn btn-primary text-uppercase fw-bold m-4">Ajouter le membre</button>
                 </div>
                 {{ form_end(form) }}
-            </div>
-            <div>
-                <a href="{{ path('member_index') }}" class="btn create-button text-uppercase fw-bold w-25">Revenir à l'étape 2</a>
             </div>
         </div>
     </section>

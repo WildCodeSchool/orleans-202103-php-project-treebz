@@ -4,10 +4,13 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @UniqueEntity(fields={"email"}, message="Il y a déjà un compte avec cet email")
  */
 class User implements UserInterface
 {
@@ -20,6 +23,9 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\NotBlank()
+     * @Assert\Length(max="180")
+     * @Assert\Email()
      */
     private string $email;
 
@@ -34,12 +40,24 @@ class User implements UserInterface
      */
     private string $password;
 
+    /**
+     * @Assert\Type(type="App\Entity\UserDetail")
+     * @ORM\OneToOne(targetEntity=UserDetail::class, inversedBy="user", cascade={"persist", "remove"})
+     * @Assert\Valid()
+     */
+    private ?UserDetail $userDetail;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private bool $isVerified = false;
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getEmail(): ?string
+    public function getEmail(): string
     {
         return $this->email;
     }
@@ -113,5 +131,28 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getUserDetail(): ?UserDetail
+    {
+        return $this->userDetail;
+    }
+
+    public function setUserDetail(?UserDetail $userDetail): self
+    {
+        $this->userDetail = $userDetail;
+        return $this;
+    }
+
+    public function isVerified(): bool
+    {
+        return $this->isVerified;
+    }
+
+    public function setIsVerified(bool $isVerified): self
+    {
+        $this->isVerified = $isVerified;
+
+        return $this;
     }
 }

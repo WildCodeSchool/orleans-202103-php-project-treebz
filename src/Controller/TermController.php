@@ -8,6 +8,14 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class TermController extends AbstractController
 {
+    /*
+     * @Route("/protection-des-donnees", name="terms")
+     */
+    public function index(): Response
+    {
+        return $this->render('terms/policy.html.twig');
+    }
+  
     /**
      * @Route("/conditions-generales-dutilisation", name="termOfService")
      */
@@ -15,4 +23,5 @@ class TermController extends AbstractController
     {
         return $this->render('terms/termOfService.html.twig');
     }
+      
 }

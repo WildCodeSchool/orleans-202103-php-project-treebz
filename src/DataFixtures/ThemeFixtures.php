@@ -43,8 +43,8 @@ class ThemeFixtures extends Fixture
             $path = uniqid() . '.jpg';
 
             // Function to save image URL into file
-            copy($urlImage, 'public/uploads/themes/' . $path);
-            $imagePath = '/uploads/themes/' . $path;
+            copy($urlImage, 'public/uploads/' . $path);
+            $imagePath = $path;
             $theme->setImage($imagePath);
             $manager->persist($theme);
         }

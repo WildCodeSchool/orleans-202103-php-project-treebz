@@ -24,8 +24,8 @@
             <div class="containerStep">
                 <ul class="progressbar">
                     <li class="p-1 active">Choisissez le nom du jeu</li>
-                    <li class="p-1 active">Teléchargez vos photos</li>
-                    <li class="p-1">Prévisualisez votre jeu</li>
+                    <li class="p-1 active">Téléchargez vos photos</li>
+                    <li class="p-1">Choisissez vos thèmes</li>
                     <li class="p-1">Confirmez votre commande</li>
                 </ul>
             </div>
@@ -53,21 +53,21 @@
                         </div>
                     {% endif %}
 
-                    <div class="my-5 d-flex justify-content-around">
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-3 g-4 px-lg-5">
                         {% for selecttheme in form.selectedThemes %}
                             {% set index = selecttheme.vars.value %}
                             {% set entity = form.selectedThemes.vars.choices[index].data %}
-                            <div class="card bgElement cardTheme m-3 border-0 rounded text-center">
-                                <img src="{{ entity.image }}" alt="Treebz Card">
-
-                                <div class="containerCheck h4 m-3">
-                                    {{ form_label(selecttheme) }}
-                                    {{ form_widget(selecttheme, {'attr': {'class': 'checkbox'}}) }}
+                            <div class="col">
+                                <div class="card bgElement m-3 border-0 rounded text-center">
+                                    <img src="{{ asset('/uploads/' ~ entity.image) }}" alt="Treebz Card">
+                                    <div class="containerCheck h4 m-3">
+                                        {{ form_label(selecttheme) }}
+                                        {{ form_widget(selecttheme, {'attr': {'class': 'checkbox'}}) }}
+                                    </div>
                                 </div>
                             </div>
-                             {% else %}
-                                <h3 class="p-5">Pas de thèmes disponibles.
-                                </h3>
+                        {% else %}
+                            <p>Aucun thème disponible.</p>
                         {% endfor %}
                     </div>
                 </div>
