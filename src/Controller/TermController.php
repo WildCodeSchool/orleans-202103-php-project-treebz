@@ -13,8 +13,6 @@ class TermController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('terms/index.html.twig', [
-            'controller_name' => 'TermsController',
-        ]);
+        return $this->render('terms/index.html.twig');
     }
 }
