@@ -25,6 +25,10 @@ h1 {
     }
 }
 
+.buttonFont {
+    font-size: 1em;
+}
+
 .mainTitle {
     height: 15rem;
     background-color: $secondary;
@@ -127,10 +131,6 @@ h1 {
 
 .viewThemes {
     background-color: $element;
-}
-
-.cardTheme {
-    width: 15rem;
 }
 
 .bgElement {

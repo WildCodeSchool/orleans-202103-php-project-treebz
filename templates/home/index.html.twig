@@ -27,7 +27,7 @@
         <div class="row mx-0">
             <div class="col-md-5 col-12 d-flex align-items-start justify-content-center">
                 <div class="">
-                    <img class="card-image" src="{{ asset('build/images/cards.svg') }}" alt="Jeu des sept familles"/>
+                    <img class="card-image rounded" src="{{ asset('build/images/cards.png') }}" alt="Jeu des sept familles"/>
                 </div>
             </div>
             <div class="col-md-7 col-12 d-flex align-items-md-center align-items-start justify-content-center mx-0">
@@ -57,7 +57,7 @@
             </div>
         </div>
         <div class="d-grid gap-2 col-6 justify-content-center mx-auto">
-            <a href="" class="btn create-button mb-6 w-100 p-3" type="button">CRÉER LE JEU DE MA FAMILLE</a>
+            <a href="{{ path('gamecreation_index') }}" class="btn create-button mb-6 w-100 p-3" type="button">CRÉER LE JEU DE MA FAMILLE</a>
         </div>
         <div class="jumbotron jumbotron-fluid second-title d-flex align-items-center mx-0">
           <div class="container-fluid title-commitment col-8 offset-2">
