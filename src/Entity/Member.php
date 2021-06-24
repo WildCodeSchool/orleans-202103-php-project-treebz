@@ -59,6 +59,11 @@ class Member
      */
     private $updatedAt;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private ?int $number;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -120,6 +125,18 @@ class Member
     public function setUpdatedAt(Datetime $updatedAt)
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getNumber(): ?int
+    {
+        return $this->number;
+    }
+
+    public function setNumber(?int $number): self
+    {
+        $this->number = $number;
 
         return $this;
     }
