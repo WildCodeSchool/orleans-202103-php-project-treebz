@@ -44,7 +44,7 @@ class Command
         $this->members = new ArrayCollection();
     }
 
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->id;
     }
