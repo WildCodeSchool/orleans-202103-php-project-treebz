@@ -59,6 +59,11 @@ class Member
      */
     private $updatedAt;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Command::class, inversedBy="members")
+     */
+    private ?Command $command;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -121,6 +126,17 @@ class Member
     {
         $this->updatedAt = $updatedAt;
 
+        return $this;
+    }
+
+    public function getCommand(): ?Command
+    {
+        return $this->command;
+    }
+
+    public function setCommand(?Command $command): self
+    {
+        $this->command = $command;
         return $this;
     }
 }
