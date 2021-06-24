@@ -68,9 +68,9 @@
                                         {{ member.name }}</p>
                                     <img src="{{ vich_uploader_asset(member) }}" alt="{{ member.picture }}"/>
                                     <a href="{{ path('member_edit', {'id': member.id}) }}" class="btn btn-secondary btn-sm mt-2">Modifier</a>
-                                    <form method="post" action="{{ path('member_delete', {'id': member.id}) }}" onsubmit="return confirm(' Êtes vous sur de vouloir effacer ce membre?');">
+                                    <form method="post" action="{{ path('member_delete', {'id': member.id}) }}" onsubmit="return confirm(' Êtes vous sur de vouloir effacer ce membre ?');">
                                         <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ member.id) }}">
-                                        <button class="btn btn-danger btn-sm mt-2 w-100">Éffacer</button>
+                                        <button class="btn btn-danger btn-sm mt-2 w-100">Effacer</button>
                                     </form>
                                 </div>
                             {% else %}

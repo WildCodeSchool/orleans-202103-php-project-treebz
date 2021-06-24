@@ -27,15 +27,15 @@ class GameCreationController extends AbstractController
 
     public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
-        $commandForm = new Command();
-        $form = $this->createForm(CommandType::class, $commandForm);
+        $command = new Command();
+        $form = $this->createForm(CommandType::class, $command);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($commandForm);
+            $entityManager->persist($command);
             $entityManager->flush();
             // Redirection to the second step page
 
-            return $this->redirectToRoute('member_index', ['command' => $commandForm->getId()]);
+            return $this->redirectToRoute('member_index', ['command' => $command->getId()]);
         }
 
         return $this->render('gameCreation/index.html.twig', ["form" => $form->createView(),]);
