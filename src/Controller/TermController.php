@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class TermController extends AbstractController
 {
     /**
-     * @Route("/condition_generale_d\'utilisation", name="termOfService")
+     * @Route("/conditions-generales-dutilisation", name="termOfService")
      */
     public function termOfService(): Response
     {
