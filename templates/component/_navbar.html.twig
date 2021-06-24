@@ -21,19 +21,7 @@
                     {% if app.user %}
                         {{ app.user.email }}
                     {% endif %}
-                    {% if app.user == false %}
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item m-1">
-                                <a class="nav-link active" href="{{ path('app_login') }}">CONNEXION</a>
-                            </li>
-                            <li class="nav-item m-1">
-                                <span class="nav-link active"> / </span>
-                            </li>
-                            <li class="nav-item m-1">
-                                <a class="nav-link active" href="#">INSCRIPTION</a>
-                            </li>
-                        </ul>
-                    {% else %}
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                         <div class="nav-item dropdown">
                             <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Mon compte
@@ -46,6 +34,18 @@
                                 <li><a class="dropdown-item" href="#">Historique des commandes</a></li>
                             </ul>
                         </div>
+                    {% else %}
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item m-1">
+                                <a class="nav-link active" href="{{ path('app_login') }}">CONNEXION</a>
+                            </li>
+                            <li class="nav-item m-1">
+                                <span class="nav-link active"> / </span>
+                            </li>
+                            <li class="nav-item m-1">
+                                <a class="nav-link active" href="#">INSCRIPTION</a>
+                            </li>
+                        </ul>
                     {% endif %}
                 </form>
             </div>
