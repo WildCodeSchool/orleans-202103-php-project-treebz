@@ -77,7 +77,7 @@ class ResetPasswordController extends AbstractController
     /**
      * Validates and process the reset URL that the user clicked in their email.
      *
-     * @Route("/reinitialiser/{token}", name="app_reset_password")
+     * @Route("/{token}", name="app_reset_password")
      */
     public function reset(
         Request $request,
