@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block title %}
-Treeb'Z | Créer votre jeu
+    Treeb'Z | Créer votre jeu
 
 {% endblock %}
 
@@ -34,24 +34,25 @@ Treeb'Z | Créer votre jeu
         </div>
     </section>
     <section class="titleDeco">
-        <div class= "text-left offset-lg-3 col-lg-6 offset-md-2 col-md-8 offset-1 col-10">
-            <h2 class="display-6 text-center py-5" id="reglesFamille">
-                Création d'un membre <br> du jeu de 7 familles
+        <div class="text-left offset-lg-3 col-lg-6 offset-md-2 col-md-8 offset-1 col-10">
+            <h2 class="display-6 text-center py-5 text-uppercase" id="reglesFamille">
+                Ajouter un membre
             </h2>
             <div class="justify-content-center mb-3 mt-3 p-2">
                 {{ form_start(form) }}
-                    <div class="fw-bold mt-5">
-                        <div class="mb-4">{{ form_row(form.number) }}</div>
-                        <div class="mb-4">{{ form_row(form.name) }}</div>
-                        <div class="mb-4">{{ form_row(form.pictureFile) }}</div>
-                    </div>
-                    <div class="d-flex justify-content-end">
-                        <button class="btn btn-primary m-4">Envoyer</button>
-                    </div>
+                <div class="fw-bold mt-5">
+                    <div class="mb-4">{{ form_row(form.number) }}</div>
+                    <div class="mb-4">{{ form_row(form.name) }}</div>
+                    <div class="mb-4">{{ form_row(form.pictureFile) }}</div>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <button class="btn btn-primary text-uppercase fw-bold m-4">Ajouter le membre</button>
+                </div>
+
                 {{ form_end(form) }}
             </div>
-            <div class="m-5">
-                <a href="{{ path('member_index') }}">Revenir à l'étape 2</a>
+            <div>
+                <a href="{{ path('member_index') }}" class="btn create-button text-uppercase fw-bold w-25">Revenir à l'étape 2</a>
             </div>
         </div>
     </section>
