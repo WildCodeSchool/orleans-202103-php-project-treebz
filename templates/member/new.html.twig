@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block title %}
-Treeb'Z | Créer votre jeu
+    Treeb'Z | Créer votre jeu
 
 {% endblock %}
 
@@ -34,23 +34,21 @@ Treeb'Z | Créer votre jeu
         </div>
     </section>
     <section class="titleDeco">
-        <div class= "text-left offset-md-2 col-md-8 bg-secondary">
-            <div class="m-md-5">
-                <h2 class="display-6 text-center py-5" id="reglesFamille">
-                NOUVEAU MEMBRE
-                </h2>
-                <div class="justify-content-center mb-3 mt-3 p-2">
-                    {{ form_start(form) }}
-                        <div class="fw-bold mt-5">
-                            <div class="mb-4">{{ form_row(form.name) }}</div>
-                            <div class="mb-4">{{ form_row(form.pictureFile) }}</div>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <a href="{{ path('member_index', {'command': command.id}) }}">Revenir à l'étape 2</a>
-                            <button class="btn btn-primary m-4">Envoyer</button>
-                        </div>
-                    {{ form_end(form) }}
+        <div class="text-left offset-lg-3 col-lg-6 offset-md-2 col-md-8 offset-1 col-10">
+            <h2 class="display-6 text-center py-5 text-uppercase" id="reglesFamille">
+                Ajouter un membre
+            </h2>
+            <div class="justify-content-center mb-3 mt-3 p-2">
+                {{ form_start(form) }}
+                <div class="fw-bold mt-5">
+                    <div class="mb-4">{{ form_row(form.name) }}</div>
+                    <div class="mb-4">{{ form_row(form.pictureFile) }}</div>
                 </div>
+                <div class="d-flex justify-content-between align-items-center">
+                            <a href="{{ path('member_index', {'command': command.id}) }}">Revenir à l'étape 2</a>
+                            <button class="btn btn-primary text-uppercase fw-bold m-4">Ajouter le membre</button>
+                </div>
+                {{ form_end(form) }}
             </div>
         </div>
     </section>
