@@ -25,8 +25,8 @@
             <div class="containerStep">
                 <ul class="progressbar">
                     <li class="p-1 active">Choisissez le nom du jeu</li>
-                    <li class="p-1">Teléchargez vos photos</li>
-                    <li class="p-1">Prévisualisez votre jeu</li>
+                    <li class="p-1">Téléchargez vos photos</li>
+                    <li class="p-1">Choisissez vos thèmes</li>
                     <li class="p-1">Confirmez votre commande</li>
                 </ul>
             </div>
@@ -75,7 +75,7 @@
                                       <p class="card-title text-center mb-2">{{ member.name }}</p>
                                     <img class="h-50"src="{{ vich_uploader_asset(member) }}" alt="{{ member.picture }}"/>
                                     <a href="{{ path('member_edit', {'id': member.id}) }}" class="btn btn-secondary fw-bold mt-2 text-uppercase">Modifier</a>
-                                    <form method="post" action="{{ path('member_delete', {'id': member.id}) }}" onsubmit="return confirm(' Êtes vous sur de vouloir effacer ce membre ?');">
+                                    <form method="post" action="{{ path('member_delete', {'id': member.id}) }}" onsubmit="return confirm(' Êtes vous sur de vouloir supprimer ce membre ?');">
                                         <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ member.id) }}">
                                         <button class="btn btn-danger btn-sm mt-2 fw-bold w-100 text-uppercase buttonFont">Supprimer</button>
                                     </form>
