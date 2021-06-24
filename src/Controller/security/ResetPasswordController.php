@@ -19,7 +19,7 @@ use SymfonyCasts\Bundle\ResetPassword\Exception\ResetPasswordExceptionInterface;
 use SymfonyCasts\Bundle\ResetPassword\ResetPasswordHelperInterface;
 
 /**
- * @Route("/reinitializer_votre_mot_de_passe")
+ * @Route("/reinitialiser_votre_mot_de_passe")
  */
 class ResetPasswordController extends AbstractController
 {
@@ -77,7 +77,7 @@ class ResetPasswordController extends AbstractController
     /**
      * Validates and process the reset URL that the user clicked in their email.
      *
-     * @Route("/reinitialiser/{token}", name="app_reset_password")
+     * @Route("/{token}", name="app_reset_password")
      */
     public function reset(
         Request $request,
