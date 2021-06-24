@@ -18,6 +18,11 @@
                     </li>
                 </ul>
             </div>
+            <div class="d-flex align-items-center">
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    {{ app.user.email }}
+                {% endif %}
+            </div>
         </div>
     </nav>
 </section>
