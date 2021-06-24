@@ -38,6 +38,8 @@ Encore
 
     .addStyleEntry('home', './assets/styles/home/home.scss')
 
+    .addStyleEntry('card', './assets/styles/card/card.scss')
+
     .addStyleEntry('homeAdmin', './assets/styles/admin/homeAdmin.scss')
 
     .addStyleEntry('footer', './assets/styles/footer.scss')

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" type="image/png" href="{{ asset('build/images/treebz.png') }}"/>
+        <title>
+            {% block title %}Treeb'Z | Prévisualisation
+            {% endblock %}
+        </title>
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('card') }}
+        {% endblock %}
+    </head>
+    <body>
+        <div class="full-card d-flex justify-content-center">
+            <img src="" alt="card"/>
+            {% for member in members %}
+                <div class="member-photo">
+                    <img class="photo" src="{{ vich_uploader_asset(member) }}" alt="{{ member.picture }}"/>
+                </div>
+                <div class="member-name">
+                    <p>{{ member.name }}</p>
+                </div>
+                <div class="card-number">
+                    <span class="number">{{ loop.index }}</span>
+                </div>
+            {% endfor %}
+        </div>
+    </body>
+</html>
