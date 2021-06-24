@@ -28,12 +28,12 @@ a:hover {
     text-decoration: none;
 }
 
-h3 {
+footer h3 {
     color: $dark;
     transition: 0.3s;
     text-decoration: none;
 }
 
-h3:hover {
+footer h3:hover {
     color: lighten($light, 10%);
 }

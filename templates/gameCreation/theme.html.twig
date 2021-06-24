@@ -36,15 +36,16 @@
             <div class="row mt-5">
 
                 <div class="col col-sm col-md-9 mt-5 p-4 viewThemes">
-                    <h2 class="text-uppercase text-center">
-                        Thèmes proposés
-                    </h2>
+                    <div class="d-flex justify-content-between">
+                        <h2 class="ms-md-5 text-uppercase text-center fw-bold">
+                            Choisissez votre thèmes
+                        </h2>
 
-                    {{ form_start(form) }}
-                    <div class="text-center m-5">
-                        <input type="submit" class="btn btn-primary rounded-end fw-bold" value="Valider les thèmes sélectionnés">
+                        {{ form_start(form) }}
+                        <div class="text-center">
+                            <input type="submit" class="btn btn-primary text-uppercase fw-bold" value="Valider les thèmes sélectionnés">
+                        </div>
                     </div>
-
                     {% if form_errors(form.selectedThemes) is not empty %}
                         <div class="alert alert-danger">
                             <span class="fw-bold">Attention:</span>
@@ -73,17 +74,17 @@
                 {{ form_end(form) }}
                 <div class="col col-md-3 mt-md-5 p-4 chosenThemes d-flex flex-column">
 
-                    <h2 class="text-uppercase text-center mb-4">
+                    <h2 class="text-uppercase text-center mb-4 fw-bold">
                         Thèmes sélectionnés
                     </h2>
                     <div class="mb-5">
 
                         <ul class="list-group text-center">
                             {% for theme in command.selectedThemes %}
-                                <li class="list-group-item m-2 fw-bold">{{ theme.name }}</li>
+                                <li class="list-group-item m-2 fw-bold text-uppercase">{{ theme.name }}</li>
                             {% endfor %}
                             <div class="justify-content-end">
-                                <a href="" class="btn btn-primary rounded-end fw-bold mt-5">Passer la commande
+                                <a href="" class="btn btn-primary text-uppercase fw-bold fw-bold fs-5 w-100 mt-5">Passer la commande
                                     <img src="{{ asset('build/images/arrow-right.svg') }}" class="ms-5 d-none d-lg-inline-block">
                                 </a>
                             </div>
