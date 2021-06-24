@@ -12,9 +12,9 @@
 		{% endblock %}
 	</head>
 	<body>
-        <div class="full-card d-flex justify-content-center">
-            <img src="{{ asset('build/images/Annick part en voyage.webp') }}" alt="card"/>
-            {% for member in members %}
+		<div class="full-card d-flex justify-content-center">
+			<img src="" alt="card"/>
+			{% for member in members %}
 				<div class="member-photo">
 					<img class="photo" src="{{ vich_uploader_asset(member) }}" alt="{{ member.picture }}"/>
 				</div>
@@ -25,6 +25,6 @@
 					<span class="number">{{ loop.index }}</span>
 				</div>
 			{% endfor %}
-        </div>
+		</div>
 	</body>
 </html>
