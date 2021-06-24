@@ -1,0 +1,43 @@
+@import "./assets/styles/app.scss";
+
+.full-card {
+    position: relative;
+    z-index: 0;
+}
+
+.member-name {
+    position: absolute;
+    bottom: 0;
+    color: $light;
+    font-family: 'Chewy', cursive;
+}
+
+.member-photo {
+    position: absolute;
+    bottom: 80px;
+    z-index: -1;
+}
+
+.photo {
+    width: 230px;
+}
+
+.card-number {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 10px;
+    margin-left: 185px;
+    z-index: 1;
+    border-radius: 100%;
+    border: $light solid 2px;
+    color: $light;
+    height: $medium_font * 1;
+    width: $medium_font * 1;
+    text-align: center;
+}
+
+.number {
+    display: inline-block;
+}
+ 
