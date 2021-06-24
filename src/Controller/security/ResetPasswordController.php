@@ -128,7 +128,7 @@ class ResetPasswordController extends AbstractController
 
             // The session is cleaned up after the password has been changed.
             $this->cleanSessionAfterReset();
-            $this->addFlash('secondary', 'Votre mot de passe à bien été réinitialiser');
+            $this->addFlash('secondary', 'Votre mot de passe à bien été réinitialisé');
             return $this->redirectToRoute('app_login');
         }
 
@@ -163,10 +163,11 @@ class ResetPasswordController extends AbstractController
             return $this->redirectToRoute('app_check_email');
         }
 
+        $mailerFrom = $this->getParameter('mailer_from');
         $email = (new TemplatedEmail())
-            ->from(new Address('wilder@wildcodeschool.fr', 'Treeb\'z'))
+            ->from(new Address($mailerFrom, 'Treeb\'z'))
             ->to($user->getEmail())
-            ->subject('Your password reset request')
+            ->subject('Votre demande de réinitialisation de mot de passe')
             ->htmlTemplate('security/reset_password/email.html.twig')
             ->context([
                 'resetToken' => $resetToken,
