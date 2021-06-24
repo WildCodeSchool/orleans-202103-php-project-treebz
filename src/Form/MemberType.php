@@ -22,6 +22,13 @@ class MemberType extends AbstractType
                     'placeholder' => 'Grand-père, Grand-mère, Papa, ...',
                 ]
             ])
+            ->add('number', TextType::class, [
+                'label' => 'Numéro de la carte',
+                'attr' => [
+                    'required' => false,
+                    'placeholder' => '1',
+                ]
+            ])
             ->add('pictureFile', VichFileType::class, [
                 'label' => 'Chargement de l\'image',
                 'required'     => false,

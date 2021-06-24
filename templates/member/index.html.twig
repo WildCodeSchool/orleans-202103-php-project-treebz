@@ -64,7 +64,7 @@
                         <div class="card-deck d-flex justify-content-around flex-wrap">
                             {% for member in members %}
                                 <div class="card m-2 p-2 cardTheme d-flex">
-                                    <p class="card-title m-3">{{ loop.index }}.
+                                    <p class="card-title m-3">{{ member.number }}.
                                         {{ member.name }}</p>
                                     <img src="{{ vich_uploader_asset(member) }}" alt="{{ member.picture }}"/>
                                     <a href="{{ path('member_edit', {'id': member.id}) }}" class="btn btn-secondary btn-sm mt-2">Modifier</a>

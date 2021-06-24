@@ -18,6 +18,7 @@ class MemberFixtures extends Fixture
         for ($i = 0; $i < self::NB_FIXTURES; $i++) {
             $member = new Member();
             $member->setName('member' . $i);
+            $member->setNumber($i + 1);
             $image = $faker->image('public/uploads/members', 360, 360, 'animals', false, true, 'cats', true);
             $member->setPicture($image);
             $manager->persist($member);
