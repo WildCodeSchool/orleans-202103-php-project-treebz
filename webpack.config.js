@@ -38,6 +38,8 @@ Encore
 
     .addStyleEntry('home', './assets/styles/home/home.scss')
 
+    .addStyleEntry('card', './assets/styles/card/card.scss')
+
     .addStyleEntry('homeAdmin', './assets/styles/admin/homeAdmin.scss')
 
     .addStyleEntry('footer', './assets/styles/footer.scss')
@@ -49,8 +51,7 @@ Encore
     .addStyleEntry('connexion', './assets/styles/connexion/connexion.scss')
 
     .addStyleEntry('contact', './assets/styles/contact/contact.scss')
-
-    // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
+// enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.

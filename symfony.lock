@@ -136,6 +136,9 @@
     "friendsoftwig/twigcs": {
         "version": "v5.0.0"
     },
+    "fzaninotto/faker": {
+        "version": "v1.9.2"
+    },
     "gitonomy/gitlib": {
         "version": "v1.2.3"
     },
@@ -665,6 +668,9 @@
         "files": [
             "config/packages/reset_password.yaml"
         ]
+    },
+    "symfonycasts/verify-email-bundle": {
+        "version": "v1.5.0"
     },
     "twig/extra-bundle": {
         "version": "v3.3.0"

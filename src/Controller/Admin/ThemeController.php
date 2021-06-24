@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\Theme;
 use App\Form\ThemeType;
@@ -11,12 +11,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/theme")
+ * @Route("/admin/theme", name="theme_")
  */
 class ThemeController extends AbstractController
 {
     /**
-     * @Route("/", name="theme_index", methods={"GET"})
+     * @Route("/", name="index", methods={"GET"})
      */
     public function index(ThemeRepository $themeRepository): Response
     {
@@ -26,7 +26,7 @@ class ThemeController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="theme_new", methods={"GET","POST"})
+     * @Route("/nouveau_theme", name="new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -49,7 +49,7 @@ class ThemeController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="theme_edit", methods={"GET","POST"})
+     * @Route("/{id}/modification_de_theme", name="edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Theme $theme): Response
     {
@@ -69,7 +69,7 @@ class ThemeController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="theme_delete", methods={"POST"})
+     * @Route("/{id}", name="delete", methods={"POST"})
      */
     public function delete(Request $request, Theme $theme): Response
     {

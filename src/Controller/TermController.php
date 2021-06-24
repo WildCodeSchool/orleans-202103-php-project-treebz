@@ -1,21 +1,18 @@
 <?php
 
-namespace App\Controller\admin;
+namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/admin", name="admin_")
- */
-class HomeAdminController extends AbstractController
+class TermController extends AbstractController
 {
     /**
-     * @Route("/", name="home")
+     * @Route("/protection-des-donnees", name="terms")
      */
     public function index(): Response
     {
-        return $this->render('admin/index.html.twig');
+        return $this->render('terms/policy.html.twig');
     }
 }
