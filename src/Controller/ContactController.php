@@ -36,6 +36,8 @@ class ContactController extends AbstractController
             ->subject('Vous avez un nouveau message de la part d\'un utilisateur de Treeb\'Z.')
             ->html($this->renderView('contact/newContactEmail.html.twig', ['contact' => $contact]));
             $mailer->send($email);
+
+            $this->addFlash('secondary', 'Merci pour votre message, nous y répondrons le plus rapidement possible.');
             return $this->redirectToRoute('contact_send_message');
         }
 

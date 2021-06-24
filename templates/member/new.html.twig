@@ -1,15 +1,57 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 {% form_theme form 'bootstrap_4_layout.html.twig' %}
-{% block title %}Ajout de membres{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('gamecreation') }}
+{% endblock %}
+
+{% block title %}
+Treeb'Z | Créer votre jeu
+
+{% endblock %}
 
 {% block body %}
+    <header>
+        <div class="jumbotron jumbotron-fluid mainTitle ">
+            <div>
+                <h1 class="display-4 text-center py-5">
+                    Créez votre jeu de famille
+                </h1>
+            </div>
+        </div>
+    </header>
+    <section class="mb-5 row">
+        <div>
+            <div class="containerStep">
+                <ul class="progressbar">
+                    <li class="p-1">Choisissez le nom du jeu</li>
+                    <li class="p-1 active">Teléchargez vos membres</li>
+                    <li class="p-1">Prévisualisez votre jeu</li>
+                    <li class="p-1">Le jeu sera livré bientôt</li>
+                </ul>
+            </div>
+        </div>
+    </section>
     <section class="titleDeco">
         <div class= "text-left offset-lg-3 col-lg-6 offset-md-2 col-md-8 offset-1 col-10">
             <h2 class="display-6 text-center py-5" id="reglesFamille">
                 Création d'un membre <br> du jeu de 7 familles
             </h2>
-            {{ include('member/_form.html.twig') }}
-            <a href="{{ path('member_index') }}">Revenir à l'étape 2</a>
+            <div class="justify-content-center mb-3 mt-3 p-2">
+                {{ form_start(form) }}
+                    <div class="fw-bold mt-5">
+                        <div class="mb-4">{{ form_row(form.name) }}</div>
+                        <div class="mb-4">{{ form_row(form.pictureFile) }}</div>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-primary m-4">Envoyer</button>
+                    </div>
+                {{ form_end(form) }}
+            </div>
+            <div class="m-5">
+                <a href="{{ path('member_index') }}">Revenir à l'étape 2</a>
+            </div>
         </div>
     </section>
 {% endblock %}

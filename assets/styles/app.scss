@@ -92,8 +92,7 @@ h6 {
     }
 }
 
-.btn-secondary {
-    background-color: $secondary;
+.btn-param {
     border: none;
     padding: $space-2 $space-4;
     text-align: center;
@@ -105,11 +104,10 @@ h6 {
     width: 18rem;
 
     &:hover {
-        background-color: lighten($blue, 20%);
+        background-color: lighten($secondary, 20%);
         color: $light;
     }
 }
-
 
 .create-button {
     background-color: $secondary;

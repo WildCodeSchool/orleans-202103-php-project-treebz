@@ -43,6 +43,7 @@ class ResetPasswordController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $this->addFlash('secondary', 'Un email vous à été envoyé.');
             return $this->processSendingPasswordResetEmail(
                 $form->get('email')->getData(),
                 $mailer
@@ -127,7 +128,7 @@ class ResetPasswordController extends AbstractController
 
             // The session is cleaned up after the password has been changed.
             $this->cleanSessionAfterReset();
-
+            $this->addFlash('secondary', 'Votre mot de passe à bien été réinitialiser');
             return $this->redirectToRoute('app_login');
         }
 
