@@ -50,7 +50,7 @@
                             <button class="btn btn-primary text-uppercase fw-bold m-4">Modifier le membre</button>
                             <form method="post" action="{{ path('member_delete', {'id': member.id}) }}" onsubmit="return confirm(' Êtes vous sur de vouloir supprimer ce membre?');">
                                 <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ member.id) }}">
-                                <button class="btn btn-danger text-uppercase fw-bold m-4">Effacer</button>
+                                <button class="btn btn-danger text-uppercase fw-bold m-4">Supprimer</button>
                             </form>
                         </div>
                     </div>
