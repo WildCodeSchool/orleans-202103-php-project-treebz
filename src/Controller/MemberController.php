@@ -53,16 +53,6 @@ class MemberController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="member_show", methods={"GET"})
-     */
-    public function show(Member $member): Response
-    {
-        return $this->render('member/show.html.twig', [
-            'member' => $member,
-        ]);
-    }
-
-    /**
      * @Route("/{id}/edit", name="member_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Member $member): Response
@@ -78,8 +68,11 @@ class MemberController extends AbstractController
         $commandId = $command->getId();
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
+            $member->setCommand($command);
+            $member->setName(strtoupper($member->getname()));
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($member);
+            $entityManager->flush();
             return $this->redirectToRoute('member_index', ['command' => $commandId]);
         }
 
@@ -108,5 +101,15 @@ class MemberController extends AbstractController
         }
 
         return $this->redirectToRoute('member_index', ['command' => $commandId]);
+    }
+
+    /**
+     * @Route("/{id}", name="member_show", methods={"GET"})
+     */
+    public function show(Member $member): Response
+    {
+        return $this->render('member/show.html.twig', [
+            'member' => $member,
+        ]);
     }
 }
