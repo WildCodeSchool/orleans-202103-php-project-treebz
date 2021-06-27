@@ -35,12 +35,19 @@
     </section>
     <section class="titleDeco">
         <div class="text-left offset-lg-3 col-lg-6 offset-md-2 col-md-8 offset-1 col-10">
+            <div class="d-flex justify-content-center align-items-center">
             <h2 class="display-6 text-center py-5 text-uppercase" id="reglesFamille">
                 Modifier un membre
             </h2>
+            <form method="post" action="{{ path('member_delete', {'id': member.id}) }}" onsubmit="return confirm(' Êtes vous sur de vouloir supprimer ce membre?');">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ member.id) }}">
+                <button class="btn btn-danger text-uppercase fw-bold m-4">Supprimer</button>
+            </form>
+            </div>
             <div class="justify-content-center mb-3 mt-3 p-2">
                 {{ form_start(form) }}
                     <div class="fw-bold mt-5">
+                        <div class="mb-4">{{ form_row(form.numberCard) }}</div>
                         <div class="mb-4">{{ form_row(form.name) }}</div>
                         <div class="mb-4">{{ form_row(form.pictureFile) }}</div>
                     </div>
@@ -48,10 +55,6 @@
                         <a href="{{ path('member_index', {'command': command}) }}">Revenir à l'étape 2</a>
                         <div>
                             <button class="btn btn-primary text-uppercase fw-bold m-4">Modifier le membre</button>
-                            <form method="post" action="{{ path('member_delete', {'id': member.id}) }}" onsubmit="return confirm(' Êtes vous sur de vouloir supprimer ce membre?');">
-                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ member.id) }}">
-                                <button class="btn btn-danger text-uppercase fw-bold m-4">Supprimer</button>
-                            </form>
                         </div>
                     </div>
                 {{ form_end(form) }}

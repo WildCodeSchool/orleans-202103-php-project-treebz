@@ -19,6 +19,7 @@ class MemberFixtures extends Fixture
         for ($i = 0; $i < self::NB_FIXTURES; $i++) {
             $member = new Member();
             $member->setName(self::MEMBERS[$i]);
+            $member->setNumberCard($i + 1);
             $urlImage = self::LINK_IMAGE;
             $path = uniqid() . '.jpg';
             copy($urlImage, 'public/uploads/members/' . $path);
