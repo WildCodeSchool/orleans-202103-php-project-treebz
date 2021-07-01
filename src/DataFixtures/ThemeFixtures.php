@@ -38,7 +38,6 @@ class ThemeFixtures extends Fixture
             $theme->setUpdatedAt(new DateTime('now'));
             $urlImage = self::LINK_IMAGES . ($key + 1) . '.png';
             $path = uniqid() . '.png';
-
             // Function to save image URL into file
             copy($urlImage, 'public/uploads/themes/' . $path);
             $imagePath = $path;

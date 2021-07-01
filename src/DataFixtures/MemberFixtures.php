@@ -11,13 +11,13 @@ class MemberFixtures extends Fixture implements DependentFixtureInterface
 {
 
     public const MEMBERSNAME = ['GRAND-PERE', 'GRAND-MERE', 'PAPA', 'MAMAN', 'FILS', 'FILLE', 'CHIEN'];
-    public const LINK_IMAGE = "https://i.picsum.photos/id/1025/4951/3301.jpg?hmac=
-    _aGh5AtoOChip_iaMo8ZvvytfEojcgqbCH7dzaz-H8Y";
+    public const LINK_IMAGE = "https://i.picsum.photos/id/1025/4951/3301.jpg?
+    hmac=_aGh5AtoOChip_iaMo8ZvvytfEojcgqbCH7dzaz-H8Y";
     private const DIR_UPLOAD = '/uploads/members/';
 
     public function load(ObjectManager $manager)
     {
-        for ($key = 0; $key < count(ProjectFixtures::NAMES); $key++) {
+        for ($key = 0; $key < count(CommandFixtures::NAMES); $key++) {
             foreach (self::MEMBERSNAME as $memberName) {
                 $member = new Member();
                 $member->setCommand($this->getReference('projet_' . $key));
@@ -37,7 +37,7 @@ class MemberFixtures extends Fixture implements DependentFixtureInterface
     {
         // Tu retournes ici toutes les classes de fixtures dont ProgramFixtures dépend
         return [
-          ProjectFixtures::class,
+          CommandFixtures::class,
         ];
     }
 }

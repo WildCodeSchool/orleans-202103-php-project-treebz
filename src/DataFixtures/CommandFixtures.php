@@ -7,7 +7,7 @@ use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
-class ProjectFixtures extends Fixture implements DependentFixtureInterface
+class CommandFixtures extends Fixture implements DependentFixtureInterface
 {
     public const NAMES = ['Stelmach', 'Martinez'];
 
@@ -18,7 +18,7 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
             $command->setProjectName($name);
             $manager->persist($command);
             $this->addReference('projet_' . $key, $command);
-            for ($key = 0; $key < count(ThemeFixtures::THEMES); $key) {
+            for ($key = 0; $key < count(ThemeFixtures::THEMES); $key++) {
                 $command->addSelectedTheme($this->getReference('theme_' . $key));
             }
         }
