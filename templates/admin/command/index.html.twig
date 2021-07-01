@@ -8,23 +8,11 @@
 {% block body %}
     <div class="d-flex justify-content-end m-5">
         <form class="d-flex">
-            <div class="input-icone">
-                <input class="form-control me-2 bg-secondary" type="search" placeholder="Search" aria-label="Search">
-            </div>
-            <button class="btn btn-outline-success" type="submit">Search</button>
-            <div class="input-icone">
-                <svg
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                aria-hidden="true"
-                focusable="false"
-                width="1em"
-                height="1em"
-                style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
-                preserveAspectRatio="xMidYMid meet"
-                viewBox="0 0 16 16">
-                <g fill="#626262">
-                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0a5.5 5.5 0 0 1 11 0z"/></g></svg>
+            <div class="form-group fg--search">
+                <input class="form-control me-2 bg-secondary" type="search" placeholder="Recherche" aria-label="Search">
+                <button class="fa fa-search" type="submit">
+                    {{ include('/component/_magnifying_glass.html.twig') }}
+                </button>
             </div>
         </form>
     </div>
