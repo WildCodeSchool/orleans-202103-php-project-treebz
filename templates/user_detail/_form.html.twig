@@ -1,0 +1,34 @@
+{{ form_start(form) }}
+<div class="my-2">
+    {{ form_label(form.lastname) }}
+    {{ form_widget(form.lastname) }}
+</div>
+<div class="my-2">
+    {{ form_label(form.firstname) }}
+    {{ form_widget(form.firstname) }}
+</div>
+<div class="my-2">
+    {{ form_label(form.address) }}
+    {{ form_widget(form.address) }}
+</div>
+<div class="my-2">
+    {{ form_label(form.postalCode) }}
+    {{ form_widget(form.postalCode) }}
+</div>
+<div class="my-2">
+    {{ form_label(form.town) }}
+    {{ form_widget(form.town) }}
+
+</div>
+<div class="my-2">
+    {{ form_label(form.country) }}
+    {{ form_widget(form.country) }}
+</div>
+<div class="my-2">
+    {{ form_label(form.phone) }}
+    {{ form_widget(form.phone) }}
+</div>
+<div class="my-5 text-center">
+    <button class="btn btn-light px-5">{{ button_label|default('Save') }}</button>
+</div>
+{{ form_end(form) }}
