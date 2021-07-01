@@ -1,20 +1,76 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout_admin.html.twig' %}
 
-{% block title %}Hello CommandController!{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+	{{ encore_entry_link_tags('command') }}
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/valentin/quest/project3/orleans-202103-php-project-treebz/src/Controller/CommandController.php'|file_link(0) }}">src/Controller/CommandController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/valentin/quest/project3/orleans-202103-php-project-treebz/templates/command/index.html.twig'|file_link(0) }}">templates/command/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <div class="d-flex justify-content-end m-5">
+        <form class="d-flex">
+            <div class="input-icone">
+                <input class="form-control me-2 bg-secondary" type="search" placeholder="Search" aria-label="Search">
+            </div>
+            <button class="btn btn-outline-success" type="submit">Search</button>
+            <div class="input-icone">
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                aria-hidden="true"
+                focusable="false"
+                width="1em"
+                height="1em"
+                style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                preserveAspectRatio="xMidYMid meet"
+                viewBox="0 0 16 16">
+                <g fill="#626262">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0a5.5 5.5 0 0 1 11 0z"/></g></svg>
+            </div>
+        </form>
+    </div>
+    <div class="container">
+            <div class="card flex-row col-12 bg-secondary mb-5 mt-4 p-3">
+                <div class="col-1">
+                    <div class="col-12">
+                        <strong>N°</strong>
+                    </div>
+                    <div class="mt-3">
+                        <strong>id</strong>
+                    </div>
+                </div>
+                <div class="col-3 offset-1">
+                    <div class="col-12">
+                        <strong>RÉCAPITULATIF</strong>
+                    </div>
+                    <div class="mt-3">
+                    <p>description</p>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="col-12">
+                        <strong>DATE</strong>
+                    </div>
+                    <div class="mt-3">
+                    <strong>00/00/0000</strong>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="col-12">
+                        <strong>PRIX</strong>
+                    </div>
+                    <div class="mt-3">
+                    <strong>00.00€</strong>
+                    </div>
+                </div>
+                <div class="col-2 offset-1">
+                    <div class="col-12">
+                        <strong>STATUS</strong>
+                    </div>
+                    <div class="mt-3">
+                    <strong>envoyer</strong>
+                    </div>
+                </div>
+            </div>
+            <h2>Aucune commande</h2>
+    </div>
 {% endblock %}
