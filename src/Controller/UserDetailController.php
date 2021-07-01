@@ -22,7 +22,7 @@ class UserDetailController extends AbstractController
      */
     public function edit(Request $request): Response
     {
-        /** @var User */ 
+        /** @var User */
         $user = $this->getUser();
         $form = $this->createForm(UserDetailType::class, $user->getUserDetail());
 
