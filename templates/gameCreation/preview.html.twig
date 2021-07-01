@@ -2,7 +2,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {{ encore_entry_link_tags('gamecreation') }}
+    {{ encore_entry_link_tags('preview') }}
 {% endblock %}
 
 {% block title %}
@@ -38,10 +38,8 @@
                 <div class="col col-sm col-md-9 mt-5 p-4 viewThemes">
                     <div class="d-flex justify-content-between">
                         <h2 class="ms-md-5 text-uppercase text-center fw-bold">
-                            Choisissez vos thèmes
+                            Prévisualisez votre commande
                         </h2>
-
-                        {{ form_start(form) }}
                         <div class="text-center">
                             <input type="submit" class="btn btn-primary text-uppercase fw-bold" value="Valider les thèmes sélectionnés">
                         </div>
@@ -52,7 +50,6 @@
                             {{ form_errors(form.selectedThemes, {'attr': {'role': 'alert'}}) }}
                         </div>
                     {% endif %}
-
                     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-3 g-4 px-lg-5">
                         {% for selecttheme in form.selectedThemes %}
                             {% set index = selecttheme.vars.value %}
