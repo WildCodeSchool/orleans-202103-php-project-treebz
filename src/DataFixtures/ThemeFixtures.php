@@ -47,6 +47,7 @@ class ThemeFixtures extends Fixture
             $imagePath = $path;
             $theme->setImage($imagePath);
             $manager->persist($theme);
+            // $this->addReference('theme_' . $themeData, $theme);
         }
 
         $manager->flush();

@@ -67,6 +67,7 @@ class Command
 
     public function __construct()
     {
+        $this->setCreatedAt(new DateTimeImmutable());
         $this->selectedThemes = new ArrayCollection();
         $this->members = new ArrayCollection();
     }

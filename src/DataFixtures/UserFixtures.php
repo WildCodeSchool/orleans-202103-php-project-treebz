@@ -16,18 +16,27 @@ class UserFixtures extends Fixture
         $this->passwordEncoder = $passwordEncoder;
     }
 
+    public const USER = [
+        '1' => 'Stelmach@treebz.com',
+        '2' => 'Silva@treebz.com',
+        '3' => 'Olmedo@treebz.com',
+        '4' => 'Lay@treebz.com',
+        '5' => 'Vennier@treebz.com'
+    ];
     public function load(ObjectManager $manager)
     {
-        $user = new User();
-        $user->setEmail('user@monsite.com');
-        $user->setRoles(['ROLE_USER']);
-        $user->setPassword($this->passwordEncoder->encodePassword(
-            $user,
-            'user'
-        ));
-        $this->addReference('user_', $user);
+        foreach (self::USER as $number => $mail) {
+            $user = new User();
+            $user->setEmail($mail);
+            $user->setRoles(['ROLE_USER']);
+            $user->setPassword($this->passwordEncoder->encodePassword(
+                $user,
+                'user'
+            ));
+            $this->addReference('user_' . $number, $user);
 
-        $manager->persist($user);
+            $manager->persist($user);
+        }
 
         $admin = new User();
         $admin->setEmail('admin@monsite.com');
