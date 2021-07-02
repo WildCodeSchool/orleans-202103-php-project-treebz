@@ -12,12 +12,12 @@ class StatusFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-        foreach (self::STATUS as $statement) {
+        foreach (self::STATUS as $key => $statement) {
             $status = new Status();
             $status->setName($statement);
 
             $manager->persist($status);
-            $this->addReference('status_' . $statement, $status);
+            $this->addReference('status_' . $key, $status);
         }
 
         $manager->flush();

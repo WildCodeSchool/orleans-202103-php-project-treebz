@@ -6,8 +6,9 @@ use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
-class UserFixtures extends Fixture
+class UserFixtures extends Fixture implements DependentFixtureInterface
 {
     private UserPasswordEncoderInterface $passwordEncoder;
 
@@ -16,19 +17,13 @@ class UserFixtures extends Fixture
         $this->passwordEncoder = $passwordEncoder;
     }
 
-    public const USER = [
-        '1' => 'Stelmach@treebz.com',
-        '2' => 'Silva@treebz.com',
-        '3' => 'Olmedo@treebz.com',
-        '4' => 'Lay@treebz.com',
-        '5' => 'Vennier@treebz.com'
-    ];
     public function load(ObjectManager $manager)
     {
-        foreach (self::USER as $number => $mail) {
+        foreach (CommandFixtures::COMMANDS as $number => $mail) {
             $user = new User();
-            $user->setEmail($mail);
+            $user->setEmail($mail['email']);
             $user->setRoles(['ROLE_USER']);
+            $user->setUserDetail($this->getReference('userDetail_' . $number));
             $user->setPassword($this->passwordEncoder->encodePassword(
                 $user,
                 'user'
@@ -50,5 +45,12 @@ class UserFixtures extends Fixture
         $manager->persist($admin);
 
         $manager->flush();
+    }
+
+    public function getDependencies()
+    {
+        return [
+            UserDetailFixtures::class
+        ];
     }
 }
