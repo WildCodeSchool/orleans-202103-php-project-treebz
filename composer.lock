@@ -411,7 +411,7 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "2.13.x-dev",
+            "version": "2.13.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
@@ -499,7 +499,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/dbal/issues",
-                "source": "https://github.com/doctrine/dbal/tree/2.13.x"
+                "source": "https://github.com/doctrine/dbal/tree/2.13.2"
             },
             "funding": [
                 {
