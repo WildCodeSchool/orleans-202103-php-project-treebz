@@ -12,7 +12,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 class CardController extends AbstractController
 {
-/**
+    /**
      * @Route("/carte/{command_id}/", name="card", methods={"GET","POST"})
      * @ParamConverter("command", class="App\Entity\Command", options={"mapping": {"command_id": "id"}})
      */

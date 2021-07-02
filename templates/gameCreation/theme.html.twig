@@ -84,7 +84,7 @@
                                 <li class="list-group-item m-2 fw-bold text-uppercase">{{ theme.name }}</li>
                             {% endfor %}
                             <div class="justify-content-end">
-                                <a href="" class="btn btn-primary text-uppercase fw-bold fw-bold fs-5 w-100 mt-5">Passer la commande
+                                <a href="{{ path('gamecreation_preview', {'command_id': command.id}) }}" class="btn btn-primary text-uppercase fw-bold fw-bold fs-5 w-100 mt-5">Passer la commande
                                     <img src="{{ asset('build/images/arrow-right.svg') }}" class="ms-5 d-none d-lg-inline-block">
                                 </a>
                             </div>
