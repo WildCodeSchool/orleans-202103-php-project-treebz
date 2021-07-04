@@ -10,7 +10,7 @@ use DateTime;
 
 class ThemeFixtures extends Fixture
 {
-    public const LINK_IMAGES = 'public/build/canva_png/';
+    public const LINK_IMAGES = 'src/DataFixtures/canva_png/';
     public const THEMES = [
         [
             'name' => 'Cuisine',
