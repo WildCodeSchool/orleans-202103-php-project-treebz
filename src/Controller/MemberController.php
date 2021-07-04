@@ -5,11 +5,12 @@ namespace App\Controller;
 use App\Entity\Member;
 use App\Entity\Command;
 use App\Form\MemberType;
+use App\Service\PriceGameCard;
 use App\Repository\MemberRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
 * @Route("/creez-votre-jeu/membre")
@@ -21,8 +22,12 @@ class MemberController extends AbstractController
      */
     public function index(Command $command, MemberRepository $memberRepository): Response
     {
+        $priceGameCard = new PriceGameCard();
+        $priceGame = $priceGameCard->priceGame(count($command->getMembers()));
+
         return $this->render('member/index.html.twig', [
             'command' => $command,
+            'priceGame' => $priceGame,
         ]);
     }
 
