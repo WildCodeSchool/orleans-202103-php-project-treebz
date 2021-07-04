@@ -42,9 +42,9 @@ class UserDetail
     private string $address;
 
     /**
-     * @ORM\Column(type="string", length=5)
+     * @ORM\Column(type="string", length=25)
      * @Assert\NotBlank()
-     * @Assert\Length(max="5")
+     * @Assert\Length(max="25")
      */
     private string $postalCode;
 

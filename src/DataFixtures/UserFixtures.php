@@ -7,6 +7,7 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
+use Faker\Factory;
 
 class UserFixtures extends Fixture implements DependentFixtureInterface
 {
@@ -19,16 +20,18 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
 
     public function load(ObjectManager $manager)
     {
-        foreach (CommandFixtures::COMMANDS as $number => $mail) {
+        $commandNumber = 5;
+        $faker = Factory::create('FR,fr');
+        for ($i = 0; $i < $commandNumber; $i++) {
             $user = new User();
-            $user->setEmail($mail['email']);
+            $user->setEmail($faker->email());
             $user->setRoles(['ROLE_USER']);
-            $user->setUserDetail($this->getReference('userDetail_' . $number));
+            $user->setUserDetail($this->getReference('userDetail_' . $i));
             $user->setPassword($this->passwordEncoder->encodePassword(
                 $user,
                 'user'
             ));
-            $this->addReference('user_' . $number, $user);
+            $this->addReference('user_' . $i, $user);
 
             $manager->persist($user);
         }

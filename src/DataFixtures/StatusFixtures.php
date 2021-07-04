@@ -8,7 +8,7 @@ use Doctrine\Persistence\ObjectManager;
 
 class StatusFixtures extends Fixture
 {
-    public const STATUS = ['En cours', 'Livré', 'Annuler'];
+    public const STATUS = ['En cours', 'Livré', 'Annulé'];
 
     public function load(ObjectManager $manager)
     {
