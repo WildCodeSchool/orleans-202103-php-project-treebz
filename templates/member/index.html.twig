@@ -73,7 +73,7 @@
                                 <div class="card m-2 p-2 cardTheme d-flex mt-5">
                                 <p class="fw-bold text-center bg-gray display-6">{{ loop.index }}</p>
                                       <p class="card-title text-center mb-2">{{ member.name }}</p>
-                                    <img class="h-50"src="{{ vich_uploader_asset(member) }}" alt="{{ member.picture }}"/>
+                                    <img src="{{ vich_uploader_asset(member) }}" alt="{{ member.picture }}"/>
                                     <a href="{{ path('member_edit', {'id': member.id}) }}" class="btn btn-secondary fw-bold mt-2 text-uppercase">Modifier</a>
                                     <form method="post" action="{{ path('member_delete', {'id': member.id}) }}" onsubmit="return confirm(' Êtes vous sur de vouloir supprimer ce membre ?');">
                                         <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ member.id) }}">

@@ -1,0 +1,22 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Treeb'z | Mon Compte
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('connexion') }}
+{% endblock %}
+
+{% block body %}
+
+  <div class="container col-sm-6 col-10 mt-5 mb-5">
+        <div class="row bg-primary p-1 d-flex justify-content-start align-items-center">
+            <h1 class="h1 p-3 d-flex justify-content-center align-items-center font-weight-normal text-uppercase">Mon Compte</h1>
+        </div>
+        <div class="row bg-secondary fw-bold p-5">
+            {{ include('user_detail/_form.html.twig', {'button_label': 'Modifier'}) }}
+        </div>
+
+    </div>
+
+</main>{% endblock %}

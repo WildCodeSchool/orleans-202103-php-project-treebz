@@ -24,7 +24,9 @@
                 </ul>
                 <form class="d-flex align-items-center">
                     {% if app.user %}
-                        {{ app.user.email }}
+                        Salut
+                        {{ app.user.userDetail.firstname }}
+                        !
                     {% endif %}
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                         <div class="nav-item dropdown">
@@ -33,27 +35,25 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-md-end" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ path('app_logout') }}">Déconnexion</a>
-                                <li><a class="dropdown-item" href="#">Compte</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Création en cours</a></li>
-                                <li><a class="dropdown-item" href="#">Historique des commandes</a></li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ path('user_detail_edit') }}">Mon compte</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">Création en cours</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">Historique des commandes</a>
+                                </li>
                             </ul>
                         </div>
                     {% else %}
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item m-1">
-                                <a class="nav-link active" href="{{ path('app_login') }}">CONNEXION</a>
-                            </li>
-                            <li class="nav-item m-1">
-                                <span class="nav-link active"> / </span>
-                            </li>
-                            <li class="nav-item m-1">
-                                <a class="nav-link active" href="{{ path('app_register') }}">INSCRIPTION</a>
-                            </li>
-                        </ul>
-                    {% endif %}
-                </form>
+                        <div class="me-auto mb-2 mb-lg-0 d-flex justify-content-around">
+                            <a class="nav-item m-1 btn btn-secondary text-uppercase" href="{{ path('app_register') }}">Inscription</a>
+                            <a class="nav-item m-1 btn btn-light text-uppercase" href="{{ path('app_login') }}">Connexion</a>
+                        {% endif %}
+                    </form>
+                </div>
             </div>
-        </div>
-    </nav>
-</section>
+        </nav>
+    </section>
