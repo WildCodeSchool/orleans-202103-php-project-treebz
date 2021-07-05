@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class TermController extends AbstractController
 {
     /**
-     * @Route("/protection-des-donnees", name="termsDonnes")
+     * @Route("/protection-des-donnees", name="termsDataProtection")
      */
     public function index(): Response
     {
