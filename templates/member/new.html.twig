@@ -21,7 +21,7 @@
             </div>
         </div>
     </header>
-    <section class="mb-5 row">
+    <section class="mb-5 mx-0">
         <div>
             <div class="containerStep">
                 <ul class="progressbar">
@@ -49,6 +49,11 @@
                     <button class="btn btn-primary text-uppercase fw-bold m-4">Ajouter le membre</button>
                 </div>
                 {{ form_end(form) }}
+            </div>
+            <div>
+                {{ form_start(cropper) }}
+                {{ form_widget(cropper) }}
+                {{ form_end(cropper) }}
             </div>
         </div>
     </section>

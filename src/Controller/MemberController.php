@@ -10,6 +10,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\UX\Cropperjs\Form\CropperType;
+use Symfony\UX\Cropperjs\Factory\CropperInterface;
 
 /**
 * @Route("/creez-votre-jeu/membre")
@@ -29,11 +31,21 @@ class MemberController extends AbstractController
     /**
      * @Route("/new/{command<^[0-9]+$>}", name="member_new", methods={"GET","POST"})
      */
-    public function new(Command $command, Request $request): Response
+    public function new(CropperInterface $cropper, Command $command, Request $request): Response
     {
         $member = new Member();
         $form = $this->createForm(MemberType::class, $member);
         $form->handleRequest($request);
+        $crop = $cropper->createCrop('/build/images/portrait.f9fbaac2.jpg');
+        $crop->setCroppedMaxSize(2000, 1500);
+
+        $cropForm = $this->createFormBuilder(['crop' => $crop])
+            ->add('crop', CropperType::class, [
+                'public_url' => '/build/images/portrait.f9fbaac2.jpg',
+                'aspect_ratio' => 2000 / 1500,
+            ])
+            ->getForm()
+        ;
 
         if ($form->isSubmitted() && $form->isValid()) {
             $member->setCommand($command);
@@ -45,9 +57,17 @@ class MemberController extends AbstractController
             return $this->redirectToRoute('member_index', ['command' => $command->getId()]);
         }
 
+        $cropForm->handleRequest($request);
+
+        if ($cropForm->isSubmitted() && $cropForm->isValid()) {
+            $crop->getCroppedImage();
+            $crop->getCroppedThumbnail(200, 150);
+        }
+
         return $this->render('member/new.html.twig', [
             'member' => $member,
             'form' => $form->createView(),
+            'cropper' => $cropForm->createView(),
             'command' => $command,
         ]);
     }
