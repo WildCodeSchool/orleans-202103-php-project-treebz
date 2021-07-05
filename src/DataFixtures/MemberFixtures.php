@@ -6,14 +6,14 @@ use App\Entity\Member;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
+// @codingStandardsIgnoreStart
 class MemberFixtures extends Fixture
 {
     public const NB_FIXTURES = 6;
     public const MEMBERS = ['GRAND-PERE', 'GRAND-MERE', 'PAPA', 'MAMAN', 'FILS', 'FILLE', 'CHIEN'];
-    public const LINK_IMAGE = "https://i.picsum.photos/id/1025/4951/3301.jpg?
-hmac=_aGh5AtoOChip_iaMo8ZvvytfEojcgqbCH7dzaz-H8Y";
+    public const LINK_IMAGE = "https://i.picsum.photos/id/1025/4951/3301.jpg?hmac=_aGh5AtoOChip_iaMo8ZvvytfEojcgqbCH7dzaz-H8Y";
     private const DIR_UPLOAD = '/uploads/members/';
-
+// @codingStandardsIgnoreEnd
     public function load(ObjectManager $manager)
     {
         for ($i = 0; $i < self::NB_FIXTURES; $i++) {

@@ -33,7 +33,7 @@ class ThemeFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-        foreach (self::THEMES as $themeData) {
+        foreach (self::THEMES as $key => $themeData) {
             $theme = new Theme();
             $theme->setName($themeData['name']);
             $theme->setColorText($themeData['colorText']);
@@ -47,6 +47,7 @@ class ThemeFixtures extends Fixture
             $imagePath = $path;
             $theme->setImage($imagePath);
             $manager->persist($theme);
+            $this->addReference('theme_' . $key, $theme);
         }
 
         $manager->flush();

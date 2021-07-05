@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\CommandRepository;
 use App\Form\CommandType;
+use DateTime;
+use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -38,8 +40,34 @@ class Command
      */
     private Collection $members;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Status::class, inversedBy="commands")
+     */
+    private ?Status $status;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private int $quantity;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=UserDetail::class, inversedBy="commands")
+     */
+    private ?UserDetail $contactInformation;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="commands")
+     */
+    private ?User $user;
+
+    /**
+     * @ORM\Column(type="datetime_immutable")
+     */
+    private DateTimeImmutable $createdAt;
+
     public function __construct()
     {
+        $this->setCreatedAt(new DateTimeImmutable());
         $this->selectedThemes = new ArrayCollection();
         $this->members = new ArrayCollection();
     }
@@ -111,6 +139,66 @@ class Command
                 $member->setCommand(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getStatus(): ?Status
+    {
+        return $this->status;
+    }
+
+    public function setStatus(?Status $status): self
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    public function getQuantity(): ?int
+    {
+        return $this->quantity;
+    }
+
+    public function setQuantity(int $quantity): self
+    {
+        $this->quantity = $quantity;
+
+        return $this;
+    }
+
+    public function getContactInformation(): ?UserDetail
+    {
+        return $this->contactInformation;
+    }
+
+    public function setContactInformation(?UserDetail $contactInformation): self
+    {
+        $this->contactInformation = $contactInformation;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeImmutable $createdAt): self
+    {
+        $this->createdAt = $createdAt;
 
         return $this;
     }
