@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
- * @Route("/admin/utilisateurs")
+ * @Route("/admin/clients")
  */
 class AdminUserController extends AbstractController
 {
