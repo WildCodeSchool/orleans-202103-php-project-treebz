@@ -24,9 +24,13 @@
                 </ul>
                 <form class="d-flex align-items-center">
                     {% if app.user %}
-                        Salut
-                        {{ app.user.userDetail.firstname }}
-                        !
+                        {% if app.user.userDetail.firstname is defined %}
+                            Salut
+                            {{ app.user.userDetail.firstname }} !
+                        {% else %}
+                            Salut
+                            {{ app.user.email }} !
+                        {% endif %}
                     {% endif %}
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                         <div class="nav-item dropdown">
