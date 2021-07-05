@@ -7,14 +7,14 @@
 
 {% block body %}
 	<div class="d-flex justify-content-end m-5">
-		<form class="d-flex">
-			<div class="form-group fg--search">
-				<input class="form-control me-2 bg-secondary" type="search" placeholder="Recherche" aria-label="Search">
-				<button class="fa fa-search" type="submit">
-					{{ include('/component/_magnifying_glass.html.twig') }}
-				</button>
-			</div>
-		</form>
+		{{ form_start(form) }}
+		<div class="form-group fg--search">
+			{{ form_row(form.search, {'attr': {'class': 'form-control me-2 bg-secondary'}}) }}
+			<button class="fa fa-search" type="submit">
+				{{ include('/component/_magnifying_glass.html.twig') }}
+			</button>
+		</div>
+		{{ form_end(form) }}
 	</div>
 	<div class="container">
 		{% for command in commands %}
@@ -40,7 +40,7 @@
 						<strong>DATE</strong>
 					</div>
 					<div class="mt-3 d-flex justify-content-center">
-						<strong></strong>
+						<strong>{{ command.createdAt }}</strong>
 					</div>
 				</div>
 				<div class="col-2">
