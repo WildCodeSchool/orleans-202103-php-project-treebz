@@ -18,7 +18,7 @@
         </div>
     </header>
     <main class="container mt-5">
-        {% for user_detail in user_details|sort((a, b) => a.lastname <=> b.lastname) %}
+        {% for user_detail in user_details %}
             <div class="accordion" id="accordionPanelsStayOpenExample">
                 <div class="accordion-item">
                     <h2 class="accordion-header h2" id="panelsStayOpen-headingOne">
@@ -95,5 +95,4 @@
     {% else %}
         <p>Aucun utilisateur trouvé.</p>
     {% endfor %}
-    {# <a href="{{ path('admin_user_new') }}">Create new</a></main> #}
 {% endblock %}
