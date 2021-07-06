@@ -10,7 +10,7 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 class MemberFixtures extends Fixture implements DependentFixtureInterface
 {
 
-    public const MEMBERS_NAME = ['GRAND-PERE', 'GRAND-MERE', 'PAPA', 'MAMAN', 'FILS', 'FILLE', 'CHIEN'];
+    public const MEMBER_NAMES = ['GRAND-PERE', 'GRAND-MERE', 'PAPA', 'MAMAN', 'FILS', 'FILLE', 'CHIEN'];
     public const LINK_IMAGE = "https://i.picsum.photos/id/1025/4951/3301.jpg?
 hmac=_aGh5AtoOChip_iaMo8ZvvytfEojcgqbCH7dzaz-H8Y";
     private const DIR_UPLOAD = '/uploads/members/';
@@ -18,7 +18,7 @@ hmac=_aGh5AtoOChip_iaMo8ZvvytfEojcgqbCH7dzaz-H8Y";
     public function load(ObjectManager $manager)
     {
         for ($key = 0; $key < count(CommandFixtures::NAMES); $key++) {
-            foreach (self::MEMBERS_NAME as $memberName) {
+            foreach (self::MEMBER_NAMES as $memberName) {
                 $member = new Member();
                 $member->setCommand($this->getReference('projet_' . $key));
                 $member->setName($memberName);
