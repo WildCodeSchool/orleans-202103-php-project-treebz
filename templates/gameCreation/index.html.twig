@@ -43,13 +43,13 @@
                     <h2 class="text-uppercase text-center">Choisissez un nombre de membre de votre famille :</h2>
 
                     <div class="text-center mb-3 mt-5 ">
-                        <span class="fw-bold ps-3 mt-5 grayTitle">Jusqu’à 10 membres</span>
-                        <span class="fw-bold ms-3 price">24.99 €</span>
+                        <span class="fw-bold ps-3 mt-5 grayTitle">Jusqu’à {{ constant('App\\Service\\PriceGameCard::GAME_MIN') }} membres</span>
+                        <span class="fw-bold ms-3 price">{{ constant('App\\Service\\PriceGameCard::PRICE_MIN') }} €</span>
                     </div>
 
                     <div class="text-center mb-3 mt-5">
-                        <span class="fw-bold ps-3 grayTitle">De 11 à 20 membres</span>
-                        <span class="fw-bold ms-3 price">34.99 €</span>
+                        <span class="fw-bold ps-3 grayTitle">De {{ constant('App\\Service\\PriceGameCard::GAME_MIN') + 1 }} à {{ constant('App\\Service\\PriceGameCard::GAME_MAX') }} membres</span>
+                        <span class="fw-bold ms-3 price">{{ constant('App\\Service\\PriceGameCard::PRICE_MAX') }} €</span>
                     </div>
 
                     <div class="mt-5">

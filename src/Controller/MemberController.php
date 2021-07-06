@@ -20,9 +20,8 @@ class MemberController extends AbstractController
     /**
      * @Route("/{command<^[0-9]+$>}", name="member_index", methods={"GET"})
      */
-    public function index(Command $command, MemberRepository $memberRepository): Response
+    public function index(Command $command, MemberRepository $memberRepository, PriceGameCard $priceGameCard): Response
     {
-        $priceGameCard = new PriceGameCard();
         $priceGame = $priceGameCard->priceGame(count($command->getMembers()));
 
         return $this->render('member/index.html.twig', [
