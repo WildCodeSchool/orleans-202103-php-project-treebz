@@ -4,7 +4,7 @@ namespace App\Service;
 
 use Symfony\Component\String\Exception\InvalidArgumentException;
 
-class PriceGameCard
+class GameCard
 {
     public const GAME_MIN = 10;
     public const GAME_MAX = 20;
