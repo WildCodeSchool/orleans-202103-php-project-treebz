@@ -5,27 +5,38 @@ namespace App\DataFixtures;
 use App\Entity\Member;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
-// @codingStandardsIgnoreStart
-class MemberFixtures extends Fixture
+class MemberFixtures extends Fixture implements DependentFixtureInterface
 {
-    public const NB_FIXTURES = 6;
-    public const MEMBERS = ['GRAND-PERE', 'GRAND-MERE', 'PAPA', 'MAMAN', 'FILS', 'FILLE', 'CHIEN'];
-    public const LINK_IMAGE = "https://i.picsum.photos/id/1025/4951/3301.jpg?hmac=_aGh5AtoOChip_iaMo8ZvvytfEojcgqbCH7dzaz-H8Y";
+
+    public const MEMBER_NAMES = ['GRAND-PERE', 'GRAND-MERE', 'PAPA', 'MAMAN', 'FILS', 'FILLE', 'CHIEN'];
+    public const LINK_IMAGE = "https://i.picsum.photos/id/1025/4951/3301.jpg?
+    hmac=_aGh5AtoOChip_iaMo8ZvvytfEojcgqbCH7dzaz-H8Y";
     private const DIR_UPLOAD = '/uploads/members/';
 // @codingStandardsIgnoreEnd
     public function load(ObjectManager $manager)
     {
-        for ($i = 0; $i < self::NB_FIXTURES; $i++) {
-            $member = new Member();
-            $member->setName(self::MEMBERS[$i]);
-            $urlImage = self::LINK_IMAGE;
-            $path = uniqid() . '.jpg';
-            copy($urlImage, 'public/uploads/members/' . $path);
-            $imagePath = '/uploads/members/' . $path;
-            $member->setPicture($imagePath);
-            $manager->persist($member);
-            $manager->flush();
+        for ($key = 0; $key < count(CommandFixtures::COMMANDS); $key++) {
+            foreach (self::MEMBER_NAMES as $memberName) {
+                $member = new Member();
+                $member->setCommand($this->getReference('projet_' . $key));
+                $member->setName($memberName);
+                $urlImage = self::LINK_IMAGE;
+                $path = uniqid() . '.jpg';
+                copy($urlImage, 'public/uploads/members/' . $path);
+                $imagePath = $path;
+                $member->setPicture($imagePath);
+                $manager->persist($member);
+                $manager->flush();
+            }
         }
+    }
+
+    public function getDependencies()
+    {
+        return [
+          CommandFixtures::class,
+        ];
     }
 }
