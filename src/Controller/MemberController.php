@@ -10,6 +10,7 @@ use App\Repository\MemberRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
@@ -22,7 +23,12 @@ class MemberController extends AbstractController
      */
     public function index(Command $command, MemberRepository $memberRepository, GameCard $gameCard): Response
     {
-        $priceGame = $gameCard->priceGame(count($command->getMembers()));
+        $priceGame = 0;
+        try {
+            $priceGame = $gameCard->priceGame($command);
+        } catch (Exception $e) {
+            $this->addFlash('danger', $e->getMessage());
+        }
 
         return $this->render('member/index.html.twig', [
             'command' => $command,
