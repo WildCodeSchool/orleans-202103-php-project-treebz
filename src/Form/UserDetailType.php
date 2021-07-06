@@ -7,19 +7,22 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use App\Form\RegistrationFormType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class UserDetailType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+
             ->add('lastname', TextType::class, [
                 'label' => 'NOM',
                 'attr' => [
                     'class' => 'form-control',
                 ],
                 'label_attr' => [
-                    'class' => 'form-label'
+                    'class' => 'form-label fw-bold'
                 ]
             ])
             ->add('firstname', TextType::class, [
@@ -28,7 +31,7 @@ class UserDetailType extends AbstractType
                     'class' => 'form-control',
                 ],
                 'label_attr' => [
-                    'class' => 'form-label'
+                    'class' => 'form-label fw-bold'
                 ]
             ])
             ->add('address', TextType::class, [
@@ -37,7 +40,7 @@ class UserDetailType extends AbstractType
                     'class' => 'form-control',
                 ],
                 'label_attr' => [
-                    'class' => 'form-label'
+                    'class' => 'form-label fw-bold'
                 ]
             ])
             ->add('postalCode', TextType::class, [
@@ -46,7 +49,7 @@ class UserDetailType extends AbstractType
                     'class' => 'form-control',
                 ],
                 'label_attr' => [
-                    'class' => 'form-label'
+                    'class' => 'form-label fw-bold'
                 ]
             ])
             ->add('town', TextType::class, [
@@ -55,7 +58,7 @@ class UserDetailType extends AbstractType
                     'class' => 'form-control',
                 ],
                 'label_attr' => [
-                    'class' => 'form-label'
+                    'class' => 'form-label fw-bold'
                 ]
             ])
             ->add('country', TextType::class, [
@@ -64,7 +67,7 @@ class UserDetailType extends AbstractType
                     'class' => 'form-control',
                 ],
                 'label_attr' => [
-                    'class' => 'form-label'
+                    'class' => 'form-label fw-bold'
                 ]
             ])
             ->add('phone', TextType::class, [
@@ -73,7 +76,7 @@ class UserDetailType extends AbstractType
                     'class' => 'form-control',
                 ],
                 'label_attr' => [
-                    'class' => 'form-label'
+                    'class' => 'form-label fw-bold'
                 ]
             ]);
     }

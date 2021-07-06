@@ -19,7 +19,7 @@ class UserDetailRepository extends ServiceEntityRepository
         parent::__construct($registry, UserDetail::class);
     }
 
-    // /**
+     /**
     //  * @return UserDetails[] Returns an array of UserDetails objects
     //  */
     /*
