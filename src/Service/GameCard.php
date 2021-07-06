@@ -11,12 +11,12 @@ class GameCard
     public const PRICE_MAX = 34.99;
     public const PRICE_MIN = 24.99;
 
-    public function priceGame(int $cars): ?float
+    public function priceGame(int $cards): ?float
     {
         $price = '';
-        if ($cars <= self::GAME_MIN) {
+        if ($cards <= self::GAME_MIN) {
             $price = self::PRICE_MIN;
-        } elseif ($cars <= self::GAME_MAX) {
+        } elseif ($cards <= self::GAME_MAX) {
             $price = self::PRICE_MAX;
         } else {
             throw new InvalidArgumentException(sprintf(" trop de membres"));
