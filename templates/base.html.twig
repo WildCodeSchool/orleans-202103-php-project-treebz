@@ -25,7 +25,9 @@
 				</div>
 			{% endfor %}
 		{% endfor %}
-		{% block body %}{% endblock %}
+		{% block body %}
+        {% block preview %}{% endblock %}
+        {% endblock %}
 		<footer>
 		{% block footer %}{% endblock %}
 		</footer>
