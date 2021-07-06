@@ -6,13 +6,10 @@ use Symfony\Component\String\Exception\InvalidArgumentException;
 
 class PriceGameCard
 {
-
     public const GAME_MIN = 10;
     public const GAME_MAX = 20;
     public const PRICE_MAX = 34.99;
     public const PRICE_MIN = 24.99;
-
-
 
     public function priceGame(int $cars): ?float
     {
