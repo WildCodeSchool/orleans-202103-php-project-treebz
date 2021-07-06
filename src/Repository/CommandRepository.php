@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Command;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\BrowserKit\Response;
 
 /**
  * @method Command|null find($id, $lockMode = null, $lockVersion = null)
@@ -17,6 +18,18 @@ class CommandRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Command::class);
+    }
+
+    public function findLikeProjectName(string $name): array
+    {
+        $queryBuilder = $this->createQueryBuilder('c')
+            ->where('c.projectName LIKE :projectName')
+            ->setParameter('projectName', '%' . $name . '%')
+            ->orWhere('c.createdAt LIKE :createdAt')
+            ->setParameter('createdAt', '%' . $name . '%')
+            ->getQuery();
+
+        return $queryBuilder->getResult();
     }
 
     /*

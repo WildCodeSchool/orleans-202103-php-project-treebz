@@ -27,7 +27,7 @@ class CommandController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $search = $form->getData()['search'];
-            $command = $commandRepository->findBy(['projectName' => $search]);
+            $command = $commandRepository->findLikeProjectName($search);
         } else {
             $command = $commandRepository->findAll();
         }
