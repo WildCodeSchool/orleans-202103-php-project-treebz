@@ -17,8 +17,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 class PreviewController extends AbstractController
 {
     /**
-     * @Route("/prévisualisation-du-jeu/{command_id}/", name="preview", methods={"GET","POST"})
-     * @ParamConverter("command", class="App\Entity\Command", options={"mapping": {"command_id": "id"}})
+     * @Route("/prévisualisation-du-jeu/{id}/", name="preview", methods={"GET","POST"})
      */
 
     public function index(
