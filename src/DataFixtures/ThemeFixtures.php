@@ -42,6 +42,7 @@ class ThemeFixtures extends Fixture
             copy($urlImage, 'public/uploads/themes/' . $path);
             $imagePath = $path;
             $theme->setImage($imagePath);
+            $this->setReference('theme_' . $key, $theme);
             $manager->persist($theme);
         }
         $manager->flush();

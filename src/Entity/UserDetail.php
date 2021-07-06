@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserDetailRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -40,9 +42,9 @@ class UserDetail
     private string $address;
 
     /**
-     * @ORM\Column(type="string", length=5)
+     * @ORM\Column(type="string", length=25)
      * @Assert\NotBlank()
-     * @Assert\Length(max="5")
+     * @Assert\Length(max="25")
      */
     private string $postalCode;
 
@@ -71,6 +73,16 @@ class UserDetail
      * @ORM\OneToOne(targetEntity=User::class, mappedBy="userDetail", cascade={"persist", "remove"})
      */
     private ?User $user;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Command::class, mappedBy="contactInformation")
+     */
+    private Collection $commands;
+
+    public function __construct()
+    {
+        $this->commands = new ArrayCollection();
+    }
 
     public function __serialize(): array
     {
@@ -184,6 +196,36 @@ class UserDetail
         }
 
         $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Command[]
+     */
+    public function getCommands(): Collection
+    {
+        return $this->commands;
+    }
+
+    public function addCommand(Command $command): self
+    {
+        if (!$this->commands->contains($command)) {
+            $this->commands[] = $command;
+            $command->setContactInformation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommand(Command $command): self
+    {
+        if ($this->commands->removeElement($command)) {
+            // set the owning side to null (unless already changed)
+            if ($command->getContactInformation() === $this) {
+                $command->setContactInformation(null);
+            }
+        }
 
         return $this;
     }
