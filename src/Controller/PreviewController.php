@@ -10,20 +10,24 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
-class CardController extends AbstractController
+/**
+ * @Route("/creez-votre-jeu", name="gamecreation_")
+ */
+
+class PreviewController extends AbstractController
 {
     /**
-     * @Route("/carte/{id}/", name="card", methods={"GET","POST"})
+     * @Route("/prévisualisation-du-jeu/{id}/", name="preview", methods={"GET","POST"})
      */
+
     public function index(
         MemberRepository $memberRepository,
         Command $command,
         ThemeRepository $themeRepository
     ): Response {
-        return $this->render('card.html.twig', [
-            'members' => $memberRepository->findAll(),
+
+        return $this->render('gameCreation/preview.html.twig', [
             'command' => $command,
-            'theme' => $themeRepository->findAll(),
         ]);
     }
 }

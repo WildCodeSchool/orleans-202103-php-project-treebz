@@ -31,11 +31,10 @@ class GameCreationController extends AbstractController
     public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
         $command = new Command();
-        $form = $this->createForm(CommandType::class, $command);
-        $form->handleRequest($request);
-
         /** @var User */
         $user = $this->getUser();
+        $form = $this->createForm(CommandType::class, $command);
+        $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $command->setUser($user);
             $entityManager->persist($command);

@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Command;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\BrowserKit\Response;
 
 /**
  * @method Command|null find($id, $lockMode = null, $lockVersion = null)
@@ -19,22 +20,17 @@ class CommandRepository extends ServiceEntityRepository
         parent::__construct($registry, Command::class);
     }
 
-    // /**
-    //  * @return Command[] Returns an array of Command objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findLikeProjectName(string $name): array
     {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        $queryBuilder = $this->createQueryBuilder('c')
+            ->where('c.projectName LIKE :projectName')
+            ->setParameter('projectName', '%' . $name . '%')
+            ->orWhere('c.createdAt LIKE :createdAt')
+            ->setParameter('createdAt', '%' . $name . '%')
+            ->getQuery();
+
+        return $queryBuilder->getResult();
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?Command

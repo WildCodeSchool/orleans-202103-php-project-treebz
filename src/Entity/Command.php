@@ -48,7 +48,7 @@ class Command
     /**
      * @ORM\Column(type="integer")
      */
-    private int $quantity = 1;
+    private ?int $quantity = 1;
 
     /**
      * @ORM\ManyToOne(targetEntity=UserDetail::class, inversedBy="commands")
@@ -191,15 +191,14 @@ class Command
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeImmutable
+    public function getCreatedAt(): ?string
     {
-        return $this->createdAt;
+        return $this->createdAt->format('d/m/Y');
     }
 
     public function setCreatedAt(\DateTimeImmutable $createdAt): self
     {
         $this->createdAt = $createdAt;
-
         return $this;
     }
 }

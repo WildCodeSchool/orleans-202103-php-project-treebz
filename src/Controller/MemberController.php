@@ -5,11 +5,13 @@ namespace App\Controller;
 use App\Entity\Member;
 use App\Entity\Command;
 use App\Form\MemberType;
+use App\Service\GameCard;
 use App\Repository\MemberRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Config\Definition\Exception\Exception;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
 * @Route("/creez-votre-jeu/membre")
@@ -19,10 +21,18 @@ class MemberController extends AbstractController
     /**
      * @Route("/{command<^[0-9]+$>}", name="member_index", methods={"GET"})
      */
-    public function index(Command $command, MemberRepository $memberRepository): Response
+    public function index(Command $command, MemberRepository $memberRepository, GameCard $gameCard): Response
     {
+        $priceGame = 0;
+        try {
+            $priceGame = $gameCard->priceGame($command);
+        } catch (Exception $e) {
+            $this->addFlash('danger', $e->getMessage());
+        }
+
         return $this->render('member/index.html.twig', [
             'command' => $command,
+            'priceGame' => $priceGame,
         ]);
     }
 
