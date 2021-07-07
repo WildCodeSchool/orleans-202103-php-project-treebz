@@ -42,6 +42,12 @@ class MemberController extends AbstractController
     public function new(Command $command, Request $request): Response
     {
         $member = new Member();
+
+        if (count($command->getMembers() ?? []) >= GameCard::GAME_MAX) {
+            $this->addFlash('danger', 'Vous avez atteint la limite de ' . GameCard::GAME_MAX . ' membres.');
+            return $this->redirectToRoute('member_index', ['command' => $command->getId() ?? []]);
+        }
+
         $form = $this->createForm(MemberType::class, $member);
         $form->handleRequest($request);
 
