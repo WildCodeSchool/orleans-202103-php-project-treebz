@@ -27,7 +27,7 @@
 						<strong>{{ command.id }}</strong>
 					</div>
 				</div>
-				<div class="col-3 offset-1">
+				<div class="col-3">
 					<div class="col-12 d-flex justify-content-center">
 						<strong>RÉCAPITULATIF</strong>
 					</div>
@@ -51,22 +51,30 @@
 						<strong>00.00€</strong>
 					</div>
 				</div>
-				<div class="col-1 offset-1">
-					<div class="col-12 d-flex justify-content-center">
+				<div class="col-2">
+					<div class="d-flex justify-content-center">
 						<strong>STATUS</strong>
 					</div>
-					<div class="mt-3">
-						<form method="post" action="{{ path('command_change_status', {'id': command.id}) }}">
-							<select name="status" id="status">
-								<option value="{{ command.status.id }}" selected>{{ command.status.name }}</option>
+					<div class="d-flex justify-content-center mt-3">
+						<div class="{{ command.status.name }}-color btn" value="{{ command.status.id }}">
+							<strong>{{ command.status.name }}</strong>
+						</div>
+					</div>
+				</div>
+				<div class="col-2">
+					<form method="post" action="{{ path('command_change_status', {'id': command.id}) }}">
+						<div class="d-flex justify-content-center">
+							<select class="status" name="status" id="status">
 								{% for one_status in status %}
 									<option value="{{ one_status.id }}">{{ one_status.name }}</option>
 								{% endfor %}
 							</select>
+						</div>
+						<div class="d-flex justify-content-center mt-3">
 							<input type="hidden" name="_token" value="{{ csrf_token('change_status' ~ command.id) }}">
-							<button class="btn btn-light">Change</button>
-						</form>
-					</div>
+							<button class="btn btn-light">Modifier</button>
+						</div>
+					</form>
 				</div>
 			</div>
 		{% else %}
