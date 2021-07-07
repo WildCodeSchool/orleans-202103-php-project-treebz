@@ -2,16 +2,18 @@
 
 namespace App\Controller;
 
-use App\Entity\UserDetail;
 use App\Entity\User;
 use App\Form\UserType;
+use App\Entity\UserDetail;
+use App\Entity\SearchClient;
 use App\Form\UserDetailType;
+use App\Form\SearchClientType;
 use App\Repository\UserDetailRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/admin/clients")
@@ -22,10 +24,18 @@ class AdminUserController extends AbstractController
      * @Route("/", name="admin_user_index", methods={"GET"})
      * @IsGranted("ROLE_ADMIN")
      */
-    public function index(UserDetailRepository $userDetailRepository): Response
+    public function index(Request $request, UserDetailRepository $userDetailRepository): Response
     {
+        $searchClient = new SearchClient();
+        $form = $this->createForm(SearchClientType::class, $searchClient);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $clients = $userDetailRepository->findBySearch($searchClient);
+        }
         return $this->render('admin/user/index.html.twig', [
-            'user_details' => $userDetailRepository->findBy([], ['lastname' => 'ASC'])
+            'user_details' => $clients ?? $userDetailRepository->findBy([], ['lastname' => 'ASC']),
+            'form' => $form->createView(),
         ]);
     }
 
