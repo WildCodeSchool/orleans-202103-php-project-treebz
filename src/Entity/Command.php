@@ -48,7 +48,7 @@ class Command
     /**
      * @ORM\Column(type="integer")
      */
-    private int $quantity;
+    private int $quantity = 1;
 
     /**
      * @ORM\ManyToOne(targetEntity=UserDetail::class, inversedBy="commands")
