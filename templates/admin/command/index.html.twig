@@ -56,12 +56,16 @@
 						<strong>STATUS</strong>
 					</div>
 					<div class="mt-3">
-						<select class="" value="" name="status" id="status">
-							<option value="{{ command.status.id }}" selected>{{ command.status.name }}</option>
-							{% for one_status in status %}
-								<option value="{{ one_status.id }}">{{ one_status.name }}</option>
-							{% endfor %}
-						</select>
+						<form method="post" action="{{ path('command_change_status', {'id': command.id}) }}">
+							<select name="status" id="status">
+								<option value="{{ command.status.id }}" selected>{{ command.status.name }}</option>
+								{% for one_status in status %}
+									<option value="{{ one_status.id }}">{{ one_status.name }}</option>
+								{% endfor %}
+							</select>
+							<input type="hidden" name="_token" value="{{ csrf_token('change_status' ~ command.id) }}">
+							<button class="btn btn-light">Change</button>
+						</form>
 					</div>
 				</div>
 			</div>
