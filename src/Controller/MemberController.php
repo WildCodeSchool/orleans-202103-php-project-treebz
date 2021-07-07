@@ -6,12 +6,13 @@ use App\Entity\Member;
 use App\Entity\Command;
 use App\Form\MemberType;
 use App\Repository\MemberRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\UX\Cropperjs\Form\CropperType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\UX\Cropperjs\Form\CropperType;
 use Symfony\UX\Cropperjs\Factory\CropperInterface;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
 * @Route("/creez-votre-jeu/membre")
@@ -31,20 +32,11 @@ class MemberController extends AbstractController
     /**
      * @Route("/new/{command<^[0-9]+$>}", name="member_new", methods={"GET","POST"})
      */
-    public function new(CropperInterface $cropper, Command $command, Request $request): Response
+    public function new(Command $command, Request $request): Response
     {
         $member = new Member();
         $form = $this->createForm(MemberType::class, $member);
         $form->handleRequest($request);
-        $crop = $cropper->createCrop('/build/images/portrait.f9fbaac2.jpg');
-        $crop->setCroppedMaxSize(2000, 1500);
-
-        $cropForm = $this->createFormBuilder(['crop' => $crop])
-            ->add('crop', CropperType::class, [
-                'public_url' => '/build/images/portrait.f9fbaac2.jpg',
-            ])
-            ->getForm()
-        ;
 
         if ($form->isSubmitted() && $form->isValid()) {
             $member->setCommand($command);
@@ -53,20 +45,50 @@ class MemberController extends AbstractController
             $entityManager->persist($member);
             $entityManager->flush();
 
-            return $this->redirectToRoute('member_index', ['command' => $command->getId()]);
+            return $this->redirectToRoute('member_crop', ['command' => $command->getId()]);
         }
 
-        $cropForm->handleRequest($request);
-
-        if ($cropForm->isSubmitted() && $cropForm->isValid()) {
-            $crop->getCroppedImage();
-            $crop->getCroppedThumbnail(200, 150);
-        }
-
-        return $this->render('member/new.html.twig', [
+        return $this->render('member/crop.html.twig', [
             'member' => $member,
             'form' => $form->createView(),
-            'cropper' => $cropForm->createView(),
+            'command' => $command,
+        ]);
+    }
+
+    /**
+     * @Route("/crop/{command<^[0-9]+$>}", name="member_crop", methods={"GET","POST"})
+     */
+    public function crop(Command $command, Request $request, CropperInterface $cropper): Response
+    {
+        /**
+         * @var string
+         */
+        $projectDir = $this->getParameter('kernel.project_dir');
+        $filename = $projectDir . '/public/build/images/portrait.f9fbaac2.jpg';
+        $crop = $cropper->createCrop($filename);
+        $crop->setCroppedMaxSize(2000, 1500);
+
+        $form = $this->createFormBuilder(['crop' => $crop])
+            ->add('crop', CropperType::class, [
+                'public_url' => '/build/images/portrait.f9fbaac2.jpg',
+            ])
+            ->add('Valider', SubmitType::class)
+            ->getForm()
+        ;
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $encoded = ($crop->getCroppedImage());
+            /**
+             * @var resource
+             */
+            $resource = (imagecreatefromstring($encoded));
+            imagepng($resource, $filename);
+        }
+
+        return $this->render('member/crop.html.twig', [
+            'form' => $form->createView(),
             'command' => $command,
         ]);
     }
