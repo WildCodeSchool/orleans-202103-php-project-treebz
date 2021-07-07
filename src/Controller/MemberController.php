@@ -42,7 +42,6 @@ class MemberController extends AbstractController
         $cropForm = $this->createFormBuilder(['crop' => $crop])
             ->add('crop', CropperType::class, [
                 'public_url' => '/build/images/portrait.f9fbaac2.jpg',
-                'aspect_ratio' => 2000 / 1500,
             ])
             ->getForm()
         ;
