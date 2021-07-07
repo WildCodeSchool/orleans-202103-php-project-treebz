@@ -13,6 +13,9 @@ class GameCard
     public const PRICE_MAX = 34.99;
     public const PRICE_MIN = 24.99;
 
+    public const PRICE_ADD_THEME = 3.99;
+    public const THEMES_BEFORE_ADD_PRICE = 7;
+
     public function priceGame(Command $command): float
     {
 
@@ -26,6 +29,12 @@ class GameCard
             $price = self::PRICE_MAX;
         } else {
             throw new Exception("Trop de membres");
+        }
+
+        $themes = count($command->getSelectedThemes() ?? []);
+
+        if ($themes > self::THEMES_BEFORE_ADD_PRICE) {
+            $price = $price + (($themes - self::THEMES_BEFORE_ADD_PRICE) * self::PRICE_ADD_THEME);
         }
 
         return $price;

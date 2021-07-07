@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Theme;
 use App\Entity\Command;
 use App\Form\CommandType;
+use App\Service\GameCard;
 use App\Form\SelectThemesType;
 use App\Repository\ThemeRepository;
 use App\Repository\CommandRepository;
@@ -49,11 +50,14 @@ class GameCreationController extends AbstractController
         Command $command,
         Request $request,
         ThemeRepository $themeRepository,
-        EntityManagerInterface $entityManager
+        EntityManagerInterface $entityManager,
+        GameCard $gameCard
     ): Response {
 
         $form = $this->createForm(SelectThemesType::class, $command);
         $form->handleRequest($request);
+
+        $priceGame = $gameCard->priceGame($command);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($command);
@@ -64,7 +68,7 @@ class GameCreationController extends AbstractController
             'themes' => $themeRepository->findAll(),
             'command' => $command,
             'form' => $form->createView(),
-
+            'priceGame' =>  $priceGame,
         ]);
     }
 }
