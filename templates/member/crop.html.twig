@@ -50,6 +50,11 @@
                 </div>
                 {{ form_end(form) }}
             </div>
+            <div>
+                {{ form_start(cropper) }}
+                {{ form_row(cropper.crop) }}
+                {{ form_end(cropper) }}
+            </div>
         </div>
     </section>
 {% endblock %}
