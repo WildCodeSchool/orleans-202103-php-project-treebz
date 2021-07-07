@@ -34,7 +34,7 @@
     <section>
         <div class="container-fluid">
             <div class="row mt-5">
-                <div class="col col-sm col-md-9 mt-5 p-4 viewThemes">
+                <div class="col col-sm col-md-8 mt-5 p-4 viewThemes">
                     <div class="row d-flex justify-content-center">
                         <h2 class="text-uppercase text-center fw-bold">
                             Prévisualisez votre commande
@@ -42,8 +42,13 @@
                         {% include 'component/_card_preview.html.twig' %}
                     </div>
                 </div>
-                <div class="col col-md-3 mt-md-5 p-4 chosenThemes d-flex flex-column">
+                <div class="col col-md-4 mt-md-5 p-4 chosenThemes d-flex flex-column">
                     <div class="mb-5">
+                        <div class="row d-flex justify-content-center">
+                            <h2 class="text-uppercase text-center fw-bold">
+                                Récapitulatif
+                            </h2>
+                        </div>
                         <div class="justify-content-end">
                             <a href="" class="btn btn-primary text-uppercase fw-bold fw-bold fs-5 w-100 mt-5">Payer la commande
                                 <img src="{{ asset('build/images/arrow-right.svg') }}" class="ms-5 d-none d-lg-inline-block">
