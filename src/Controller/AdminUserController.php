@@ -33,6 +33,7 @@ class AdminUserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $clients = $userDetailRepository->findBySearch($searchClient);
         }
+
         return $this->render('admin/user/index.html.twig', [
             'user_details' => $clients ?? $userDetailRepository->findBy([], ['lastname' => 'ASC']),
             'form' => $form->createView(),

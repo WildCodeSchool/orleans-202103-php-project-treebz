@@ -1,39 +1,39 @@
 {% extends "layout_admin.html.twig" %}
 {% block stylesheets %}
-	{{ encore_entry_link_tags('homeAdmin') }}
+    {{ encore_entry_link_tags('homeAdmin') }}
 {% endblock %}
 {% block body %}
-	<div class="container">
-		<h1 class="d-flex justify-content-center display-1 mt-4">Treeb'Z Administrateur</h1>
-		<a href="{{ path('theme_index') }}">
-			<div class="row mt-5">
-				<div class="col-6 mt-3 mb-3 d-flex justify-content-center">
-					<span class="iconify" data-icon="mdi:cards" data-inline="false"></span>
-				</div>
-				<div class="col-6 mt-3 mb-3 d-flex align-items-center">
-					<h2 class="display-3">Thèmes</h2>
-				</div>
-			</div>
-		</a>
-		<a href="">
-			<div class="row mt-5">
-				<div class="col-6 mt-3 mb-3 d-flex justify-content-center">
-					<span class="iconify" data-icon="carbon:user-profile-alt" data-inline="false"></span>
-				</div>
-				<div class="col-6 mt-3 mb-3 d-flex align-items-center">
-					<h2 class="display-3">Clients</h2>
-				</div>
-			</div>
-		</a>
-		<a href="">
-			<div class="row mt-5">
-				<div class="col-6 mt-3 mb-3 d-flex justify-content-center">
-					<span class="iconify" data-icon="ph:desktop-tower" data-inline="false"></span>
-				</div>
-				<div class="col-6 mt-3 mb-3 d-flex align-items-center">
-					<h2 class="display-3">Commandes</h2>
-				</div>
-			</div>
-		</a>
-	</div>
+    <div class="container">
+        <h1 class="d-flex justify-content-center display-1 mt-4">Treeb'Z Administrateur</h1>
+        <a href="{{ path('theme_index') }}">
+            <div class="row mt-5">
+                <div class="col-6 mt-3 mb-3 d-flex justify-content-center">
+                    <span class="iconify" data-icon="mdi:cards" data-inline="false"></span>
+                </div>
+                <div class="col-6 mt-3 mb-3 d-flex align-items-center">
+                    <h2 class="display-3">Thèmes</h2>
+                </div>
+            </div>
+        </a>
+        <a href="{{ path('admin_user_index') }}">
+            <div class="row mt-5">
+                <div class="col-6 mt-3 mb-3 d-flex justify-content-center">
+                    <span class="iconify" data-icon="carbon:user-profile-alt" data-inline="false"></span>
+                </div>
+                <div class="col-6 mt-3 mb-3 d-flex align-items-center">
+                    <h2 class="display-3">Clients</h2>
+                </div>
+            </div>
+        </a>
+        <a href="{{ path('command_index') }}">
+            <div class="row mt-5">
+                <div class="col-6 mt-3 mb-3 d-flex justify-content-center">
+                    <span class="iconify" data-icon="ph:desktop-tower" data-inline="false"></span>
+                </div>
+                <div class="col-6 mt-3 mb-3 d-flex align-items-center">
+                    <h2 class="display-3">Commandes</h2>
+                </div>
+            </div>
+        </a>
+    </div>
 {% endblock %}

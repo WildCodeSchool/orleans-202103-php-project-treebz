@@ -1,7 +1,7 @@
 <section class="section-navbar">
     <nav class="navbar navbar-expand-md navbar-light bg-primary h5 mb-0">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/"><img class="img-logo" src="{{ asset('build/images/logoTreebz.webp') }}" alt="logo Treebz"/>
+            <a class="navbar-brand" href="{{ path('admin_home') }}"><img class="img-logo" src="{{ asset('build/images/logoTreebz.webp') }}" alt="logo Treebz"/>
                 <span class="text-light fw-bold h4">ADMIN</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,6 +17,10 @@
                     </li>
                     <li class="nav-item m-1 m-lg-3">
                         <a class="nav-link active" href="{{ path('command_index') }}">COMMANDES</a>
+                    </li>
+
+                    <li class="nav-item m-1 m-lg-3">
+                        <a class="nav-link active text-light fw-bold text-uppercase" href="{{ path('home') }}">mon site</a>
                     </li>
                 </ul>
             </div>
