@@ -29,6 +29,11 @@ class Status
      */
     private Collection $commands;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private ?string $color;
+
     public function __construct()
     {
         $this->commands = new ArrayCollection();
@@ -83,6 +88,18 @@ class Status
                 $command->setStatus(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getColor(): ?string
+    {
+        return $this->color;
+    }
+
+    public function setColor(?string $color): self
+    {
+        $this->color = $color;
 
         return $this;
     }

@@ -2,8 +2,9 @@
 
 namespace App\Controller;
 
-use App\Entity\Theme;
 use App\Entity\User;
+use App\Entity\Theme;
+use App\Form\GameType;
 use App\Entity\Command;
 use App\Form\CommandType;
 use App\Service\GameCard;
@@ -48,8 +49,28 @@ class GameCreationController extends AbstractController
     }
 
     /**
-     * @Route("/choisissez-votre-theme/{command_id}/", name="choose_theme", methods={"GET","POST"})
-     * @ParamConverter("command", class="App\Entity\Command", options={"mapping": {"command_id": "id"}})
+     * @Route("/modifier/{id}/", name="editGame", methods={"GET","POST"})
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
+     */
+    public function editCommand(Request $request, Command $command): Response
+    {
+        $form = $this->createForm(GameType::class, $command);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('member_index', ['command' => $command->getId()]);
+        }
+
+        return $this->render('gameCreation/editGameName.html.twig', [
+            'command' => $command,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/choisissez-votre-theme/{id}/", name="choose_theme", methods={"GET","POST"})
      * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function chooseTheme(

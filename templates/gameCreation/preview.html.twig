@@ -50,9 +50,16 @@
                             </h2>
                         </div>
                         <div class="justify-content-end">
-                            <a href="" class="btn btn-primary text-uppercase fw-bold fw-bold fs-5 w-100 mt-5">Payer la commande
+                            <a href="{{ path('gamecreation_thanks') }}" class="btn btn-primary text-uppercase fw-bold fw-bold fs-5 w-100 mt-5">Payer la commande
                                 <img src="{{ asset('build/images/arrow-right.svg') }}" class="ms-5 d-none d-lg-inline-block">
                             </a>
+
+                            <div class="text-center">
+                                <a class="btn btn-light text-uppercase fw-bold fw-bold mt-5 fs-5 w-100" href="{{ path('gamecreation_choose_theme', {'id': command.id}) }}">
+                                    <span class="me-5 d-none d-lg-inline-block">{% include "component/_left_arrow.html.twig" %}</span>
+                                    Modifier mes thèmes
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
