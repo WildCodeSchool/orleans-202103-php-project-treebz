@@ -9,10 +9,9 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 class MemberFixtures extends Fixture implements DependentFixtureInterface
 {
-
+// @codingStandardsIgnoreStart
     public const MEMBER_NAMES = ['GRAND-PERE', 'GRAND-MERE', 'PAPA', 'MAMAN', 'FILS', 'FILLE', 'CHIEN'];
-    public const LINK_IMAGE = "https://i.picsum.photos/id/1025/4951/3301.jpg?
-    hmac=_aGh5AtoOChip_iaMo8ZvvytfEojcgqbCH7dzaz-H8Y";
+    public const LINK_IMAGE = "https://i.picsum.photos/id/1025/4951/3301.jpg?hmac=_aGh5AtoOChip_iaMo8ZvvytfEojcgqbCH7dzaz-H8Y";
     private const DIR_UPLOAD = '/uploads/members/';
 // @codingStandardsIgnoreEnd
     public function load(ObjectManager $manager)

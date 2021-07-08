@@ -12,7 +12,7 @@ $left: 160px;
 
 .member-name {
     position: relative;
-    bottom: $bottom * 20;
+    bottom: $bottom * 22;
     color: $dark;
     font-family: 'Chewy', cursive;
 }
@@ -20,14 +20,14 @@ $left: 160px;
 .member-photo {
     position: relative;
     z-index: -1;
-    bottom: $bottom * 23;
+    bottom: $bottom * 24;
 }
 
 .card-number {
     display: flex;
     justify-content: center;
     position: relative;
-    bottom: $bottom * 24;
+    bottom: $bottom * 27;
     margin-left: $left;
     z-index: 1;
     border-radius: 100%;
@@ -57,7 +57,7 @@ $left: 160px;
 }
 
 .photo {
-    height: 150px;
+    height: 180px;
     width: 200px;
 }
 
@@ -154,5 +154,5 @@ h1 {
 }
 
 .viewThemes {
-    background-color: $element;
+    border-right: 2px solid $dark;
 }
