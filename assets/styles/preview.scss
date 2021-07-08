@@ -1,9 +1,65 @@
 @import "variables.scss";
+@import "app.scss";
 @import "~bootstrap/scss/bootstrap";
 
-/* Style of the header and steps block */
-
 $bottom: 10px;
+$left: 160px;
+
+.full-card {
+    position: relative;
+    z-index: 0;
+}
+
+.member-name {
+    position: relative;
+    bottom: $bottom * 22;
+    color: $dark;
+    font-family: 'Chewy', cursive;
+}
+
+.member-photo {
+    position: relative;
+    z-index: -1;
+    bottom: $bottom * 24;
+}
+
+.card-number {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    bottom: $bottom * 27;
+    margin-left: $left;
+    z-index: 1;
+    border-radius: 100%;
+    border: $dark solid 2px;
+    color: $dark;
+    height: $medium_font * 1;
+    width: $medium_font * 1;
+    text-align: center;
+}
+
+.number {
+    display: inline-block;
+}
+
+.column {
+    border: 3px solid $dark;
+}
+
+.theme {
+    border-top: 3px solid $dark;
+    border-bottom: 3px solid $dark;
+    height: 300px;
+}
+
+.all {
+    height: 300px;
+}
+
+.photo {
+    height: 180px;
+    width: 200px;
+}
 
 h1 {
     font-family: $font-title;
@@ -27,32 +83,11 @@ h1 {
     }
 }
 
-.buttonFont {
-    font-size: 1em;
-}
-
 .mainTitle {
     height: 15rem;
     background-color: $secondary;
     z-index: 1;
 }
-
-.cardImage {
-    height: 400px;
-}
-
-.grayTitle {
-    color: $gray;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 1.4em;
-}
-
-.price {
-    font-size: 1.4em;
-}
-
-/* Start Stepbar - Using: You need to apply the class "active" in the <li> you wish to display green in the stepbar */
 
 .progressbar {
     counter-reset: step;
@@ -118,27 +153,6 @@ h1 {
     background-color: $primary;
 }
 
-.create-button {
-    background-color: $secondary;
-    color: $dark;
-}
-
-/* End Stepbar */
-
-/* 3rd page */
-
-.chosenThemes {
-    background-color: $secondary;
-}
-
 .viewThemes {
-    background-color: $element;
-}
-
-.bgElement {
-    background-color: $element;
-}
-
-.card-member {
-    width: 20rem;
+    border-right: 2px solid $dark;
 }

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Member;
 use App\Entity\Command;
 use App\Form\MemberType;
+use App\Service\GameCard;
 use App\Repository\MemberRepository;
 use Symfony\UX\Cropperjs\Form\CropperType;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,6 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\UX\Cropperjs\Factory\CropperInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Config\Definition\Exception\Exception;
 
 /**
 * @Route("/creez-votre-jeu/membre")
@@ -22,10 +24,18 @@ class MemberController extends AbstractController
     /**
      * @Route("/{command<^[0-9]+$>}", name="member_index", methods={"GET"})
      */
-    public function index(Command $command, MemberRepository $memberRepository): Response
+    public function index(Command $command, MemberRepository $memberRepository, GameCard $gameCard): Response
     {
+        $priceGame = 0;
+        try {
+            $priceGame = $gameCard->priceGame($command);
+        } catch (Exception $e) {
+            $this->addFlash('danger', $e->getMessage());
+        }
+
         return $this->render('member/index.html.twig', [
             'command' => $command,
+            'priceGame' => $priceGame,
         ]);
     }
 
@@ -35,6 +45,12 @@ class MemberController extends AbstractController
     public function new(Command $command, Request $request): Response
     {
         $member = new Member();
+
+        if (count($command->getMembers() ?? []) >= GameCard::GAME_MAX) {
+            $this->addFlash('danger', 'Vous avez atteint la limite de ' . GameCard::GAME_MAX . ' membres.');
+            return $this->redirectToRoute('member_index', ['command' => $command->getId() ?? []]);
+        }
+
         $form = $this->createForm(MemberType::class, $member);
         $form->handleRequest($request);
 

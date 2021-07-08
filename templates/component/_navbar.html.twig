@@ -24,8 +24,8 @@
                 </ul>
                 <form class="d-flex align-items-center">
                     {% if app.user %}
-                        Salut
-                        {{ app.user.userDetail.firstname }}
+                        Bonjour
+                        {{ app.user.userDetail.firstname ?? app.user.email }}
                         !
                     {% endif %}
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
@@ -43,7 +43,7 @@
                                     <a class="dropdown-item" href="#">Création en cours</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="#">Historique des commandes</a>
+                                    <a class="dropdown-item" href="{{ path('command_history') }}">Historique des commandes</a>
                                 </li>
                             </ul>
                         </div>

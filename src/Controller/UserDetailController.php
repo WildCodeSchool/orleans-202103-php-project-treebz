@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Form\UserDetailType;
 use App\Entity\User;
+use App\Repository\CommandRepository;
+use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -36,5 +38,14 @@ class UserDetailController extends AbstractController
         return $this->render('user_detail/edit.html.twig', [
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/histrorique-des-commandes", name="command_history", methods={"GET"})
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
+     */
+    public function showCommand(CommandRepository $commandRepository): Response
+    {
+        return $this->render('user_detail/commandHistory.html.twig');
     }
 }

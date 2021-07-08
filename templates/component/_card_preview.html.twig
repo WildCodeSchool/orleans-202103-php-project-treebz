@@ -1,0 +1,22 @@
+<div class="full-card d-flex justify-content-center mt-5">
+    {% for theme in command.selectedThemes %}
+        <div class="column">
+            {% for member in command.members %}
+                <div class="all">
+                    <img class="theme" src="{{ asset('/uploads/' ~ theme.image) }}" alt="card"/>
+                    <div class="member-photo d-flex justify-content-center">
+                        <img class="photo" src="{{ vich_uploader_asset(member) }}" alt="{{ member.picture }}"/>
+                    </div>
+                    <div class="member-name d-flex justify-content-center">
+                        <p>{{ member.name }}</p>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <div class="card-number">
+                            <span class="number">{{ loop.index }}</span>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+</div>
