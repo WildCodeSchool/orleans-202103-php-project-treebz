@@ -1,0 +1,97 @@
+{% extends 'layout_admin.html.twig' %}
+
+{% block title %}Treeb'z Admin | Mes Utilisateurs
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('gamecreation') }}
+
+{% endblock %}
+{% block body %}
+    <header>
+        <div class="jumbotron jumbotron-fluid mainTitle ">
+            <div>
+                <h1 class="display-4 text-center py-5">
+                    Mes Clients
+                </h1>
+            </div>
+        </div>
+    </header>
+    <main class="container mt-5">
+        <div class="d-flex justify-content-md-end">
+            <div class="vw-75 mb-5">
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <button class="btn btn-primary d-inline">Chercher</button>
+                {{ form_end(form) }}
+            </div>
+        </div>
+        {% for user_detail in user_details %}
+            <div class="accordion" id="accordionPanelsStayOpenExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header h2" id="panelsStayOpen-headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false" aria-controls="panelsStayOpen-collapseOne">
+                            <p class="text-uppercase fw-bold">{{ user_detail.lastname }}
+                                <span class="text-capitalize fw-bold">{{ user_detail.firstname }}
+                                </span>
+                                <span class="d-none d-lg-inline text-lowercase fw-light">⠀{{ user_detail.user.email }}</span>
+                            </p>
+                        </span>
+                    </p>
+                </h2>
+            </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+            <div class="accordion-body">
+                <div class="row">
+                    <div class="col col-md-5">
+                        <div class="my-1">
+                            <span class="fw-bold text-uppercase">Nom:</span>
+                            <span>{{ user_detail.lastname }}</span>
+                        </div>
+                        <div>
+                            <span class="fw-bold text-uppercase">Prénom:</span>
+                            <span>{{ user_detail.firstname }}</span>
+                        </div>
+                        <div class="my-1">
+                            <span class="fw-bold text-uppercase">Télephone:</span>
+                            <span>{{ user_detail.phone }}</span>
+                        </div>
+
+                        <div class="my-1">
+                            <span class="fw-bold text-uppercase">Email:</span>
+                            <span>{{ user_detail.user.email }}</span>
+                        </div>
+                    </div>
+                    <div class="col col-md-5">
+                        <div class="my-1">
+                            <span class="fw-bold text-uppercase">Adresse:</span>
+                            <span>{{ user_detail.address }}</span>
+                        </div>
+                        <div class="my-1">
+                            <span class="fw-bold text-uppercase">
+                                Code Postal:</span>
+                            <span>{{ user_detail.postalCode }}</span>
+                        </div>
+                        <div class="my-1">
+                            <span class="fw-bold text-uppercase">Ville:</span>
+                            <span>{{ user_detail.town }}</span>
+                        </div>
+                        <div class="my-1">
+                            <span class="fw-bold text-uppercase">Pays:</span>
+                            <span>
+                                {{ user_detail.country }}</span>
+                        </div>
+                    </div>
+                    <div class="col col-md-2 mt-3 py-3 py-md-1 text-center">
+                        <div class="d-inline">
+                            <a class="btn btn-secondary" href="{{ path('admin_user_edit', {'id': user_detail.id}) }}">Modifier</a>
+                            {{ include('admin/user/_delete_form.html.twig') }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <p>Aucun utilisateur trouvé.</p>
+    {% endfor %}
+{% endblock %}
