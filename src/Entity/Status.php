@@ -34,6 +34,11 @@ class Status
         $this->commands = new ArrayCollection();
     }
 
+    public function __serialize(): array
+    {
+        return [];
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -58,6 +63,7 @@ class Status
     {
         return $this->commands;
     }
+
 
     public function addCommand(Command $command): self
     {

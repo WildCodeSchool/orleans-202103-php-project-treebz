@@ -24,8 +24,8 @@
                 </ul>
                 <form class="d-flex align-items-center">
                     {% if app.user %}
-                        Salut
-                        {{ app.user.userDetail.firstname }}
+                        Bonjour
+                        {{ app.user.userDetail.firstname ?? app.user.email }}
                         !
                     {% endif %}
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
