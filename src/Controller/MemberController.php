@@ -165,7 +165,10 @@ class MemberController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($member);
             $entityManager->flush();
-            return $this->redirectToRoute('member_index', ['command' => $commandId]);
+            return $this->redirectToRoute('member_crop', [
+                'command' => $command->getId(),
+                'member' => $member->getId()
+            ]);
         }
 
         return $this->render('member/edit.html.twig', [
