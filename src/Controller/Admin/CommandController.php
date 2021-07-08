@@ -35,7 +35,7 @@ class CommandController extends AbstractController
         }
 
         return $this->render('admin/command/index.html.twig', [
-            'commands' => $command,
+            'commands' => $command ?? $commandRepository->findBy([], ['projectName' => 'ASC']),
             'status' => $statusRepository->findAll(),
             'form' => $form->createView(),
         ]);
