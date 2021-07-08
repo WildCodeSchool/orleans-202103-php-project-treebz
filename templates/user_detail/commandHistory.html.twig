@@ -18,7 +18,7 @@
 	</header>
 	<div class="container mt-5">
 		{% for command in app.user.commands %}
-			<div class="card flex-row col-12 bg-light mb-5 mt-4 p-3">
+			<div class="card bg-light mb-5 mt-4 p-3">
 				<div class="row">
 					<div class="col-1">
 						<div class="col-12 d-flex justify-content-center">
@@ -62,7 +62,11 @@
 						</div>
 					</div>
 				</div>
-				<a href="{{ path('pending_order', {'id': command.id}) }}">commande</a>
+				<div class="row">
+					<div class="d-flex justify-content-center">
+					<a class="nav-item m-1 btn btn-secondary text-uppercase" href="{{ path('pending_order', {'id': command.id}) }}">Reprenez votre commande</a>
+					</div>
+				</div>
 			</div>
 		{% else %}
 			<h2>Aucune commande</h2>
