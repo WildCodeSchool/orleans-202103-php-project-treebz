@@ -47,9 +47,8 @@ class GameCreationController extends AbstractController
         return $this->render('gameCreation/index.html.twig', ["form" => $form->createView(),]);
     }
 
-     /**
-     * @Route("/modifier/{command_id}/", name="editGame", methods={"GET","POST"})
-     * @ParamConverter("command", class="App\Entity\Command", options={"mapping": {"command_id": "id"}})
+    /**
+     * @Route("/modifier/{id}/", name="editGame", methods={"GET","POST"})
      * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function editCommand(Request $request, Command $command): Response
@@ -70,8 +69,7 @@ class GameCreationController extends AbstractController
     }
 
     /**
-     * @Route("/choisissez-votre-theme/{command_id}/", name="choose_theme", methods={"GET","POST"})
-     * @ParamConverter("command", class="App\Entity\Command", options={"mapping": {"command_id": "id"}})
+     * @Route("/choisissez-votre-theme/{id}/", name="choose_theme", methods={"GET","POST"})
      * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function chooseTheme(
