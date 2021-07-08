@@ -102,10 +102,9 @@ class MemberController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $encoded = ($crop->getCroppedImage());
-            /**
-             * @var resource
-             */
+            /** @phpstan-ignore-next-line */
             $resource = (imagecreatefromstring($encoded));
+            /** @phpstan-ignore-next-line */
             imagejpeg($resource, $filename);
             return $this->redirectToRoute('member_index', ['command' => $command->getId()]);
         }
