@@ -44,9 +44,13 @@
                     <div class="mb-4">{{ form_row(form.name) }}</div>
                     <div class="mb-4">{{ form_row(form.pictureFile) }}</div>
                 </div>
-                <div class="d-flex justify-content-between align-items-center">
-                    <a href="{{ path('member_index', {'command': command.id}) }}">Revenir à l'étape 2</a>
+                <div class="text-center">
                     <button class="btn btn-primary text-uppercase fw-bold m-4">Ajouter le membre</button>
+                </div>
+                <div class="text-center mt-5">
+                    <a class="btn btn-secondary text-uppercase fw-bold" href="{{ path('member_index', {'command': command.id}) }}">
+                        <span class="me-5 d-none d-lg-inline-block">{% include "component/_left_arrow.html.twig" %}</span>
+                        Revenir à l'étape précédente</a>
                 </div>
                 {{ form_end(form) }}
             </div>
