@@ -29,7 +29,6 @@ class PreviewController extends AbstractController
         ThemeRepository $themeRepository
     ): Response {
 
-
          /** @var User */
          $user = $this->getUser();
         if (!$user->getCommands()->contains($command)) {
