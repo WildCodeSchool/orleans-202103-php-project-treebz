@@ -1,9 +1,11 @@
 {
     "devDependencies": {
         "@symfony/stimulus-bridge": "^2.0.0",
+        "@symfony/ux-cropperjs": "file:vendor/symfony/ux-cropperjs/Resources/assets",
         "@symfony/webpack-encore": "^1.0.0",
         "bootstrap": "^5.0.1",
         "core-js": "^3.0.0",
+        "cropperjs": "^1.5.9",
         "eslint": "^7.12.1",
         "eslint-config-airbnb": "^18.2.0",
         "eslint-plugin-import": "^2.22.1",

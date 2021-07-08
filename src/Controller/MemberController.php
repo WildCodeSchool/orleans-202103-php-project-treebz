@@ -7,9 +7,12 @@ use App\Entity\Command;
 use App\Form\MemberType;
 use App\Service\GameCard;
 use App\Repository\MemberRepository;
+use Symfony\UX\Cropperjs\Form\CropperType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\UX\Cropperjs\Factory\CropperInterface;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -58,11 +61,60 @@ class MemberController extends AbstractController
             $entityManager->persist($member);
             $entityManager->flush();
 
-            return $this->redirectToRoute('member_index', ['command' => $command->getId()]);
+            return $this->redirectToRoute('member_crop', [
+                'command' => $command->getId(),
+                'member' => $member->getId()
+            ]);
         }
 
         return $this->render('member/new.html.twig', [
             'member' => $member,
+            'form' => $form->createView(),
+            'command' => $command,
+        ]);
+    }
+
+    /**
+     * @Route("/crop/{command<^[0-9]+$>}/{member<^[0-9]+$>}", name="member_crop", methods={"GET","POST"})
+     */
+    public function crop(Command $command, Member $member, Request $request, CropperInterface $cropper): Response
+    {
+        /**
+         * @var string
+         */
+        $fileDirectory = $this->getParameter('public_directory');
+        /**
+         * @var string
+         */
+        $fileUpload = $this->getParameter('upload_member_directory');
+        $filename = $fileDirectory . $fileUpload . $member->getPicture();
+        $crop = $cropper->createCrop($filename);
+        $crop->setCroppedMaxSize(1500, 2000);
+
+        $form = $this->createFormBuilder(['crop' => $crop])
+            ->add('crop', CropperType::class, [
+                'public_url' => $fileUpload . $member->getPicture(),
+                'aspect_ratio' => 1800 / 2000,
+            ])
+            ->add('validate', SubmitType::class, [
+                'label' => 'Valider',
+            ])
+            ->getForm()
+        ;
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $encoded = ($crop->getCroppedImage());
+            // Be careful, here we are using PHP 7.4, if you change to 8.0, an error can occur
+            /** @phpstan-ignore-next-line */
+            $resource = (imagecreatefromstring($encoded));
+            /** @phpstan-ignore-next-line */
+            imagejpeg($resource, $filename);
+            return $this->redirectToRoute('member_index', ['command' => $command->getId()]);
+        }
+
+        return $this->render('member/crop.html.twig', [
             'form' => $form->createView(),
             'command' => $command,
         ]);
