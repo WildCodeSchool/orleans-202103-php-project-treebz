@@ -2,8 +2,9 @@
 
 namespace App\Controller;
 
-use App\Entity\Theme;
 use App\Entity\User;
+use App\Entity\Theme;
+use App\Form\GameType;
 use App\Entity\Command;
 use App\Form\CommandType;
 use App\Form\SelectThemesType;
@@ -44,6 +45,28 @@ class GameCreationController extends AbstractController
         }
 
         return $this->render('gameCreation/index.html.twig', ["form" => $form->createView(),]);
+    }
+
+     /**
+     * @Route("/modifier/{command_id}/", name="editGame", methods={"GET","POST"})
+     * @ParamConverter("command", class="App\Entity\Command", options={"mapping": {"command_id": "id"}})
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
+     */
+    public function editCommand(Request $request, Command $command): Response
+    {
+        $form = $this->createForm(GameType::class, $command);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('member_index', ['command' => $command->getId()]);
+        }
+
+        return $this->render('gameCreation/editGameName.html.twig', [
+            'command' => $command,
+            'form' => $form->createView(),
+        ]);
     }
 
     /**
