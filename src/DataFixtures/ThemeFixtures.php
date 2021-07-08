@@ -10,22 +10,19 @@ use DateTime;
 
 class ThemeFixtures extends Fixture
 {
-
+    public const LINK_IMAGES = 'src/DataFixtures/canva_png/';
     public const THEMES = [
         [
-            'name' => 'Sport',
-            'colorText' => '#FFFFFF',
-        ],
-        [
-            'name' => 'Fête Noel',
-            'colorText' => '#FFFFFF',
-        ],
-        [
-            'name' => 'Ski',
-            'colorText' => '#FFFFFF',
-        ],
-        [
             'name' => 'Cuisine',
+            'colorText' => '#FFFFFF',
+        ],
+        [
+            'name' => 'Ecolo',
+            'colorText' => '#FFFFFF',
+
+        ],
+        [
+            'name' => 'Voyage',
             'colorText' => '#FFFFFF',
 
         ],
@@ -35,21 +32,19 @@ class ThemeFixtures extends Fixture
     {
         foreach (self::THEMES as $key => $themeData) {
             $theme = new Theme();
+            $this->addReference('theme_' . $key, $theme);
             $theme->setName($themeData['name']);
             $theme->setColorText($themeData['colorText']);
             $theme->setUpdatedAt(new DateTime('now'));
-
-            $urlImage = 'https://picsum.photos/seed/picsum/500/600';
-            $path = uniqid() . '.jpg';
-
+            $urlImage = self::LINK_IMAGES . ($key + 1) . '.png';
+            $path = uniqid() . '.png';
             // Function to save image URL into file
-            copy($urlImage, 'public/uploads/' . $path);
+            copy($urlImage, 'public/uploads/themes/' . $path);
             $imagePath = $path;
             $theme->setImage($imagePath);
+            $this->setReference('theme_' . $key, $theme);
             $manager->persist($theme);
-            $this->addReference('theme_' . $key, $theme);
         }
-
         $manager->flush();
     }
 }

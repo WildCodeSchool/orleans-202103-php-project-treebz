@@ -19,18 +19,6 @@ class CommandFixtures extends Fixture implements DependentFixtureInterface
             'quantity' => 2,
             'status' => 1
         ],
-        [
-            'quantity' => 2,
-            'status' => 1
-        ],
-        [
-            'quantity' => 5,
-            'status' => 1
-        ],
-        [
-            'quantity' => 2,
-            'status' => 1
-        ]
     ];
 
     public function load(ObjectManager $manager)
@@ -46,7 +34,7 @@ class CommandFixtures extends Fixture implements DependentFixtureInterface
             }
             $command->setContactInformation($this->getReference('userDetail_' . $keyCommand));
             $command->setUser($this->getReference('user_' . $keyCommand));
-
+            $this->addReference('projet_' . $keyCommand, $command);
             $manager->persist($command);
         }
         $manager->flush();
