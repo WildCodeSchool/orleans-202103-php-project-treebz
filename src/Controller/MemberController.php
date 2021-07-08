@@ -102,6 +102,7 @@ class MemberController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $encoded = ($crop->getCroppedImage());
+            // Be careful, here we are using PHP 7.4, if you change to 8.0, an error can occur
             /** @phpstan-ignore-next-line */
             $resource = (imagecreatefromstring($encoded));
             /** @phpstan-ignore-next-line */
