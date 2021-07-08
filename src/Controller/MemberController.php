@@ -45,10 +45,13 @@ class MemberController extends AbstractController
             $entityManager->persist($member);
             $entityManager->flush();
 
-            return $this->redirectToRoute('member_crop', ['command' => $command->getId()]);
+            return $this->redirectToRoute('member_crop', [
+                'command' => $command->getId(),
+                'member' => $member->getId()
+            ]);
         }
 
-        return $this->render('member/crop.html.twig', [
+        return $this->render('member/new.html.twig', [
             'member' => $member,
             'form' => $form->createView(),
             'command' => $command,
@@ -56,23 +59,26 @@ class MemberController extends AbstractController
     }
 
     /**
-     * @Route("/crop/{command<^[0-9]+$>}", name="member_crop", methods={"GET","POST"})
+     * @Route("/crop/{command<^[0-9]+$>}/{member<^[0-9]+$>}", name="member_crop", methods={"GET","POST"})
      */
-    public function crop(Command $command, Request $request, CropperInterface $cropper): Response
+    public function crop(Command $command, Member $member, Request $request, CropperInterface $cropper): Response
     {
         /**
          * @var string
          */
         $projectDir = $this->getParameter('kernel.project_dir');
-        $filename = $projectDir . '/public/build/images/portrait.f9fbaac2.jpg';
+        $filename = $projectDir . '/public/uploads/members/' . $member->getPicture();
         $crop = $cropper->createCrop($filename);
-        $crop->setCroppedMaxSize(2000, 1500);
+        $crop->setCroppedMaxSize(1500, 2000);
 
         $form = $this->createFormBuilder(['crop' => $crop])
             ->add('crop', CropperType::class, [
-                'public_url' => '/build/images/portrait.f9fbaac2.jpg',
+                'public_url' => '/uploads/members/' . $member->getPicture(),
+                'aspect_ratio' => 1800 / 2000,
             ])
-            ->add('Valider', SubmitType::class)
+            ->add('validate', SubmitType::class, [
+                'label' => 'Valider',
+            ])
             ->getForm()
         ;
 
@@ -84,7 +90,8 @@ class MemberController extends AbstractController
              * @var resource
              */
             $resource = (imagecreatefromstring($encoded));
-            imagepng($resource, $filename);
+            imagejpeg($resource, $filename);
+            return $this->redirectToRoute('member_index', ['command' => $command->getId()]);
         }
 
         return $this->render('member/crop.html.twig', [
