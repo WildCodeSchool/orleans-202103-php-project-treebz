@@ -193,7 +193,7 @@ class Command
 
     public function getCreatedAt(): ?DateTimeImmutable
     {
-        return $this->createdAt->format('d/m/Y');
+        return $this->createdAt;
     }
 
     public function setCreatedAt(\DateTimeImmutable $createdAt): self
