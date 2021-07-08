@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\SearchClient;
 use App\Entity\UserDetail;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -19,7 +20,16 @@ class UserDetailRepository extends ServiceEntityRepository
         parent::__construct($registry, UserDetail::class);
     }
 
-     /**
+    public function findBySearch(SearchClient $searchClient): array
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.lastname LIKE :lastname')
+            ->setParameter('lastname', '%' . $searchClient->getLastname() . '%')
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
     //  * @return UserDetails[] Returns an array of UserDetails objects
     //  */
     /*
