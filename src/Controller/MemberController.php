@@ -82,14 +82,18 @@ class MemberController extends AbstractController
         /**
          * @var string
          */
-        $projectDir = $this->getParameter('kernel.project_dir');
-        $filename = $projectDir . '/public/uploads/members/' . $member->getPicture();
+        $fileDirectory = $this->getParameter('public_directory');
+        /**
+         * @var string
+         */
+        $fileUpload = $this->getParameter('upload_member_directory');
+        $filename = $fileDirectory . $fileUpload . $member->getPicture();
         $crop = $cropper->createCrop($filename);
         $crop->setCroppedMaxSize(1500, 2000);
 
         $form = $this->createFormBuilder(['crop' => $crop])
             ->add('crop', CropperType::class, [
-                'public_url' => '/uploads/members/' . $member->getPicture(),
+                'public_url' => $fileUpload . $member->getPicture(),
                 'aspect_ratio' => 1800 / 2000,
             ])
             ->add('validate', SubmitType::class, [
