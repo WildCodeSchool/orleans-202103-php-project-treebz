@@ -5,7 +5,7 @@
 {% block stylesheets %}
     {{ parent() }}
     {{ encore_entry_link_tags('gamecreation') }}
-
+    {{ encore_entry_link_tags('command') }}
 {% endblock %}
 {% block body %}
     <header>
@@ -21,8 +21,12 @@
         <div class="d-flex justify-content-md-end">
             <div class="vw-75 mb-5">
                 {{ form_start(form) }}
-                {{ form_widget(form) }}
-                <button class="btn btn-primary d-inline">Chercher</button>
+                <div class="form-group fg--search">
+                    {{ form_row(form.lastname, {'attr': {'class': 'form-control bg-secondary'}}) }}
+                    <button class="fa fa-search" type="submit">
+                        {{ include('/component/_magnifying_glass.html.twig') }}
+                    </button>
+                </div>
                 {{ form_end(form) }}
             </div>
         </div>
