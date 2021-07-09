@@ -34,18 +34,21 @@ class CommandController extends AbstractController
         $formStatus->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            dd('je suis dedans');
             $search = $form->getData()['search'];
             $commands = $commandRepository->findLikeProjectName($search);
         } else {
             $commands = $commandRepository->findAll();
         }
 
-        $commands = $commandRepository->findAll();
+//Expected argument of type "string", "object" given at property path "name".
+
         if ($formStatus->isSubmitted() &&  $formStatus->isValid()) {
-            dd('je suis dedans');
-            //$commands = $commandRepository->findLikeStatus($status);
+            $input = $formStatus->getData()['input'];
+
+            $commands = $commandRepository->findByStatus(['status' => $input]);
         }
+        //Notice: Trying to access array offset on value of type null
+
         //$status = $statusRepository->findOneByName(['name'=>$statusInfo]);
         //$commands = $commandRepository->findByStatus(['status'=> $status->getId()]);
         return $this->render('admin/command/index.html.twig', [

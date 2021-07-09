@@ -17,14 +17,13 @@
 		{{ form_end(form) }}
 	</div>
 
-    {{ form_start(formStatus) }}
-        <div class="d-flex flex-row">
-            {{ form_row(formStatus.name) }}
-            <button class="btn btn-secondary mt-4">{{ button_label|default('Afficher') }}</button>
-        </div>
-    {{ form_end(formStatus) }}
-
 	<div class="container">
+        {{ form_start(formStatus) }}
+            <div class="d-flex flex-row">
+                <div class="d-flex align-items-end m-1">{{ form_row(formStatus.input) }}</div>
+                <div class="d-flex align-items-end m-1"><button class="btn btn-secondary">{{ button_label|default('Afficher') }}</button></div>
+            </div>
+        {{ form_end(formStatus) }}
 		{% for command in commands %}
 			<div class="card flex-row col-12 bg-secondary mb-5 mt-4 p-3">
 				<div class="col-1">
