@@ -1,6 +1,6 @@
 {% extends 'layout.html.twig' %}
 {% block stylesheets %}
-	{{ parent() }}
+    {{ parent() }}
     {{ encore_entry_link_tags('connexion') }}
 {% endblock %}
 
@@ -44,12 +44,18 @@
                     label: 'MOT DE PASSE'
                 }) }}
             </div>
-            <div class="mt-4">
-                {{ form_row(registrationForm.agreeTerms) }}
+            <span class="d-inline-block mt-5">
+                {{ form_widget(registrationForm.agreeTerms, {'label': "J'ai lu et je suis d'accord"}) }}
+            </span>
+            <span class="d-inline-block">avec les
+                <a class="link-light" href="{{ path('termOfService') }}">termes et conditions</a>
+                ainsi que la
+                <a class="link-light" href="{{ path('termsDataProtection') }}">
+                    politique de confidentialité.</a>
+            </span>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="col-8 col-sm-2 btn btn-light mt-5">Inscription</button>
             </div>
-                <div class="d-flex justify-content-center">
-                    <button type="submit" class="col-8 col-sm-2 btn btn-light mt-5">Inscription</button>
-                </div>
             {{ form_end(registrationForm) }}
         </div>
     </div>

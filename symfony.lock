@@ -142,6 +142,12 @@
     "gitonomy/gitlib": {
         "version": "v1.2.3"
     },
+    "guzzlehttp/psr7": {
+        "version": "1.8.2"
+    },
+    "intervention/image": {
+        "version": "2.5.1"
+    },
     "jakub-onderka/php-console-color": {
         "version": "v0.2"
     },
@@ -220,11 +226,17 @@
     "psr/event-dispatcher": {
         "version": "1.0.0"
     },
+    "psr/http-message": {
+        "version": "1.0.1"
+    },
     "psr/link": {
         "version": "1.0.0"
     },
     "psr/log": {
         "version": "1.1.4"
+    },
+    "ralouphie/getallheaders": {
+        "version": "3.0.3"
     },
     "sebastian/cli-parser": {
         "version": "1.0.1"
@@ -595,6 +607,9 @@
     },
     "symfony/twig-pack": {
         "version": "v1.0.1"
+    },
+    "symfony/ux-cropperjs": {
+        "version": "v1.3.0"
     },
     "symfony/validator": {
         "version": "4.3",

@@ -21,7 +21,7 @@
             </div>
         </div>
     </header>
-    <section class="mb-5 row mx-0">
+    <section class="mb-5 mx-0">
         <div>
             <div class="containerStep">
                 <ul class="progressbar">
@@ -36,23 +36,18 @@
     <section class="titleDeco">
         <div class="text-left offset-lg-3 col-lg-6 offset-md-2 col-md-8 offset-1 col-10">
             <h2 class="display-6 text-center py-5 text-uppercase" id="reglesFamille">
-                Ajouter un membre
+                Ajuster votre photo
             </h2>
-            <div class="justify-content-center mb-3 mt-3 p-2">
-                {{ form_start(form) }}
-                <div class="fw-bold mt-5">
-                    <div class="mb-4">{{ form_row(form.name) }}</div>
-                    <div class="mb-4">{{ form_row(form.pictureFile) }}</div>
+            <div>
+            {{ form_start(form) }}
+            {{ form_row(form.crop) }}
+                <div class="my-4">
+                {{ form_row(form.validate) }}
                 </div>
-                <div class="text-center">
-                    <button class="btn btn-primary text-uppercase fw-bold m-4">Ajouter le membre</button>
+                <div class="d-flex justify-content-between align-items-center">
+                    <a href="{{ path('member_index', {'command': command.id}) }}">Revenir à l'étape 2</a>
                 </div>
-                <div class="text-center mt-5">
-                    <a class="btn btn-secondary text-uppercase fw-bold" href="{{ path('member_index', {'command': command.id}) }}">
-                        <span class="me-5 d-none d-lg-inline-block">{% include "component/_left_arrow.html.twig" %}</span>
-                        Revenir à l'étape précédente</a>
-                </div>
-                {{ form_end(form) }}
+            {{ form_end(form) }}
             </div>
         </div>
     </section>
