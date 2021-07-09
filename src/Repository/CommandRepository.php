@@ -32,6 +32,15 @@ class CommandRepository extends ServiceEntityRepository
         return $queryBuilder->getResult();
     }
 
+    public function findLikeStatus(string $status): array
+    {
+        $queryBuilder = $this->createQueryBuilder('c')
+            ->where('c.status LIKE :status')
+            ->setParameter('status', '%' . $status . '%')
+            ->getQuery();
+
+        return $queryBuilder->getResult();
+    }
     /*
     public function findOneBySomeField($value): ?Command
     {
