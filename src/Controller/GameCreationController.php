@@ -6,13 +6,13 @@ use App\Entity\Command;
 use App\Entity\Theme;
 use App\Entity\User;
 use App\Form\CommandType;
+use App\Form\GameType;
 use App\Form\SelectThemesType;
 use App\Repository\StatusRepository;
 use App\Repository\ThemeRepository;
 use App\Service\GameCard;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -54,8 +54,28 @@ class GameCreationController extends AbstractController
     }
 
     /**
-     * @Route("/choisissez-votre-theme/{command_id}/", name="choose_theme", methods={"GET","POST"})
-     * @ParamConverter("command", class="App\Entity\Command", options={"mapping": {"command_id": "id"}})
+     * @Route("/modifier/{id}/", name="editGame", methods={"GET","POST"})
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
+     */
+    public function editCommand(Request $request, Command $command): Response
+    {
+        $form = $this->createForm(GameType::class, $command);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('member_index', ['command' => $command->getId()]);
+        }
+
+        return $this->render('gameCreation/editGameName.html.twig', [
+            'command' => $command,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/choisissez-votre-theme/{id}/", name="choose_theme", methods={"GET","POST"})
      * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function chooseTheme(

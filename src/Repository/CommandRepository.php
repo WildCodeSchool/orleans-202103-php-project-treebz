@@ -20,7 +20,7 @@ class CommandRepository extends ServiceEntityRepository
         parent::__construct($registry, Command::class);
     }
 
-    public function findLikeProjectName(string $name): array
+    public function findLikeProjectName(?string $name): array
     {
         $queryBuilder = $this->createQueryBuilder('c')
             ->where('c.projectName LIKE :projectName')

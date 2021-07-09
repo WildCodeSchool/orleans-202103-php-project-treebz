@@ -21,3 +21,44 @@ p {
 .sub-title:hover {
     color: $dark;
 }
+
+
+.title-deco h1 {
+    position: relative;
+    z-index: 2;
+    text-transform: uppercase;
+
+    &:after {
+        content: "";
+        width: 80rem;
+        max-width: 100%;
+        padding: 0 $space;
+        height: $space-4;
+        background: $primary;
+        display: block;
+        margin: auto;
+        position: relative;
+        top: -20px;
+        z-index: -1;
+    }
+}
+
+.title-deco-policy h1 {
+    position: relative;
+    z-index: 2;
+    text-transform: uppercase;
+
+    &:after {
+        content: "";
+        width: 60rem;
+        max-width: 100%;
+        padding: 0 $space;
+        height: $space-4;
+        background: $primary;
+        display: block;
+        margin: auto;
+        position: relative;
+        top: -20px;
+        z-index: -1;
+    }
+}
