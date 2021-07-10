@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" type="image/png" href="{{ asset('build/images/treebz.png') }}"/>
+        <title>
+            {% block title %}Treeb'Z | Prévisualisation
+            {% endblock %}
+        </title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
+
+            .full-card {
+                position: relative;
+                z-index: 0;
+            }
+
+            .member-name {
+                position: relative;
+                color: #212529;
+                font-family: 'Chewy', cursive;
+                z-index: 1;
+            }
+
+            .member-photo {
+                position: relative;
+                z-index: -1;
+            }
+
+            .card-number {
+                display: flex;
+                justify-content: center;
+                position: relative;
+                margin-left: 160;
+                z-index: 1;
+                border-radius: 100%;
+                color: #212529;
+                height: 35px;
+                width: 35px;
+                text-align: center;
+            }
+
+            .number {
+                display: inline-block;
+            }
+
+            .theme {
+                height: 8.6cm;
+                width: 6.8cm;
+                margin-top: 20px;
+            }
+
+            .all {
+                height: 8.6cm;
+            }
+
+            .photo {
+                height: 5.16cm;
+                width: 5.77cm;
+            }
+        </style>
+    </head>
+    <body>
+    {% include 'component/_card_preview.html.twig' %}
+    </body>
+</html>
