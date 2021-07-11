@@ -3,9 +3,9 @@
         <div class="column">
             {% for member in command.members %}
                 <div class="all">
-                    <img class="theme" src="{{ absolute_url(asset('/uploads/' ~ theme.image)) }}" alt="card"/>
+                    <img class="theme" src="{{ asset('/uploads/' ~ theme.image) }}" alt="card"/>
                     <div class="member-photo d-flex justify-content-center">
-                        <img class="photo" src="{{ absolute_url(vich_uploader_asset(member)) }}" alt="{{ member.picture }}"/>
+                        <img class="photo" src="{{ vich_uploader_asset(member) }}" alt="{{ member.picture }}"/>
                     </div>
                     <div class="member-name d-flex justify-content-center">
                         <p>{{ member.name }}</p>
