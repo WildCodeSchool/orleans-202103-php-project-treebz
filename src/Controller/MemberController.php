@@ -114,7 +114,7 @@ class MemberController extends AbstractController
                 'aspect_ratio' => 1800 / 2000,
             ])
             ->add('validate', SubmitType::class, [
-                'label' => 'Valider',
+                'label' => 'Prévisualisez une carte de jeu',
             ])
             ->getForm()
         ;
@@ -128,7 +128,10 @@ class MemberController extends AbstractController
             $resource = (imagecreatefromstring($encoded));
             /** @phpstan-ignore-next-line */
             imagejpeg($resource, $filename);
-            return $this->redirectToRoute('member_index', ['command' => $command->getId()]);
+            return $this->redirectToRoute('member_crop', [
+                'command' => $command->getId(),
+                'member' => $member->getId()
+            ]);
         }
 
         return $this->render('member/crop.html.twig', [
