@@ -8,6 +8,7 @@ use App\Entity\User;
 use App\Form\CommandType;
 use App\Form\GameType;
 use App\Form\SelectThemesType;
+use App\Repository\CommandRepository;
 use App\Repository\StatusRepository;
 use App\Repository\ThemeRepository;
 use App\Service\GameCard;
@@ -32,7 +33,7 @@ class GameCreationController extends AbstractController
     public function index(
         Request $request,
         EntityManagerInterface $entityManager,
-        CommandRepository $commandRepository
+        CommandRepository $commandRepository,
         StatusRepository $statusRepository
     ): Response {
         $command = new Command();
