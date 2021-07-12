@@ -115,21 +115,4 @@ class GameCreationController extends AbstractController
             'priceGame' => $priceGame,
         ]);
     }
-
-    /**
-     * @Route("/{id}", name="pending_last_order", methods={"GET","POST"})
-     * @IsGranted("IS_AUTHENTICATED_FULLY")
-     */
-    public function pendingLastOrder(Command $command, CommandRepository $commandRepository): Response
-    {
-        /** @var User */
-        $user = $this->getUser();
-        if (!$user->getCommands()->contains($command)) {
-            throw $this->createAccessDeniedException("Vous n'avez pas accès à cette commande");
-        }
-
-        return $this->redirectToRoute('member_index', [
-            'command' => $command->getId(),
-        ]);
-    }
 }
