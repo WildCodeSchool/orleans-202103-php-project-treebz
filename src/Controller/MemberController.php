@@ -19,8 +19,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
-* @Route("/creez-votre-jeu/membre")
-*/
+ * @Route("/creez-votre-jeu/membre")
+ */
 class MemberController extends AbstractController
 {
     /**
@@ -30,8 +30,8 @@ class MemberController extends AbstractController
     public function index(Command $command, MemberRepository $memberRepository, GameCard $gameCard): Response
     {
 
-         /** @var User */
-         $user = $this->getUser();
+        /** @var User */
+        $user = $this->getUser();
         if (!$user->getCommands()->contains($command)) {
             throw $this->createAccessDeniedException("Vous n'avez pas accès à cette commande");
         }
@@ -57,8 +57,8 @@ class MemberController extends AbstractController
     {
         $member = new Member();
 
-         /** @var User */
-         $user = $this->getUser();
+        /** @var User */
+        $user = $this->getUser();
         if (!$user->getCommands()->contains($command)) {
             throw $this->createAccessDeniedException("Vous n'avez pas accès à cette commande");
         }
@@ -111,13 +111,22 @@ class MemberController extends AbstractController
         $form = $this->createFormBuilder(['crop' => $crop])
             ->add('crop', CropperType::class, [
                 'public_url' => $fileUpload . $member->getPicture(),
-                'aspect_ratio' => 1800 / 2000,
+                'initial_aspect_ratio' => 68 / 86,
+                'drag_mode' => 'move',
+                'crop_box_movable' => false,
+                'crop_box_resizable' => false,
+                'zoom_on_wheel' => true,
+                'zoomable' => true,
+                'movable' => true,
+                'min_crop_box_width' => 1000,
+                'min_crop_box_height' => 1000,
+                'min_container_width' => 257,
+                'min_container_height' => 325,
             ])
             ->add('validate', SubmitType::class, [
                 'label' => 'Valider',
             ])
-            ->getForm()
-        ;
+            ->getForm();
 
         $form->handleRequest($request);
 
@@ -153,8 +162,8 @@ class MemberController extends AbstractController
         $command = $member->getCommand();
         $commandId = $command->getId();
 
-         /** @var User */
-         $user = $this->getUser();
+        /** @var User */
+        $user = $this->getUser();
         if (!$user->getCommands()->contains($command)) {
             throw $this->createAccessDeniedException("Vous n'avez pas accès à cette commande");
         }
@@ -190,8 +199,8 @@ class MemberController extends AbstractController
         $command = $member->getCommand();
         $commandId = $command->getId();
 
-         /** @var User */
-         $user = $this->getUser();
+        /** @var User */
+        $user = $this->getUser();
         if (!$user->getCommands()->contains($command)) {
             throw $this->createAccessDeniedException("Vous n'avez pas accès à cette commande");
         }

@@ -40,7 +40,10 @@
             </h2>
             <div>
             {{ form_start(form) }}
-            {{ form_row(form.crop) }}
+            <div class="cropper">
+                {{ form_row(form.crop) }}
+                <img src="{{ asset('build/images/theme_previsualisation.png') }}" class="theme_previz" alt="theme">
+            </div>
                 <div class="my-4">
                 {{ form_row(form.validate) }}
                 </div>
