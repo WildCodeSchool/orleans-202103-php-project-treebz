@@ -45,9 +45,31 @@
                 <div class="col col-md-4 mt-md-5 p-4 chosenThemes d-flex flex-column">
                     <div class="mb-5">
                         <div class="row d-flex justify-content-center">
-                            <h2 class="text-uppercase text-center fw-bold">
+                            <h2 class="text-uppercase fw-bold">
+                                Rappel
+                            </h2>
+                            <h4> Rappel des prix du jeu de 7 thèmes: </h4>
+                            <ul>
+                                <li>{{ constant('App\\Service\\GameCard::PRICE_MIN') }}€ pour {{ constant('App\\Service\\GameCard::GAME_MIN') }} membres ou moins</li>
+                                <li>{{ constant('App\\Service\\GameCard::PRICE_MAX') }}€ pour {{ constant('App\\Service\\GameCard::GAME_MIN') + 1 }} à {{ constant('App\\Service\\GameCard::GAME_MAX') }} membres</li>
+                            </ul>
+                            <h4> Pour tous thèmes en plus des 7 thèmes : {{ constant('App\\Service\\GameCard::PRICE_ADD_THEME') }}€ par thème</h4>
+                            <h2 class="text-uppercase fw-bold">
                                 Récapitulatif
                             </h2>
+                            <h4>{{ command.members|length }} membres de la famille : </h4>
+                            <ul>
+                                {% for member in command.members %}
+                                <li>{#{{ member.cardNumber }}#}. {{ member.name }}</li>
+                                {% endfor %}
+                            </ul>
+                            <h4>{{ command.selectedThemes|length }} thèmes séléctionnés : </h4>
+                            <ul>
+                                {% for theme in command.selectedThemes %}
+                                <li>{{ loop.index }}. {{ theme.name }}</li>
+                                {% endfor %}
+                            </ul>
+                            <h3 class="text-end fw-bold"> TOTAL : {{ priceGame }}€</h3>
                         </div>
                         <div class="justify-content-end">
                             <a href="{{ path('gamecreation_thanks') }}" class="btn btn-primary text-uppercase fw-bold fw-bold fs-5 w-100 mt-5">Payer la commande
