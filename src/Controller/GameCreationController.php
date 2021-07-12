@@ -30,11 +30,15 @@ class GameCreationController extends AbstractController
      * @Route("/", name="index")
      * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
-    public function index(Request $request, EntityManagerInterface $entityManager): Response
-    {
+    public function index(
+        Request $request,
+        EntityManagerInterface $entityManager,
+        CommandRepository $commandRepository
+    ): Response {
         $command = new Command();
         /** @var User */
         $user = $this->getUser();
+        $lastCommand = $commandRepository->findOneBy(['user' => $user], ['id' => 'desc']);
         $form = $this->createForm(CommandType::class, $command);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -44,8 +48,10 @@ class GameCreationController extends AbstractController
             // Redirection to the second step page
             return $this->redirectToRoute('member_index', ['command' => $command->getId()]);
         }
-
-        return $this->render('gameCreation/index.html.twig', ["form" => $form->createView(),]);
+        return $this->render('gameCreation/index.html.twig', [
+            "form" => $form->createView(),
+            "lastCommand" => $lastCommand,
+        ]);
     }
 
     /**
@@ -103,6 +109,23 @@ class GameCreationController extends AbstractController
             'command' => $command,
             'form' => $form->createView(),
             'priceGame' =>  $priceGame,
+        ]);
+    }
+
+    /**
+     * @Route("/{id}", name="pending_last_order", methods={"GET","POST"})
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
+     */
+    public function pendingLastOrder(Command $command, CommandRepository $commandRepository): Response
+    {
+        /** @var User */
+        $user = $this->getUser();
+        if (!$user->getCommands()->contains($command)) {
+            throw $this->createAccessDeniedException("Vous n'avez pas accès à cette commande");
+        }
+
+        return $this->redirectToRoute('member_index', [
+            'command' => $command->getId(),
         ]);
     }
 }
