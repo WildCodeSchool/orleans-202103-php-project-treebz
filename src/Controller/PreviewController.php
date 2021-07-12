@@ -22,7 +22,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
  * @Route("/creez-votre-jeu", name="gamecreation_")
  */
 
- class PreviewController extends AbstractController
+class PreviewController extends AbstractController
 {
     /**
      * @Route("/prévisualisation-du-jeu/{id}/", name="preview", methods={"GET","POST"})
@@ -39,7 +39,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
         /** @var User */
         $user = $this->getUser();
-       
+
         if (!$user->getCommands()->contains($command)) {
             throw $this->createAccessDeniedException("Vous n'avez pas accès à cette commande");
         }
