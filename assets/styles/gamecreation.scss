@@ -1,5 +1,4 @@
 @import "variables.scss";
-@import "~bootstrap/scss/bootstrap";
 
 /* Style of the header and steps block */
 
@@ -141,4 +140,25 @@ h1 {
 
 .card-member {
     width: 20rem;
+}
+
+.cropper {
+    position: relative;
+    width: 6.8cm;
+    height: 8.6cm;
+
+}
+
+
+.cropper:hover .theme_previz {
+    z-index: -1;
+}
+
+.theme_previz {
+    position: absolute;
+    top:0;
+    left:0; 
+    opacity: 0.8;
+    width: 6.8cm;
+    height: 8.6cm;
 }
