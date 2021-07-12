@@ -18,8 +18,8 @@
 			</div>
 		</div>
 	</header>
-	<div class="alert alert-warning" role="alert">
-		{% if lastCommand is not empty %}
+	{% if lastCommand is not empty %}
+		<div class="alert alert-warning" role="alert">
 			<div class="d-flex justify-content-center mt-2">
 				<strong>
 					<p>Retourner à votre dernière
@@ -27,8 +27,8 @@
 							commande en cours</a>.</p>
 				</strong>
 			</div>
-		{% endif %}
-	</div>
+		</div>
+	{% endif %}
 	<section class="mb-5 row mx-0">
 		<div>
 			<div class="containerStep">
