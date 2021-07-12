@@ -18,10 +18,11 @@ class SearchClientType extends AbstractType
                 'lastname',
                 SearchType::class,
                 [
-                    'label' => 'Rechercher par nom',
+                    'label' => false,
                     'required' => false,
                     'attr' => [
                         'class' => 'form-control',
+                        'placeholder' => 'Rechercher par nom'
                     ],
                 ],
             );

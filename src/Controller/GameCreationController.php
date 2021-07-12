@@ -2,22 +2,21 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
-use App\Entity\Theme;
-use App\Form\GameType;
 use App\Entity\Command;
+use App\Entity\Theme;
+use App\Entity\User;
 use App\Form\CommandType;
-use App\Service\GameCard;
+use App\Form\GameType;
 use App\Form\SelectThemesType;
+use App\Repository\StatusRepository;
 use App\Repository\ThemeRepository;
-use App\Repository\CommandRepository;
+use App\Service\GameCard;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 /**
  * @Route("/creez-votre-jeu", name="gamecreation_")
@@ -34,6 +33,7 @@ class GameCreationController extends AbstractController
         Request $request,
         EntityManagerInterface $entityManager,
         CommandRepository $commandRepository
+        StatusRepository $statusRepository
     ): Response {
         $command = new Command();
         /** @var User */
@@ -41,8 +41,11 @@ class GameCreationController extends AbstractController
         $lastCommand = $commandRepository->findOneBy(['user' => $user], ['id' => 'desc']);
         $form = $this->createForm(CommandType::class, $command);
         $form->handleRequest($request);
+        $status = $statusRepository->findOneByName(['name' => 'En cours']);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $command->setUser($user);
+            $command->setStatus($status);
             $entityManager->persist($command);
             $entityManager->flush();
             // Redirection to the second step page
@@ -108,7 +111,7 @@ class GameCreationController extends AbstractController
             'themes' => $themeRepository->findAll(),
             'command' => $command,
             'form' => $form->createView(),
-            'priceGame' =>  $priceGame,
+            'priceGame' => $priceGame,
         ]);
     }
 
