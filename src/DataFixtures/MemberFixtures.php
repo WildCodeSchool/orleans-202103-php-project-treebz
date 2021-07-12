@@ -17,10 +17,11 @@ class MemberFixtures extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager)
     {
         for ($key = 0; $key < count(CommandFixtures::COMMANDS); $key++) {
-            foreach (self::MEMBER_NAMES as $memberName) {
+            foreach (self::MEMBER_NAMES as $keyMember => $memberName) {
                 $member = new Member();
                 $member->setCommand($this->getReference('projet_' . $key));
                 $member->setName($memberName);
+                $member->setCardNumber($keyMember + 1);
                 $urlImage = self::LINK_IMAGE;
                 $path = uniqid() . '.jpg';
                 copy($urlImage, 'public/uploads/members/' . $path);
