@@ -17,14 +17,17 @@ class SelectAddressType extends AbstractType
 
         $builder
             ->add('shippingAddress', EntityType::class, [
-                'label' => 'Choisissez l\'addresse de livraison',
+                'label' => 'Choisissez l\'addresse de livraison :',
+                'label_attr' => [
+                    'class' => 'form-label fw-bold text-uppercase mt-3'
+                ],
                 'class' => ShippingAddress::class,
                 'choice_label' => function (ShippingAddress $fullAddresses) {
                     return  $fullAddresses->getFullAddresses();
                 },
                 'multiple' => false,
                 'expanded' => false,
-                'placeholder' => 'Choisissez une adresse',
+                'placeholder' => 'Choisissez votre adresse de livraison',
                 'required' => true,
                 'query_builder' => function (EntityRepository $er) use ($options) {
                     return $er->createQueryBuilder('a')

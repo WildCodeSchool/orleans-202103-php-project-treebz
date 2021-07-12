@@ -48,17 +48,17 @@
                             <h2 class="text-uppercase text-center fw-bold">
                                 Récapitulatif
                             </h2>
-
-
                             {{ form_start(formSelectAddress) }}
                             {{ form_widget(formSelectAddress) }}
-                            <button class="btn btn-success">Choisir cette adresse</button>
+                            <div class="text-center my-3"> <button class="btn btn-primary">Choisir cette adresse</button></div>
                             {{ form_end(formSelectAddress) }}
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                Ajouter Adresse de Livraison
+                            <div class="text-center">
+                            <h3 class="my-2 h5">Vous n'avez pas trouvé l'adresse souhaitée ? </h3>
+                            <button type="button" class="btn btn-success my-3 w-50" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                Ajouter une nouvelle adresse
                             </button>
-
+                            </div>
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
