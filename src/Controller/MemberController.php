@@ -140,12 +140,14 @@ class MemberController extends AbstractController
     }
 
     /**
-     * @Route("/up/{command<^[0-9]+$>}/{member<^[0-9]+$>}", name="member_up_cardnumber", methods={"GET"})
+     * @Route("/change_num_carte/{command<^[0-9]+$>}/{member<^[0-9]+$>}/{deplacement}",
+     * name="member_change_cardnumber", methods={"POST"})
      * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
-    public function upCardNumber(
+    public function changeCardNumber(
         Command $command,
         Member $member,
+        string $deplacement,
         Request $request,
         MemberRepository $memberRepository
     ): Response {
@@ -157,60 +159,26 @@ class MemberController extends AbstractController
         }
 
         $numCardMember = $member->getCardNumber();
-        if ($numCardMember != count($command->getMembers())) {
-            $memberDown = new Member();
-            $entityManager = $this->getDoctrine()->getManager();
+
+        if ($deplacement !== 'up' && $deplacement !== 'down') {
+            $this->addFlash('danger', 'il y a eu un problème de propriété');
+            return $this->redirectToRoute('member_index', ['command' => $command->getId()]);
+        }
+
+        if ($deplacement === 'up') {
+            $numDeplacement = 1;
+        } else {
+            $numDeplacement = -1;
+        }
 
             /** @var Member */
-            $memberDown = $memberRepository->findOneBy(['command' => $command->getId(),
-            'cardNumber' => ($numCardMember + 1)]);
-            $memberDown->setCardNumber($numCardMember);
-            $entityManager->persist($memberDown);
-
-            $member->setCardNumber($numCardMember + 1);
-            $entityManager->persist($member);
-            $entityManager->flush();
-        } else {
-            $this->addFlash('danger', 'Vous êtes au nombre maximal');
-        }
-
-        return $this->redirectToRoute('member_index', ['command' => $command->getId()]);
-    }
-
-    /**
-     * @Route("/Down/{command}/{member}", name="member_down_cardnumber", methods={"GET","POST"})
-     * @IsGranted("IS_AUTHENTICATED_FULLY")
-     */
-    public function downCardNumber(
-        Command $command,
-        Member $member,
-        Request $request,
-        MemberRepository $memberRepository
-    ): Response {
-        /** @var User */
-        $user = $this->getUser();
-        if (!$user->getCommands()->contains($command)) {
-            throw $this->createAccessDeniedException("Vous n'avez pas accès à cette commande");
-        }
-        $numCardMember = $member->getCardNumber();
-
-        if ($numCardMember != 1) {
-            $memberUp = new Member();
+            $memberReplace = $memberRepository->findOneBy(['command' => $command->getId(),
+            'cardNumber' => ($numCardMember + $numDeplacement)]);
+            $memberReplace->setCardNumber($numCardMember);
+            $member->setCardNumber($numCardMember + $numDeplacement);
             $entityManager = $this->getDoctrine()->getManager();
-
-            /** @var Member */
-            $memberUp = $memberRepository->findOneBy(['command' => $command->getId(),
-            'cardNumber' => ($numCardMember - 1)]);
-
-            $memberUp->setCardNumber($numCardMember);
-            $entityManager->persist($memberUp);
-
-            $member->setCardNumber($numCardMember - 1);
-            $entityManager->persist($member);
             $entityManager->flush();
-        } else {
-            $this->addFlash('danger', 'Vous êtes déjà au nombre minimal');
-        }
+
         return $this->redirectToRoute('member_index', ['command' => $command->getId()]);
     }
 
