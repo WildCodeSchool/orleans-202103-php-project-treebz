@@ -3,7 +3,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {{ encore_entry_link_tags('gamecreation') }}
+    {{ encore_entry_link_tags('preview') }}
 {% endblock %}
 
 {% block title %}
@@ -39,23 +39,37 @@
                 Ajuster votre photo
             </h2>
             <div>
+                <div class="all mb-5">
+                    <div class="full-card d-flex justify-content-center mt-5">
+                        <div class="column">
+                            <div class="all">
+                                <img class="theme" src="{{ asset('build/images/LaFamilleEcolo.png') }}" alt="card"/>
+                                <div class="member-photo d-flex justify-content-center">
+                                    <img class="photo" src="{{ temporaryFilename }}" alt="image prévisualisée"/>
+                                </div>
+                                <div class="member-name d-flex justify-content-center">
+                                    <p>{{ member.name }}</p>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <div class="card-number">
+                                        <span class="number">1</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
                 {{ form_start(form) }}
                 {{ form_row(form.crop) }}
                 <div class="my-4">
                     {{ form_row(form.validate) }}
                 </div>
                 <div class="d-flex justify-content-between align-items-center">
-                    <a class="btn btn-primary" href="{{ path('member_index', {'command': command.id}) }}">Valider la photo</a>
+                    <a class="btn btn-primary" href="{{ path('member_crop_valid', {'command': command.id, 'member': member.id}) }}">Valider la photo</a>
                 </div>
                 {{ form_end(form) }}
-            </div>
-            <div>
-                <div class="all">
-                    <img class="theme col-6 offset-3" src="{{ asset('build/images/LaFamilleEcolo.png') }}" alt="card"/>
-                    {# <div class="member-photo d-flex justify-content-center">
-                        <img class="photo" src="{{ vich_uploader_asset(member) }}" alt="{{ member.picture }}"/>
-                    </div> #}
-                </div>
             </div>
         </div>
     </section>

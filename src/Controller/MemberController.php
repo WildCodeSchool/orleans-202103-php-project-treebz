@@ -104,10 +104,14 @@ class MemberController extends AbstractController
          * @var string
          */
         $fileUpload = $this->getParameter('upload_member_directory');
+        /**
+         * @var string
+         */
+        $fileTemporary = $this->getParameter('temporary_member_directory');
         $filename = $fileDirectory . $fileUpload . $member->getPicture();
+        $temporaryFilename = $fileUpload . $member->getPicture();
         $crop = $cropper->createCrop($filename);
         $crop->setCroppedMaxSize(1500, 2000);
-
         $form = $this->createFormBuilder(['crop' => $crop])
             ->add('crop', CropperType::class, [
                 'public_url' => $fileUpload . $member->getPicture(),
@@ -120,23 +124,47 @@ class MemberController extends AbstractController
         ;
 
         $form->handleRequest($request);
-
+        $pictureName = $fileTemporary . $command->getId() . $member->getId() . '.jpg';
         if ($form->isSubmitted() && $form->isValid()) {
+            $temporaryFilenameRec = $fileDirectory . $pictureName;
             $encoded = ($crop->getCroppedImage());
             // Be careful, here we are using PHP 7.4, if you change to 8.0, an error can occur
             /** @phpstan-ignore-next-line */
             $resource = (imagecreatefromstring($encoded));
             /** @phpstan-ignore-next-line */
-            imagejpeg($resource, $filename);
-            return $this->redirectToRoute('member_crop', [
-                'command' => $command->getId(),
-                'member' => $member->getId()
-            ]);
+            imagejpeg($resource, $temporaryFilenameRec);
+            $temporaryFilename = $pictureName;
         }
-
         return $this->render('member/crop.html.twig', [
             'form' => $form->createView(),
             'command' => $command,
+            'member' => $member,
+            'temporaryFilename' => $temporaryFilename,
+        ]);
+    }
+
+    /**
+     * @Route("/crop-validé/{command<^[0-9]+$>}/{member<^[0-9]+$>}", name="member_crop_valid", methods={"GET","POST"})
+     */
+    public function imageValidated(Command $command, Member $member, Request $request): Response
+    {
+        /**
+         * @var string
+         */
+        $fileDirectory = $this->getParameter('public_directory');
+        /**
+         * @var string
+         */
+        $fileUpload = $this->getParameter('upload_member_directory');
+        /**
+         * @var string
+         */
+        $pictureName = 'temporary/members/' . $command->getId() . $member->getId() . '.jpg';
+        $filename = $fileDirectory . $fileUpload . $member->getPicture();
+        copy($pictureName, $filename);
+        unlink($pictureName);
+        return $this->redirectToRoute('member_index', [
+            'command' => $command->getId(),
         ]);
     }
 

@@ -1,5 +1,4 @@
 @import "variables.scss";
-@import "~bootstrap/scss/bootstrap";
 
 /* Style of the header and steps block */
 
@@ -137,8 +136,4 @@ h1 {
 
 .bgElement {
     background-color: $element;
-}
-
-.card-member {
-    width: 20rem;
 }

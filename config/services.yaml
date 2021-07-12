@@ -4,6 +4,7 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
+    temporary_member_directory: '/temporary/members/'
     upload_member_directory: '/uploads/members/'
     public_directory: '%kernel.project_dir%/public/'
     upload_directory: '%kernel.project_dir%/public/uploads/'
