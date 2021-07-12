@@ -3,6 +3,8 @@
 /* Style of the header and steps block */
 
 $bottom: 10px;
+$card-width: 6.8cm;
+$card-height: 8.6cm;
 
 h1 {
     font-family: $font-title;
@@ -144,11 +146,10 @@ h1 {
 
 .cropper {
     position: relative;
-    width: 6.8cm;
-    height: 8.6cm;
-
+    width: $card-width;
+    height: $card-height;
+    overflow: hidden;
 }
-
 
 .cropper:hover .theme_previz {
     z-index: -1;
@@ -159,6 +160,10 @@ h1 {
     top:0;
     left:0; 
     opacity: 0.8;
-    width: 6.8cm;
-    height: 8.6cm;
+    width: $card-width;
+    height: $card-height;
+}
+
+.vich-image img {
+    max-width: $card-width;
 }

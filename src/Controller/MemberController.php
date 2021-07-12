@@ -120,6 +120,8 @@ class MemberController extends AbstractController
                 'movable' => true,
                 'min_crop_box_width' => 1000,
                 'min_crop_box_height' => 1000,
+                'min_container_width' => 257,
+                'min_container_height' => 325,
             ])
             ->add('validate', SubmitType::class, [
                 'label' => 'Valider',
