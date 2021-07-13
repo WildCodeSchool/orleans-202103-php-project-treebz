@@ -1,90 +1,49 @@
-# Project 3 - Starter Kit - Symfony 5.*
+# Project 3 - Jobpermut
 
-![Wild Code School](https://wildcodeschool.fr/wp-content/uploads/2019/01/logo_pink_176x60.png)
+![Treeb'Z](https://user-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_300,w_300,f_auto,q_100/1771008/692650_575797.png)
 
-This starter kit is here to easily start a repository for your students.
+## index
+1. [Description](#Description)
+2. [Prerequisites](#Prerequisites)
+3. [Installation](#Installation)
+4. [Built-With](#Built-With)
+5. [Authors](#Authors)
 
-It's symfony website-skeleton project with some additional tools to validate code standards.
+## Description
 
-* GrumPHP, as pre-commit hook, will run 2 tools when `git commit` is run :
-  
-    * PHP_CodeSniffer to check PSR12 
-    * PHPStan focuses on finding errors in your code (without actually running it)
-    * PHPmd will check if you follow PHP best practices
-     
-  If tests fail, the commit is canceled and a warning message is displayed to developper.
+Treeb'Z is an e-commerce that sells a customized game of 7 families.
 
-* Github Action as Continuous Integration will be run when a branch with active pull request is updated on github. It will run :
+## Prerequisites
 
-    * Tasks to check if vendor, .idea, env.local are not versionned,
-    * PHP_CodeSniffer, PHPStan and PHPmd with same configuration as GrumPHP.
- 
+* [PHP 7.4.*](https://www.php.net/releases/7_4_0.php) (check by running php -v in your console)
+* [Composer 2.*](https://getcomposer.org/) (check by running composer --version in your console)
+* [node 14.*](https://nodejs.org/en/) (check by running node -v in your console)
+* [Yarn 1.*](https://yarnpkg.com/) (check by running yarn -v in your console)
+* [MySQL 8.0.*](https://www.mysql.com/fr/) (check by running mysql --version in your console)
+* [Git 2.*](https://git-scm.com/) (check by running git --version in your console)
+* [Cropper JS/Symfony UX*](https://github.com/symfony/ux-cropperjs) (install by running _composer require symfony/ux-cropperjs_)
+* [VichUploaderBundle*](https://github.com/dustin10/VichUploaderBundle/blob/master/docs/index.md) (install by running _composer require vich/uploader-bundle_)
+* * You will also need a test SMTP connection, which you can configure using tools like Mailtrap
+*  # Don't forget to install the JavaScript dependencies as well and compile
 
-### Trainers instructions
+## Installation
+If you meet the prerequisites, you can proceed to the installation of the project 
 
-1. Add your students team as contributor .
-2. Disallow both on 'dev' and 'master' branches your students writing credentials. 
-3. Disallow merge available while one approbation is not submitted on PR.
+1. Clone the project from [Github](https://github.com/WildCodeSchool/orleans-202103-php-project-treebz)
+2. Open the project folder with your code editor
+3. Open the terminal and run the following commands:
+4. Run `composer install` to install PHP dependencies
+5. Run `yarn install` to install JS dependencies
+6. Copy the `.env` file, rename it to `.env.local` and fill it with all the needed informations (Database, Symfony/Mailer)
+8. Run `symfony console doctrine:database:create` to create database
+9. Run `symfony console doctrine:migration:migrate` to create structure of database
+10. In order to properly load the fixtures, inside the folder `public/uploads`, create a folder named `themes` and another named `members`
+11. Run `symfony console doctrine:fixtures:load` to load the fixtures in database
+12. Run `yarn encore dev` to build assets
+13. Run `symfony server:start` to launch symfony server
+14. Go to localhost:8000 on your browser
 
-> You can watch this very tiny short video : (Loom : verrouillage branches GitHub)[https://www.loom.com/share/ad0c641d0b9447be9e40fa38a499953b]
-4. For deploying on caprover : add two repository secrets (settings -> secrets)
-    - CAPROVER_APP_NAME with the caprover app name as value
-    - CAPROVER_PASSWORD with the caprover password
-
-## Getting Started for Students
-
-### Prerequisites
-
-1. Check composer is installed
-2. Check yarn & node are installed
-
-### Install
-
-1. Clone this project
-2. Run `composer install`
-3. Run `yarn install`
-4. Run `yarn encore dev` to build assets
-
-### Working
-
-1. Run `symfony server:start` to launch your local php web server
-2. Run `yarn run dev --watch` to launch your local server for assets
-
-### Testing
-
-1. Run `.vendor/bin/phpcs` to launch PHP code sniffer
-2. Run `.vendor/bin/phpstan analyse src --level max` to launch PHPStan
-3. Run `.vendor/bin/phpmd src text phpmd.xml` to launch PHP Mess Detector
-3. Run `./node_modules/.bin/eslint assets/js` to launch ESLint JS linter
-3. Run `../node_modules/.bin/sass-lint -c sass-linter.yml -v` to launch Sass-lint SASS/CSS linter
-
-### Windows Users
-
-If you develop on Windows, you should edit you git configuration to change your end of line rules with this command :
-
-`git config --global core.autocrlf true`
-
-## Deployment
-
-![Img caprover](https://captain.phprover.wilders.dev/icon-512x512.png)
-
-To deploy on Cap Rover, follow [instructions in the manual](https://caprover.com/docs/get-started.html) and add, at least, two  *"Environmental Variables"* in *"App Configs"*  tab:
-
-* `APP_ENV` with `prod`/`dev` value
-* `DATABASE_URL` with the connection informations given by caprover when you create the related DB app.
-
-Caprover configuration files are : 
-
-* [captain-definition](https://github.com/WildCodeSchool/sf4-pjt3-starter-kit/blob/master/captain-definition) Caprover entry point
-* [Dockerfile](https://github.com/WildCodeSchool/sf4-pjt3-starter-kit/blob/master/Dockerfile) Web app configuration for Docker container
-* [docker-compose.yml](https://github.com/WildCodeSchool/sf4-pjt3-starter-kit/blob/master/docker-compose.yml) ...not use it's used 😅
-* [docker-entry.sh](https://github.com/WildCodeSchool/sf4-pjt3-starter-kit/blob/master/docker-entry.sh) shell instruction to execute when docker image is built
-* [nginx.conf](https://github.com/WildCodeSchool/sf4-pjt3-starter-kit/blob/master/nginx.conf) Nginx server configuration
-* [php.ini](https://github.com/WildCodeSchool/sf4-pjt3-starter-kit/blob/master/php.ini) Php configuration
-
-
-
-## Built With
+## Built-With
 
 * [Symfony](https://github.com/symfony/symfony)
 * [GrumPHP](https://github.com/phpro/grumphp)
@@ -94,40 +53,10 @@ Caprover configuration files are :
 * [ESLint](https://eslint.org/)
 * [Sass-Lint](https://github.com/sasstools/sass-lint)
 
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-
 ## Authors
 
-Wild Code School trainers team
-
-## License
-
-MIT License
-
-Copyright (c) 2019 aurelien@wildcodeschool.fr
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-## Acknowledgments
+* [Aurélien Vannier](https://github.com/Vannou28)
+* [Christian Olmedo](https://github.com/ChristianOlmedo)
+* [Gersey Stelmach](https://github.com/gerseystelmach)
+* [Valentin Lay](https://github.com/Valentin-int)
 
