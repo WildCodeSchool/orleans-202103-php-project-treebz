@@ -1,8 +1,8 @@
 <div class="treebz-card">
-    <img class="theme" src="{{ asset('/uploads/' ~ theme.image) }}" alt="card"/>
+    <img class="theme" src="{{ asset('/uploads/themes/' ~ theme.image) }}" alt="card"/>
     <img class="member-photo" src="{{ vich_uploader_asset(member) }}" alt="{{ member.picture }}"/>
-    <div class="member-name">
+    <div class="member-name" style="color:{{ theme.colorText }}">
         {{ member.name }}
     </div>
-    <span class="card-number">{{ loop.index }}</span>
+    <span class="card-number" style="border-color:{{ theme.colorText }}; color:{{ theme.colorText }}">{{ loop.index }}</span>
 </div>
