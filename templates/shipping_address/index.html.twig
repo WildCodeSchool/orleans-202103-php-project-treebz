@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ShippingAddress index{% endblock %}
+
+{% block body %}
+    <h1>ShippingAddress index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Address</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for shipping_address in shipping_addresses %}
+            <tr>
+                <td>{{ shipping_address.id }}</td>
+                <td>{{ shipping_address.address }}</td>
+                <td>
+                    <a href="{{ path('shipping_address_show', {'id': shipping_address.id}) }}">show</a>
+                    <a href="{{ path('shipping_address_edit', {'id': shipping_address.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('shipping_address_new') }}">Create new</a>
+{% endblock %}

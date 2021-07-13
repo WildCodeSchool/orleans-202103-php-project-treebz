@@ -46,6 +46,11 @@ h6 {
     font-family: $font-title;
 }
 
+
+ul {
+    list-style: none !important;
+}
+
 .titleDeco h2 {
     position: relative;
     z-index: 2;
