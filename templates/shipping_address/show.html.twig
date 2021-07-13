@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ShippingAddress{% endblock %}
+
+{% block body %}
+    <h1>ShippingAddress</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ shipping_address.id }}</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{ shipping_address.address }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('shipping_address_index') }}">back to list</a>
+
+    <a href="{{ path('shipping_address_edit', {'id': shipping_address.id}) }}">edit</a>
+
+    {{ include('shipping_address/_delete_form.html.twig') }}
+{% endblock %}
