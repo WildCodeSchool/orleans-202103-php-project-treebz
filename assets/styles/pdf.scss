@@ -1,62 +1,63 @@
 @import "variables.scss";
 @import "app.scss";
-@import "~bootstrap/scss/bootstrap";
 
-$bottom: 10px;
-$left: 160px;
-
-.full-card {
-    position: relative;
-    z-index: 0;
-}
+$size: 1cm;
+$height-card: 8.6cm;
+$width-card: 6.8cm;
 
 .member-name {
-    position: relative;
-    bottom: $bottom * 22;
-    color: red;
+    position: absolute;
+    top: $size * 7.2;
+    color: $dark;
     font-family: 'Chewy', cursive;
+    width: $width-card;
+    text-align: center;
+    font-size: $medium_font * 0.8;
 }
 
 .member-photo {
-    position: relative;
+    position: absolute;
     z-index: -1;
-    bottom: $bottom * 24;
+    top:0;
+    left:0;
+    height: $height-card;
+    width: $width-card;
 }
 
 .card-number {
     display: flex;
     justify-content: center;
-    position: relative;
-    bottom: $bottom * 27;
-    margin-left: $left;
+    align-items: center;
+    top: $size * 1.4;
+    left: $size * 5.5;
+    position: absolute;
     z-index: 1;
-    border-radius: 100%;
+    border-radius: 50%;
     border: $dark solid 2px;
     color: $dark;
-    height: $medium_font * 1;
-    width: $medium_font * 1;
+    height: $medium_font * 1.3;
+    width: $medium_font * 1.3;
     text-align: center;
-}
-
-.number {
-    display: inline-block;
-}
-
-.column {
-    border: 3px solid $dark;
+    font-size: $medium_font;
 }
 
 .theme {
-    border-top: 3px solid $dark;
-    border-bottom: 3px solid $dark;
-    height: 300px;
+    z-index: 0;
+    position: relative;
+    height: $height-card;
+    width: $width-card;
+    border: 1px solid $dark;
+    top: 0;
+    left: 0;
+    display:flex;
+    justify-content: center;
 }
 
-.all {
-    height: 300px;
+.treebz-card {
+    position: relative;
 }
 
-.photo {
-    height: 180px;
-    width: 200px;
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, $width-card);
 }

@@ -2,8 +2,6 @@
 
 namespace App\Controller;
 
-use Dompdf\Dompdf;
-use Dompdf\Options;
 use App\Entity\Command;
 use App\Repository\ThemeRepository;
 use App\Repository\MemberRepository;
@@ -23,26 +21,24 @@ class PdfController extends AbstractController
         MemberRepository $memberRepository,
         Command $command,
         ThemeRepository $themeRepository
-    ): void {
-        // Configure Dompdf according to your needs
-        $pdfOptions = new Options();
-        $pdfOptions->set('isRemoteEnabled', true);
-        set_time_limit(100);
-        // Instantiate Dompdf with our options
-        $dompdf = new Dompdf($pdfOptions);
-        // Retrieve the HTML generated in our twig file
-        $html = $this->renderView('pdf.html.twig', [
-            'command' => $command,
+    ): Response {
+        return $this->render('pdf.html.twig', [
+                'command' => $command,
         ]);
-        // Load HTML to Dompdf
-        $dompdf->loadhtml($html);
-        // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'
-        $dompdf->setPaper('A3', 'portrait');
-        // Render the HTML as PDF
-        $dompdf->render();
-        // Output the generated PDF to Browser (inline view)
-        $dompdf->stream("7familles.pdf", [
-            "Attachment" => false
+    }
+
+     /**
+     * @Route("/back-pdf/{id}", name="backPdf", methods={"GET","POST"})
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
+     */
+
+    public function back(
+        MemberRepository $memberRepository,
+        Command $command,
+        ThemeRepository $themeRepository
+    ): Response {
+        return $this->render('back_pdf.html.twig', [
+                'command' => $command,
         ]);
     }
 }
