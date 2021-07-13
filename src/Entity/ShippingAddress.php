@@ -6,6 +6,7 @@ use App\Repository\ShippingAddressRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ShippingAddressRepository::class)
@@ -21,6 +22,8 @@ class ShippingAddress
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank
+     * @Assert\Length(max="255")
      */
     private ?string $address;
 
@@ -36,16 +39,22 @@ class ShippingAddress
 
     /**
      * @ORM\Column(type="string", length=25)
+     * @Assert\NotBlank
+     * @Assert\Length(max="25")
      */
     private ?string $postalCode;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Length(max="255")
      */
     private ?string $town;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Length(max="255")
      */
     private ?string $country;
 
@@ -60,7 +69,7 @@ class ShippingAddress
         return [];
     }
 
-    public function getFullAddresses(): ?string
+    public function getFullAddress(): ?string
     {
         return $this->getAddress() . ", " . $this->getTown() .
             ", " . $this->getCountry()  . ", " . $this->getPostalCode();

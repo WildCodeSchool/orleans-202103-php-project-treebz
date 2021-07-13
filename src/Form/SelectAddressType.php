@@ -22,9 +22,7 @@ class SelectAddressType extends AbstractType
                     'class' => 'form-label fw-bold text-uppercase mt-3'
                 ],
                 'class' => ShippingAddress::class,
-                'choice_label' => function (ShippingAddress $fullAddresses) {
-                    return  $fullAddresses->getFullAddresses();
-                },
+                'choice_label' => 'fullAddress',
                 'multiple' => false,
                 'expanded' => false,
                 'placeholder' => 'Choisissez votre adresse de livraison',
