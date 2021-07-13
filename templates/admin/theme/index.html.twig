@@ -13,7 +13,7 @@
         {% for theme in themes %}
             <div class="card flex-row col-12 bg-secondary mb-5 mt-4 p-3">
                 <div class="col-3 d-flex align-items-center">
-                    <img src="/uploads/{{ theme.image }}" class="card-img-top imageTheme" alt="{{ theme.image }}">
+                    <img src="{{ asset('/uploads/themes/' ~ theme.image) }}" class="card-img-top imageTheme" alt="{{ theme.image }}">
                 </div>
                 <div class="col-3 col-sm-10 card-body">
                         <h2 class="card-title d-flex justify-content-center">{{ theme.name }}</h2>

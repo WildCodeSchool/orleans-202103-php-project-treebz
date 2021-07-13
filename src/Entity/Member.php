@@ -64,6 +64,11 @@ class Member
      */
     private ?Command $command;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private ?int $cardNumber;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -137,6 +142,18 @@ class Member
     public function setCommand(?Command $command): self
     {
         $this->command = $command;
+        return $this;
+    }
+
+    public function getCardNumber(): ?int
+    {
+        return $this->cardNumber;
+    }
+
+    public function setCardNumber(?int $cardNumber): self
+    {
+        $this->cardNumber = $cardNumber;
+
         return $this;
     }
 }
