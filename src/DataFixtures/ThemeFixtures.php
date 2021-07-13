@@ -13,16 +13,44 @@ class ThemeFixtures extends Fixture
     public const LINK_IMAGES = 'src/DataFixtures/canva_png/';
     public const THEMES = [
         [
-            'name' => 'Cuisine',
+            'name' => 'Cuisine1',
             'colorText' => '#FFFFFF',
         ],
         [
-            'name' => 'Ecolo',
+            'name' => 'Ecolo1',
             'colorText' => '#FFFFFF',
 
         ],
         [
-            'name' => 'Voyage',
+            'name' => 'Voyage1',
+            'colorText' => '#FFFFFF',
+
+        ],
+        [
+            'name' => 'Cuisine2',
+            'colorText' => '#FFFFFF',
+        ],
+        [
+            'name' => 'Ecolo2',
+            'colorText' => '#FFFFFF',
+
+        ],
+        [
+            'name' => 'Voyage2',
+            'colorText' => '#FFFFFF',
+
+        ],
+        [
+            'name' => 'Cuisine3',
+            'colorText' => '#FFFFFF',
+        ],
+        [
+            'name' => 'Ecolo3',
+            'colorText' => '#FFFFFF',
+
+        ],
+        [
+            'name' => 'Voyage3',
             'colorText' => '#FFFFFF',
 
         ],
