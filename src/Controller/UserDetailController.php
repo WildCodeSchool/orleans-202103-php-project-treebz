@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Command;
+use App\Entity\Member;
 use App\Form\UserDetailType;
 use App\Entity\User;
 use App\Repository\CommandRepository;
@@ -47,5 +49,22 @@ class UserDetailController extends AbstractController
     public function showCommand(CommandRepository $commandRepository): Response
     {
         return $this->render('user_detail/commandHistory.html.twig');
+    }
+
+    /**
+     * @Route("/{id}", name="pending_order", methods={"GET","POST"})
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
+     */
+    public function pendingOrder(Command $command): Response
+    {
+         /** @var User */
+         $user = $this->getUser();
+        if (!$user->getCommands()->contains($command)) {
+            throw $this->createAccessDeniedException("Vous n'avez pas accès à cette commande");
+        }
+
+        return $this->redirectToRoute('member_index', [
+            'command' => $command->getId(),
+        ]);
     }
 }

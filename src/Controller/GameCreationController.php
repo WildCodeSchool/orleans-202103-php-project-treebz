@@ -8,6 +8,7 @@ use App\Entity\User;
 use App\Form\CommandType;
 use App\Form\GameType;
 use App\Form\SelectThemesType;
+use App\Repository\CommandRepository;
 use App\Repository\StatusRepository;
 use App\Repository\ThemeRepository;
 use App\Service\GameCard;
@@ -32,11 +33,13 @@ class GameCreationController extends AbstractController
     public function index(
         Request $request,
         EntityManagerInterface $entityManager,
+        CommandRepository $commandRepository,
         StatusRepository $statusRepository
     ): Response {
         $command = new Command();
         /** @var User */
         $user = $this->getUser();
+        $lastCommand = $commandRepository->findOneBy(['user' => $user], ['id' => 'desc']);
         $form = $this->createForm(CommandType::class, $command);
         $form->handleRequest($request);
         $status = $statusRepository->findOneByName(['name' => 'En cours']);
@@ -49,8 +52,10 @@ class GameCreationController extends AbstractController
             // Redirection to the second step page
             return $this->redirectToRoute('member_index', ['command' => $command->getId()]);
         }
-
-        return $this->render('gameCreation/index.html.twig', ["form" => $form->createView()]);
+        return $this->render('gameCreation/index.html.twig', [
+            "form" => $form->createView(),
+            "lastCommand" => $lastCommand,
+        ]);
     }
 
     /**
