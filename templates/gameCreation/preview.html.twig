@@ -60,7 +60,7 @@
                             <h4>{{ command.members|length }} membres de la famille : </h4>
                             <ul>
                                 {% for member in command.members %}
-                                <li>{#{{ member.cardNumber }}#}. {{ member.name }}</li>
+                                <li>{{ member.cardNumber }}. {{ member.name }}</li>
                                 {% endfor %}
                             </ul>
                             <h4>{{ command.selectedThemes|length }} thèmes séléctionnés : </h4>
