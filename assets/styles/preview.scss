@@ -93,6 +93,10 @@ h1 {
     counter-reset: step;
 }
 
+ul {
+    list-style: none;
+}
+
 .progressbar li {
     list-style-type: none;
     width: 25%;
@@ -156,3 +160,4 @@ h1 {
 .viewThemes {
     border-right: 2px solid $dark;
 }
+

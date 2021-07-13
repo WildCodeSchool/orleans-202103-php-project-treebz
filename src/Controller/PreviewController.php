@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Entity\Command;
+use App\Service\GameCard;
 use App\Entity\ShippingAddress;
 use App\Form\SelectAddressType;
 use Doctrine\ORM\EntityManager;
@@ -30,9 +31,10 @@ class PreviewController extends AbstractController
      */
 
     public function index(
-        MemberRepository $memberRepository,
         Command $command,
+        MemberRepository $memberRepository,
         ThemeRepository $themeRepository,
+        GameCard $gameCard,
         Request $request,
         EntityManagerInterface $entityManager
     ): Response {
@@ -43,6 +45,8 @@ class PreviewController extends AbstractController
         if (!$user->getCommands()->contains($command)) {
             throw $this->createAccessDeniedException("Vous n'avez pas accès à cette commande");
         }
+
+        $priceGame = $gameCard->priceGame($command);
 
         $shippingAddress = new ShippingAddress();
 
@@ -74,6 +78,7 @@ class PreviewController extends AbstractController
             'shipping_address' => $shippingAddress,
             'formAddAddress' => $formAddAddress->createView(),
             'formSelectAddress' => $formSelectAddress->createView(),
+            'priceGame' => $priceGame,
         ]);
     }
 }
