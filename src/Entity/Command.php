@@ -65,6 +65,13 @@ class Command
      */
     private DateTimeImmutable $createdAt;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=ShippingAddress::class, inversedBy="chosenAddress")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private ?ShippingAddress $shippingAddress;
+
+
     public function __construct()
     {
         $this->setCreatedAt(new DateTimeImmutable());
@@ -199,6 +206,18 @@ class Command
     public function setCreatedAt(\DateTimeImmutable $createdAt): self
     {
         $this->createdAt = $createdAt;
+        return $this;
+    }
+
+    public function getShippingAddress(): ?ShippingAddress
+    {
+        return $this->shippingAddress;
+    }
+
+    public function setShippingAddress(?ShippingAddress $shippingAddress): self
+    {
+        $this->shippingAddress = $shippingAddress;
+
         return $this;
     }
 }

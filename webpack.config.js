@@ -46,6 +46,8 @@ Encore
 
     .addStyleEntry('footer', './assets/styles/footer.scss')
 
+    .addStyleEntry('pdf', './assets/styles/pdf.scss')
+
     .addStyleEntry('newTheme', './assets/styles/admin/newTheme.scss')
 
     .addStyleEntry('indexTheme', './assets/styles/admin/indexTheme.scss')

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" type="image/png" href="{{ asset('build/images/treebz.png') }}"/>
+        <title>
+            {% block title %}Treeb'Z | PDF
+            {% endblock %}
+        </title>
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+            {{ encore_entry_link_tags('pdf') }}
+        {% endblock %}
+    </head>
+    <body>
+        <div class="cards">
+        {% set i = 0 %}
+            {% for i in 0..(command.selectedThemes|length) %}
+                {% for i in 0..(command.members|length) %}
+                    <div class="treebz-card">
+                        <img class="theme" src="{{ asset('build/images/DosDeCarte.png') }}" alt="Carte n°{{ i }}"/>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </body>
+</html>
