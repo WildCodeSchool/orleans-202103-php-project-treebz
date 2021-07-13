@@ -44,11 +44,19 @@
                                 €</span>
                         </p>
                         <ul class="list-group text-center text-capitalize">
-                            {% for member in command.members %}
-                                <li class="list-group-item m-2 fw-bold">
-                                    {{ loop.index }}
-                                    -
-                                    {{ member.name }}
+                            {% for member in members %}
+                                <li class="list-group-item m-2 fw-bold d-flex flex-row justify-content-between">
+                                    {{ member.cardNumber }}-{{ member.name }}
+                                    <div class="d-flex flex-row">
+                                        {% if loop.first %}
+                                            <form method="post" action="{{ path('member_change_cardnumber', {'command': command.id, 'member': member.id, 'deplacement': 'up'}) }}"><button class="m-1" type='submit'><span class="iconify" data-icon="akar-icons:arrow-down-thick" data-inline="false"></span></bouton></form>
+                                        {% elseif loop.last %}
+                                            <form method="post" action="{{ path('member_change_cardnumber', {'command': command.id, 'member': member.id, 'deplacement': 'down'}) }}"><button class="m-1" type='submit'><span class="iconify" data-icon="akar-icons:arrow-up-thick" data-inline="false"></span></bouton></form>
+                                        {% else %}
+                                            <form method="post" action="{{ path('member_change_cardnumber', {'command': command.id, 'member': member.id, 'deplacement': 'down'}) }}"><button class="m-1" type='submit'><span class="iconify" data-icon="akar-icons:arrow-up-thick" data-inline="false"></span></bouton></form>
+                                            <form method="post" action="{{ path('member_change_cardnumber', {'command': command.id, 'member': member.id, 'deplacement': 'up'}) }}"><button class="m-1" type='submit'><span class="iconify" data-icon="akar-icons:arrow-down-thick" data-inline="false"></span></bouton></form>
+                                        {% endif %}
+                                    </div>
                                 </li>
                             {% endfor %}
                         </ul>
@@ -79,10 +87,10 @@
                     </div>
                     <div class="container">
                         <div class="card-deck d-flex justify-content-around flex-wrap">
-                            {% for member in command.members %}
+                            {% for member in members %}
                                 <div class="card card-member m-2 p-2 d-flex flex-column justify-content-between mt-5">
                                     <div>
-                                        <p class="fw-bold text-center bg-gray display-6">{{ loop.index }}</p>
+                                        <p class="fw-bold text-center bg-gray display-6">{{ member.cardNumber }}</p>
                                         <p class="card-title text-center mb-2">{{ member.name }}</p>
                                     </div>
                                     <img src="{{ vich_uploader_asset(member) }}" alt="{{ member.picture }}"/>

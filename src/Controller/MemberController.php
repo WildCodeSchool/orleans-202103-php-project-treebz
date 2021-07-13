@@ -2,21 +2,21 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
-use App\Entity\Member;
 use App\Entity\Command;
+use App\Entity\Member;
+use App\Entity\User;
 use App\Form\MemberType;
-use App\Service\GameCard;
 use App\Repository\MemberRepository;
-use Symfony\UX\Cropperjs\Form\CropperType;
+use App\Service\GameCard;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Config\Definition\Exception\Exception;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\UX\Cropperjs\Factory\CropperInterface;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Config\Definition\Exception\Exception;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\UX\Cropperjs\Form\CropperType;
 
 /**
  * @Route("/creez-votre-jeu/membre")
@@ -45,6 +45,7 @@ class MemberController extends AbstractController
 
         return $this->render('member/index.html.twig', [
             'command' => $command,
+            'members' => $memberRepository->findBy(['command' => $command->getId()], ['cardNumber' => 'ASC']),
             'priceGame' => $priceGame,
         ]);
     }
@@ -74,13 +75,14 @@ class MemberController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $member->setCommand($command);
             $member->setName(strtoupper($member->getname()));
+            $member->setCardNumber(count($command->getMembers() ?? []) + 1);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($member);
             $entityManager->flush();
 
             return $this->redirectToRoute('member_crop', [
                 'command' => $command->getId(),
-                'member' => $member->getId()
+                'member' => $member->getId(),
             ]);
         }
 
@@ -132,6 +134,7 @@ class MemberController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $encoded = ($crop->getCroppedImage());
+            //GD Library extension not available with this PHP installation.
             // Be careful, here we are using PHP 7.4, if you change to 8.0, an error can occur
             /** @phpstan-ignore-next-line */
             $resource = (imagecreatefromstring($encoded));
@@ -139,11 +142,53 @@ class MemberController extends AbstractController
             imagejpeg($resource, $filename);
             return $this->redirectToRoute('member_index', ['command' => $command->getId()]);
         }
-
         return $this->render('member/crop.html.twig', [
             'form' => $form->createView(),
             'command' => $command,
         ]);
+    }
+
+    /**
+     * @Route("/change_num_carte/{command<^[0-9]+$>}/{member<^[0-9]+$>}/{deplacement}",
+     * name="member_change_cardnumber", methods={"POST"})
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
+     */
+    public function changeCardNumber(
+        Command $command,
+        Member $member,
+        string $deplacement,
+        Request $request,
+        MemberRepository $memberRepository
+    ): Response {
+
+        /** @var User */
+        $user = $this->getUser();
+        if (!$user->getCommands()->contains($command)) {
+            throw $this->createAccessDeniedException("Vous n'avez pas accès à cette commande");
+        }
+
+        $numCardMember = $member->getCardNumber();
+
+        if ($deplacement !== 'up' && $deplacement !== 'down') {
+            $this->addFlash('danger', 'il y a eu un problème de propriété');
+            return $this->redirectToRoute('member_index', ['command' => $command->getId()]);
+        }
+
+        if ($deplacement === 'up') {
+            $numDeplacement = 1;
+        } else {
+            $numDeplacement = -1;
+        }
+
+            /** @var Member */
+            $memberReplace = $memberRepository->findOneBy(['command' => $command->getId(),
+            'cardNumber' => ($numCardMember + $numDeplacement)]);
+            $memberReplace->setCardNumber($numCardMember);
+            $member->setCardNumber($numCardMember + $numDeplacement);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->flush();
+
+        return $this->redirectToRoute('member_index', ['command' => $command->getId()]);
     }
 
     /**
@@ -176,7 +221,7 @@ class MemberController extends AbstractController
             $entityManager->flush();
             return $this->redirectToRoute('member_crop', [
                 'command' => $command->getId(),
-                'member' => $member->getId()
+                'member' => $member->getId(),
             ]);
         }
 
