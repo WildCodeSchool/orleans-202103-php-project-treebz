@@ -1,4 +1,4 @@
-# Project 3 - Jobpermut
+# Project 3 - Treeb'Z
 
 ![Treeb'Z](https://user-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_300,w_300,f_auto,q_100/1771008/692650_575797.png)
 
