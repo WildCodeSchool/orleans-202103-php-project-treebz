@@ -13,8 +13,8 @@ vich_uploader:
               upload_destination: '%kernel.project_dir%/public/uploads/members'
               namer: Vich\UploaderBundle\Naming\SmartUniqueNamer # or any other namer listed above
         image_file:
-                uri_prefix: /images/theme
-                upload_destination: '%upload_directory%'
+                uri_prefix: /uploads/themes
+                upload_destination: '%kernel.project_dir%/public/uploads/themes'
 
                 inject_on_load: false
                 delete_on_update: true
