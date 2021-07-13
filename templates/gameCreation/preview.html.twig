@@ -3,6 +3,7 @@
 {% block stylesheets %}
     {{ parent() }}
     {{ encore_entry_link_tags('preview') }}
+    {{ encore_entry_link_tags('pdf') }}
 {% endblock %}
 
 {% block title %}
@@ -39,7 +40,13 @@
                         <h2 class="text-uppercase text-center fw-bold">
                             Prévisualisez votre commande
                         </h2>
-                        {% include 'component/_card_preview.html.twig' %}
+                        <div class="cards">
+                            {% for theme in command.selectedThemes %}
+                                {% for member in command.members %}
+                                    {% include 'component/_one_card_preview.html.twig' with {theme: theme, member: member} %}
+                                {% endfor %}
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
                 <div class="col col-md-4 mt-md-5 p-4 chosenThemes d-flex flex-column">
@@ -50,14 +57,17 @@
                             </h2>
                             {{ form_start(formSelectAddress) }}
                             {{ form_widget(formSelectAddress) }}
-                            <div class="text-center my-3"> <button class="btn btn-primary">Choisir cette adresse</button></div>
+                            <div class="text-center my-3">
+                                <button class="btn btn-primary">Choisir cette adresse</button>
+                            </div>
                             {{ form_end(formSelectAddress) }}
                             <!-- Button trigger modal -->
                             <div class="text-center">
-                            <h3 class="my-2 h5">Vous n'avez pas trouvé l'adresse souhaitée ? </h3>
-                            <button type="button" class="btn btn-success my-3 w-50" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                Ajouter une nouvelle adresse
-                            </button>
+                                <h3 class="my-2 h5">Vous n'avez pas trouvé l'adresse souhaitée ?
+                                </h3>
+                                <button type="button" class="btn btn-success my-3 w-50" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    Ajouter une nouvelle adresse
+                                </button>
                             </div>
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
