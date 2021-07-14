@@ -199,6 +199,9 @@
     "phpdocumentor/type-resolver": {
         "version": "1.4.0"
     },
+    "phpmailer/phpmailer": {
+        "version": "v6.5.0"
+    },
     "phpmd/phpmd": {
         "version": "2.10.0"
     },
