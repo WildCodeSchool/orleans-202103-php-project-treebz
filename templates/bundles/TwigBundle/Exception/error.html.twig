@@ -1,0 +1,13 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    <div class="d-flex justify-content-center m-5">
+        <h1>Erreur</h1>
+    </div>
+    <div class="d-flex justify-content-center m-5 text-center">
+        <p>
+            Une erreur est survenue!</br></br>
+            <a href="{{ path('home') }}">Retournez à la page d'accueil</a>.
+        </p>
+    </div>
+{% endblock %}

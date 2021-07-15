@@ -1,0 +1,13 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    <div class="d-flex justify-content-center m-5">
+        <h1>Page non trouvée</h1>
+    </div>
+    <div class="d-flex justify-content-center m-5 text-center">
+        <p>
+            La page que vous recherchez n'existe pas.</br></br>Vérifiez l'URL que vous avez utilisée ou
+            <a href="{{ path('home') }}">retournez à la page d'accueil</a>.
+        </p>
+    </div>
+{% endblock %}

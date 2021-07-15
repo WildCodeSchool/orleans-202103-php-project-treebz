@@ -16,7 +16,7 @@ class ThemeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', TextType::class, ['label' => 'Nom du theme'])
+            ->add('name', TextType::class, ['label' => 'Nom de la famille'])
             ->add('colorText', ColorType::class, ['label' => 'Couleur du texte'])
             ->add('pictureFile', VichFileType::class, [
                 'required'      => false,
