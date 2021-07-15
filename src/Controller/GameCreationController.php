@@ -81,7 +81,7 @@ class GameCreationController extends AbstractController
     }
 
     /**
-     * @Route("/choisissez-votre-theme/{id}/", name="choose_theme", methods={"GET","POST"})
+     * @Route("/choisissez-vos-familles/{id}/", name="choose_theme", methods={"GET","POST"})
      * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function chooseTheme(

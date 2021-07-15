@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/admin/theme", name="theme_")
+ * @Route("/admin/familles", name="theme_")
  */
 class ThemeController extends AbstractController
 {
@@ -26,7 +26,7 @@ class ThemeController extends AbstractController
     }
 
     /**
-     * @Route("/nouveau_theme", name="new", methods={"GET","POST"})
+     * @Route("/nouvelle_famille", name="new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -49,7 +49,7 @@ class ThemeController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/modification_de_theme", name="edit", methods={"GET","POST"})
+     * @Route("/{id}/modification_de_famille", name="edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Theme $theme): Response
     {
