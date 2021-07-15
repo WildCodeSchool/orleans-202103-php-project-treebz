@@ -73,3 +73,8 @@ $width-card: 6.8cm;
     display: grid;
     grid-template-columns: repeat(4, $width-card);
 }
+
+.print-btn {
+    height: $size * 1.6;
+    width: $size * 5;
+}
