@@ -36,7 +36,7 @@ class Command
     private Collection $selectedThemes;
 
     /**
-     * @ORM\OneToMany(targetEntity=Member::class, mappedBy="command")
+     * @ORM\OneToMany(targetEntity=Member::class, mappedBy="command", cascade={"remove"})
      */
     private Collection $members;
 
@@ -57,6 +57,7 @@ class Command
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="commands")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=true, onDelete="SET NULL")
      */
     private ?User $user;
 
