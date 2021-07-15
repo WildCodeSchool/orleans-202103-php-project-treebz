@@ -25,9 +25,9 @@ class Member
     private int $id;
 
     /**
-     * @ORM\Column(type="string", length=15)
+     * @ORM\Column(type="string", length=30)
      * @Assert\NotBlank()
-     * @Assert\Length(max="15")
+     * @Assert\Length(max="30")
      */
     private string $name;
 

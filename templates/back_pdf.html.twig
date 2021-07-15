@@ -15,14 +15,17 @@
     </head>
     <body>
         <div class="cards">
-        {% set i = 0 %}
-            {% for i in 0..(command.selectedThemes|length) %}
-                {% for i in 0..(command.members|length) %}
+            {% for theme in command.selectedThemes %}
+                {% for member in command.members %}
                     <div class="treebz-card">
-                        <img class="theme" src="{{ asset('build/images/DosDeCarte.png') }}" alt="Carte n°{{ i }}"/>
+                        <img class="theme" src="{{ asset('build/images/DosDeCarte.png') }}" alt="{{ theme.name }}/{{ member.name }}"/>
+                         <div class="project-name">
+                            {{ command.projectName }}
+                        </div>
                     </div>
                 {% endfor %}
             {% endfor %}
         </div>
     </body>
 </html>
+                
