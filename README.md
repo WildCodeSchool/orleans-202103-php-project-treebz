@@ -34,7 +34,8 @@ If you meet the prerequisites, you can proceed to the installation of the projec
 3. Open the terminal and run the following commands:
 4. Run `composer install` to install PHP dependencies
 5. Run `yarn install` to install JS dependencies
-6. Copy the `.env` file, rename it to `.env.local` and fill it with all the needed informations (Database, Symfony/Mailer)
+6. Run `sudo apt install php-gd`to install GD Library
+7. Copy the `.env` file, rename it to `.env.local` and fill it with all the needed informations (Database, Symfony/Mailer)
 8. Run `symfony console doctrine:database:create` to create database
 9. Run `symfony console doctrine:migration:migrate` to create structure of database
 10. In order to properly load the fixtures, inside the folder `public/uploads`, create a folder named `themes` and another named `members`
