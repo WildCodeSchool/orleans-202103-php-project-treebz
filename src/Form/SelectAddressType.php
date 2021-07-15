@@ -17,7 +17,7 @@ class SelectAddressType extends AbstractType
 
         $builder
             ->add('shippingAddress', EntityType::class, [
-                'label' => 'Choisissez l\'addresse de livraison :',
+                'label' => 'Choisissez l\'adresse de livraison :',
                 'label_attr' => [
                     'class' => 'form-label fw-bold text-uppercase mt-3'
                 ],
