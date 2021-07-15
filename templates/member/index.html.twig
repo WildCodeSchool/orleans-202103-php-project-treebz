@@ -48,12 +48,10 @@
                                 <li class="list-group-item m-2 fw-bold d-flex flex-row justify-content-between">
                                     {{ member.cardNumber }}-{{ member.name }}
                                     <div class="d-flex flex-row">
-                                     {% if not loop.first and not loop.last %}
-                                            <form method="post" action="{{ path('member_change_cardnumber', {'command': command.id, 'member': member.id, 'deplacement': 'down'}) }}"><button class="m-1" type='submit'><span class="iconify" data-icon="akar-icons:arrow-up-thick" data-inline="false"></span></bouton></form>
+                                        {% if not loop.last %}
                                             <form method="post" action="{{ path('member_change_cardnumber', {'command': command.id, 'member': member.id, 'deplacement': 'up'}) }}"><button class="m-1" type='submit'><span class="iconify" data-icon="akar-icons:arrow-down-thick" data-inline="false"></span></bouton></form>
-                                        {% elseif not loop.last %}
-                                            <form method="post" action="{{ path('member_change_cardnumber', {'command': command.id, 'member': member.id, 'deplacement': 'up'}) }}"><button class="m-1" type='submit'><span class="iconify" data-icon="akar-icons:arrow-down-thick" data-inline="false"></span></bouton></form>
-                                        {% elseif not loop.first %}
+                                        {% endif %}
+                                        {% if not loop.first %}
                                             <form method="post" action="{{ path('member_change_cardnumber', {'command': command.id, 'member': member.id, 'deplacement': 'down'}) }}"><button class="m-1" type='submit'><span class="iconify" data-icon="akar-icons:arrow-up-thick" data-inline="false"></span></bouton></form>
                                         {% endif %}
                                     </div>
