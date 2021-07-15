@@ -13,11 +13,9 @@
 {% block body %}
     <header>
         <div class="jumbotron jumbotron-fluid mainTitle ">
-            <div>
-                <h1 class="display-4 text-center py-5">
-                    Créez votre jeu de famille
-                </h1>
-            </div>
+            <h1 class="display-4 text-center py-5">
+                Créez votre jeu de famille
+            </h1>
         </div>
     </header>
     <section class="mb-5 row mx-0">
@@ -97,7 +95,23 @@
                             {% endfor %}
                         </ul>
                     </div>
-                    <div class="my-5 text-end">
+                    <div class="my-5">
+                        <div class="text-center mt-5">
+                            <span class="fw-bold ps-3 mt-5 grayTitle">0 à
+                                 {{ constant('App\\Service\\GameCard::GAME_MIN') }} membres
+                            </span>
+                            <span class="fw-bold ms-3 price">{{ constant('App\\Service\\GameCard::PRICE_MIN') }} €
+                            </span>
+                        </div>
+                        <div class="text-center mb-3">
+                            <span class="fw-bold ps-3 grayTitle">
+                                {{ constant('App\\Service\\GameCard::GAME_MIN') + 1 }}
+                                à
+                                {{ constant('App\\Service\\GameCard::GAME_MAX') }} membres
+                            </span>
+                            <span class="fw-bold ms-3 price">{{ constant('App\\Service\\GameCard::PRICE_MAX') }} €
+                            </span>
+                        </div>
                         {% if command.members is not empty %}
                             <form action="{{ path('gamecreation_choose_theme', {'id': command.id}) }}">
                                 <button type='submit' class="btn btn-primary text-uppercase fw-bold fw-bold fs-5 w-100">Choisissez vos thèmes
