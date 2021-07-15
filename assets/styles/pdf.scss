@@ -7,12 +7,24 @@ $width-card: 6.8cm;
 
 .member-name {
     position: absolute;
-    top: $size * 7.2;
+    top: $size * 7.12;
     color: $dark;
     font-family: 'Chewy', cursive;
-    width: $width-card;
+    width: $width-card * 0.7;
     text-align: center;
     font-size: $medium_font * 0.8;
+    left: $size * 1.02;
+}
+
+.project-name {
+    position: absolute;
+    top: $size * 6;
+    color: $dark;
+    font-family: 'Chewy', cursive;
+    width: $width-card * 0.7;
+    text-align: center;
+    font-size: $medium_font * 0.8;
+    left: $size * 1.02;
 }
 
 .member-photo {
