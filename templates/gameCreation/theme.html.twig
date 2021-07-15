@@ -77,25 +77,30 @@
                     <h2 class="text-uppercase text-center mb-4 fw-bold">
                         Thèmes sélectionnés
                     </h2>
+
+                    <p class="m-3 text-center fw-bold">Prix du Jeu :
+                        <span class="text-light h3 fw-bold">{{ priceGame }}
+                            €</span>
+                    </p>
                     <div class="mb-5">
 
                         <ul class="list-group text-center">
                             {% for theme in command.selectedThemes %}
                                 <li class="list-group-item m-2 fw-bold text-uppercase">{{ theme.name }}</li>
                             {% endfor %}
-                            {% if command.selectedThemes is not empty %}
-                                <div class="justify-content-end">
+                            <div class="justify-content-end">
+                                {% if command.selectedThemes is not empty %}
                                     <a href="{{ path('gamecreation_preview', {'id': command.id}) }}" class="btn btn-primary text-uppercase fw-bold fs-5 w-100 mt-5">Prévisualiser la commande
                                         <img src="{{ asset('build/images/arrow-right.svg') }}" class="ms-2 d-none d-lg-inline-block">
                                     </a>
-                                </div>
-                            {% endif %}
+                                {% endif %}
+                            </div>
                             <div class="text-center">
                                 <a class="btn btn-light text-uppercase fw-bold fw-bold mt-5 fs-5 w-100" href="{{ path('member_index', {'command': command.id}) }}">
                                     <span class="me-5 d-none d-lg-inline-block">{% include "component/_left_arrow.html.twig" %}</span>
                                     Modifier mes membres
                                 </a>
-                                <p class="m-3">Prix du jeu : {{ priceGame }}€</p>
+
                             </div>
                         </div>
                     </ul>
