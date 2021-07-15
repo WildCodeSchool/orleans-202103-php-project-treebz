@@ -73,9 +73,10 @@ class GameCreationController extends AbstractController
             return $this->redirectToRoute('member_index', ['command' => $command->getId()]);
         }
 
-        return $this->render('gameCreation/editGameName.html.twig', [
+        return $this->render('gameCreation/index.html.twig', [
             'command' => $command,
             'form' => $form->createView(),
+            'lastCommand' => "",
         ]);
     }
 
