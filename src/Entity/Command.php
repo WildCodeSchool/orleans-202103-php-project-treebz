@@ -26,7 +26,7 @@ class Command
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank()
-     * @Assert\Length(max="255")
+     * @Assert\Length(max="50")
      */
     private string $projectName;
 
@@ -36,7 +36,7 @@ class Command
     private Collection $selectedThemes;
 
     /**
-     * @ORM\OneToMany(targetEntity=Member::class, mappedBy="command")
+     * @ORM\OneToMany(targetEntity=Member::class, mappedBy="command", cascade={"remove"})
      */
     private Collection $members;
 
@@ -57,6 +57,7 @@ class Command
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="commands")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=true, onDelete="SET NULL")
      */
     private ?User $user;
 

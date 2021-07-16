@@ -73,14 +73,15 @@ class GameCreationController extends AbstractController
             return $this->redirectToRoute('member_index', ['command' => $command->getId()]);
         }
 
-        return $this->render('gameCreation/editGameName.html.twig', [
+        return $this->render('gameCreation/index.html.twig', [
             'command' => $command,
             'form' => $form->createView(),
+            'lastCommand' => "",
         ]);
     }
 
     /**
-     * @Route("/choisissez-votre-theme/{id}/", name="choose_theme", methods={"GET","POST"})
+     * @Route("/choisissez-vos-familles/{id}/", name="choose_theme", methods={"GET","POST"})
      * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function chooseTheme(
