@@ -3,6 +3,8 @@
 {% block stylesheets %}
     {{ parent() }}
     {{ encore_entry_link_tags('gamecreation') }}
+    {{ encore_entry_link_tags('preview') }}
+    {{ encore_entry_link_tags('pdf') }}
 {% endblock %}
 
 {% block title %}
@@ -47,13 +49,16 @@
                     </div>
                     <div class="container">
                         <div class="card-deck d-flex justify-content-around flex-wrap">
-                            {% for member in members %}
+                            {% for member in command.members %}
                                 <div class="card card-member m-2 p-2 d-flex flex-column justify-content-between mt-5">
                                     <div>
                                         <p class="fw-bold text-center bg-gray display-6">{{ member.cardNumber }}</p>
                                         <p class="card-title text-center mb-2">{{ member.name }}</p>
                                     </div>
-                                    <img src="{{ vich_uploader_asset(member) }}" alt="{{ member.picture }}"/>
+                                    <div class="treebz-card">
+                                        <img class="theme" src="{{ asset('build/images/masque_member.png') }}" alt="card"/>
+                                        <img class="member-photo" src="{{ vich_uploader_asset(member) }}" alt="{{ member.picture }}"/>
+                                    </div>
                                     <div>
                                         <a href="{{ path('member_edit', {'id': member.id}) }}" class="btn btn-secondary fw-bold mt-2 w-100 text-uppercase">Modifier</a>
                                         <form method="post" action="{{ path('member_delete', {'id': member.id}) }}" onsubmit="return confirm(' Êtes vous sur de vouloir supprimer ce membre ?');">
