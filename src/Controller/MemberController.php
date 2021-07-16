@@ -69,7 +69,7 @@ class MemberController extends AbstractController
             return $this->redirectToRoute('member_index', ['command' => $command->getId() ?? []]);
         }
 
-        $form = $this->createForm(MemberType::class, $member);
+        $form = $this->createForm(MemberType::class, $member, ['validation_groups' => ['addMember']]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
