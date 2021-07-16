@@ -139,6 +139,8 @@ class MemberController extends AbstractController
             /** @phpstan-ignore-next-line */
             $resource = (imagecreatefromstring($encoded));
             /** @phpstan-ignore-next-line */
+            $resource = imagescale($resource, 257);
+            /** @phpstan-ignore-next-line */
             imagejpeg($resource, $filename);
             return $this->redirectToRoute('member_index', ['command' => $command->getId()]);
         }
