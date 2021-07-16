@@ -21,6 +21,7 @@ class SelectThemesType extends AbstractType
                 'expanded' => true,
                 'required' => true,
                 'by_reference' => false,
+
             ]);
     }
 
