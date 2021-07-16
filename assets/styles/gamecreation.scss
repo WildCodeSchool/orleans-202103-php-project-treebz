@@ -180,11 +180,9 @@ h1 {
 .themeSelection input[type="checkbox"]:checked ~ label > img  {
    border: 5px dashed green;
    filter: grayscale(80%);
-  
 } 
 
 .themeSelection input[type="checkbox"]:checked ~ label::after {
     content: url('/assets/images/check.svg');
     display: block;
-    
 }
