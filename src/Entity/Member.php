@@ -38,9 +38,9 @@ class Member
     private ?string $picture = null;
 
     /**
-     * @Assert\NotNull()
+     *
      * @Vich\UploadableField(mapping="picture_file", fileNameProperty="picture")
-     * @Assert\NotBlank(message="Il faut selectionner une photo, veuillez cliquer sur Parcourir")
+     * @Assert\NotBlank(message="Il faut selectionner une photo, veuillez cliquer sur Parcourir", groups={"addMember"})
      * @Assert\File(
      * maxSize="2048000",
      * mimeTypes = {

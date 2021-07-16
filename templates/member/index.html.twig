@@ -3,6 +3,8 @@
 {% block stylesheets %}
     {{ parent() }}
     {{ encore_entry_link_tags('gamecreation') }}
+    {{ encore_entry_link_tags('preview') }}
+    {{ encore_entry_link_tags('pdf') }}
 {% endblock %}
 
 {% block title %}
@@ -13,11 +15,9 @@
 {% block body %}
     <header>
         <div class="jumbotron jumbotron-fluid mainTitle ">
-            <div>
-                <h1 class="display-4 text-center py-5">
-                    Créez votre jeu de famille
-                </h1>
-            </div>
+            <h1 class="display-4 text-center py-5">
+                Créez votre jeu de famille
+            </h1>
         </div>
     </header>
     <section class="mb-5 row mx-0">
@@ -49,13 +49,16 @@
                     </div>
                     <div class="container">
                         <div class="card-deck d-flex justify-content-around flex-wrap">
-                            {% for member in members %}
+                            {% for member in command.members %}
                                 <div class="card card-member m-2 p-2 d-flex flex-column justify-content-between mt-5">
                                     <div>
                                         <p class="fw-bold text-center bg-gray display-6">{{ member.cardNumber }}</p>
                                         <p class="card-title text-center mb-2">{{ member.name }}</p>
                                     </div>
-                                    <img src="{{ vich_uploader_asset(member) }}" alt="{{ member.picture }}"/>
+                                    <div class="treebz-card">
+                                        <img class="theme" src="{{ asset('build/images/masque_member.png') }}" alt="card"/>
+                                        <img class="member-photo" src="{{ vich_uploader_asset(member) }}" alt="{{ member.picture }}"/>
+                                    </div>
                                     <div>
                                         <a href="{{ path('member_edit', {'id': member.id}) }}" class="btn btn-secondary fw-bold mt-2 w-100 text-uppercase">Modifier</a>
                                         <form method="post" action="{{ path('member_delete', {'id': member.id}) }}" onsubmit="return confirm(' Êtes vous sur de vouloir supprimer ce membre ?');">
@@ -94,7 +97,23 @@
                             {% endfor %}
                         </ul>
                     </div>
-                    <div class="my-5 text-end">
+                    <div class="my-5">
+                        <div class="text-center mt-5">
+                            <span class="fw-bold ps-3 mt-5 grayTitle">&nbsp;0 à
+                                 {{ constant('App\\Service\\GameCard::GAME_MIN') }} membres
+                            </span>
+                            <span class="fw-bold ms-3 price">{{ constant('App\\Service\\GameCard::PRICE_MIN') }} €
+                            </span>
+                        </div>
+                        <div class="text-center mb-3">
+                            <span class="fw-bold ps-3 grayTitle">
+                                {{ constant('App\\Service\\GameCard::GAME_MIN') + 1 }}
+                                à
+                                {{ constant('App\\Service\\GameCard::GAME_MAX') }} membres
+                            </span>
+                            <span class="fw-bold ms-3 price">{{ constant('App\\Service\\GameCard::PRICE_MAX') }} €
+                            </span>
+                        </div>
                         {% if command.members is not empty %}
                             <form action="{{ path('gamecreation_choose_theme', {'id': command.id}) }}">
                                 <button type='submit' class="btn btn-primary text-uppercase fw-bold fw-bold fs-5 w-100">Choisissez vos thèmes

@@ -3,6 +3,7 @@
 {% block stylesheets %}
     {{ parent() }}
     {{ encore_entry_link_tags('footer') }}
+    {{ encore_entry_link_tags('navbar') }}
 {% endblock %}
 
 {% block navbar %} {% include 'component/_navbar.html.twig' %} {% endblock %}
