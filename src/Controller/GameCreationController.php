@@ -39,10 +39,13 @@ class GameCreationController extends AbstractController
         $command = new Command();
         /** @var User */
         $user = $this->getUser();
-        $lastCommand = $commandRepository->findOneBy(['user' => $user, 'status' => '1'], ['createdAt' => 'desc']);
+        $status = $statusRepository->findOneByName(['name' => 'En cours']);
+        $lastCommand = $commandRepository->findOneBy(
+            ['user' => $user, 'status' => $status->getId()],
+            ['createdAt' => 'desc']
+        );
         $form = $this->createForm(CommandType::class, $command);
         $form->handleRequest($request);
-        $status = $statusRepository->findOneByName(['name' => 'En cours']);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $command->setUser($user);
