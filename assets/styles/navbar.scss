@@ -1,10 +1,11 @@
-$width-logo: 200px;
-$font-size-navbar: 19px;
+@import 'variables.scss';
 
-.section-navbar a {
-    font-size: $font-size-navbar;
+.section-navbar h2 {
+    font-size: 0.9em;
+    transition: 0.3s;
 }
 
-.img-logo {
-    width: $width-logo;
+.section-navbar h2:hover {
+    color: lighten($light, 10%);
 }
+
