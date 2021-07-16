@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Entity\Command;
+use App\DataFixtures\StatusFixtures;
 use App\Repository\StatusRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,7 +28,14 @@ class ThanksController extends AbstractController
         StatusRepository $statusRepository,
         EntityManagerInterface $entityManager
     ): Response {
-        $status = $statusRepository->findOneByName(['name' => 'Commandée']);
+
+        /** @var User */
+        $user = $this->getUser();
+        if (!$user->getCommands()->contains($command)) {
+            throw $this->createAccessDeniedException("Vous n'avez pas accès à cette commande");
+        }
+
+        $status = $statusRepository->findOneByName(['name' => StatusFixtures::STATUS[1]['status']]);
 
         $command->setStatus($status);
         $entityManager->flush();
