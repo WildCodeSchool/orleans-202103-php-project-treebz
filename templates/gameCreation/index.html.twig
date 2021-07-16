@@ -35,7 +35,7 @@
 				<ul class="progressbar">
 					<li class="p-1">Choisissez le nom du jeu</li>
 					<li class="p-1">Téléchargez vos photos</li>
-					<li class="p-1">Choisissez vos thèmes</li>
+					<li class="p-1">Choisissez vos familles</li>
 					<li class="p-1">Confirmez votre commande</li>
 				</ul>
 			</div>
@@ -49,27 +49,7 @@
 					<img class="mt-5 rounded" src="{{ asset('build/images/cards.png') }}" alt="Jeu des sept familles"/>
 				</div>
 
-				<div class="col mt-5">
-					<h2 class="text-uppercase text-center">Choisissez un nombre de membre de votre famille :</h2>
-
-					<div class="text-center mb-3 mt-5 ">
-						<span class="fw-bold ps-3 mt-5 grayTitle">Jusqu’à
-							{{ constant('App\\Service\\GameCard::GAME_MIN') }}
-							membres</span>
-						<span class="fw-bold ms-3 price">{{ constant('App\\Service\\GameCard::PRICE_MIN') }}
-							€</span>
-					</div>
-
-					<div class="text-center mb-3 mt-5">
-						<span class="fw-bold ps-3 grayTitle">De
-							{{ constant('App\\Service\\GameCard::GAME_MIN') + 1 }}
-							à
-							{{ constant('App\\Service\\GameCard::GAME_MAX') }}
-							membres</span>
-						<span class="fw-bold ms-3 price">{{ constant('App\\Service\\GameCard::PRICE_MAX') }}
-							€</span>
-					</div>
-
+                <div class="col mt-5">
 					<div class="mt-5">
 						<h2 class="text-uppercase text-center mb-5">Choisissez un nom pour votre jeu de famille :</h2>
 					</div>
@@ -86,10 +66,8 @@
 					{% endif %}
 
 					<div class="mb-5">
-
 						{{ form_label(form.projectName) }}
 						{{ form_widget(form.projectName, {'attr': {'class': 'form-control form-label p-3'}}) }}
-
 					</div>
 
 					<div class="my-5 text-end">

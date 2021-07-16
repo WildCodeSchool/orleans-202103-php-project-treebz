@@ -2,22 +2,23 @@
 
 namespace App\Controller;
 
-use App\Entity\Command;
-use App\Entity\Theme;
 use App\Entity\User;
-use App\Form\CommandType;
+use App\Entity\Theme;
 use App\Form\GameType;
-use App\Form\SelectThemesType;
-use App\Repository\CommandRepository;
-use App\Repository\StatusRepository;
-use App\Repository\ThemeRepository;
+use App\Entity\Command;
+use App\Form\CommandType;
 use App\Service\GameCard;
+use App\Form\SelectThemesType;
+use App\Repository\ThemeRepository;
+use App\DataFixtures\StatusFixtures;
+use App\Repository\StatusRepository;
+use App\Repository\CommandRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/creez-votre-jeu", name="gamecreation_")
@@ -39,10 +40,13 @@ class GameCreationController extends AbstractController
         $command = new Command();
         /** @var User */
         $user = $this->getUser();
-        $lastCommand = $commandRepository->findOneBy(['user' => $user], ['id' => 'desc']);
+        $status = $statusRepository->findOneByName(['name' => StatusFixtures::STATUS[0]['status']]);
+        $lastCommand = $commandRepository->findOneBy(
+            ['user' => $user, 'status' => $status->getId()],
+            ['createdAt' => 'desc']
+        );
         $form = $this->createForm(CommandType::class, $command);
         $form->handleRequest($request);
-        $status = $statusRepository->findOneByName(['name' => 'En cours']);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $command->setUser($user);
@@ -73,14 +77,15 @@ class GameCreationController extends AbstractController
             return $this->redirectToRoute('member_index', ['command' => $command->getId()]);
         }
 
-        return $this->render('gameCreation/editGameName.html.twig', [
+        return $this->render('gameCreation/index.html.twig', [
             'command' => $command,
             'form' => $form->createView(),
+            'lastCommand' => "",
         ]);
     }
 
     /**
-     * @Route("/choisissez-votre-theme/{id}/", name="choose_theme", methods={"GET","POST"})
+     * @Route("/choisissez-vos-familles/{id}/", name="choose_theme", methods={"GET","POST"})
      * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function chooseTheme(

@@ -25,9 +25,9 @@ class Member
     private int $id;
 
     /**
-     * @ORM\Column(type="string", length=15)
+     * @ORM\Column(type="string", length=30)
      * @Assert\NotBlank()
-     * @Assert\Length(max="15")
+     * @Assert\Length(max="30")
      */
     private string $name;
 
@@ -38,9 +38,9 @@ class Member
     private ?string $picture = null;
 
     /**
-     * @Assert\NotNull()
+     *
      * @Vich\UploadableField(mapping="picture_file", fileNameProperty="picture")
-     * @Assert\NotBlank(message="Il faut selectionner une photo, veuillez cliquer sur Parcourir")
+     * @Assert\NotBlank(message="Il faut selectionner une photo, veuillez cliquer sur Parcourir", groups={"addMember"})
      * @Assert\File(
      * maxSize="2048000",
      * mimeTypes = {

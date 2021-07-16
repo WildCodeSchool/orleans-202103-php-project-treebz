@@ -5,14 +5,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
 @import "~bootstrap/scss/bootstrap";
 
-$min_width: 320px;
-$max_width: 1200px;
-$medium_font: 25px;
-$max_font: 72px;
-$min_font: 12px;
-$min_font2: 18px;
-$medium_font2: 35px;
-
 html {
     scroll-behavior: smooth;
     height: 100%;

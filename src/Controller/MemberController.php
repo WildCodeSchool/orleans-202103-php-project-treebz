@@ -69,7 +69,7 @@ class MemberController extends AbstractController
             return $this->redirectToRoute('member_index', ['command' => $command->getId() ?? []]);
         }
 
-        $form = $this->createForm(MemberType::class, $member);
+        $form = $this->createForm(MemberType::class, $member, ['validation_groups' => ['addMember']]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -243,6 +243,7 @@ class MemberController extends AbstractController
          */
         $command = $member->getCommand();
         $commandId = $command->getId();
+        $numberRemove = $member->getCardNumber();
 
         /** @var User */
         $user = $this->getUser();
@@ -253,6 +254,12 @@ class MemberController extends AbstractController
         if ($this->isCsrfTokenValid('delete' . $member->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($member);
+
+            foreach ($command->getMembers() as $member) {
+                if ($member->getCardNumber() > $numberRemove) {
+                    $member->setCardNumber($member->getCardNumber() - 1);
+                }
+            }
             $entityManager->flush();
         }
 

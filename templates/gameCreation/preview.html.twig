@@ -26,7 +26,7 @@
                 <ul class="progressbar">
                     <li class="p-1 active">Choisissez le nom du jeu</li>
                     <li class="p-1 active">Téléchargez vos photos</li>
-                    <li class="p-1 active">Choisissez vos thèmes</li>
+                    <li class="p-1 active">Choisissez vos familles</li>
                     <li class="p-1">Confirmez votre commande</li>
                 </ul>
             </div>
@@ -47,6 +47,14 @@
                                 {% endfor %}
                             {% endfor %}
                         </div>
+                        <div class="cards">
+                            <div class="treebz-card">
+                                <img class="theme" src="{{ asset('build/images/DosDeCarte.png') }}" alt="Dos de carte"/>
+                                <div class="project-name">
+                                {{ command.projectName }}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col col-md-4 mt-md-5 p-4 chosenThemes d-flex flex-column">
@@ -66,7 +74,7 @@
                                 {% endfor %}
                             </ul>
                             <h4>{{ command.selectedThemes|length }}
-                                thèmes séléctionnés :
+                                familles séléctionnés :
                             </h4>
                             <ul>
                                 {% for theme in command.selectedThemes %}
@@ -91,8 +99,8 @@
                                         à
                                         {{ constant('App\\Service\\GameCard::GAME_MAX') }}
                                         membres</li>
-                                    <li>Pour tous thèmes en plus des 7 thèmes :
-                                        {{ constant('App\\Service\\GameCard::PRICE_ADD_THEME') }}€ par thème</li>
+                                    <li>Pour toutes familles en plus des 7 familles :
+                                        {{ constant('App\\Service\\GameCard::PRICE_ADD_THEME') }}€ par famille</li>
                                 </ul>
                             </div>
 
@@ -136,14 +144,14 @@
                             <!-- Fin modal -->
                         </div>
                         <div class="justify-content-end">
-                            <a href="{{ path('gamecreation_thanks') }}" class="btn btn-primary text-uppercase fw-bold fw-bold fs-5 w-100 mt-5">Payer la commande
+                            <a href="{{ path('gamecreation_thanks', {'command': command.id}) }}" class="btn btn-primary text-uppercase fw-bold fw-bold fs-5 w-100 mt-5">Payer la commande
                                 <img src="{{ asset('build/images/arrow-right.svg') }}" class="ms-5 d-none d-lg-inline-block">
                             </a>
 
                             <div class="text-center">
                                 <a class="btn btn-light text-uppercase fw-bold fw-bold mt-5 fs-5 w-100" href="{{ path('gamecreation_choose_theme', {'id': command.id}) }}">
                                     <span class="me-5 d-none d-lg-inline-block">{% include "component/_left_arrow.html.twig" %}</span>
-                                    Modifier mes thèmes
+                                    Modifier mes familles
                                 </a>
                             </div>
                         </div>

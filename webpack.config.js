@@ -38,8 +38,6 @@ Encore
 
     .addStyleEntry('home', './assets/styles/home/home.scss')
 
-    .addStyleEntry('card', './assets/styles/card/card.scss')
-
     .addStyleEntry('preview', './assets/styles/preview.scss')
 
     .addStyleEntry('homeAdmin', './assets/styles/admin/homeAdmin.scss')
@@ -55,6 +53,8 @@ Encore
     .addStyleEntry('connexion', './assets/styles/connexion/connexion.scss')
 
     .addStyleEntry('contact', './assets/styles/contact/contact.scss')
+
+    .addStyleEntry('navbar', './assets/styles/navbar.scss')
 
     .addStyleEntry('command', './assets/styles/admin/command.scss')
 // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
