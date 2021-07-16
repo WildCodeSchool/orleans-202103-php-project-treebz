@@ -2,22 +2,23 @@
 
 namespace App\Controller;
 
-use App\Entity\Command;
-use App\Entity\Theme;
 use App\Entity\User;
-use App\Form\CommandType;
+use App\Entity\Theme;
 use App\Form\GameType;
-use App\Form\SelectThemesType;
-use App\Repository\CommandRepository;
-use App\Repository\StatusRepository;
-use App\Repository\ThemeRepository;
+use App\Entity\Command;
+use App\Form\CommandType;
 use App\Service\GameCard;
+use App\Form\SelectThemesType;
+use App\Repository\ThemeRepository;
+use App\DataFixtures\StatusFixtures;
+use App\Repository\StatusRepository;
+use App\Repository\CommandRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/creez-votre-jeu", name="gamecreation_")
@@ -39,7 +40,7 @@ class GameCreationController extends AbstractController
         $command = new Command();
         /** @var User */
         $user = $this->getUser();
-        $status = $statusRepository->findOneByName(['name' => 'En cours']);
+        $status = $statusRepository->findOneByName(['name' => StatusFixtures::STATUS[0]['status']]);
         $lastCommand = $commandRepository->findOneBy(
             ['user' => $user, 'status' => $status->getId()],
             ['createdAt' => 'desc']
