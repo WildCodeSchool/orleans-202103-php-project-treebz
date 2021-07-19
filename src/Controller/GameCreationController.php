@@ -108,10 +108,14 @@ class GameCreationController extends AbstractController
         $priceGame = $gameCard->priceGame($command);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($command);
-            $entityManager->flush();
-            // Redirection to the same page
-            return $this->redirectToRoute('gamecreation_preview', ['id' => $command->getId()]);
+            if (count($command->getSelectedThemes()) > 0) {
+                $entityManager->persist($command);
+                $entityManager->flush();
+                // Redirection to the same page
+                return $this->redirectToRoute('gamecreation_preview', ['id' => $command->getId()]);
+            } else {
+                $this->addFlash('danger', 'Veuillez sélectionner au moins une famille.');
+            }
         }
         return $this->render('gameCreation/theme.html.twig', [
             'themes' => $themeRepository->findAll(),
