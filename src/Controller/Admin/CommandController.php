@@ -46,7 +46,11 @@ class CommandController extends AbstractController
         if ($formStatus->isSubmitted() &&  $formStatus->isValid()) {
             $input = $formStatus->getData()['input'];
 
-            $commands = $commandRepository->findByStatus(['status' => $input]);
+            if (empty($input)) {
+                $commands = $commandRepository->findAll();
+            } else {
+                $commands = $commandRepository->findByStatus(['status' => $input]);
+            }
         }
 
         return $this->render('admin/command/index.html.twig', [
