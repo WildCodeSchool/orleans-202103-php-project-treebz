@@ -13,46 +13,40 @@ class ThemeFixtures extends Fixture
     public const LINK_IMAGES = 'src/DataFixtures/canva_png/';
     public const THEMES = [
         [
-            'name' => 'Cuisine1',
+            'name' => 'Aventure',
             'colorText' => '#FFFFFF',
         ],
         [
-            'name' => 'Ecolo1',
-            'colorText' => '#FFFFFF',
+            'name' => 'Cuisine',
+            'colorText' => '#e03a1f',
 
         ],
         [
-            'name' => 'Voyage1',
-            'colorText' => '#FFFFFF',
+            'name' => 'Ecolo',
+            'colorText' => '#000000',
 
         ],
         [
-            'name' => 'Cuisine2',
-            'colorText' => '#FFFFFF',
+            'name' => 'Fete',
+            'colorText' => '#3e75a3',
         ],
         [
-            'name' => 'Ecolo2',
-            'colorText' => '#FFFFFF',
+            'name' => 'Paysan',
+            'colorText' => '#ad2929',
+        ],
+        [
+            'name' => 'Ski',
+            'colorText' => '#374757',
 
         ],
         [
-            'name' => 'Voyage2',
-            'colorText' => '#FFFFFF',
+            'name' => 'Sport',
+            'colorText' => '#3e75a3',
 
         ],
         [
-            'name' => 'Cuisine3',
+            'name' => 'Voyage',
             'colorText' => '#FFFFFF',
-        ],
-        [
-            'name' => 'Ecolo3',
-            'colorText' => '#FFFFFF',
-
-        ],
-        [
-            'name' => 'Voyage3',
-            'colorText' => '#FFFFFF',
-
         ],
     ];
 
@@ -64,7 +58,7 @@ class ThemeFixtures extends Fixture
             $theme->setName($themeData['name']);
             $theme->setColorText($themeData['colorText']);
             $theme->setUpdatedAt(new DateTime('now'));
-            $urlImage = self::LINK_IMAGES . ($key + 1) . '.png';
+            $urlImage = self::LINK_IMAGES . 'Famille' . $themeData['name'] . '.png';
             $path = uniqid() . '.png';
             // Function to save image URL into file
             copy($urlImage, 'public/uploads/themes/' . $path);
