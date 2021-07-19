@@ -45,7 +45,9 @@
 					<div class="mb-4">{{ form_row(form.pictureFile, {'attr': {'class': 'form-control'}}) }}</div>
 				</div>
 				<div class="d-flex justify-content-between align-items-center">
-					<a href="{{ path('member_index', {'command': command}) }}">Revenir à l'étape 2</a>
+					<a class="btn btn-secondary text-uppercase fw-bold" href="{{ path('member_index', {'command': command}) }}">
+						<span class="me-5 d-none d-lg-inline-block">{% include "component/_left_arrow.html.twig" %}</span>
+						Revenir à l'étape précédente</a>
 					<div class="d-flex flex-row">
 						<button class="btn btn-primary text-uppercase fw-bold m-4">Modifier le membre</button>
 						{{ form_end(form) }}
