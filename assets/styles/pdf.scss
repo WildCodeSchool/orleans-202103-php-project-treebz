@@ -71,9 +71,35 @@ $width-card: 6.8cm;
 .cards {
     display: grid;
     grid-template-columns: repeat(4, $width-card);
+    grid-template-rows: repeat(4, $height-card);
 }
 
 .print-btn {
     height: $size * 1.6;
     width: $size * 5;
+}
+
+.cards-preview {
+    display: grid;
+    grid-template-columns: repeat(4, $width-card);
+    grid-template-rows: repeat(4, $height-card);
+    justify-content: center;
+}
+
+@media screen and (max-width: 1600px) {
+    .cards-preview {
+        grid-template-columns: repeat(3, $width-card);
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .cards-preview {
+        grid-template-columns: repeat(2, $width-card);
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .cards-preview {
+        grid-template-columns: repeat(1, $width-card);
+    }
 }

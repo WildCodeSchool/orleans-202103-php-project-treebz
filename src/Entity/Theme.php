@@ -42,7 +42,7 @@ class Theme
     /**
      * @Vich\UploadableField(mapping="image_file", fileNameProperty="image")
      * @Assert\File(
-     * maxSize="2M",
+     * maxSize="200k",
      * mimeTypes = {
      *     "image/png",
      *     "image/webp",
