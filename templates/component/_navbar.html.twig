@@ -25,7 +25,9 @@
 				<form class="d-flex align-items-center">
 					{% if app.user %}
 						Bonjour
-						{{ app.user.userDetail.firstname ?? app.user.email }}
+                        {% if not is_granted("ROLE_ADMIN") %}
+						    {{ app.user.userDetail.firstname ?? app.user.email }}
+                        {% endif %}
 						!
 					{% endif %}
 					{% if is_granted('IS_AUTHENTICATED_FULLY') %}
