@@ -42,7 +42,7 @@
                 {{ form_start(form) }}
                 <div class="fw-bold mt-5">
                     <div class="mb-4">{{ form_row(form.name) }}</div>
-                    <div class="mb-4">{{ form_row(form.pictureFile) }}</div>
+                    <div class="mb-4">{{ form_row(form.pictureFile, {'attr': {'class': 'form-control'}}) }}</div>
                 </div>
                 <div class="text-center">
                     <button class="btn btn-primary text-uppercase fw-bold m-4">Ajouter le membre</button>
