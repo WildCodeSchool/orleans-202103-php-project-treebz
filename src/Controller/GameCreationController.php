@@ -114,7 +114,7 @@ class GameCreationController extends AbstractController
                 // Redirection to the same page
                 return $this->redirectToRoute('gamecreation_preview', ['id' => $command->getId()]);
             } else {
-                $this->addFlash('danger', 'Veuillez selectionner au moins 1 famille.');
+                $this->addFlash('danger', 'Veuillez sélectionner au moins une famille.');
             }
         }
         return $this->render('gameCreation/theme.html.twig', [
