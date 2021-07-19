@@ -111,7 +111,7 @@ class GameCreationController extends AbstractController
             $entityManager->persist($command);
             $entityManager->flush();
             // Redirection to the same page
-            return $this->redirect($request->getUri());
+            return $this->redirectToRoute('gamecreation_preview', ['id' => $command->getId()]);
         }
         return $this->render('gameCreation/theme.html.twig', [
             'themes' => $themeRepository->findAll(),

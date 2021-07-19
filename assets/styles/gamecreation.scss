@@ -6,6 +6,7 @@ $bottom: 10px;
 $card-width: 6.8cm;
 $card-height: 8.6cm;
 
+
 h1 {
     font-family: $font-title;
     position: relative;
@@ -170,4 +171,18 @@ h1 {
 
 .vich-image img {
     max-width: $card-width;
+}
+
+.themeSelection input[type="checkbox"] ~ label {
+    cursor: pointer;
+}
+
+.themeSelection input[type="checkbox"]:checked ~ label > img  {
+    border: 5px dashed green;
+    filter: grayscale(80%);
+} 
+
+.themeSelection input[type="checkbox"]:checked ~ label::after {
+    content: url('/assets/images/check.svg');
+    display: block;
 }
