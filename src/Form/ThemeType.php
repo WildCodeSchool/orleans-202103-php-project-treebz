@@ -22,6 +22,7 @@ class ThemeType extends AbstractType
                 'required'      => false,
                 'allow_delete'  => false,
                 'download_uri' => false,
+                'label' => 'Charger un fichier',
             ]);
     }
 
