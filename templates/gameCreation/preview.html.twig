@@ -71,49 +71,56 @@
                             <h2 class="text-uppercase fw-bold text-center mb-5">
                                 Récapitulatif
                             </h2>
-                            <h3 class="bg-secondary h3 text-uppercase p-1 text-center">
-                                Membres de famille :⠀
-                                <span class="text-success fw-bold">
-                                    {{ command.members|length }}</span>
-                            </h3>
-                            <ul class="text-center h5">
-                                {% for member in command.members %}
-                                    <li class=" my-2">{{ member.name|capitalize }}</li>
-                                {% endfor %}
+                            <div class="col">
+                                <h3 class="rounded bg-secondary h3 text-uppercase p-1 text-center">
+                                    Membres de famille
+                                    <span class="text-primary fw-bold d-block">
+                                        {{ command.members|length }}</span>
+                                </h3>
+                                <ul class="h5 ps-0 text-center">
+                                    {% for member in command.members %}
+                                        <li class="my-2">{{ member.name|capitalize }}</li>
+                                    {% endfor %}
 
-                            </ul>
+                                </ul>
+                            </div>
+                            <div class="col">
 
-
-                            <h3 class="bg-secondary h3 text-uppercase p-1 text-center">
-                                Thèmes séléctionnés :⠀
-                                <span class="text-success fw-bold">
-                                    {{ command.selectedThemes|length }}</span>
-                            </h4>
-                            <ul class="text-center h5">
-                                {% for theme in command.selectedThemes %}
-                                    <li class="my-2">
-                                        {{ theme.name }}</li>
-                                {% endfor %}
-                            </ul>
-                            <div class="border-top border-bottom text-center my-3">
+                                <h3 class="bg-secondary h3 rounded text-uppercase p-1 text-center">
+                                    Thèmes séléctionnés
+                                    <span class="text-primary fw-bold d-block">
+                                        {{ command.selectedThemes|length }}</span>
+                                </h4>
+                                <ul class="text-center h5 ps-0">
+                                    {% for theme in command.selectedThemes %}
+                                        <li class="my-2 ps-0">
+                                            {{ theme.name }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="border-top border-bottom my-3">
                                 <h3 class="fw-bold mt-3 text-success">
                                     TOTAL :
                                     {{ priceGame }}€</h3>
-                                <h4 class="h5">
+                                <h4 class="h5 fw-bold">
                                     Rappel des prix:
                                 </h4>
-                                <ul>
-                                    <li>{{ constant('App\\Service\\GameCard::PRICE_MIN') }}€ pour
-                                        {{ constant('App\\Service\\GameCard::GAME_MIN') }}
-                                        membres ou moins</li>
-                                    <li>{{ constant('App\\Service\\GameCard::PRICE_MAX') }}€ pour
-                                        {{ constant('App\\Service\\GameCard::GAME_MIN') + 1 }}
-                                        à
-                                        {{ constant('App\\Service\\GameCard::GAME_MAX') }}
-                                        membres</li>
-                                    <li>Pour toutes familles en plus des 7 familles :
-                                        {{ constant('App\\Service\\GameCard::PRICE_ADD_THEME') }}€ par famille</li>
-                                </ul>
+                                <p class="h5">-
+                                    {{ constant('App\\Service\\GameCard::PRICE_MIN') }}€ pour
+                                    {{ constant('App\\Service\\GameCard::GAME_MIN') }}
+                                    membres ou moins
+                                </p>
+                                <p class="h5">-
+                                    {{ constant('App\\Service\\GameCard::PRICE_MAX') }}€ pour
+                                    {{ constant('App\\Service\\GameCard::GAME_MIN') + 1 }}
+                                    à
+                                    {{ constant('App\\Service\\GameCard::GAME_MAX') }}
+                                    membres
+                                </p>
+                                <p class="h5">
+                                    -
+                                    {{ constant('App\\Service\\GameCard::PRICE_ADD_THEME') }}€ par thème au-dessus de 7</p>
+
                             </div>
 
                             {{ form_start(formSelectAddress) }}
