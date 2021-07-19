@@ -57,7 +57,7 @@ class PreviewController extends AbstractController
             $entityManager->persist($command);
             $entityManager->flush();
             // Redirection to the same page
-            return $this->redirect($request->getUri());
+            return $this->redirectToRoute('gamecreation_thanks', ['command' => $command->getId()]);
         }
 
         $formAddAddress = $this->createForm(ShippingAddressType::class, $shippingAddress);

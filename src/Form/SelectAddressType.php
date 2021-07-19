@@ -25,7 +25,7 @@ class SelectAddressType extends AbstractType
                 'choice_label' => 'fullAddress',
                 'multiple' => false,
                 'expanded' => false,
-                'placeholder' => 'Choisissez votre adresse de livraison',
+                'placeholder' => 'Cliquez ici pour choisir votre adresse de livraison',
                 'required' => true,
                 'query_builder' => function (EntityRepository $er) use ($options) {
                     return $er->createQueryBuilder('a')
