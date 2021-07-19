@@ -188,7 +188,7 @@ class MemberController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->flush();
 
-        return $this->redirectToRoute('member_index', ['command' => $command->getId()]);
+        return $this->redirectToRoute('member_index', ['command' => $command->getId(), '_fragment' => 'ajout-membre']);
     }
 
     /**
