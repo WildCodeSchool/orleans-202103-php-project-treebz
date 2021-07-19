@@ -23,6 +23,7 @@ use Symfony\UX\Cropperjs\Form\CropperType;
  */
 class MemberController extends AbstractController
 {
+    public const SIZE = 257;
     /**
      * @Route("/{command<^[0-9]+$>}", name="member_index", methods={"GET"})
      * @IsGranted("IS_AUTHENTICATED_FULLY")
@@ -138,6 +139,8 @@ class MemberController extends AbstractController
             // Be careful, here we are using PHP 7.4, if you change to 8.0, an error can occur
             /** @phpstan-ignore-next-line */
             $resource = (imagecreatefromstring($encoded));
+            /** @phpstan-ignore-next-line */
+            $resource = imagescale($resource, self::SIZE);
             /** @phpstan-ignore-next-line */
             imagejpeg($resource, $filename);
             return $this->redirectToRoute('member_index', ['command' => $command->getId()]);
