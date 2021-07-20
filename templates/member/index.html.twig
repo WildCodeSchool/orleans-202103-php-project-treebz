@@ -15,7 +15,7 @@
         <div class="jumbotron jumbotron-fluid mainTitle ">
             <div>
                 <h1 class="display-4 text-center py-5">
-                    Créez votre jeu de famille
+                    Créer votre jeu de famille
                 </h1>
             </div>
         </div>
@@ -24,10 +24,10 @@
         <div>
             <div class="containerStep">
                 <ul class="progressbar">
-                    <li class="p-1 active">Choisissez le nom du jeu</li>
-                    <li class="p-1">Téléchargez vos photos</li>
-                    <li class="p-1">Choisissez vos familles</li>
-                    <li class="p-1">Confirmez votre commande</li>
+                    <li class="p-1 active">Choisir le nom du jeu</li>
+                    <li class="p-1">Télécharger vos photos</li>
+                    <li class="p-1">Choisir vos familles</li>
+                    <li class="p-1">Confirmer votre commande</li>
                 </ul>
             </div>
         </div>
@@ -97,7 +97,7 @@
                     <div class="my-5 text-end">
                         {% if command.members is not empty %}
                             <form action="{{ path('gamecreation_choose_theme', {'id': command.id}) }}">
-                                <button type='submit' class="btn btn-primary text-uppercase fw-bold fw-bold fs-5 w-100">Choisissez vos familles
+                                <button type='submit' class="btn btn-primary text-uppercase fw-bold fw-bold fs-5 w-100">Choisir vos familles
                                     <img src="{{ asset('build/images/arrow-right.svg') }}" class="ms-5 d-none d-lg-inline-block"></button>
                             </form>
                         {% endif %}
