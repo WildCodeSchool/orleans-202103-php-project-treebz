@@ -40,85 +40,105 @@
                         <h2 class="text-uppercase text-center fw-bold">
                             Prévisualisez votre commande
                         </h2>
-                        <div class="cards">
+                        <h3 class="text-uppercase text-center fw-bold my-5">
+                            Dos de carte
+                        </h3>
+                        <div class="cards-preview d-flex justify-content-center">
+                            <div class="treebz-card">
+                                <img class="theme" src="{{ asset('build/images/DosDeCarte.png') }}" alt="Dos de carte"/>
+                                <div class="project-name">
+                                    {{ command.projectName }}
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="text-uppercase text-center fw-bold my-5">
+                            Ensemble du jeu
+                        </h3>
+                        <div class="cards-preview d-grid">
                             {% for theme in command.selectedThemes %}
                                 {% for member in command.members %}
                                     {% include 'component/_one_card_preview.html.twig' with {theme: theme, member: member} %}
                                 {% endfor %}
                             {% endfor %}
                         </div>
-                        <div class="cards">
-                            <div class="treebz-card">
-                                <img class="theme" src="{{ asset('build/images/DosDeCarte.png') }}" alt="Dos de carte"/>
-                                <div class="project-name">
-                                {{ command.projectName }}
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="col col-md-4 mt-md-5 p-4 chosenThemes d-flex flex-column">
                     <div class="mb-5">
-                        <div class="row d-flex justify-content-center">
+
+                        <div class="row d-flex">
+
                             <h2 class="text-uppercase fw-bold text-center mb-5">
                                 Récapitulatif
                             </h2>
-                            <h4>{{ command.members|length }}
-                                membres de la famille :
-                            </h4>
-                            <ul>
-                                {% for member in command.members %}
-                                    <li>{{ loop.index }}
-                                        .
-                                        {{ member.name }}</li>
-                                {% endfor %}
-                            </ul>
-                            <h4>{{ command.selectedThemes|length }}
-                                familles séléctionnés :
-                            </h4>
-                            <ul>
-                                {% for theme in command.selectedThemes %}
-                                    <li>{{ loop.index }}
-                                        .
-                                        {{ theme.name }}</li>
-                                {% endfor %}
-                            </ul>
-                            <div class="mb-2  border-top border-bottom">
-                                <h3 class="fw-bold">
-                                    TOTAL :
-                                    {{ priceGame }}€</h3>
-                                <h4 class="h5">
-                                    Rappel des prix:
-                                </h4>
-                                <ul>
-                                    <li>{{ constant('App\\Service\\GameCard::PRICE_MIN') }}€ pour
-                                        {{ constant('App\\Service\\GameCard::GAME_MIN') }}
-                                        membres ou moins</li>
-                                    <li>{{ constant('App\\Service\\GameCard::PRICE_MAX') }}€ pour
-                                        {{ constant('App\\Service\\GameCard::GAME_MIN') + 1 }}
-                                        à
-                                        {{ constant('App\\Service\\GameCard::GAME_MAX') }}
-                                        membres</li>
-                                    <li>Pour toutes familles en plus des 7 familles :
-                                        {{ constant('App\\Service\\GameCard::PRICE_ADD_THEME') }}€ par famille</li>
+                            <div class="col">
+                                <h3 class="rounded bg-secondary h3 text-uppercase p-1 text-center">
+                                    Membres de famille
+                                    <span class="text-primary fw-bold d-block">
+                                        {{ command.members|length }}</span>
+                                </h3>
+                                <ul class="h5 ps-0 text-center">
+                                    {% for member in command.members %}
+                                        <li class="my-2">{{ member.name|capitalize }}</li>
+                                    {% endfor %}
+
                                 </ul>
                             </div>
+                            <div class="col">
 
+                                <h3 class="bg-secondary h3 rounded text-uppercase p-1 text-center">
+                                    Thèmes séléctionnés
+                                    <span class="text-primary fw-bold d-block">
+                                        {{ command.selectedThemes|length }}</span>
+                                </h4>
+                                <ul class="text-center h5 ps-0">
+                                    {% for theme in command.selectedThemes %}
+                                        <li class="my-2 ps-0">
+                                            {{ theme.name }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="border-top border-bottom my-3">
+                                <h3 class="fw-bold mt-3 text-success">
+                                    TOTAL :
+                                    {{ priceGame }}€</h3>
+                                <h4 class="h5 fw-bold">
+                                    Rappel des prix:
+                                </h4>
+                                <p class="h5">-
+                                    {{ constant('App\\Service\\GameCard::PRICE_MIN') }}€ pour
+                                    {{ constant('App\\Service\\GameCard::GAME_MIN') }}
+                                    membres ou moins
+                                </p>
+                                <p class="h5">-
+                                    {{ constant('App\\Service\\GameCard::PRICE_MAX') }}€ pour
+                                    {{ constant('App\\Service\\GameCard::GAME_MIN') + 1 }}
+                                    à
+                                    {{ constant('App\\Service\\GameCard::GAME_MAX') }}
+                                    membres
+                                </p>
+                                <p class="h5">
+                                    -
+                                    {{ constant('App\\Service\\GameCard::PRICE_ADD_THEME') }}€ par thème au-dessus de 7</p>
+
+                            </div>
 
                             {{ form_start(formSelectAddress) }}
                             {{ form_widget(formSelectAddress) }}
-                            <div class="text-center my-3">
-                                <button class="btn btn-primary">Choisir cette adresse</button>
-                            </div>
-                            {{ form_end(formSelectAddress) }}
+
                             <!-- Button trigger modal -->
                             <div class="text-center">
                                 <h3 class="my-2 h5">Vous n'avez pas trouvé l'adresse souhaitée ?
                                 </h3>
-                                <button type="button" class="btn btn-success my-3 w-50" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    Ajouter une nouvelle adresse
+                                <button type="button" class="btn btn-success mt-2 mb-5 w-50 fw-bold text-uppercase" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    Ajouter une adresse
                                 </button>
                             </div>
+                            <div class="text-center">
+                                <button class="btn btn-primary text-uppercase fw-bold fs-5 w-100 mt-3">Payer la commande
+                                    <img src="{{ asset('build/images/arrow-right.svg') }}" class="ms-5 d-none d-lg-inline-block"></button>
+                            </div>
+                            {{ form_end(formSelectAddress) }}
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
@@ -132,7 +152,7 @@
                                             {{ form_widget(formAddAddress) }}
                                             <div class="modal-footer">
                                                 <button class="btn btn-success">Sauvegarder mon adresse</button>
-                                                <button type="button" class="btn btn-secondary w-25" data-bs-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-secondary w-25" data-bs-dismiss="modal">Fermer</button>
                                             </div>
                                             {{ form_end(formAddAddress) }}
 
@@ -144,10 +164,6 @@
                             <!-- Fin modal -->
                         </div>
                         <div class="justify-content-end">
-                            <a href="{{ path('gamecreation_thanks', {'command': command.id}) }}" class="btn btn-primary text-uppercase fw-bold fw-bold fs-5 w-100 mt-5">Payer la commande
-                                <img src="{{ asset('build/images/arrow-right.svg') }}" class="ms-5 d-none d-lg-inline-block">
-                            </a>
-
                             <div class="text-center">
                                 <a class="btn btn-light text-uppercase fw-bold fw-bold mt-5 fs-5 w-100" href="{{ path('gamecreation_choose_theme', {'id': command.id}) }}">
                                     <span class="me-5 d-none d-lg-inline-block">{% include "component/_left_arrow.html.twig" %}</span>

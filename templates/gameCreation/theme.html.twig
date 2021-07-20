@@ -1,5 +1,7 @@
 {% extends 'layout.html.twig' %}
 
+{% form_theme form with ['form_table_layout.html.twig'] only %}
+
 {% block stylesheets %}
     {{ parent() }}
     {{ encore_entry_link_tags('gamecreation') }}
@@ -7,6 +9,11 @@
 
 {% block title %}
     Treeb'Z | Créer votre jeu
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+
 {% endblock %}
 
 {% block body %}
@@ -40,11 +47,8 @@
                         <h2 class="ms-md-5 text-uppercase text-center fw-bold d-block">
                             Choisissez vos familles
                         </h2>
-
                         {{ form_start(form) }}
-                        <div class="text-center d-block  mb-5">
-                            <button class="btn btn-primary text-uppercase fw-bold ms-5">Valider les familles sélectionnés</button>
-                        </div>
+                        <p class="fw-bold text-primary">Cliquez sur les thèmes souhaités pour votre jeu:</p>
                     </div>
                     {% if form_errors(form.selectedThemes) is not empty %}
                         <div class="alert alert-danger">
@@ -53,16 +57,18 @@
                         </div>
                     {% endif %}
 
-                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-3 g-4 px-lg-5">
+                    <div class="themeSelection row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4 px-lg-5">
                         {% for selecttheme in form.selectedThemes %}
                             {% set index = selecttheme.vars.value %}
                             {% set entity = form.selectedThemes.vars.choices[index].data %}
-                            <div class="col">
+                            <div class="col themeSelection">
                                 <div class="card bgElement m-3 border-0 rounded text-center">
-                                    <img src="{{ asset('/uploads/themes/' ~ entity.image) }}" alt="Treebz Card">
-                                    <div class="containerCheck h4 m-3">
-                                        {{ form_label(selecttheme) }}
-                                        {{ form_widget(selecttheme, {'attr': {'class': 'checkbox'}}) }}
+                                    <div class="themeSelection containerCheck h4 m-3">
+                                        {{ form_widget(selecttheme, {'label': false, 'attr': {'class': 'd-none'}}) }}
+                                        <label for="{{ selecttheme.vars.id }}">
+                                            <img class="w-100" src="{{ asset('/uploads/themes/' ~ entity.image) }}" alt="Treebz Card"><br>
+                                            {{ selecttheme.vars.label }}
+                                        </label>
                                     </div>
                                 </div>
                             </div>
@@ -71,41 +77,19 @@
                         {% endfor %}
                     </div>
                 </div>
-                {{ form_end(form) }}
                 <div class="col col-md-3 mt-md-5 p-4 chosenThemes d-flex flex-column">
-
-                    <h2 class="text-uppercase text-center mb-4 fw-bold">
-                        Familles sélectionnés
-                    </h2>
-
-                    <p class="m-3 text-center fw-bold">Prix du Jeu :
-                        <span class="text-light h3 fw-bold">{{ priceGame }}
-                            €</span>
-                    </p>
-                    <div class="mb-5">
-
-                        <ul class="list-group text-center">
-                            {% for theme in command.selectedThemes %}
-                                <li class="list-group-item m-2 fw-bold text-uppercase">{{ theme.name }}</li>
-                            {% endfor %}
-                            <div class="justify-content-end">
-                                {% if command.selectedThemes is not empty %}
-                                    <a href="{{ path('gamecreation_preview', {'id': command.id}) }}" class="btn btn-primary text-uppercase fw-bold fs-5 w-100 mt-5">Prévisualiser la commande
-                                        <img src="{{ asset('build/images/arrow-right.svg') }}" class="ms-2 d-none d-lg-inline-block">
-                                    </a>
-                                {% endif %}
-                            </div>
-                            <div class="text-center">
-                                <a class="btn btn-light text-uppercase fw-bold fw-bold mt-5 fs-5 w-100" href="{{ path('member_index', {'command': command.id}) }}">
-                                    <span class="me-5 d-none d-lg-inline-block">{% include "component/_left_arrow.html.twig" %}</span>
-                                    Modifier mes membres
-                                </a>
-
-                            </div>
-                        </div>
-                    </ul>
+                    <div class="text-center">
+                        <button class="btn btn-primary text-uppercase fw-bold mt-5 fs-5">Valider et prévisualiser la commande</button>
+                    </div>
+                </a>
+                <div class="text-center">
+                    <a class="btn btn-light text-uppercase fw-bold fw-bold mt-5 fs-5 w-100" href="{{ path('member_index', {'command': command.id}) }}">
+                        <span class="me-5 d-none d-lg-inline-block">{% include "component/_left_arrow.html.twig" %}</span>
+                        Modifier mes membres
+                    </a>
                 </div>
+                {{ form_end(form) }}
             </div>
-        </div>
+        </ul>
     </div>
-</div></section>{% endblock %}
+</div></div></div></div></section>{% endblock %}

@@ -20,7 +20,7 @@ class ShippingAddressType extends AbstractType
                 'class' => 'form-control',
             ],
             'label_attr' => [
-                'class' => 'form-label fw-bold'
+                'class' => 'form-label fw-bold mt-3'
             ]
         ])
         ->add('postalCode', TextType::class, [
@@ -29,7 +29,7 @@ class ShippingAddressType extends AbstractType
                 'class' => 'form-control',
             ],
             'label_attr' => [
-                'class' => 'form-label fw-bold'
+                'class' => 'form-label fw-bold mt-3'
             ]
         ])
         ->add('town', TextType::class, [
@@ -38,7 +38,7 @@ class ShippingAddressType extends AbstractType
                 'class' => 'form-control',
             ],
             'label_attr' => [
-                'class' => 'form-label fw-bold'
+                'class' => 'form-label fw-bold mt-3'
             ]
         ])
             ->add('country', CountryType::class, [
@@ -47,8 +47,9 @@ class ShippingAddressType extends AbstractType
                     'class' => 'form-control',
                 ],
                 'label_attr' => [
-                    'class' => 'form-label fw-bold'
-                ]
+                    'class' => 'form-label fw-bold mt-3'
+                ],
+                'placeholder' => 'Cliquez ici pour choisir votre pays',
                 ]);
     }
 
