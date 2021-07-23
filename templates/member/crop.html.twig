@@ -45,25 +45,27 @@
                         {{ form_row(form.crop) }}
                         <img src="{{ asset('build/images/theme_previsualisation.png') }}" class="theme_previz" alt="theme">
                     </div>
-                    <div class="my-4">
-                        {{ form_row(form.validate) }}
+                    <div class="my-4 text-center">
+                        {{ form_row(form.validate, {'attr': {'class': 'btn btn-primary text-uppercase fw-bold w-50'}}) }}
                     </div>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <a href="{{ path('member_index', {'command': command.id}) }}">Revenir à l'étape 2</a>
+                    <div class="text-center">
+                        <a class="btn btn-secondary text-uppercase fw-bold mb-5" href="{{ path('member_index', {'command': command.id}) }}">
+                            <span class="me-5 d-none d-lg-inline-block">{% include "component/_left_arrow.html.twig" %}</span>
+                            Revenir à l'étape 2</a>
                     </div>
                     {{ form_end(form) }}
                 </div>
                 <div class="col-10 col-lg-6 col-md-8 ms-lg-5">
                     <h3>
-                        Modifier sa photo pour la création du jeu de 7 familles</br>
+                        Modifier sa photo pour la création du jeu de 7 familles :
                     </h3>
-                    <p>Pour bien placer le membre du jeu de famille que vous souhaitez créer:</br></br>
-                        1) Utilisez le clic gauche de la souris afin de déplacer la photo derrière la carte de jeu et
-                        de bien placer la personne concernée par la carte créée.</br></br>
-                        2) Utilisez la molette de la souris pour zoomer ou dézoomer la photo si necessaire afin que la taille de la personne
-                        choisie rentre bien dans l'espace prévue dans la carte de jeu.</br></br>
-                        Si l'emplacement du membre de famille dans la carte vous convient, validez et reprenez votre commande.
-                    </p>
+                    <p>Pour bien placer le membre du jeu de famille que vous souhaitez créer:</p>
+
+                    <p><span class="fw-bold">1)</span> Utilisez le clic gauche de la souris afin de déplacer la photo derrière la carte de jeu et
+                                            de bien placer la personne concernée par la carte créée.</p>
+
+                    <p><span class="fw-bold">2)</span> Utilisez la molette de la souris pour zoomer ou dézoomer la photo si necessaire afin que la taille de la personne
+                                            choisie rentre bien dans l'espace prévue dans la carte de jeu. Si l'emplacement du membre de famille dans la carte vous convient, validez et reprenez votre commande.</p>
                 </div>
             </div>
         </div>
