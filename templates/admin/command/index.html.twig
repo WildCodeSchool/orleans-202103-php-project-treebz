@@ -59,8 +59,8 @@
 						</div>
 						<div class="my-3">
 							<span class="fw-bold text-uppercase">nom du client :⠀</span>
-							<span>{{ command.contactInformation.firstname ?? '<span class="text-danger">Aucun prénom enregistré.</span>' }}
-								{{ command.contactInformation.lastname ?? '<span class="text-danger">Aucun nom enregistré.</span>' }}</span>
+							<span>{{ command.user.userDetail.firstname }}
+								{{ command.user.userDetail.lastname }}</span>
 						</div>
 						<div class="my-3">
 							<span class="fw-bold text-uppercase">status de la commande :⠀</span>
@@ -74,19 +74,15 @@
 					<div class="col col-md-4">
 						<div class="my-1">
 							<span class="fw-bold text-uppercase">adresse de livraison :⠀</span>
-							<span>{{ command.contactInformation.address ?? '<span class="text-danger">Aucune adresse enregistrée.</span>' }}</br>
-							{{ command.contactInformation.postalCode ?? '<span class="text-danger">Aucun postal code enregistré.</span>' }}⠀{{ command.contactInformation.town ?? '<span class="text-danger">Aucune ville enregistrée.</span>' }}</br>
-						{{ command.contactInformation.country ?? '<span class="text-danger">Aucun pays enregistré</span>' }}</span>
+							<span>{{ command.user.userDetail.address }}</br>
+							{{ command.user.userDetail.postalCode }}⠀{{ command.user.userDetail.town }}</br>
+						{{ command.user.userDetail.country }}</span>
 				</div>
 				<div class="my-1">
 					<span class="fw-bold text-uppercase">adresse de facturation :⠀</span>
-					{% if command.shippingAddress %}
-					<span>{{ command.shippingAddress.address }}</br>
-					{{ command.shippingAddress.postalCode }}⠀{{ command.shippingAddress.town }}</br>
-				{{ command.shippingAddress.country }}</span>
-					{% else %}
-					<span>Aucune adresse de livraison</span>
-					{% endif %}
+					<span>{{ command.user.userDetail.address }}</br>
+					{{ command.user.userDetail.postalCode }}⠀{{ command.user.userDetail.town }}</br>
+				{{ command.user.userDetail.country }}</span>
 		</div>
 	</div>
 	<div class="col col-md-4 mt-3 py-3 py-md-1">
