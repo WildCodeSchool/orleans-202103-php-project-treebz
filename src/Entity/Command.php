@@ -72,6 +72,11 @@ class Command
      */
     private ?ShippingAddress $shippingAddress;
 
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private ?float $price;
+
 
     public function __construct()
     {
@@ -218,6 +223,18 @@ class Command
     public function setShippingAddress(?ShippingAddress $shippingAddress): self
     {
         $this->shippingAddress = $shippingAddress;
+
+        return $this;
+    }
+
+    public function getPrice(): ?float
+    {
+        return $this->price;
+    }
+
+    public function setPrice(?float $price): self
+    {
+        $this->price = $price;
 
         return $this;
     }
