@@ -76,9 +76,13 @@
 				</div>
 				<div class="my-1">
 					<span class="fw-bold text-uppercase">adresse de facturation :⠀</span>
-					<span>{{ command.contactInformation.address }}</br>
-					{{ command.contactInformation.postalCode }}⠀{{ command.contactInformation.town }}</br>
-				{{ command.contactInformation.country }}</span>
+					{% if command.shippingAddress %}
+					<span>{{ command.shippingAddress.address }}</br>
+					{{ command.shippingAddress.postalCode }}⠀{{ command.shippingAddress.town }}</br>
+				{{ command.shippingAddress.country }}</span>
+					{% else %}
+					<span>Aucune adresse de livraison</span>
+					{% endif %}
 		</div>
 	</div>
 	<div class="col col-md-4 mt-3 py-3 py-md-1">
