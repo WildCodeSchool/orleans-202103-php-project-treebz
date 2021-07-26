@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Entity\Status;
 use App\Entity\Command;
 use Symfony\Component\Config\Definition\Exception\Exception;
 
@@ -15,6 +16,29 @@ class GameCard
 
     public const PRICE_ADD_THEME = 3.99;
     public const THEMES_BEFORE_ADD_PRICE = 7;
+
+    public const STATUS = [
+        [
+            'status' => 'En cours',
+            'color' => 'light'
+        ],
+        [
+            'status' => 'Commandée',
+            'color' => 'danger'
+        ],
+        [
+            'status' => 'Envoyée',
+            'color' => 'primary'
+        ],
+        [
+            'status' => 'Livrée',
+            'color' => 'success'
+        ],
+        [
+            'status' => 'Annulée',
+            'color' => 'info'
+        ]
+    ];
 
     public function priceGame(Command $command): float
     {
@@ -38,5 +62,15 @@ class GameCard
         }
 
         return $price;
+    }
+
+    public function statutOrdered(Command $command): bool
+    {
+        /** @var Status */
+        $status = $command->getStatus();
+        if (GameCard::STATUS[0]['status'] === $status->getName()) {
+            return true;
+        }
+        return false;
     }
 }

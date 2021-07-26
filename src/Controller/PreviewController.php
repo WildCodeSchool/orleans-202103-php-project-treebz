@@ -79,6 +79,7 @@ class PreviewController extends AbstractController
             'formAddAddress' => $formAddAddress->createView(),
             'formSelectAddress' => $formSelectAddress->createView(),
             'priceGame' => $priceGame,
+            'statusOrdered' => $gameCard->statutOrdered($command),
         ]);
     }
 }

@@ -22,7 +22,7 @@ class Status
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private string $name;
+    private ?string $name;
 
     /**
      * @ORM\OneToMany(targetEntity=Command::class, mappedBy="status")
@@ -80,18 +80,11 @@ class Status
         return $this;
     }
 
-    public function removeCommand(Command $command): self
+    public function removeCommand(?Command $command): self
     {
-        if ($this->commands->removeElement($command)) {
-            // set the owning side to null (unless already changed)
-            if ($command->getStatus() === $this) {
-                $command->setStatus(null);
-            }
-        }
-
+        $this->commands->removeElement($command);
         return $this;
     }
-
     public function getColor(): ?string
     {
         return $this->color;

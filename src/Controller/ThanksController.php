@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Entity\Command;
 use App\Service\GameCard;
-use App\DataFixtures\StatusFixtures;
 use App\Repository\StatusRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -39,7 +38,8 @@ class ThanksController extends AbstractController
         $priceGame = $gameCard->priceGame($command);
         $command->setPrice($priceGame);
 
-        $status = $statusRepository->findOneByName(['name' => StatusFixtures::STATUS[1]['status']]);
+        $status = $statusRepository->findOneByName(['name' => GameCard::STATUS[1]['status']]);
+
         $command->setStatus($status);
 
         $entityManager->flush();
