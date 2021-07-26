@@ -43,7 +43,7 @@ class Command
     /**
      * @ORM\ManyToOne(targetEntity=Status::class, inversedBy="commands")
      */
-    private ?Status $status;
+    private Status $status;
 
     /**
      * @ORM\Column(type="integer")
@@ -151,12 +151,12 @@ class Command
         return $this;
     }
 
-    public function getStatus(): ?Status
+    public function getStatus(): Status
     {
         return $this->status;
     }
 
-    public function setStatus(?Status $status): self
+    public function setStatus(Status $status): self
     {
         $this->status = $status;
 

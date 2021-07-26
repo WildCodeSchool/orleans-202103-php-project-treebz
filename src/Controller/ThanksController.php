@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Entity\Command;
-use App\DataFixtures\StatusFixtures;
+use App\Service\GameCard;
 use App\Repository\StatusRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -35,7 +35,7 @@ class ThanksController extends AbstractController
             throw $this->createAccessDeniedException("Vous n'avez pas accès à cette commande");
         }
 
-        $status = $statusRepository->findOneByName(['name' => StatusFixtures::STATUS[1]['status']]);
+        $status = $statusRepository->findOneByName(['name' => GameCard::STATUS[1]['status']]);
 
         $command->setStatus($status);
         $entityManager->flush();
