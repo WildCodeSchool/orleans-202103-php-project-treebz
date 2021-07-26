@@ -22,7 +22,7 @@ class Status
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private string $name;
+    private ?string $name;
 
     /**
      * @ORM\OneToMany(targetEntity=Command::class, mappedBy="status")
