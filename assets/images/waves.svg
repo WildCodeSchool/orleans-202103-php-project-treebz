@@ -4,7 +4,13 @@
 <rect width="71.2702" height="80.3994" rx="1" transform="matrix(-0.00239533 0.999997 -0.999997 -0.00237275 80.5699 0.190796)" fill="url(#pattern0)"/>
 <rect width="83.3269" height="82.346" transform="matrix(1 0 0.000431249 1 336 28.4336)" fill="url(#pattern1)"/>
 <rect x="72" width="63" height="95" fill="#FEBD58"/>
-<rect x="293" y="6.43356" width="44" height="89" fill="#FEBD58"/>
+<rect x="293" y="6" width="47" height="93" fill="#FEBD58"/>
+<rect x="318" y="99" width="14" height="3" fill="#FEBD58"/>
+<rect x="333" y="102" width="4" height="3" fill="white"/>
+<rect x="335" y="101" width="4" height="3" fill="white"/>
+<path d="M337 100H343V101H337V100Z" fill="white"/>
+<rect x="338" y="100" width="4" height="3" fill="white"/>
+<rect x="332" y="99" width="2" height="2" fill="#FEBD58"/>
 <defs>
 <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
 <use xlink:href="#image0" transform="translate(0.00853003 0.0774913) scale(0.00346599 0.00285959)"/>

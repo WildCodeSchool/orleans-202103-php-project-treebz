@@ -18,7 +18,7 @@ class ContactType extends AbstractType
                 'label' => 'NOM',
                 'attr' => [
                     'required' => false,
-                    'placeholder' => 'Simpson',
+                    'placeholder' => 'Dubois',
                 ]
             ])
             ->add('firstname', TextType::class, [
@@ -32,7 +32,7 @@ class ContactType extends AbstractType
                 'label' => 'EMAIL',
                 'attr' => [
                     'required' => false,
-                    'placeholder' => 'marge.simpson@monmail.com',
+                    'placeholder' => 'marjorie.dubois@monmail.com',
                 ]
             ])
             ->add('object', TextType::class, [
