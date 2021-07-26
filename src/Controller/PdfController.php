@@ -13,7 +13,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class PdfController extends AbstractController
 {
      /**
-     * @Route("/pdf/{id}", name="pdf", methods={"GET","POST"})
+     * @Route("/admin/pdf/{id}", name="pdf", methods={"GET","POST"})
      * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
 
@@ -28,7 +28,7 @@ class PdfController extends AbstractController
     }
 
      /**
-     * @Route("/back-pdf/{id}", name="backPdf", methods={"GET","POST"})
+     * @Route("/admin/back-pdf/{id}", name="backPdf", methods={"GET","POST"})
      * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
 
