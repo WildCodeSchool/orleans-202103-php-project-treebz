@@ -22,7 +22,7 @@ class Status
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private ?string $name;
+    private string $name;
 
     /**
      * @ORM\OneToMany(targetEntity=Command::class, mappedBy="status")
@@ -49,12 +49,12 @@ class Status
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getName(): string
     {
         return $this->name;
     }
 
-    public function setName(?string $name): self
+    public function setName(string $name): self
     {
         $this->name = $name;
 
