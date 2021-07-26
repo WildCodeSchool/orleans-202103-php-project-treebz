@@ -39,15 +39,18 @@
                 <div class="row">
                     <div class="col col-md-6">
                         <div class="my-3">
-                            <span class="fw-bold text-uppercase">Nom du jeux : </span>
+                            <span class="fw-bold text-uppercase">Nom du jeux :
+                            </span>
                             <span>{{ command.projectName }}</span>
                         </div>
                         <div>
-                            <span class="fw-bold text-uppercase">date de commande : </span>
+                            <span class="fw-bold text-uppercase">date de commande :
+                            </span>
                             <span>{{ command.createdAt|date('d/m/Y à H:i') }}</span>
                         </div>
                         <div class="my-3">
-                            <span class="fw-bold text-uppercase">status de la commande : </span>
+                            <span class="fw-bold text-uppercase">status de la commande :
+                            </span>
                             <span>{{ command.status.name }}</span>
                         </div>
                         <div class="my-3">
@@ -58,7 +61,17 @@
                         <div class="my-3">
                             <span class="fw-bold text-uppercase">Adresse de livraison :⠀</span>
                             <span>
-                                {{ command.shippingAddress.address ~ ' ' ~ command.shippingAddress.town ~ ' ' ~ command.shippingAddress.postalCode }}
+                                {{ command.shippingAddress.address ?? 'Aucune adresse trouvé' }},
+                                {{ command.shippingAddress.town ?? 'Aucune ville trouvé' }},
+                                {{ command.shippingAddress.postalCode ?? 'Aucun postal code trouvé' }},
+                                {{ command.shippingAddress.country ?? 'Aucun pays trouvé' }}.
+                            </div>
+                            <div>
+                                {% if command.status.name == "En cours" %}
+                                    <a class="m-1 btn btn-secondary text-uppercase fw-bold" href="{{ path('pending_order', {'id': command.id}) }}">Reprendre votre jeu</a>
+                                {% else %}
+                                    <a class="m-1 btn btn-secondary text-uppercase fw-bold" href="{{ path('gamecreation_preview', {'id': command.id}) }}">Voir votre jeu</a>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
