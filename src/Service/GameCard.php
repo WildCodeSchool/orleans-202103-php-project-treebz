@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Entity\Status;
 use App\Entity\Command;
 use Symfony\Component\Config\Definition\Exception\Exception;
 
@@ -65,7 +66,9 @@ class GameCard
 
     public function statutOrdered(Command $command): bool
     {
-        if (GameCard::STATUS[0]['status'] === $command->getStatus()->getName()) {
+        /** @var Status */
+        $status = $command->getStatus();
+        if (GameCard::STATUS[0]['status'] === $status->getName()) {
             return true;
         }
         return false;
