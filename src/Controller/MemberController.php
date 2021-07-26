@@ -45,7 +45,7 @@ class MemberController extends AbstractController
         }
 
         if ($gameCard->statutOrdered($command) === false) {
-            $this->addFlash('danger', "La commande est déjà finalisée, vous ne pouvez plus la modifier");
+            $this->addFlash('danger', "La commande est déjà validée, vous ne pouvez plus la modifier");
         }
 
         return $this->render('member/index.html.twig', [
@@ -70,7 +70,7 @@ class MemberController extends AbstractController
             throw $this->createAccessDeniedException("Vous n'avez pas accès à cette commande");
         }
         if ($gameCard->statutOrdered($command) === false) {
-            throw $this->createAccessDeniedException("La commande est déjà finalisée, vous ne pouvez plus la modifier");
+            throw $this->createAccessDeniedException("La commande est déjà validée, vous ne pouvez plus la modifier");
         }
 
         if (count($command->getMembers() ?? []) >= GameCard::GAME_MAX) {
@@ -114,7 +114,7 @@ class MemberController extends AbstractController
     ): Response {
 
         if ($gameCard->statutOrdered($command) === false) {
-            throw $this->createAccessDeniedException("La commande est déjà finalisée, vous ne pouvez plus la modifier");
+            throw $this->createAccessDeniedException("La commande est déjà validée, vous ne pouvez plus la modifier");
         }
         /**
          * @var string

@@ -77,7 +77,7 @@ class GameCreationController extends AbstractController
             return $this->redirectToRoute('member_index', ['command' => $command->getId()]);
         }
         if (false === $gameCard->statutOrdered($command)) {
-            $this->addFlash('danger', "La commande est déjà finalisée, vous ne pouvez plus la modifier");
+            $this->addFlash('danger', "La commande est déjà validée, vous ne pouvez plus la modifier");
         }
         return $this->render('gameCreation/index.html.twig', [
             'command' => $command,
@@ -124,7 +124,7 @@ class GameCreationController extends AbstractController
         }
 
         if (false === $gameCard->statutOrdered($command)) {
-            $this->addFlash('danger', "La commande est déjà finalisée, vous ne pouvez plus la modifier");
+            $this->addFlash('danger', "La commande est déjà validée, vous ne pouvez plus la modifier");
         }
 
         return $this->render('gameCreation/theme.html.twig', [
