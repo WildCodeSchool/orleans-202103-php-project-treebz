@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Entity\Command;
+use App\Service\GameCard;
 use App\DataFixtures\StatusFixtures;
 use App\Repository\StatusRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -26,7 +27,8 @@ class ThanksController extends AbstractController
     public function index(
         Command $command,
         StatusRepository $statusRepository,
-        EntityManagerInterface $entityManager
+        EntityManagerInterface $entityManager,
+        GameCard $gameCard
     ): Response {
 
         /** @var User */
@@ -34,10 +36,12 @@ class ThanksController extends AbstractController
         if (!$user->getCommands()->contains($command)) {
             throw $this->createAccessDeniedException("Vous n'avez pas accès à cette commande");
         }
+        $priceGame = $gameCard->priceGame($command);
+        $command->setPrice($priceGame);
 
         $status = $statusRepository->findOneByName(['name' => StatusFixtures::STATUS[1]['status']]);
-
         $command->setStatus($status);
+
         $entityManager->flush();
         // Redirection to the second step page
         return $this->render('gameCreation/thanks.html.twig');
