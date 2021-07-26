@@ -43,12 +43,15 @@ class UserDetailController extends AbstractController
     }
 
     /**
-     * @Route("/histrorique-des-commandes", name="command_history", methods={"GET"})
+     * @Route("/historique-des-commandes", name="command_history", methods={"GET"})
      * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function showCommand(CommandRepository $commandRepository): Response
     {
-        return $this->render('user_detail/commandHistory.html.twig');
+
+        return $this->render('user_detail/commandHistory.html.twig', [
+
+        ]);
     }
 
     /**
