@@ -32,6 +32,7 @@ class CommandFixtures extends Fixture implements DependentFixtureInterface
             for ($i = 0; $i < count(ThemeFixtures::THEMES); $i++) {
                 $command->addSelectedTheme($this->getReference('theme_' . $i));
             }
+            $command->setPrice(24.99);
             $command->setContactInformation($this->getReference('userDetail_' . $keyCommand));
             $command->setUser($this->getReference('user_' . $keyCommand));
             $this->addReference('projet_' . $keyCommand, $command);
