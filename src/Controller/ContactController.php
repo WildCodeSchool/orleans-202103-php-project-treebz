@@ -30,9 +30,11 @@ class ContactController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var string */
             $mailerFrom = $this->getParameter('mailer_from');
+            /** @var string */
+            $mailerTo = $this->getParameter('mailer_to');
             $email = (new Email())
             ->from($mailerFrom)
-            ->to('your_email@example.com')
+            ->to($mailerTo)
             ->subject('Vous avez un nouveau message de la part d\'un utilisateur de Treeb\'Z.')
             ->html($this->renderView('contact/newContactEmail.html.twig', ['contact' => $contact]));
             $mailer->send($email);
