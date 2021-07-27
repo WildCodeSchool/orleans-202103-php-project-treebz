@@ -72,8 +72,9 @@ class GameCreationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
+            if (true === $gameCard->statutOrdered($command)) {
+                $this->getDoctrine()->getManager()->flush();
+            }
             return $this->redirectToRoute('member_index', ['command' => $command->getId()]);
         }
         if (false === $gameCard->statutOrdered($command)) {
