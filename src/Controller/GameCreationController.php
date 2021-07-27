@@ -72,12 +72,12 @@ class GameCreationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            if (true === $gameCard->statutOrdered($command)) {
+            if ($gameCard->statutOrdered($command) === true) {
                 $this->getDoctrine()->getManager()->flush();
             }
             return $this->redirectToRoute('member_index', ['command' => $command->getId()]);
         }
-        if (false === $gameCard->statutOrdered($command)) {
+        if ($gameCard->statutOrdered($command) === false) {
             $this->addFlash('danger', "La commande est déjà validée, vous ne pouvez plus la modifier");
         }
         return $this->render('gameCreation/index.html.twig', [
@@ -124,7 +124,7 @@ class GameCreationController extends AbstractController
             }
         }
 
-        if (false === $gameCard->statutOrdered($command)) {
+        if ($gameCard->statutOrdered($command) === false) {
             $this->addFlash('danger', "La commande est déjà validée, vous ne pouvez plus la modifier");
         }
 
