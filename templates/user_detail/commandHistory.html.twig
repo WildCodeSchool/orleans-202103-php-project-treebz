@@ -1,75 +1,84 @@
 {% extends "layout.html.twig" %}
 
 {% block stylesheets %}
-	{{ parent() }}
-	{{ encore_entry_link_tags('command') }}
-	{{ encore_entry_link_tags('gamecreation') }}
+    {{ parent() }}
+    {{ encore_entry_link_tags('command') }}
+    {{ encore_entry_link_tags('gamecreation') }}
 {% endblock %}
 
 {% block body %}
-	<header>
-		<div class="jumbotron jumbotron-fluid mainTitle">
-			<div>
-				<h1 class="display-4 text-center py-5">
-					Historique des commandes
-				</h1>
-			</div>
-		</div>
-	</header>
-	<div class="container mt-5">
-		{% for command in app.user.commands %}
-			<div class="card bg-light mb-5 mt-4 p-3">
-				<div class="row">
-					<div class="col-1">
-						<div class="col-12 d-flex justify-content-center">
-							<strong>N°</strong>
-						</div>
-						<div class="mt-3 d-flex justify-content-center">
-							<strong>{{ command.id }}</strong>
-						</div>
-					</div>
-					<div class="col-3 offset-1">
-						<div class="col-12 d-flex justify-content-center">
-							<strong>RÉCAPITULATIF</strong>
-						</div>
-						<div class="mt-3 d-flex justify-content-center">
-							<p>{{ command.projectName }}</p>
-						</div>
-					</div>
-					<div class="col-2">
-						<div class="col-12 d-flex justify-content-center">
-							<strong>DATE</strong>
-						</div>
-						<div class="mt-3 d-flex justify-content-center">
-							<strong></strong>
-							<strong>{{ command.createdAt|date('d/m/Y') }}</strong>
-						</div>
-					</div>
-					<div class="col-2">
-						<div class="col-12 d-flex justify-content-center">
-							<strong>PRIX</strong>
-						</div>
-						<div class="mt-3 d-flex justify-content-center">
-							<strong>00.00€</strong>
-						</div>
-					</div>
-					<div class="col-1 offset-1">
-						<div class="col-12 d-flex justify-content-center">
-							<strong>STATUTS</strong>
-						</div>
-						<div class="mt-3 d-flex justify-content-center">
-							<strong>{{ command.status.name }}</strong>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="d-flex justify-content-center">
-					<a class="nav-item m-1 btn btn-secondary text-uppercase" href="{{ path('pending_order', {'id': command.id}) }}">Reprendre votre commande</a>
-					</div>
-				</div>
-			</div>
-		{% else %}
-			<h2>Aucune commande</h2>
-		{% endfor %}
-	</div>
-{% endblock %}
+    <header>
+        <div class="jumbotron jumbotron-fluid mainTitle">
+            <div>
+                <h1 class="display-4 text-center py-5">
+                    Historique des commandes
+                </h1>
+            </div>
+        </div>
+    </header>
+    <div class="container mt-5">
+        {% for command in app.user.commands %}
+            <div class="accordion" id="accordionPanelsStayOpenExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header h2" id="panelsStayOpen-heading-{{ command.id }}">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse-{{ command.id }}" aria-expanded="false" aria-controls="panelsStayOpen-collapse-{{ command.id }}">
+                            <div class="status-order bg-{{ command.status.color }} me-3"></div>
+                            <p class="text-uppercase fw-bold m-0">COMMANDE N°
+                                <span class="text-capitalize fw-bold">{{ command.id }}
+                                </span>
+                                <span class="d-none d-lg-inline text-lowercase fw-light">fait le
+                                    {{ command.createdAt|date('d/m/Y à H:i') }}</span>
+                            </p>
+                        </span>
+                    </p>
+                </h2>
+            </button>
+        </h2>
+        <div id="panelsStayOpen-collapse-{{ command.id }}" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-heading-{{ command.id }}">
+            <div class="accordion-body">
+                <div class="row">
+                    <div class="col col-md-6">
+                        <div class="my-3">
+                            <span class="fw-bold text-uppercase">Nom du jeux :
+                            </span>
+                            <span>{{ command.projectName }}</span>
+                        </div>
+                        <div>
+                            <span class="fw-bold text-uppercase">date de commande :
+                            </span>
+                            <span>{{ command.createdAt|date('d/m/Y à H:i') }}</span>
+                        </div>
+                        <div class="my-3">
+                            <span class="fw-bold text-uppercase">status de la commande :
+                            </span>
+                            <span>{{ command.status.name }}</span>
+                        </div>
+                        <div class="my-3">
+                            <span class="fw-bold text-uppercase">Prix :⠀</span>
+                            <span>{{ command.price }}
+                                €</span>
+                        </div>
+                        <div class="my-3">
+                            <span class="fw-bold text-uppercase">Adresse de livraison :⠀</span>
+                            <span>
+                                {{ command.shippingAddress.address ?? 'Aucune adresse trouvé' }},
+                                {{ command.shippingAddress.town ?? 'Aucune ville trouvé' }},
+                                {{ command.shippingAddress.postalCode ?? 'Aucun postal code trouvé' }},
+                                {{ command.shippingAddress.country ?? 'Aucun pays trouvé' }}.
+                            </div>
+                            <div>
+                                {% if command.status.name == "En cours" %}
+                                    <a class="m-1 btn btn-secondary text-uppercase fw-bold" href="{{ path('pending_order', {'id': command.id}) }}">Reprendre votre jeu</a>
+                                {% else %}
+                                    <a class="m-1 btn btn-secondary text-uppercase fw-bold" href="{{ path('gamecreation_preview', {'id': command.id}) }}">Voir votre jeu</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <h2>Aucune commande.</h2>
+    {% endfor %}
+</div></div></div>{% endblock %}

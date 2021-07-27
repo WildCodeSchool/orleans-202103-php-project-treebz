@@ -43,8 +43,10 @@
                         </div>
 
                         <div class="ms-5">
-                            <a href="{{ path('member_new', {'command': command.id}) }}" class="btn btn-primary text-uppercase fw-bold">Ajouter un membre
-                            </a>
+                            {% if statusOrdered %}
+                                <a href="{{ path('member_new', {'command': command.id}) }}" class="btn btn-primary text-uppercase fw-bold">Ajouter un membre
+                                </a>
+                            {% endif %}
                         </div>
                     </div>
                     <div class="container">
@@ -57,11 +59,13 @@
                                     </div>
                                     <img src="{{ vich_uploader_asset(member) }}" alt="{{ member.picture }}"/>
                                     <div>
-                                        <a href="{{ path('member_edit', {'id': member.id}) }}" class="btn btn-secondary fw-bold mt-2 w-100 text-uppercase">Modifier</a>
-                                        <form method="post" action="{{ path('member_delete', {'id': member.id}) }}" onsubmit="return confirm(' Êtes vous sur de vouloir supprimer ce membre ?');">
-                                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ member.id) }}">
-                                            <button class="btn btn-danger btn-sm mt-2 fw-bold w-100 text-uppercase buttonFont">Supprimer</button>
-                                        </form>
+                                        {% if statusOrdered %}
+                                            <a href="{{ path('member_edit', {'id': member.id}) }}" class="btn btn-secondary fw-bold mt-2 w-100 text-uppercase">Modifier</a>
+                                            <form method="post" action="{{ path('member_delete', {'id': member.id}) }}" onsubmit="return confirm(' Êtes vous sur de vouloir supprimer ce membre ?');">
+                                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ member.id) }}">
+                                                <button class="btn btn-danger btn-sm mt-2 fw-bold w-100 text-uppercase buttonFont">Supprimer</button>
+                                            </form>
+                                        {% endif %}
                                     </div>
                                 </div>
                             {% else %}
@@ -82,30 +86,38 @@
                             {% for member in members %}
                                 <li class="list-group-item m-2 fw-bold d-flex flex-row justify-content-between">
                                     {{ member.cardNumber }}-{{ member.name }}
-                                    <div class="d-flex flex-row">
-                                        {% if not loop.last %}
-                                            <form method="post" action="{{ path('member_change_cardnumber', {'command': command.id, 'member': member.id, 'deplacement': 'up'}) }}"><button class="btn bg-secondary m-1" type='submit'><span class="iconify" data-icon="akar-icons:arrow-down" data-inline="false"></span></bouton></form>
-                                        {% endif %}
-                                        {% if not loop.first %}
-                                            <form method="post" action="{{ path('member_change_cardnumber', {'command': command.id, 'member': member.id, 'deplacement': 'down'}) }}"><button class="btn bg-secondary m-1" type='submit'><span class="iconify" data-icon="akar-icons:arrow-up" data-inline="false"></span></bouton></form>
-                                        {% endif %}
-                                    </div>
+                                    {% if statusOrdered %}
+                                        <div class="d-flex flex-row">
+                                            {% if not loop.last %}
+                                                <form method="post" action="{{ path('member_change_cardnumber', {'command': command.id, 'member': member.id, 'deplacement': 'up'}) }}"><button class="btn bg-secondary m-1" type='submit'><span class="iconify" data-icon="akar-icons:arrow-down" data-inline="false"></span></bouton></form>
+                                            {% endif %}
+                                            {% if not loop.first %}
+                                                <form method="post" action="{{ path('member_change_cardnumber', {'command': command.id, 'member': member.id, 'deplacement': 'down'}) }}"><button class="btn bg-secondary m-1" type='submit'><span class="iconify" data-icon="akar-icons:arrow-up" data-inline="false"></span></bouton></form>
+                                            {% endif %}
+                                        </div>
+                                    {% endif %}
                                 </li>
                             {% endfor %}
                         </ul>
                     </div>
                     <div class="my-5 text-end">
+                    {% if statusOrdered %}
                         {% if command.members is not empty %}
                             <form action="{{ path('gamecreation_choose_theme', {'id': command.id}) }}">
                                 <button type='submit' class="btn btn-primary text-uppercase fw-bold fw-bold fs-5 w-100">Choisir vos familles
                                     <img src="{{ asset('build/images/arrow-right.svg') }}" class="ms-5 d-none d-lg-inline-block"></button>
                             </form>
                         {% endif %}
-                        <div class="text-center">
-                            <a class="btn btn-light text-uppercase fw-bold fw-bold mt-5 fs-5 w-100" href="{{ path('gamecreation_editGame', {'id': command.id}) }}">
-                                <span class="me-5 d-none d-lg-inline-block">{% include "component/_left_arrow.html.twig" %}</span>
-                                Modifier le nom du jeu</a>
-                        </div>
+                            <div class="text-center">
+                                <a class="btn btn-light text-uppercase fw-bold fw-bold mt-5 fs-5 w-100" href="{{ path('gamecreation_editGame', {'id': command.id}) }}">
+                                    <span class="me-5 d-none d-lg-inline-block">{% include "component/_left_arrow.html.twig" %}</span>
+                                    Modifier le nom du jeu</a>
+                            </div>
+                        {% else %}
+                            <a class="btn btn-primary text-uppercase fw-bold fw-bold fs-5 w-100" href="{{ path('gamecreation_preview', {'id': command.id}) }}">
+                                    <span class="me-5 d-none d-lg-inline-block"><img src="{{ asset('build/images/arrow-right.svg') }}" class="ms-5 d-none d-lg-inline-block"></span>
+                                    RÉCAPITULATIF</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>

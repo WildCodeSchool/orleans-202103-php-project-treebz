@@ -122,55 +122,66 @@
                                     {{ constant('App\\Service\\GameCard::PRICE_ADD_THEME') }}€ par thème au-dessus de 7</p>
 
                             </div>
+                            {% if statusOrdered %}
+                                {{ form_start(formSelectAddress) }}
+                                {{ form_widget(formSelectAddress) }}
 
-                            {{ form_start(formSelectAddress) }}
-                            {{ form_widget(formSelectAddress) }}
-
-                            <!-- Button trigger modal -->
-                            <div class="text-center">
-                                <h3 class="my-2 h5">Vous n'avez pas trouvé l'adresse souhaitée ?
-                                </h3>
-                                <button type="button" class="btn btn-success mt-2 mb-5 w-50 fw-bold text-uppercase" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    Ajouter une adresse
-                                </button>
-                            </div>
-                            <div class="text-center">
-                                <button class="btn btn-primary text-uppercase fw-bold fs-5 w-100 mt-3">Payer la commande
-                                    <img src="{{ asset('build/images/arrow-right.svg') }}" class="ms-5 d-none d-lg-inline-block"></button>
-                            </div>
-                            {{ form_end(formSelectAddress) }}
-                            <!-- Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Ajouter une nouvelle adresse de livraison</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            {{ form_start(formAddAddress) }}
-                                            {{ form_widget(formAddAddress) }}
-                                            <div class="modal-footer">
-                                                <button class="btn btn-success">Sauvegarder mon adresse</button>
-                                                <button type="button" class="btn btn-secondary w-25" data-bs-dismiss="modal">Fermer</button>
+                                <!-- Button trigger modal -->
+                                <div class="text-center">
+                                    <h3 class="my-2 h5">Vous n'avez pas trouvé l'adresse souhaitée ?
+                                    </h3>
+                                    <button type="button" class="btn btn-success mt-2 mb-5 w-50 fw-bold text-uppercase" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        Ajouter une adresse
+                                    </button>
+                                </div>
+                                <div class="text-center">
+                                    <button class="btn btn-primary text-uppercase fw-bold fs-5 w-100 mt-3">Payer la commande
+                                        <img src="{{ asset('build/images/arrow-right.svg') }}" class="ms-5 d-none d-lg-inline-block"></button>
+                                </div>
+                                {{ form_end(formSelectAddress) }}
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Ajouter une nouvelle adresse de livraison</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
-                                            {{ form_end(formAddAddress) }}
+                                            <div class="modal-body">
+                                                {{ form_start(formAddAddress) }}
+                                                {{ form_widget(formAddAddress) }}
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-success">Sauvegarder mon adresse</button>
+                                                    <button type="button" class="btn btn-secondary w-25" data-bs-dismiss="modal">Fermer</button>
+                                                </div>
+                                                {{ form_end(formAddAddress) }}
+
+                                            </div>
 
                                         </div>
-
                                     </div>
                                 </div>
+                                <!-- Fin modal -->
                             </div>
-                            <!-- Fin modal -->
-                        </div>
-                        <div class="justify-content-end">
-                            <div class="text-center">
-                                <a class="btn btn-light text-uppercase fw-bold fw-bold mt-5 fs-5 w-100" href="{{ path('gamecreation_choose_theme', {'id': command.id}) }}">
-                                    <span class="me-5 d-none d-lg-inline-block">{% include "component/_left_arrow.html.twig" %}</span>
-                                    Modifier mes familles
-                                </a>
+                            <div class="justify-content-end">
+                                <div class="text-center">
+                                    <a class="btn btn-light text-uppercase fw-bold fw-bold mt-5 fs-5 w-100" href="{{ path('gamecreation_choose_theme', {'id': command.id}) }}">
+                                        <span class="me-5 d-none d-lg-inline-block">{% include "component/_left_arrow.html.twig" %}</span>
+                                        Modifier mes familles
+                                    </a>
+                                </div>
                             </div>
-                        </div>
+                            {% else %}
+                                </div>
+                                <div class="justify-content-end">
+                                    <div class="text-center">
+                                        <a class="btn btn-light text-uppercase fw-bold fw-bold mt-5 fs-5 w-100" href="{{ path('member_index', {'command': command.id}) }}">
+                                            <span class="me-5 d-none d-lg-inline-block">{% include "component/_left_arrow.html.twig" %}</span>
+                                            Revenir aux membres
+                                        </a>
+                                    </div>
+                                </div>
+                            {% endif %}
                     </div>
                 </div>
             </div>

@@ -10,7 +10,6 @@ use App\Form\CommandType;
 use App\Service\GameCard;
 use App\Form\SelectThemesType;
 use App\Repository\ThemeRepository;
-use App\DataFixtures\StatusFixtures;
 use App\Repository\StatusRepository;
 use App\Repository\CommandRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -40,7 +39,7 @@ class GameCreationController extends AbstractController
         $command = new Command();
         /** @var User */
         $user = $this->getUser();
-        $status = $statusRepository->findOneByName(['name' => StatusFixtures::STATUS[0]['status']]);
+        $status = $statusRepository->findOneByName(['name' => GameCard::STATUS[0]['status']]);
         $lastCommand = $commandRepository->findOneBy(
             ['user' => $user, 'status' => $status->getId()],
             ['createdAt' => 'desc']
@@ -56,6 +55,7 @@ class GameCreationController extends AbstractController
             // Redirection to the second step page
             return $this->redirectToRoute('member_index', ['command' => $command->getId()]);
         }
+
         return $this->render('gameCreation/index.html.twig', [
             "form" => $form->createView(),
             "lastCommand" => $lastCommand,
@@ -66,7 +66,7 @@ class GameCreationController extends AbstractController
      * @Route("/modifier/{id}/", name="editGame", methods={"GET","POST"})
      * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
-    public function editCommand(Request $request, Command $command): Response
+    public function editCommand(Request $request, Command $command, GameCard $gameCard): Response
     {
         $form = $this->createForm(GameType::class, $command);
         $form->handleRequest($request);
@@ -76,7 +76,9 @@ class GameCreationController extends AbstractController
 
             return $this->redirectToRoute('member_index', ['command' => $command->getId()]);
         }
-
+        if (false === $gameCard->statutOrdered($command)) {
+            $this->addFlash('danger', "La commande est déjà validée, vous ne pouvez plus la modifier");
+        }
         return $this->render('gameCreation/index.html.twig', [
             'command' => $command,
             'form' => $form->createView(),
@@ -108,6 +110,9 @@ class GameCreationController extends AbstractController
         $priceGame = $gameCard->priceGame($command);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            if ($gameCard->statutOrdered($command) === false) {
+                return $this->redirectToRoute('gamecreation_preview', ['id' => $command->getId()]);
+            }
             if (count($command->getSelectedThemes()) > 0) {
                 $entityManager->persist($command);
                 $entityManager->flush();
@@ -117,6 +122,11 @@ class GameCreationController extends AbstractController
                 $this->addFlash('danger', 'Veuillez sélectionner au moins une famille.');
             }
         }
+
+        if (false === $gameCard->statutOrdered($command)) {
+            $this->addFlash('danger', "La commande est déjà validée, vous ne pouvez plus la modifier");
+        }
+
         return $this->render('gameCreation/theme.html.twig', [
             'themes' => $themeRepository->findAll(),
             'command' => $command,

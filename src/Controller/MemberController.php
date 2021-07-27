@@ -44,10 +44,15 @@ class MemberController extends AbstractController
             $this->addFlash('danger', $e->getMessage());
         }
 
+        if ($gameCard->statutOrdered($command) === false) {
+            $this->addFlash('danger', "La commande est déjà validée, vous ne pouvez plus la modifier");
+        }
+
         return $this->render('member/index.html.twig', [
             'command' => $command,
             'members' => $memberRepository->findBy(['command' => $command->getId()], ['cardNumber' => 'ASC']),
             'priceGame' => $priceGame,
+            'statusOrdered' => $gameCard->statutOrdered($command),
         ]);
     }
 
@@ -55,7 +60,7 @@ class MemberController extends AbstractController
      * @Route("/new/{command<^[0-9]+$>}", name="member_new", methods={"GET","POST"})
      * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
-    public function new(Command $command, Request $request): Response
+    public function new(Command $command, Request $request, GameCard $gameCard): Response
     {
         $member = new Member();
 
@@ -63,6 +68,9 @@ class MemberController extends AbstractController
         $user = $this->getUser();
         if (!$user->getCommands()->contains($command)) {
             throw $this->createAccessDeniedException("Vous n'avez pas accès à cette commande");
+        }
+        if ($gameCard->statutOrdered($command) === false) {
+            throw $this->createAccessDeniedException("La commande est déjà validée, vous ne pouvez plus la modifier");
         }
 
         if (count($command->getMembers() ?? []) >= GameCard::GAME_MAX) {
@@ -97,8 +105,17 @@ class MemberController extends AbstractController
     /**
      * @Route("/crop/{command<^[0-9]+$>}/{member<^[0-9]+$>}", name="member_crop", methods={"GET","POST"})
      */
-    public function crop(Command $command, Member $member, Request $request, CropperInterface $cropper): Response
-    {
+    public function crop(
+        Command $command,
+        Member $member,
+        Request $request,
+        CropperInterface $cropper,
+        GameCard $gameCard
+    ): Response {
+
+        if ($gameCard->statutOrdered($command) === false) {
+            throw $this->createAccessDeniedException("La commande est déjà validée, vous ne pouvez plus la modifier");
+        }
         /**
          * @var string
          */

@@ -50,7 +50,7 @@
 				<div class="row">
 					<div class="col col-md-4">
 						<div class="my-3">
-							<span class="fw-bold text-uppercase">nom du jeux :⠀</span>exp
+							<span class="fw-bold text-uppercase">nom du jeu :⠀</span>exp
 							<span>{{ command.projectName }}</span>
 						</div>
 						<div>
@@ -59,26 +59,30 @@
 						</div>
 						<div class="my-3">
 							<span class="fw-bold text-uppercase">nom du client :⠀</span>
-							<span>{{ command.contactInformation.firstname }}
-								{{ command.contactInformation.lastname }}</span>
+							<span>{{ command.user.userDetail.firstname }}
+								{{ command.user.userDetail.lastname }}</span>
 						</div>
 						<div class="my-3">
 							<span class="fw-bold text-uppercase">status de la commande :⠀</span>
 							<span>{{ command.status.name }}</span>
 						</div>
+                        <div class="my-3">
+                            <span class="fw-bold text-uppercase">Prix :⠀</span>
+                            <span>{{ command.price }}€</span>
+                        </div>
 					</div>
 					<div class="col col-md-4">
 						<div class="my-1">
 							<span class="fw-bold text-uppercase">adresse de livraison :⠀</span>
-							<span>{{ command.contactInformation.address }}</br>
-							{{ command.contactInformation.postalCode }}⠀{{ command.contactInformation.town }}</br>
-						{{ command.contactInformation.country }}</span>
+							<span>{{ command.user.userDetail.address }}</br>
+							{{ command.user.userDetail.postalCode }}⠀{{ command.user.userDetail.town }}</br>
+						{{ command.user.userDetail.country }}</span>
 				</div>
 				<div class="my-1">
 					<span class="fw-bold text-uppercase">adresse de facturation :⠀</span>
-					<span>{{ command.contactInformation.address }}</br>
-					{{ command.contactInformation.postalCode }}⠀{{ command.contactInformation.town }}</br>
-				{{ command.contactInformation.country }}</span>
+					<span>{{ command.user.userDetail.address }}</br>
+					{{ command.user.userDetail.postalCode }}⠀{{ command.user.userDetail.town }}</br>
+				{{ command.user.userDetail.country }}</span>
 		</div>
 	</div>
 	<div class="col col-md-4 mt-3 py-3 py-md-1">
