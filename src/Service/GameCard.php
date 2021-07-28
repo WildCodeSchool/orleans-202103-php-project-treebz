@@ -61,7 +61,7 @@ class GameCard
             $price = $price + (($themes - self::THEMES_BEFORE_ADD_PRICE) * self::PRICE_ADD_THEME);
         }
 
-        return $price;
+        return $price * $command->getQuantity();
     }
 
     public function statutOrdered(Command $command): bool

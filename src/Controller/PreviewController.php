@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Entity\Command;
 use App\Service\GameCard;
+use App\Form\QuantityType;
 use App\Entity\ShippingAddress;
 use App\Form\SelectAddressType;
 use Doctrine\ORM\EntityManager;
@@ -46,7 +47,14 @@ class PreviewController extends AbstractController
             throw $this->createAccessDeniedException("Vous n'avez pas accès à cette commande");
         }
 
-        $priceGame = $gameCard->priceGame($command);
+
+
+        $formQuantityGame = $this->createForm(QuantityType::class, $command);
+        $formQuantityGame->handleRequest($request);
+
+        if ($formQuantityGame->isSubmitted() && $formQuantityGame->isValid()) {
+            $entityManager->flush();
+        }
 
         $shippingAddress = new ShippingAddress();
 
@@ -72,7 +80,7 @@ class PreviewController extends AbstractController
             $this->addFlash('success', 'Adresse ajoutée avec succès');
             return $this->redirect($request->getUri());
         }
-
+        $priceGame = $gameCard->priceGame($command);
         return $this->render('gameCreation/preview.html.twig', [
             'command' => $command,
             'shipping_address' => $shippingAddress,
@@ -80,6 +88,7 @@ class PreviewController extends AbstractController
             'formSelectAddress' => $formSelectAddress->createView(),
             'priceGame' => $priceGame,
             'statusOrdered' => $gameCard->statutOrdered($command),
+            'formQuantity' => $formQuantityGame->createView(),
         ]);
     }
 }

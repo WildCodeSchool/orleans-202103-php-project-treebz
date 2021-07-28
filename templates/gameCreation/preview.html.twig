@@ -98,10 +98,19 @@
                                     {% endfor %}
                                 </ul>
                             </div>
+
                             <div class="border-top border-bottom my-3">
+
                                 <h3 class="fw-bold mt-3 text-success">
-                                    TOTAL :
-                                    {{ priceGame }}€</h3>
+                                    {% if command.quantity == 1 %}
+                                        TOTAL pour {{ command.quantity }} jeu : {{ priceGame }}€
+                                    {% elseif command.quantity < 1 %}
+                                        TOTAL : 0€
+                                    {% else %}
+                                        TOTAL pour {{ command.quantity }} jeux : {{ priceGame }}€
+                                    {% endif %}
+                                </h3>
+
                                 <h4 class="h5 fw-bold">
                                     Rappel des prix:
                                 </h4>
@@ -122,6 +131,13 @@
                                     {{ constant('App\\Service\\GameCard::PRICE_ADD_THEME') }}€ par thème au-dessus de 7</p>
 
                             </div>
+                             {{ form_start(formQuantity) }}
+                                {{ form_widget(formQuantity) }}
+                                <div class="text-center">
+                                    <button class="btn btn-success w-50 fw-bold text-uppercase my-3 ">Validation</button>
+                                </div>
+                            {{ form_end(formQuantity) }}
+
                             {% if statusOrdered %}
                                 {{ form_start(formSelectAddress) }}
                                 {{ form_widget(formSelectAddress) }}
@@ -157,7 +173,6 @@
                                                 {{ form_end(formAddAddress) }}
 
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>

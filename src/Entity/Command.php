@@ -47,6 +47,8 @@ class Command
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Positive
+     * @Assert\Range(min = 1)
      */
     private ?int $quantity = 1;
 
