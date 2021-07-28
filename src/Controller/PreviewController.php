@@ -47,8 +47,6 @@ class PreviewController extends AbstractController
             throw $this->createAccessDeniedException("Vous n'avez pas accès à cette commande");
         }
 
-
-
         $formQuantityGame = $this->createForm(QuantityType::class, $command);
         $formQuantityGame->handleRequest($request);
 
