@@ -17,7 +17,7 @@ class StatusSearchType extends AbstractType
             'label' => 'Statuts',
             'choice_label' => 'name',
             'required' => false,
-            'placeholder' => 'Tout',
+            'placeholder' => 'Tous',
         ])
             ->setMethod('GET')
         ;
